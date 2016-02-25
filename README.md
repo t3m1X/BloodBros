@@ -11,6 +11,7 @@ Project I's repository for the "Undead Renegades" team to re-create the arcade g
 ## Useful links
 
 [Tutorial on ripping-off sounds from a MAME ROM](http://www.vpforums.org/index.php?app=tutorials&article=54)
+
 [Tutorial on ripping-off images from a MAME ROM](http://soronline.net/mamerips.htm)
 
 
@@ -19,7 +20,7 @@ Project I's repository for the "Undead Renegades" team to re-create the arcade g
 All work done in this repository is by the "Undead Renegades" team and its members:
 
 
-Iv·n Papiol
+Iv√°n Papiol
 
 Marcos Vera
 
