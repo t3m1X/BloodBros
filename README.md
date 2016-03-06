@@ -6,6 +6,12 @@ Project I's repository for the "Undead Renegades" team to re-create the arcade g
 
 16/02/2016 Created the repository. Added "README.md". Added the first "hello world" code.
 
+## Sound
+
+On the subject of sound please take your time to properly name and place the sound samples stored in candidates. The naming convention is the following:
+>stage1-2_bg.wav
+>stage1-2_indian-scream.wav
+
 ## Credits
 
 All work done in this repository is by the "Undead Renegades" team and its members:
