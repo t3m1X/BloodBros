@@ -53,10 +53,10 @@
     <ClInclude Include="ModuleParticles.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleSceneSpace.h">
+    <ClInclude Include="ModuleIntro.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleIntro.h">
+    <ClInclude Include="ModuleScene.h">
       <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
@@ -91,10 +91,10 @@
     <ClCompile Include="ModuleParticles.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleSceneSpace.cpp">
+    <ClCompile Include="ModuleIntro.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleIntro.cpp">
+    <ClCompile Include="ModuleScene.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>

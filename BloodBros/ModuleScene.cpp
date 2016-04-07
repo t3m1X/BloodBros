@@ -3,30 +3,29 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
-#include "ModuleSceneSpace.h"
+#include "ModuleScene.h"
 
-// Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
-ModuleSceneSpace::ModuleSceneSpace()
+ModuleScene::ModuleScene()
 {}
 
-ModuleSceneSpace::~ModuleSceneSpace()
+ModuleScene::~ModuleScene()
 {}
 
 // Load assets
-bool ModuleSceneSpace::Start()
+bool ModuleScene::Start()
 {
 	LOG("Loading space scene");
 	
-	background = App->textures->Load("rtype/background.png");
+	background = App->textures->Load("sprites/background_first_release.png");
 
-	App->player->Enable();
+	//App->player->Enable();
 	
 	return true;
 }
 
 // UnLoad assets
-bool ModuleSceneSpace::CleanUp()
+bool ModuleScene::CleanUp()
 {
 	LOG("Unloading space scene");
 
@@ -37,17 +36,19 @@ bool ModuleSceneSpace::CleanUp()
 }
 
 // Update: draw background
-update_status ModuleSceneSpace::Update()
+update_status ModuleScene::Update()
 {
 	// Move camera forward -----------------------------
-	int scroll_speed = 1;
+	/*int scroll_speed = 1;
 
 	App->player->position.x += 1;
 	App->render->camera.x -= 3;
-	
+	*/
 
 	// Draw everything --------------------------------------
+
 	App->render->Blit(background, 0, 0, NULL);
+
 	
 	return UPDATE_CONTINUE;
 }
