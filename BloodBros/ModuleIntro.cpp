@@ -18,7 +18,7 @@ bool ModuleIntro::Start()
 {
 	LOG("Loading intro");
 
-	//IntroScreen = App->textures->Load("rtype/intro.png");
+	IntroScreen = App->textures->Load("sprites/intro_screen.png");
 	
 	return true;
 }
@@ -26,22 +26,20 @@ bool ModuleIntro::CleanUp()
 {
 	LOG("Unloading intro");
 
-	//App->textures->Unload(IntroScreen);
-
+	App->textures->Unload(IntroScreen);
 
 	return true;
 }
 update_status ModuleIntro::Update()
 {
 
-	/*App->render->Blit(IntroScreen, 0, 0, nullptr);
+	App->render->Blit(IntroScreen, 0, 0, nullptr);
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
-
-		//App->fade->FadeToBlack(this, App->scene, 1.0f);
+			App->fade->FadeToBlack(this, App->scene, 1.0f);
 		
-	}*/
+	}
 
 	return UPDATE_CONTINUE;
 }
