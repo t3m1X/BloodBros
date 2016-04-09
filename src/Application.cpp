@@ -3,6 +3,7 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
+#include "ModuleAudio.h"
 #include "ModuleScene.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
@@ -17,11 +18,12 @@ Application::Application()
 	modules[1] = render = new ModuleRender();
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
-	modules[4] = scene = new ModuleScene();
-	modules[5] = player = new ModulePlayer();
-	modules[6] = particles = new ModuleParticles();
-	modules[7] = intro = new ModuleIntro();
-	modules[8] = fade = new ModuleFadeToBlack();
+	modules[4] = audio = new ModuleAudio();
+	modules[5] = scene = new ModuleScene();
+	modules[6] = player = new ModulePlayer();
+	modules[7] = particles = new ModuleParticles();
+	modules[8] = intro = new ModuleIntro();
+	modules[9] = fade = new ModuleFadeToBlack();
 
 }	
 
@@ -37,7 +39,7 @@ bool Application::Init()
 
 	// Disable all stopped modules here
 	player->Disable();
-	//scene->Disable();
+	scene->Disable();
 	// ---
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

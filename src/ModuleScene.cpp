@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleTextures.h"
+#include "ModuleAudio.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "ModuleScene.h"
@@ -28,7 +29,8 @@ bool ModuleScene::Start()
 {
 	LOG("Loading background");
 	
-	background = App->textures->Load("sprites/Stage_1_Background.png"); //this isn't the correct sprite
+	background = App->textures->Load("sprites/Stage_1_Background.png");
+	App->audio->PlayMusic("sound/music/stage1_bg.wav");
 
 	//App->player->Enable();
 	
@@ -42,6 +44,7 @@ bool ModuleScene::CleanUp()
 
 	App->textures->Unload(background);
 	App->player->Disable();
+	App->audio->StopMusic();
 	
 	return true;
 }

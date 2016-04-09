@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleTextures.h"
+#include "ModuleAudio.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleIntro.h"
@@ -19,6 +20,7 @@ bool ModuleIntro::Start()
 	LOG("Loading intro");
 
 	IntroScreen = App->textures->Load("sprites/intro_screen.png");
+	App->audio->PlayMusic("sound/music/startscreen.wav");
 	
 	return true;
 }
@@ -27,6 +29,7 @@ bool ModuleIntro::CleanUp()
 	LOG("Unloading intro");
 
 	App->textures->Unload(IntroScreen);
+	App->audio->StopMusic();
 
 	return true;
 }
