@@ -9,6 +9,8 @@
 #include "ModuleParticles.h"
 #include "ModuleIntro.h"
 
+// ^^ Only in this header the modules are included in the order of creation
+
 Application::Application()
 {
 	modules[0] = window = new ModuleWindow();

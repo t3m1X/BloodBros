@@ -1,5 +1,5 @@
-#ifndef __ModuleIntro_H__
-#define __ModuleIntro_H__
+#ifndef __MODULEINTRO_H__
+#define __MODULEINTRO_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -19,7 +19,8 @@ public:
 public:
 
 	SDL_Texture* IntroScreen = nullptr;
+	SDL_Texture* StageScreen = nullptr;
 };
 
 
-#endif
+#endif //__MODULEINTRO_H__

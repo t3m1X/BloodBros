@@ -16,8 +16,6 @@ class ModulePlayer;
 class ModuleFadeToBlack;
 class Module;
 
-// TODO 1: Create an intro scene with rtype/intro.png that then fades to ModuleSpaceScene
-
 class Application
 {
 public:

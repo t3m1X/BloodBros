@@ -16,8 +16,11 @@ public:
 	bool CleanUp();
 
 public:
-	
+
 	SDL_Texture* background = nullptr;
+	SDL_Rect back;
+	SDL_Rect right_house;
+
 };
 
 #endif // __MODULESCENE_H__
