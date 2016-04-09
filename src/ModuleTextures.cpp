@@ -23,7 +23,7 @@ bool ModuleTextures::Init()
 	LOG("Init Image library");
 	bool ret = true;
 
-	// load support for the PNG image format
+	// load support for the PNG and JPG image format
 	int flags = IMG_INIT_PNG;
 	int init = IMG_Init(flags);
 

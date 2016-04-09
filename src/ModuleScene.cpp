@@ -17,7 +17,6 @@ bool ModuleScene::Start()
 {
 	LOG("Loading space scene");
 	
-	background = App->textures->Load("sprites/background_first_release.png");
 
 	//App->player->Enable();
 	

@@ -21,6 +21,10 @@ On the subject of sound please take your time to properly name and place the sou
 
 [Tutorial on ripping-off images from a MAME ROM](http://soronline.net/mamerips.htm)
 
+## Guidelines on project
+
+Please set the debugging folder to "../data" and include source files into /src folder and binary files into /data (and its correspondent subfolder).
+
 
 ## Credits
 
