@@ -25,7 +25,7 @@ bool ModuleStage::Start()
 
 	return true;
 }
-bool ModuleIntro::CleanUp()
+bool ModuleStage::CleanUp()
 {
 	LOG("Unloading intro");
 
