@@ -13,10 +13,36 @@ ModulePlayer::ModulePlayer()
 	graphics = NULL;
 	current_animation = NULL;
 
-	/*position.x = 150;
-	position.y = 120;
+	/* consider p2_shooting a temporary general name for now
 
-	// idle animation (just the ship)
+	p2_shooting.PushBack({ 20, 63, 91, 187 })		//left; no shoot
+	p2_shooting.PushBack({ 130, 63, 132, 187 });	//left; shoot
+
+	p2_shooting.PushBack({ 282, 60, 96, 189 });
+	p2_shooting.PushBack({ 397, 61, 126, 190 });
+
+	p2_shooting.PushBack({ 543, 61, 84, 188 });
+	p2_shooting.PushBack({ 647, 36, 91, 213 });
+
+	p2_shooting.PushBack({ 758, 57, 78, 191 });		//top; no shoot
+	p2_shooting.PushBack({ 856, 19, 78, 230 });		//top; shoot
+
+	p2_shooting.PushBack({ 954, 61, 88, 187 });
+	p2_shooting.PushBack({ 1061, 49, 98, 200 });
+
+	p2_shooting.PushBack({ 1179, 53, 98, 196 });
+	p2_shooting.PushBack({ 1297, 58, 128, 191 });
+
+	p2_shooting.PushBack({ 1455, 60, 118, 189 });	//right; no shoot
+													//right; shoot ---MISSING
+	*/
+
+	position.x = 384;    //Initial x position of the player
+	position.y = 552;	//I dunno the correct initial y position yet, but let's work with this one for now
+
+
+	/*down here is the original code from class, to have it as reference*/
+	/* idle animation (just the ship)
 	idle.PushBack({66, 1, 32, 14});
 
 	// move upwards
