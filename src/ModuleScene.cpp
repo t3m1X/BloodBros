@@ -32,7 +32,7 @@ bool ModuleScene::Start()
 	background = App->textures->Load("sprites/Stage_1_Background.png");
 	App->audio->PlayMusic("sound/music/stage1_bg.wav");
 
-	//App->player->Enable();
+	App->player->Enable();
 	
 	return true;
 }

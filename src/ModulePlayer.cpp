@@ -8,37 +8,56 @@
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
+int const ModulePlayer::portion_calculate()
+{
+	int distance = cposition.x - position.x;
+	int portion = SCREEN_WIDTH / 7;
+	if (distance >= portion/2)
+	{
+		if (distance >= (2 * portion + portion / 2))
+			return FAR_RIGHT;
+		else if (distance >= (portion + portion / 2))
+			return RIGHT;
+		else
+			return RIGHT_MIDDLE;
+	}
+	else if (distance <= -portion/2)
+	{
+		if (distance <= -(2 * portion + portion / 2))
+			return FAR_LEFT;
+		else if (distance <= -(portion + portion / 2))
+			return LEFT;
+		else
+			return LEFT_MIDDLE;
+	}
+	else
+		return MIDDLE;
+}
+
 ModulePlayer::ModulePlayer()
 {
-	graphics = NULL;
+	player = NULL;
 	current_animation = NULL;
 
-	/* consider p2_shooting a temporary general name for now
+	
+	position.x = (SCREEN_WIDTH - 87) / 2 ;    //Initial x position of the player and crossbow, 87 is sprite width
+	position.y = SCREEN_HEIGHT/2 + 117;	//I dunno the correct initial y position yet, but let's work with this one for now
+	cposition.x = (SCREEN_WIDTH - 60) / 2;
+	cposition.y = position.y - 150;
 
-	p2_shooting.PushBack({ 20, 63, 91, 187 })		//left; no shoot
-	p2_shooting.PushBack({ 130, 63, 132, 187 });	//left; shoot
+	cross.x = 0;
+	cross.y = 0;
+	cross.w = 60;
+	cross.h = 60;
 
-	p2_shooting.PushBack({ 282, 60, 96, 189 });
-	p2_shooting.PushBack({ 397, 61, 126, 190 });
+	idle[FAR_LEFT].PushBack({ 50, 22, 87, 180 });
+	idle[LEFT].PushBack({ 146, 20, 87, 180 });
+	idle[LEFT_MIDDLE].PushBack({ 248, 20, 87, 180 });
+	idle[MIDDLE].PushBack({ 359, 20, 87, 180 });
+	idle[RIGHT_MIDDLE].PushBack({ 455, 20, 87, 180 });
+	idle[RIGHT].PushBack({ 542, 20, 87, 180 });
+	idle[FAR_RIGHT].PushBack({ 629, 20, 87, 180 });
 
-	p2_shooting.PushBack({ 543, 61, 84, 188 });
-	p2_shooting.PushBack({ 647, 36, 91, 213 });
-
-	p2_shooting.PushBack({ 758, 57, 78, 191 });		//top; no shoot
-	p2_shooting.PushBack({ 856, 19, 78, 230 });		//top; shoot
-
-	p2_shooting.PushBack({ 954, 61, 88, 187 });
-	p2_shooting.PushBack({ 1061, 49, 98, 200 });
-
-	p2_shooting.PushBack({ 1179, 53, 98, 196 });
-	p2_shooting.PushBack({ 1297, 58, 128, 191 });
-
-	p2_shooting.PushBack({ 1455, 60, 118, 189 });	//right; no shoot
-													//right; shoot ---MISSING
-	*/
-
-	position.x = 384;    //Initial x position of the player
-	position.y = 552;	//I dunno the correct initial y position yet, but let's work with this one for now
 
 
 	/*down here is the original code from class, to have it as reference*/
@@ -66,7 +85,8 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 
-	//graphics = App->textures->Load(".png");
+	player = App->textures->Load("sprites/p1_sprites.png");
+	crosstexture = App->textures->Load("sprites/stage_1.png"); //placeholder
 
 	return true;
 }
@@ -76,7 +96,7 @@ bool ModulePlayer::CleanUp()
 {
 	LOG("Unloading player");
 
-	App->textures->Unload(graphics);
+	App->textures->Unload(player);
 
 	return true;
 }
@@ -84,51 +104,40 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	int speed = 1;
+	int speed = 2;
+	current_animation = &idle[portion_calculate()];
 
-	if (App->input->mouse.y < position.y)
-	{
-		if (App->input->mouse.x < position.x)
-			mouse = TOP_LEFT;
-		else
-			mouse = TOP_RIGHT;
-	}
-	else
-	{
-		if (App->input->mouse.x < position.x)
-			mouse = BOTTOM_LEFT;
-		else
-			mouse = BOTTOM_RIGHT;
-	}
 
 	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x -= speed;
+		cposition.x -= speed * 2;
 	}
 
 	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x += speed;
+		cposition.x += speed * 2;
 	}
 
 	if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
-		position.y += speed;
-		if(current_animation != &down)
-		{
-			down.Reset();
-			current_animation = &down;
-		}
+		cposition.y += speed * 2;
+		//if(current_animation != &down)
+		//{
+		//	down.Reset();
+		//	current_animation = &down;
+		//}
 	}
 
 	if(App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		position.y -= speed;
-		if(current_animation != &up)
-		{
-			up.Reset();
-			current_animation = &up;
-		}
+		cposition.y -= speed * 2;
+		//if(current_animation != &up)
+		//{
+		//	up.Reset();
+		//	current_animation = &up;
+		//}
 	}
 
 
@@ -150,13 +159,15 @@ update_status ModulePlayer::Update()
 		App->particles->AddParticle(App->particles->explosion, position.x + 25, position.y, 1500);
 	}
 
-	if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-	   && App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
-		current_animation = &idle;
+	//if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+	//   && App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
+	//	current_animation = &idle[0];
 
 	// Draw everything --------------------------------------
 
-	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+	App->render->Blit(crosstexture, cposition.x, cposition.y, &cross, 1.0f);
+	App->render->Blit(player, position.x, position.y, &(current_animation->GetCurrentFrame()));
+	
 
 	return UPDATE_CONTINUE;
 }

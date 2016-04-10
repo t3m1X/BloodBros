@@ -11,6 +11,11 @@
 
 ModuleIntro::ModuleIntro()
 {
+	// Back
+	back.x = 20;
+	back.y = 20;
+	back.w = 768;
+	back.h = 671;
 }
 ModuleIntro::~ModuleIntro()
 {
@@ -36,7 +41,7 @@ bool ModuleIntro::CleanUp()
 update_status ModuleIntro::Update()
 {
 
-	App->render->Blit(IntroScreen, 0, 0, nullptr);
+	App->render->Blit(IntroScreen, 0, 0, &back, 1.0f);
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{

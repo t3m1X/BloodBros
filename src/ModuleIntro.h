@@ -19,7 +19,7 @@ public:
 public:
 
 	SDL_Texture* IntroScreen = nullptr;
-	SDL_Texture* StageScreen = nullptr;
+	SDL_Rect back;
 };
 
 

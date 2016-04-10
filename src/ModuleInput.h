@@ -3,7 +3,6 @@
 
 #include "Module.h"
 #include "Globals.h"
-#include "p2Point.h"
 #include "SDL\include\SDL_scancode.h"
 
 #define MAX_KEYS 300
@@ -29,7 +28,6 @@ public:
 
 public:
 	KEY_STATE keyboard[MAX_KEYS];
-	iPoint mouse;
 };
 
 #endif // __ModuleInput_H__

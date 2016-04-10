@@ -7,16 +7,22 @@
 
 struct SDL_Texture;
 
-enum MOUSE_POS
-{
-	TOP_LEFT = 0,
-	TOP_RIGHT,
-	BOTTOM_LEFT,
-	BOTTOM_RIGHT
-};
-
 class ModulePlayer : public Module
 {
+private:
+	enum SCREEN_PORTION
+	{
+		FAR_LEFT = 0,
+		LEFT,
+		LEFT_MIDDLE,
+		MIDDLE,
+		RIGHT_MIDDLE,
+		RIGHT,
+		FAR_RIGHT
+	};
+
+	int const portion_calculate();
+
 public:
 	ModulePlayer();
 	~ModulePlayer();
@@ -27,13 +33,14 @@ public:
 
 public:
 
-	SDL_Texture* graphics = nullptr;
+	SDL_Texture* player = nullptr;
+	SDL_Texture* crosstexture = nullptr;
+	SDL_Rect cross;
 	Animation* current_animation = nullptr;
-	Animation idle;
-	Animation up;
-	Animation down;
+	Animation idle[7];
+	Animation down[7];
 	iPoint position;
-	MOUSE_POS mouse;
+	iPoint cposition; //cross position 
 };
 
 #endif
