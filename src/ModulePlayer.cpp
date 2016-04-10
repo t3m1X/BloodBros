@@ -10,7 +10,7 @@
 
 int const ModulePlayer::portion_calculate()
 {
-	int distance = cposition.x - position.x;
+	int distance = (cposition.x + cross.w/2) - (position.x + 87/2);
 	int portion = SCREEN_WIDTH / 7;
 	if (distance >= portion/2)
 	{
@@ -104,25 +104,30 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	int speed = 2;
+	int speed = 4;
 	current_animation = &idle[portion_calculate()];
 
 
 	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
-		position.x -= speed;
-		cposition.x -= speed * 3;
+		if (position.x > 0)
+			position.x -= speed;
+		if (cposition.x > -30) //middle of the cross
+			cposition.x -= speed * 2;
 	}
 
 	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
-		position.x += speed;
-		cposition.x += speed * 3;
+		if (position.x < SCREEN_WIDTH - 87)
+			position.x += speed;
+		if (cposition.x < SCREEN_WIDTH - 30) //the middle of the cross
+			cposition.x += speed * 2;
 	}
 
 	if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
-		cposition.y += speed * 3;
+		if (cposition.y < position.y + 15)
+			cposition.y += speed * 2;
 		//if(current_animation != &down)
 		//{
 		//	down.Reset();
@@ -132,7 +137,8 @@ update_status ModulePlayer::Update()
 
 	if(App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		cposition.y -= speed * 3;
+		if (cposition.y > -30)
+			cposition.y -= speed * 2;
 		//if(current_animation != &up)
 		//{
 		//	up.Reset();
