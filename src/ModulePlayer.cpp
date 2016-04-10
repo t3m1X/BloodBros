@@ -10,7 +10,7 @@
 
 int const ModulePlayer::portion_calculate()
 {
-	int distance = (cposition.x + cross.w/2) - (position.x + 87/2);
+	int distance = (cposition.x + 70/2) - (position.x + 87/2);
 	int portion = SCREEN_WIDTH / 7;
 	if (distance >= portion/2)
 	{
@@ -38,17 +38,16 @@ ModulePlayer::ModulePlayer()
 {
 	player = NULL;
 	current_animation = NULL;
-
 	
 	position.x = (SCREEN_WIDTH - 87) / 2 ;    //Initial x position of the player and crossbow, 87 is sprite width
 	position.y = SCREEN_HEIGHT/2 + 117;	//I dunno the correct initial y position yet, but let's work with this one for now
 	cposition.x = (SCREEN_WIDTH - 60) / 2;
 	cposition.y = position.y - 150;
 
-	cross.x = 0;
-	cross.y = 0;
-	cross.w = 60;
-	cross.h = 60;
+	cross.PushBack({ 11, 17, 69, 63 });
+	cross.PushBack({ 107, 17, 69, 63 });
+	cross.loop = true;
+	cross.speed = 0.2f;
 
 	idle[FAR_LEFT].PushBack({ 50, 22, 87, 180 });
 	idle[LEFT].PushBack({ 146, 20, 87, 180 });
@@ -86,7 +85,7 @@ bool ModulePlayer::Start()
 	LOG("Loading player");
 
 	player = App->textures->Load("sprites/p1_sprites.png");
-	crosstexture = App->textures->Load("sprites/stage_1.png"); //placeholder
+	crosstexture = App->textures->Load("sprites/aims.png"); //placeholder
 
 	return true;
 }
@@ -170,8 +169,8 @@ update_status ModulePlayer::Update()
 	//	current_animation = &idle[0];
 
 	// Draw everything --------------------------------------
-
-	App->render->Blit(crosstexture, cposition.x, cposition.y, &cross, 1.0f);
+	
+	App->render->Blit(crosstexture, cposition.x, cposition.y, &(cross.GetCurrentFrame()));
 	App->render->Blit(player, position.x, position.y, &(current_animation->GetCurrentFrame()));
 	
 

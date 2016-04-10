@@ -35,7 +35,7 @@ public:
 
 	SDL_Texture* player = nullptr;
 	SDL_Texture* crosstexture = nullptr;
-	SDL_Rect cross;
+	Animation cross;
 	Animation* current_animation = nullptr;
 	Animation idle[7];
 	Animation down[7];
