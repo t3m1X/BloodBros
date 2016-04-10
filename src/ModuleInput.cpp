@@ -55,6 +55,8 @@ update_status ModuleInput::PreUpdate()
 		}
 	}
 
+	SDL_GetMouseState(&mouse.x, &mouse.y);
+
 	if(keyboard[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
 

@@ -86,6 +86,21 @@ update_status ModulePlayer::Update()
 {
 	int speed = 1;
 
+	if (App->input->mouse.y < position.y)
+	{
+		if (App->input->mouse.x < position.x)
+			mouse = TOP_LEFT;
+		else
+			mouse = TOP_RIGHT;
+	}
+	else
+	{
+		if (App->input->mouse.x < position.x)
+			mouse = BOTTOM_LEFT;
+		else
+			mouse = BOTTOM_RIGHT;
+	}
+
 	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x -= speed;

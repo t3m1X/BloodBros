@@ -7,6 +7,14 @@
 
 struct SDL_Texture;
 
+enum MOUSE_POS
+{
+	TOP_LEFT = 0,
+	TOP_RIGHT,
+	BOTTOM_LEFT,
+	BOTTOM_RIGHT
+};
+
 class ModulePlayer : public Module
 {
 public:
@@ -25,6 +33,7 @@ public:
 	Animation up;
 	Animation down;
 	iPoint position;
+	MOUSE_POS mouse;
 };
 
 #endif
