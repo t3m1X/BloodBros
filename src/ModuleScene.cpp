@@ -11,8 +11,8 @@ ModuleScene::ModuleScene()
 	// Back
 	back.x = 20;
 	back.y = 20;
-	back.w = 768;
-	back.h = 671;
+	back.w = SCREEN_WIDTH; //768
+	back.h = SCREEN_HEIGHT; //671
 
 	// Right house
 	right_house.x = 788;
@@ -55,7 +55,7 @@ update_status ModuleScene::Update()
 	// Draw everything --------------------------------------
 
 	App->render->Blit(background, 0, 0 , &back, 1.0f);
-	App->render->Blit(background, 441, 0, &right_house, 1.0f);
+	App->render->Blit(background, 421, 0, &right_house, 1.0f);
 	
 	return UPDATE_CONTINUE;
 }

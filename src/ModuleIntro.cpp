@@ -14,8 +14,8 @@ ModuleIntro::ModuleIntro()
 	// Back
 	back.x = 20;
 	back.y = 20;
-	back.w = 768;
-	back.h = 671;
+	back.w = SCREEN_WIDTH;
+	back.h = SCREEN_HEIGHT;
 }
 ModuleIntro::~ModuleIntro()
 {
