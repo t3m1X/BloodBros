@@ -111,18 +111,18 @@ update_status ModulePlayer::Update()
 	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x -= speed;
-		cposition.x -= speed * 2;
+		cposition.x -= speed * 3;
 	}
 
 	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x += speed;
-		cposition.x += speed * 2;
+		cposition.x += speed * 3;
 	}
 
 	if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
-		cposition.y += speed * 2;
+		cposition.y += speed * 3;
 		//if(current_animation != &down)
 		//{
 		//	down.Reset();
@@ -132,7 +132,7 @@ update_status ModulePlayer::Update()
 
 	if(App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		cposition.y -= speed * 2;
+		cposition.y -= speed * 3;
 		//if(current_animation != &up)
 		//{
 		//	up.Reset();
