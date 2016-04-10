@@ -57,23 +57,23 @@ ModulePlayer::ModulePlayer()
 	idle[RIGHT].PushBack({ 542, 20, 87, 180 });
 	idle[FAR_RIGHT].PushBack({ 629, 20, 87, 180 });
 
+	down[FAR_LEFT].PushBack({ 935, 20, 96, 135 });
+	down[LEFT].PushBack({ 1034, 20, 84, 135 });
+	down[LEFT_MIDDLE].PushBack({ 1136, 20, 84, 135 });
+	down[MIDDLE].PushBack({ 1229, 20, 81, 135 });
+	down[RIGHT_MIDDLE].PushBack({ 1331, 20, 81, 135 });
+	down[RIGHT].PushBack({ 1421, 20, 90, 135 });
+	down[FAR_RIGHT].PushBack({ 1511, 20, 96, 135 });
 
+	walk_right.PushBack({ 24, 602, 102, 180 });
+	walk_right.PushBack({ 128, 602, 96, 177 });
+	walk_right.PushBack({ 233, 600, 120, 180 });
+	walk_right.speed = 0.2f;
 
-	/*down here is the original code from class, to have it as reference*/
-	/* idle animation (just the ship)
-	idle.PushBack({66, 1, 32, 14});
-
-	// move upwards
-	up.PushBack({100, 1, 32, 14});
-	up.PushBack({132, 0, 32, 14});
-	up.loop = false;
-	up.speed = 0.1f;
-
-	// Move down
-	down.PushBack({33, 1, 32, 14});
-	down.PushBack({0, 1, 32, 14});
-	down.loop = false;
-	down.speed = 0.1f;*/
+	walk_left.PushBack({ 385, 600, 120, 180 });
+	walk_left.PushBack({ 514, 602, 96, 177 });
+	walk_left.PushBack({ 612, 600, 102, 180 });
+	walk_left.speed = 0.2f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -104,8 +104,31 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update()
 {
 	int speed = 4;
-	current_animation = &idle[portion_calculate()];
+	position.y = SCREEN_HEIGHT / 2 + 117;
+	int screen_portion = portion_calculate();
+	current_animation = &idle[screen_portion];
 
+
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+	{
+		if (cposition.y < position.y + 15)
+			cposition.y += speed * 2;
+
+		if (App->input->keyboard[SDL_SCANCODE_W] != KEY_STATE::KEY_REPEAT)
+		{
+			current_animation = &down[screen_portion];
+			if (App->input->keyboard[SDL_SCANCODE_A] != KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_D] != KEY_STATE::KEY_REPEAT)
+				position.y = SCREEN_HEIGHT / 2 + 117 + 25;
+		}
+
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+	{
+		if (cposition.y > -35)
+			cposition.y -= speed * 2;
+
+	}
 
 	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
@@ -113,6 +136,9 @@ update_status ModulePlayer::Update()
 			position.x -= speed;
 		if (cposition.x > -35) //middle of the cross
 			cposition.x -= speed * 2;
+
+		if (App->input->keyboard[SDL_SCANCODE_D] != KEY_STATE::KEY_REPEAT)
+			current_animation = &walk_left;
 	}
 
 	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
@@ -121,28 +147,9 @@ update_status ModulePlayer::Update()
 			position.x += speed;
 		if (cposition.x < SCREEN_WIDTH - 35) //the middle of the cross
 			cposition.x += speed * 2;
-	}
 
-	if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-	{
-		if (cposition.y < position.y + 15)
-			cposition.y += speed * 2;
-		//if(current_animation != &down)
-		//{
-		//	down.Reset();
-		//	current_animation = &down;
-		//}
-	}
-
-	if(App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-	{
-		if (cposition.y > -35)
-			cposition.y -= speed * 2;
-		//if(current_animation != &up)
-		//{
-		//	up.Reset();
-		//	current_animation = &up;
-		//}
+		if (App->input->keyboard[SDL_SCANCODE_A] != KEY_STATE::KEY_REPEAT)
+			current_animation = &walk_right;
 	}
 
 

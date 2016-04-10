@@ -39,6 +39,8 @@ public:
 	Animation* current_animation = nullptr;
 	Animation idle[7];
 	Animation down[7];
+	Animation walk_right;
+	Animation walk_left;
 	iPoint position;
 	iPoint cposition; //cross position 
 };
