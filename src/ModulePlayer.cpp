@@ -111,7 +111,7 @@ update_status ModulePlayer::Update()
 	{
 		if (position.x > 0)
 			position.x -= speed;
-		if (cposition.x > -30) //middle of the cross
+		if (cposition.x > -35) //middle of the cross
 			cposition.x -= speed * 2;
 	}
 
@@ -119,7 +119,7 @@ update_status ModulePlayer::Update()
 	{
 		if (position.x < SCREEN_WIDTH - 87)
 			position.x += speed;
-		if (cposition.x < SCREEN_WIDTH - 30) //the middle of the cross
+		if (cposition.x < SCREEN_WIDTH - 35) //the middle of the cross
 			cposition.x += speed * 2;
 	}
 
@@ -136,7 +136,7 @@ update_status ModulePlayer::Update()
 
 	if(App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		if (cposition.y > -30)
+		if (cposition.y > -35)
 			cposition.y -= speed * 2;
 		//if(current_animation != &up)
 		//{
