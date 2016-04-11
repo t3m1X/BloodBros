@@ -18,10 +18,18 @@ private:
 		MIDDLE,
 		RIGHT_MIDDLE,
 		RIGHT,
-		FAR_RIGHT
+		FAR_RIGHT,
+		FAR_LEFT_F,
+		LEFT_F,
+		LEFT_MIDDLE_F,
+		MIDDLE_F,
+		RIGHT_MIDDLE_F,
+		RIGHT_F,
+		FAR_RIGHT_F
 	};
 
 	int const portion_calculate();
+	int tempx; 
 
 public:
 	ModulePlayer();
@@ -37,8 +45,8 @@ public:
 	SDL_Texture* crosstexture = nullptr;
 	Animation cross;
 	Animation* current_animation = nullptr;
-	Animation idle[7];
-	Animation down[7];
+	Animation idle[14];
+	Animation down[14];
 	Animation walk_right;
 	Animation walk_left;
 	iPoint position;

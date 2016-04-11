@@ -40,7 +40,7 @@ ModulePlayer::ModulePlayer()
 	current_animation = NULL;
 	
 	position.x = (SCREEN_WIDTH - 87) / 2 ;    //Initial x position of the player and crossbow, 87 is sprite width
-	position.y = SCREEN_HEIGHT/2 + 117;	//I dunno the correct initial y position yet, but let's work with this one for now
+	position.y = SCREEN_HEIGHT/2 + 117;	 
 	cposition.x = (SCREEN_WIDTH - 60) / 2;
 	cposition.y = position.y - 150;
 
@@ -56,6 +56,21 @@ ModulePlayer::ModulePlayer()
 	idle[RIGHT_MIDDLE].PushBack({ 455, 20, 87, 180 });
 	idle[RIGHT].PushBack({ 542, 20, 87, 180 });
 	idle[FAR_RIGHT].PushBack({ 629, 20, 87, 180 });
+
+	idle[FAR_LEFT_F].PushBack({ 24, 216, 111, 180 });
+	idle[FAR_LEFT_F].PushBack({ 24, 411, 111, 180 });
+	idle[LEFT_F].PushBack({ 146, 20, 87, 180 });
+	idle[LEFT_F].PushBack({ 146, 20, 87, 180 });
+	idle[LEFT_MIDDLE_F].PushBack({ 248, 20, 87, 180 });
+	idle[LEFT_MIDDLE_F].PushBack({ 248, 20, 87, 180 });
+	idle[MIDDLE_F].PushBack({ 359, 20, 87, 180 });
+	idle[MIDDLE_F].PushBack({ 359, 20, 87, 180 });
+	idle[RIGHT_MIDDLE_F].PushBack({ 455, 20, 87, 180 });
+	idle[RIGHT_MIDDLE_F].PushBack({ 455, 20, 87, 180 });
+	idle[RIGHT_F].PushBack({ 542, 20, 87, 180 });
+	idle[RIGHT_F].PushBack({ 542, 20, 87, 180 });
+	idle[FAR_RIGHT_F].PushBack({ 629, 20, 87, 180 });
+	idle[FAR_RIGHT_F].PushBack({ 629, 20, 87, 180 });
 
 	down[FAR_LEFT].PushBack({ 935, 20, 96, 135 });
 	down[LEFT].PushBack({ 1034, 20, 84, 135 });
@@ -85,7 +100,7 @@ bool ModulePlayer::Start()
 	LOG("Loading player");
 
 	player = App->textures->Load("sprites/p1_sprites.png");
-	crosstexture = App->textures->Load("sprites/aims.png"); //placeholder
+	crosstexture = App->textures->Load("sprites/aims.png"); 
 
 	return true;
 }
@@ -104,6 +119,7 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update()
 {
 	int speed = 4;
+	bool firing = false;
 	position.y = SCREEN_HEIGHT / 2 + 117;
 	int screen_portion = portion_calculate();
 	current_animation = &idle[screen_portion];
@@ -170,10 +186,6 @@ update_status ModulePlayer::Update()
 		App->particles->AddParticle(App->particles->explosion, position.x, position.y - 25, 1000);
 		App->particles->AddParticle(App->particles->explosion, position.x + 25, position.y, 1500);
 	}
-
-	//if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-	//   && App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
-	//	current_animation = &idle[0];
 
 	// Draw everything --------------------------------------
 	
