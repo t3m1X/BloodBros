@@ -2,9 +2,12 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
+#include "ModuleInput.h"
 #include "ModuleRender.h"
-#include "ModulePlayer.h"
+#include "ModuleIntro.h"
 #include "ModuleScene.h"
+#include "ModuleFadeToBlack.h"
+#include "ModulePlayer.h"
 
 ModuleScene::ModuleScene()
 {
@@ -56,6 +59,12 @@ update_status ModuleScene::Update()
 
 	App->render->Blit(background, 0, 0 , &back, 1.0f);
 	App->render->Blit(background, 421, 0, &right_house, 1.0f);
+
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, App->intro, 1.0f);
+
+	}
 	
 	return UPDATE_CONTINUE;
 }
