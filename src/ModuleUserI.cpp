@@ -15,6 +15,12 @@ ModuleUserI::ModuleUserI()
 	insert_coins.PushBack({ 137, 230, 200, 25 });
 	insert_coins.loop = true;
 	insert_coins.speed = 0.1f;
+
+	credits.x = 5;
+	credits.y = 3;
+	credits.w = 113;
+	credits.h = 25;
+	
 }
 ModuleUserI::~ModuleUserI()
 {
@@ -39,7 +45,8 @@ bool ModuleUserI::CleanUp()
 update_status ModuleUserI::Update()
 {
 
-	App->render->Blit(UserInterface, SCREEN_WIDTH - SCREEN_WIDTH/3, SCREEN_HEIGHT- 30, &(insert_coins.GetCurrentFrame()));
+	App->render->Blit(UserInterface, SCREEN_WIDTH - SCREEN_WIDTH/3, SCREEN_HEIGHT - 25, &(insert_coins.GetCurrentFrame()));
+	App->render->Blit(UserInterface, (SCREEN_WIDTH / 2) - 50, SCREEN_HEIGHT - 25, &credits, 1.0f);
 
 	return UPDATE_CONTINUE;
 }

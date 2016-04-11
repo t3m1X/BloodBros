@@ -20,6 +20,7 @@ public:
 
 	SDL_Texture* UserInterface = nullptr;
 	Animation insert_coins;
+	SDL_Rect credits;
 
 };
 
