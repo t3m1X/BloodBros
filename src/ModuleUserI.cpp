@@ -11,10 +11,10 @@
 
 ModuleUserI::ModuleUserI()
 {
-	insert_coins.PushBack({ 203, 5, 293, 37 });
-	insert_coins.PushBack({ 203, 323, 293, 37 });
+	insert_coins.PushBack({ 137, 3, 200, 25 });
+	insert_coins.PushBack({ 137, 230, 200, 25 });
 	insert_coins.loop = true;
-	insert_coins.speed = 5.0f;
+	insert_coins.speed = 0.1f;
 }
 ModuleUserI::~ModuleUserI()
 {
@@ -39,9 +39,7 @@ bool ModuleUserI::CleanUp()
 update_status ModuleUserI::Update()
 {
 
-	App->render->Blit(UserInterface, SCREEN_WIDTH - 400, SCREEN_HEIGHT- 55, &(insert_coins.GetCurrentFrame()));
-
-
+	App->render->Blit(UserInterface, SCREEN_WIDTH - SCREEN_WIDTH/3, SCREEN_HEIGHT- 30, &(insert_coins.GetCurrentFrame()));
 
 	return UPDATE_CONTINUE;
 }
