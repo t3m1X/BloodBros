@@ -85,9 +85,9 @@ ModulePlayer::ModulePlayer()
 	walk_right.PushBack({ 233, 600, 120, 180 });
 	walk_right.speed = 0.2f;
 
-	walk_left.PushBack({ 385, 600, 120, 180 });
-	walk_left.PushBack({ 514, 602, 96, 177 });
 	walk_left.PushBack({ 612, 600, 102, 180 });
+	walk_left.PushBack({ 514, 602, 96, 177 });
+	walk_left.PushBack({ 385, 600, 120, 180 });
 	walk_left.speed = 0.2f;
 }
 
