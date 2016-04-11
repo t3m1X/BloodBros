@@ -87,6 +87,7 @@
     <ClInclude Include="ModuleScene.h" />
     <ClInclude Include="ModuleStage.h" />
     <ClInclude Include="ModuleTextures.h" />
+    <ClInclude Include="ModuleUserI.h" />
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="p2Point.h" />
   </ItemGroup>
@@ -104,6 +105,7 @@
     <ClCompile Include="ModuleScene.cpp" />
     <ClCompile Include="ModuleStage.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
+    <ClCompile Include="ModuleUserI.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

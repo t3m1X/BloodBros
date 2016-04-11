@@ -9,8 +9,9 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleParticles.h"
 #include "ModuleIntro.h"
+#include "ModuleUserI.h"
 
-// ^^ Only in this header the modules are included in the order of creation
+
 
 Application::Application()
 {
@@ -23,7 +24,8 @@ Application::Application()
 	modules[6] = player = new ModulePlayer();
 	modules[7] = particles = new ModuleParticles();
 	modules[8] = intro = new ModuleIntro();
-	modules[9] = fade = new ModuleFadeToBlack();
+	modules[9] = useri = new ModuleUserI();
+	modules[10] = fade = new ModuleFadeToBlack();
 
 }	
 
