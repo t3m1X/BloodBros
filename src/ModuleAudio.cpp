@@ -31,7 +31,7 @@ bool ModuleAudio::Init()
 		ret = false;
 	}
 
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1)
+	if (Mix_OpenAudio(48000, MIX_DEFAULT_FORMAT, 2, 1024) == -1)
 	{
 		LOG("Could not open audio channels. Mix_OpenAudio: %s", Mix_GetError());
 		ret = false;
