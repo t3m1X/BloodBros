@@ -89,6 +89,16 @@ ModulePlayer::ModulePlayer()
 	walk_left.PushBack({ 514, 602, 96, 177 });
 	walk_left.PushBack({ 385, 600, 120, 180 });
 	walk_left.speed = 0.2f;
+
+	roll_right.PushBack({ 937, 509, 96, 159 });
+	roll_right.PushBack({ 1035, 482, 114, 186 });
+	roll_right.PushBack({ 1070, 572, 192, 96 });
+	roll_right.PushBack({ 1362, 512, 96, 156 });
+	roll_right.PushBack({ 939, 740, 129, 81 });
+	roll_right.PushBack({ 1072, 725, 129, 81 });
+	roll_right.PushBack({ 1218, 728, 144, 96 });
+	roll_right.PushBack({ 1362, 677, 96, 144 });
+	roll_right.speed = 0.2f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -168,14 +178,18 @@ update_status ModulePlayer::Update()
 			current_animation = &walk_right;
 	}
 
+	if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_REPEAT)
+	{
+			current_animation = &roll_right;	
+			position.x += speed;
+	}
 
+	
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT)
 	{
 		
 		App->particles->AddParticle(App->particles->laser, position.x + (speed*2), position.y, 0);
-		
-		
 	}
 
 

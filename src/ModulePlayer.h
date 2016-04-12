@@ -49,6 +49,8 @@ public:
 	Animation down[14];
 	Animation walk_right;
 	Animation walk_left;
+	Animation roll_right;
+	Animation roll_left;
 	iPoint position;
 	iPoint cposition; //cross position 
 };
