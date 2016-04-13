@@ -150,15 +150,15 @@ update_status ModulePlayer::Update()
 	int speed = 4;
 	int xcorrection = 0;
 	int ycorrection = 0; // x and y correction for temporary sprite changes
+	bool firing = false;
 	position.y = SCREEN_HEIGHT / 2 + 117;
 	int screen_portion = portion_calculate();
 
-	if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT && 
-		App->input->keyboard[SDL_SCANCODE_A] != KEY_STATE::KEY_REPEAT && 
-		App->input->keyboard[SDL_SCANCODE_D] != KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
 	{
 		screen_portion += 7;
 		App->audio->PlaySFX(shoot);
+		firing = true;
 		if (screen_portion <= LEFT_F)
 			xcorrection += 87 - idle[screen_portion].frames[0].w;
 		else if (screen_portion < RIGHT_F)
@@ -191,23 +191,23 @@ update_status ModulePlayer::Update()
 
 	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
-		if (position.x > 0)
+		if (position.x > 0 && !firing)
 			position.x -= speed;
 		if (cposition.x > -35) //middle of the cross
 			cposition.x -= speed * 2;
 
-		if (App->input->keyboard[SDL_SCANCODE_D] != KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_D] != KEY_STATE::KEY_REPEAT && !firing)
 			current_animation = &walk_left;
 	}
 
 	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
-		if (position.x < SCREEN_WIDTH - 87)
+		if (position.x < SCREEN_WIDTH - 87 && !firing)
 			position.x += speed;
 		if (cposition.x < SCREEN_WIDTH - 35) //the middle of the cross
 			cposition.x += speed * 2;
 
-		if (App->input->keyboard[SDL_SCANCODE_A] != KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_A] != KEY_STATE::KEY_REPEAT && !firing)
 			current_animation = &walk_right;
 	}
 
