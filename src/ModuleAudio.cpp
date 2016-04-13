@@ -37,6 +37,7 @@ bool ModuleAudio::Init()
 		ret = false;
 	}
 
+	Mix_AllocateChannels(100); //100 is a good quantity to avoid sounds running out of channels
 
 	return ret;
 }
@@ -97,10 +98,11 @@ bool ModuleAudio::StopMusic()
 }
 
 // Load new sound effect from file path
-Mix_Chunk* const ModuleAudio::Load(const char* path)
+Mix_Chunk* const ModuleAudio::LoadSFX(const char* path)
 {
 	Mix_Chunk* sfx = NULL;
 	sfx = Mix_LoadWAV(path);
+
 
 	if (sfx == NULL)
 	{
@@ -114,8 +116,25 @@ Mix_Chunk* const ModuleAudio::Load(const char* path)
 	return sfx;
 }
 
+bool ModuleAudio::PlaySFX(Mix_Chunk* sfx)
+{
+	bool ret = false;
+	this_call = SDL_GetTicks();
+	if (this_call >= next_call)
+	{
+		next_call = this_call + 200;
+		if (Mix_PlayChannel(-1, sfx, 0) == -1)
+		{
+			LOG("Mix_PlayChannel: %s\n", Mix_GetError());
+		}
+		else
+			ret = true;
+	}
+	return ret;
+}
+
 // Unload sound effect
-bool ModuleAudio::Unload(Mix_Chunk* sfx)
+bool ModuleAudio::UnloadSFX(Mix_Chunk* sfx)
 {
 	bool ret = false;
 

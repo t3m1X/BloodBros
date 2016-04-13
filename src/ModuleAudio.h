@@ -20,8 +20,9 @@ public:
 	bool PlayMusic(const char* path);
 	bool StopMusic();
 
-	Mix_Chunk* const Load(const char* path);
-	bool Unload(Mix_Chunk* sfx);
+	Mix_Chunk* const LoadSFX(const char* path);
+	bool PlaySFX(Mix_Chunk* sfx);
+	bool UnloadSFX(Mix_Chunk* sfx);
 
 
 
@@ -29,6 +30,8 @@ public:
 	Mix_Chunk* soundfx[MAX_SFX];
 	Mix_Music* music = nullptr;
 	uint last_sfx = 0;
+	Uint32 this_call = 0;
+	Uint32 next_call = 0;
 };
 
 #endif // __ModuleAudio_H__
