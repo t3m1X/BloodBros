@@ -6,6 +6,7 @@
 #include "p2Point.h"
 
 struct SDL_Texture;
+struct Mix_Chunk;
 
 class ModulePlayer : public Module
 {
@@ -43,6 +44,7 @@ public:
 
 	SDL_Texture* player = nullptr;
 	SDL_Texture* crosstexture = nullptr;
+	Mix_Chunk* shoot = nullptr;
 	Animation cross;
 	Animation* current_animation = nullptr;
 	Animation idle[14];

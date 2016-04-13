@@ -5,6 +5,7 @@
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
+#include "ModuleAudio.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -49,28 +50,36 @@ ModulePlayer::ModulePlayer()
 	cross.loop = true;
 	cross.speed = 0.2f;
 
-	idle[FAR_LEFT].PushBack({ 50, 22, 87, 180 });
+	idle[FAR_LEFT].PushBack({ 50, 21, 87, 180 });
 	idle[LEFT].PushBack({ 146, 20, 87, 180 });
 	idle[LEFT_MIDDLE].PushBack({ 248, 20, 87, 180 });
-	idle[MIDDLE].PushBack({ 359, 20, 87, 180 });
-	idle[RIGHT_MIDDLE].PushBack({ 455, 20, 87, 180 });
-	idle[RIGHT].PushBack({ 542, 20, 87, 180 });
-	idle[FAR_RIGHT].PushBack({ 629, 20, 87, 180 });
+	idle[MIDDLE].PushBack({ 359, 20, 87, 183 });
+	idle[RIGHT_MIDDLE].PushBack({ 455, 20, 87, 183 });
+	idle[RIGHT].PushBack({ 542, 20, 87, 183 });
+	idle[FAR_RIGHT].PushBack({ 629, 20, 87, 183 });
 
-	idle[FAR_LEFT_F].PushBack({ 24, 216, 111, 180 });
+	idle[FAR_LEFT_F].PushBack({ 24, 216, 111, 180 }); 
 	idle[FAR_LEFT_F].PushBack({ 24, 411, 111, 180 });
-	idle[LEFT_F].PushBack({ 146, 20, 87, 180 });
-	idle[LEFT_F].PushBack({ 146, 20, 87, 180 });
-	idle[LEFT_MIDDLE_F].PushBack({ 248, 20, 87, 180 });
-	idle[LEFT_MIDDLE_F].PushBack({ 248, 20, 87, 180 });
-	idle[MIDDLE_F].PushBack({ 359, 20, 87, 180 });
-	idle[MIDDLE_F].PushBack({ 359, 20, 87, 180 });
-	idle[RIGHT_MIDDLE_F].PushBack({ 455, 20, 87, 180 });
-	idle[RIGHT_MIDDLE_F].PushBack({ 455, 20, 87, 180 });
-	idle[RIGHT_F].PushBack({ 542, 20, 87, 180 });
-	idle[RIGHT_F].PushBack({ 542, 20, 87, 180 });
-	idle[FAR_RIGHT_F].PushBack({ 629, 20, 87, 180 });
-	idle[FAR_RIGHT_F].PushBack({ 629, 20, 87, 180 });
+	idle[FAR_LEFT_F].speed = 0.3f;
+	idle[LEFT_F].PushBack({ 138, 215, 93, 180 });
+	idle[LEFT_F].PushBack({ 138, 410, 93, 180 });
+	idle[LEFT_F].speed = 0.3f;
+	idle[LEFT_MIDDLE_F].PushBack({ 246, 203, 87, 192 });
+	idle[LEFT_MIDDLE_F].PushBack({ 246, 398, 87, 192 });
+	idle[LEFT_MIDDLE_F].speed = 0.3f;
+	idle[MIDDLE_F].PushBack({ 357, 203, 87, 195 });
+	idle[MIDDLE_F].PushBack({ 357, 398, 87, 195 });
+	idle[MIDDLE_F].speed = 0.3f;
+	idle[RIGHT_MIDDLE_F].PushBack({ 453, 203, 87, 195 });
+	idle[RIGHT_MIDDLE_F].PushBack({ 453, 398, 87, 195 });
+	idle[RIGHT_MIDDLE_F].speed = 0.3f;
+	idle[RIGHT_F].PushBack({ 540, 215, 111, 183 });
+	idle[RIGHT_F].PushBack({ 540, 410, 111, 183 });
+	idle[RIGHT_F].speed = 0.3f;
+	idle[FAR_RIGHT_F].PushBack({ 651, 215, 135, 183 });
+	idle[FAR_RIGHT_F].PushBack({ 651, 410, 135, 183 });
+	idle[FAR_RIGHT_F].speed = 0.3f;
+	
 
 	down[FAR_LEFT].PushBack({ 935, 20, 96, 135 });
 	down[LEFT].PushBack({ 1034, 20, 84, 135 });
@@ -79,6 +88,14 @@ ModulePlayer::ModulePlayer()
 	down[RIGHT_MIDDLE].PushBack({ 1331, 20, 81, 135 });
 	down[RIGHT].PushBack({ 1421, 20, 90, 135 });
 	down[FAR_RIGHT].PushBack({ 1511, 20, 96, 135 });
+
+	down[FAR_LEFT_F].PushBack({ 935, 20, 96, 135 });
+	down[LEFT_F].PushBack({ 1034, 20, 84, 135 });
+	down[LEFT_MIDDLE_F].PushBack({ 1136, 20, 84, 135 });
+	down[MIDDLE_F].PushBack({ 1229, 20, 81, 135 });
+	down[RIGHT_MIDDLE_F].PushBack({ 1331, 20, 81, 135 });
+	down[RIGHT_F].PushBack({ 1421, 20, 90, 135 });
+	down[FAR_RIGHT_F].PushBack({ 1511, 20, 96, 135 });
 
 	walk_right.PushBack({ 24, 602, 102, 180 });
 	walk_right.PushBack({ 128, 602, 96, 177 });
@@ -111,6 +128,8 @@ bool ModulePlayer::Start()
 
 	player = App->textures->Load("sprites/p1_sprites.png");
 	crosstexture = App->textures->Load("sprites/aims.png"); 
+	shoot = App->audio->LoadSFX("sound/soundfx/shoot.wav");
+	
 
 	return true;
 }
@@ -129,11 +148,24 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update()
 {
 	int speed = 4;
-	bool firing = false;
+	int xcorrection = 0;
+	int ycorrection = 0; // x and y correction for temporary sprite changes
 	position.y = SCREEN_HEIGHT / 2 + 117;
 	int screen_portion = portion_calculate();
-	current_animation = &idle[screen_portion];
 
+	if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT && 
+		App->input->keyboard[SDL_SCANCODE_A] != KEY_STATE::KEY_REPEAT && 
+		App->input->keyboard[SDL_SCANCODE_D] != KEY_STATE::KEY_REPEAT)
+	{
+		screen_portion += 7;
+		App->audio->PlaySFX(shoot);
+		if (screen_portion <= LEFT_F)
+			xcorrection += 87 - idle[screen_portion].frames[0].w;
+		else if (screen_portion < RIGHT_F)
+			ycorrection += idle[screen_portion - 7].frames[0].h - idle[screen_portion].frames[0].h;
+	}
+
+	current_animation = &idle[screen_portion];
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
@@ -143,8 +175,9 @@ update_status ModulePlayer::Update()
 		if (App->input->keyboard[SDL_SCANCODE_W] != KEY_STATE::KEY_REPEAT)
 		{
 			current_animation = &down[screen_portion];
-			if (App->input->keyboard[SDL_SCANCODE_A] != KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_D] != KEY_STATE::KEY_REPEAT)
-				position.y = SCREEN_HEIGHT / 2 + 117 + 25;
+			if (App->input->keyboard[SDL_SCANCODE_A] != KEY_STATE::KEY_REPEAT && 
+				App->input->keyboard[SDL_SCANCODE_D] != KEY_STATE::KEY_REPEAT)
+				ycorrection += 25;
 		}
 
 	}
@@ -178,20 +211,7 @@ update_status ModulePlayer::Update()
 			current_animation = &walk_right;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_REPEAT)
-	{
-			current_animation = &roll_right;	
-			position.x += speed;
-	}
-
-	
-
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT)
-	{
-		
-		App->particles->AddParticle(App->particles->laser, position.x + (speed*2), position.y, 0);
-	}
-
+	// The rolling animation needs to be done inside a separate function, thus avoiding the player from moving and receiving damage
 
 	if(App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN)
 	{
@@ -204,8 +224,7 @@ update_status ModulePlayer::Update()
 	// Draw everything --------------------------------------
 	
 	App->render->Blit(crosstexture, cposition.x, cposition.y, &(cross.GetCurrentFrame()));
-	App->render->Blit(player, position.x, position.y, &(current_animation->GetCurrentFrame()));
-	
+	App->render->Blit(player, position.x + xcorrection, position.y + ycorrection, &(current_animation->GetCurrentFrame()));
 
 	return UPDATE_CONTINUE;
 }
