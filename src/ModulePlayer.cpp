@@ -59,25 +59,25 @@ ModulePlayer::ModulePlayer()
 	idle[FAR_RIGHT].PushBack({ 629, 20, 87, 183 });
 
 	idle[FAR_LEFT_F].PushBack({ 24, 216, 111, 180 }); 
-	idle[FAR_LEFT_F].PushBack({ 24, 411, 111, 180 });
+	idle[FAR_LEFT_F].PushBack({ 23, 411, 114, 181 });
 	idle[FAR_LEFT_F].speed = 0.3f;
 	idle[LEFT_F].PushBack({ 138, 215, 93, 180 });
-	idle[LEFT_F].PushBack({ 138, 410, 93, 180 });
+	idle[LEFT_F].PushBack({ 142, 410, 93, 180 });
 	idle[LEFT_F].speed = 0.3f;
 	idle[LEFT_MIDDLE_F].PushBack({ 246, 203, 87, 192 });
-	idle[LEFT_MIDDLE_F].PushBack({ 246, 398, 87, 192 });
+	idle[LEFT_MIDDLE_F].PushBack({ 250, 398, 87, 192 });
 	idle[LEFT_MIDDLE_F].speed = 0.3f;
 	idle[MIDDLE_F].PushBack({ 357, 203, 87, 195 });
-	idle[MIDDLE_F].PushBack({ 357, 398, 87, 195 });
+	idle[MIDDLE_F].PushBack({ 361, 398, 87, 195 });
 	idle[MIDDLE_F].speed = 0.3f;
 	idle[RIGHT_MIDDLE_F].PushBack({ 453, 203, 87, 195 });
-	idle[RIGHT_MIDDLE_F].PushBack({ 453, 398, 87, 195 });
+	idle[RIGHT_MIDDLE_F].PushBack({ 457, 398, 87, 195 });
 	idle[RIGHT_MIDDLE_F].speed = 0.3f;
-	idle[RIGHT_F].PushBack({ 540, 215, 111, 183 });
-	idle[RIGHT_F].PushBack({ 540, 410, 111, 183 });
+	idle[RIGHT_F].PushBack({ 540, 215, 102, 183 });
+	idle[RIGHT_F].PushBack({ 544, 410, 102, 183 });
 	idle[RIGHT_F].speed = 0.3f;
 	idle[FAR_RIGHT_F].PushBack({ 651, 215, 135, 183 });
-	idle[FAR_RIGHT_F].PushBack({ 651, 410, 135, 183 });
+	idle[FAR_RIGHT_F].PushBack({ 655, 410, 135, 183 });
 	idle[FAR_RIGHT_F].speed = 0.3f;
 	
 
