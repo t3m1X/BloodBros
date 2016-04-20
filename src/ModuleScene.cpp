@@ -12,16 +12,22 @@
 ModuleScene::ModuleScene()
 {
 	// Back
-	back.x = 20;
-	back.y = 20;
+	back.x = 0;
+	back.y = 0;
 	back.w = SCREEN_WIDTH; //768
 	back.h = SCREEN_HEIGHT; //671
 
-	// Right house
-	right_house.x = 788;
-	right_house.y = 20;
-	right_house.w = 336;
-	right_house.h = 430;
+	// Front
+	left_pipe.x = 768;
+	left_pipe.y = 63;
+	left_pipe.w = 200;
+	left_pipe.h = 449;
+	
+	right_pipe.x = 1334;
+	right_pipe.y = 60;
+	right_pipe.w = 257;
+	right_pipe.h = 453;
+	
 }
 
 ModuleScene::~ModuleScene()
@@ -32,7 +38,7 @@ bool ModuleScene::Start()
 {
 	LOG("Loading background");
 	
-	background = App->textures->Load("sprites/Stage_1_Background.png");
+	background = App->textures->Load("sprites/stage_4_3_Background.png");
 	App->audio->PlayMusic("sound/music/stage1_bg.wav");
 
 	App->player->Enable();
@@ -58,7 +64,9 @@ update_status ModuleScene::Update()
 	// Draw everything --------------------------------------
 
 	App->render->Blit(background, 0, 0 , &back, 1.0f);
-	App->render->Blit(background, 421, 0, &right_house, 1.0f);
+	App->render->Blit(background, 0, 60, &left_pipe, 1.0f);
+	App->render->Blit(background, SCREEN_WIDTH-right_pipe.w, 60, &right_pipe, 1.0f);
+	
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{

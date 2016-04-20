@@ -19,7 +19,8 @@ public:
 
 	SDL_Texture* background = nullptr;
 	SDL_Rect back;
-	SDL_Rect right_house;
+	SDL_Rect right_pipe;
+	SDL_Rect left_pipe;
 
 };
 
