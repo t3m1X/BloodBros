@@ -58,12 +58,12 @@ ModulePlayer::ModulePlayer()
 	idle[RIGHT].PushBack({ 542, 20, 87, 183 });
 	idle[FAR_RIGHT].PushBack({ 629, 20, 87, 183 });
 
-	idle[FAR_LEFT_F].PushBack({ 24, 216, 111, 180 }); 
-	idle[FAR_LEFT_F].PushBack({ 23, 411, 114, 181 });
-	idle[FAR_LEFT_F].speed = 0.3f;
-	idle[LEFT_F].PushBack({ 138, 215, 93, 180 });
-	idle[LEFT_F].PushBack({ 142, 410, 93, 180 });
-	idle[LEFT_F].speed = 0.3f;
+	idle[FAR_LEFT_F].PushBack({ 6, 216, 129, 180 }); 
+	idle[FAR_LEFT_F].PushBack({ 6, 411, 129, 180 });
+	idle[FAR_LEFT_F].speed = 0.25f;
+	idle[LEFT_F].PushBack({ 138, 215, 114, 181 });
+	idle[LEFT_F].PushBack({ 138, 410, 114, 181 });
+	idle[LEFT_F].speed = 0.25f;
 	idle[LEFT_MIDDLE_F].PushBack({ 246, 203, 87, 192 });
 	idle[LEFT_MIDDLE_F].PushBack({ 250, 398, 87, 192 });
 	idle[LEFT_MIDDLE_F].speed = 0.3f;
