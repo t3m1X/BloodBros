@@ -56,7 +56,7 @@ ModulePlayer::ModulePlayer()
 	idle[MIDDLE].PushBack({ 359, 20, 87, 183 });
 	idle[RIGHT_MIDDLE].PushBack({ 455, 20, 87, 183 });
 	idle[RIGHT].PushBack({ 542, 20, 87, 183 });
-	idle[FAR_RIGHT].PushBack({ 629, 20, 87, 183 });
+	idle[FAR_RIGHT].PushBack({ 629, 20, 93, 183 });
 
 	idle[FAR_LEFT_F].PushBack({ 6, 216, 129, 180 }); 
 	idle[FAR_LEFT_F].PushBack({ 6, 411, 129, 180 });
@@ -64,21 +64,21 @@ ModulePlayer::ModulePlayer()
 	idle[LEFT_F].PushBack({ 138, 215, 114, 181 });
 	idle[LEFT_F].PushBack({ 138, 410, 114, 181 });
 	idle[LEFT_F].speed = 0.25f;
-	idle[LEFT_MIDDLE_F].PushBack({ 246, 203, 87, 192 });
-	idle[LEFT_MIDDLE_F].PushBack({ 250, 398, 87, 192 });
-	idle[LEFT_MIDDLE_F].speed = 0.3f;
-	idle[MIDDLE_F].PushBack({ 357, 203, 87, 195 });
-	idle[MIDDLE_F].PushBack({ 361, 398, 87, 195 });
-	idle[MIDDLE_F].speed = 0.3f;
-	idle[RIGHT_MIDDLE_F].PushBack({ 453, 203, 87, 195 });
-	idle[RIGHT_MIDDLE_F].PushBack({ 457, 398, 87, 195 });
-	idle[RIGHT_MIDDLE_F].speed = 0.3f;
-	idle[RIGHT_F].PushBack({ 540, 215, 102, 183 });
-	idle[RIGHT_F].PushBack({ 544, 410, 102, 183 });
-	idle[RIGHT_F].speed = 0.3f;
-	idle[FAR_RIGHT_F].PushBack({ 651, 215, 135, 183 });
-	idle[FAR_RIGHT_F].PushBack({ 655, 410, 135, 183 });
-	idle[FAR_RIGHT_F].speed = 0.3f;
+	idle[LEFT_MIDDLE_F].PushBack({ 254, 203, 111, 189 });
+	idle[LEFT_MIDDLE_F].PushBack({ 254, 398, 111, 189 });
+	idle[LEFT_MIDDLE_F].speed = 0.25f;
+	idle[MIDDLE_F].PushBack({ 375, 203, 83, 192 });
+	idle[MIDDLE_F].PushBack({ 375, 398, 83, 192 });
+	idle[MIDDLE_F].speed = 0.25f;
+	idle[RIGHT_MIDDLE_F].PushBack({ 486, 203, 84, 195 });
+	idle[RIGHT_MIDDLE_F].PushBack({ 486, 398, 84, 195 });
+	idle[RIGHT_MIDDLE_F].speed = 0.25f;
+	idle[RIGHT_F].PushBack({ 573, 215, 102, 183 });
+	idle[RIGHT_F].PushBack({ 573, 410, 102, 183 });
+	idle[RIGHT_F].speed = 0.25f;
+	idle[FAR_RIGHT_F].PushBack({ 684, 215, 135, 183 });
+	idle[FAR_RIGHT_F].PushBack({ 684, 410, 135, 183 });
+	idle[FAR_RIGHT_F].speed = 0.25f;
 	
 
 	down[FAR_LEFT].PushBack({ 935, 20, 96, 135 });
