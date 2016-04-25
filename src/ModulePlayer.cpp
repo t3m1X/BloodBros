@@ -6,6 +6,7 @@
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "ModuleAudio.h"
+#include "ModuleCollision.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -129,6 +130,7 @@ bool ModulePlayer::Start()
 	player = App->textures->Load("sprites/p1_sprites.png");
 	crosstexture = App->textures->Load("sprites/aims.png"); 
 	shoot = App->audio->LoadSFX("sound/soundfx/shoot.wav");
+	cross_collider = App->collision->AddCollider({ SCREEN_WIDTH/2, SCREEN_HEIGHT, 69, 63 }, COLLIDER_PLAYER_SHOT);
 	
 
 	return true;
@@ -153,9 +155,11 @@ update_status ModulePlayer::Update()
 	bool firing = false;
 	position.y = SCREEN_HEIGHT / 2 + 117;
 	int screen_portion = portion_calculate();
+	cross_collider->SetPos(SCREEN_WIDTH / 2, SCREEN_HEIGHT);
 
 	if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
 	{
+		cross_collider->SetPos(cposition.x, cposition.y);
 		screen_portion += 7;
 		App->audio->PlaySFX(shoot);
 		firing = true;

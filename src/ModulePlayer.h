@@ -55,6 +55,7 @@ public:
 	Animation roll_left;
 	iPoint position;
 	iPoint cposition; //cross position 
+	Collider* cross_collider;
 };
 
 #endif
