@@ -54,7 +54,7 @@ ModulePlayer::ModulePlayer()
 	idle[FAR_LEFT].PushBack({ 50, 21, 87, 180 });
 	idle[LEFT].PushBack({ 146, 20, 87, 180 });
 	idle[LEFT_MIDDLE].PushBack({ 248, 20, 87, 180 });
-	idle[MIDDLE].PushBack({ 359, 20, 87, 183 });
+	idle[MIDDLE].PushBack({ 359, 20, 68, 183 });
 	idle[RIGHT_MIDDLE].PushBack({ 455, 20, 87, 183 });
 	idle[RIGHT].PushBack({ 542, 20, 87, 183 });
 	idle[FAR_RIGHT].PushBack({ 629, 20, 93, 183 });
@@ -65,11 +65,11 @@ ModulePlayer::ModulePlayer()
 	idle[LEFT_F].PushBack({ 138, 215, 114, 181 });
 	idle[LEFT_F].PushBack({ 138, 410, 114, 181 });
 	idle[LEFT_F].speed = 0.25f;
-	idle[LEFT_MIDDLE_F].PushBack({ 254, 203, 111, 189 });
-	idle[LEFT_MIDDLE_F].PushBack({ 254, 398, 111, 189 });
+	idle[LEFT_MIDDLE_F].PushBack({ 255, 206, 111, 189 });
+	idle[LEFT_MIDDLE_F].PushBack({ 255, 401, 111, 189 });
 	idle[LEFT_MIDDLE_F].speed = 0.25f;
-	idle[MIDDLE_F].PushBack({ 375, 203, 83, 192 });
-	idle[MIDDLE_F].PushBack({ 375, 398, 83, 192 });
+	idle[MIDDLE_F].PushBack({ 375, 203, 83, 195 });
+	idle[MIDDLE_F].PushBack({ 375, 398, 83, 195 });
 	idle[MIDDLE_F].speed = 0.25f;
 	idle[RIGHT_MIDDLE_F].PushBack({ 486, 203, 84, 195 });
 	idle[RIGHT_MIDDLE_F].PushBack({ 486, 398, 84, 195 });
@@ -85,8 +85,8 @@ ModulePlayer::ModulePlayer()
 	down[FAR_LEFT].PushBack({ 935, 20, 96, 135 });
 	down[LEFT].PushBack({ 1034, 20, 84, 135 });
 	down[LEFT_MIDDLE].PushBack({ 1136, 20, 84, 135 });
-	down[MIDDLE].PushBack({ 1229, 20, 81, 135 });
-	down[RIGHT_MIDDLE].PushBack({ 1331, 20, 81, 135 });
+	down[MIDDLE].PushBack({ 1229, 20, 83, 135 });
+	down[RIGHT_MIDDLE].PushBack({ 1331, 20, 83, 135 });
 	down[RIGHT].PushBack({ 1421, 20, 90, 135 });
 	down[FAR_RIGHT].PushBack({ 1511, 20, 96, 135 });
 
@@ -163,10 +163,9 @@ update_status ModulePlayer::Update()
 		screen_portion += 7;
 		App->audio->PlaySFX(shoot);
 		firing = true;
-		if (screen_portion <= LEFT_F)
-			xcorrection += 87 - idle[screen_portion].frames[0].w;
-		else if (screen_portion < RIGHT_F)
-			ycorrection += idle[screen_portion - 7].frames[0].h - idle[screen_portion].frames[0].h;
+		if (screen_portion <= MIDDLE_F)
+			xcorrection += idle[screen_portion - 7].frames[0].w - idle[screen_portion].frames[0].w;
+		ycorrection += idle[screen_portion - 7].frames[0].h - idle[screen_portion].frames[0].h;
 	}
 
 	current_animation = &idle[screen_portion];
