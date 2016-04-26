@@ -14,28 +14,27 @@ GCowboy::GCowboy(int x, int y) : Enemy(x, y)
 	walk.PushBack({ 566, 661, 64, 144 });
 	walk.PushBack({ 656, 662, 96, 144 });
 	walk.PushBack({ 757, 664, 120, 140 });
-
-	/*FIRST COWBOY : 67 X 144 1632 X 1586
-	SECOND : 99 X 144 1632 X 1586
-		THIRD : 120 X 140 1632 X 1586
-			FOURTH : 64 X 144  1632 X 1586
-				FIFTH : 96 X 144 1632 X 1586
-					SIXTH : 120 X 140 1632 X 1586
-					SEVENTH : 123 X 140 1632 X 1586
-					EIGHTH : 102 X 180 1632 X 1586
-					NINTH : 105 X 165 1632 X 1586
-					 10TH : 104 X 128  1632 X 1586
-					 11TH : 128 X 100  1632 X 1586
-					 12TH : 128 X 28   1632 X 1586*/
 	walk.speed = 0.1f;
+
+
+	shoot.PushBack({ 891, 661, 123, 140 });
+	shoot.PushBack({ 1025, 618, 102, 148 });
+	shoot.speed = 0.1f;
+
+	dead.PushBack({ 1132, 635, 105, 165 });
+	dead.PushBack({ 1276, 677, 104, 128 });
+	dead.PushBack({ 1411, 689, 128, 100 });
+	dead.PushBack({ 23, 910, 128, 28 });
+	dead.speed = 0.1f;
+
 
 	i_pos.x = x;
 	i_pos.y = y;
 
 
-	/*GCowboy_path.PushBack({ -1, 0 }, 50, &walk);
+	GCowboy_path.PushBack({ -1, 0 }, 50, &walk);
 	GCowboy_path.PushBack({ 0, 0 }, 50, &shoot);		//Walks, shoots and leaves; to improve
-	GCowboy_path.PushBack({ -1, 0 }, 50, &walk);*/
+	GCowboy_path.PushBack({ -1, 0 }, 50, &walk);
 
 }
 
