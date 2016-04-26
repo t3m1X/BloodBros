@@ -21,7 +21,7 @@ public:
 
 	BIndian(int x, int y);
 
-	void Update();
+	void Move();
 
 };
 
