@@ -133,6 +133,8 @@ bool ModulePlayer::Start()
 	crosstexture = App->textures->Load("sprites/aims.png"); 
 	shoot = App->audio->LoadSFX("sound/soundfx/shoot.wav");
 	cross_collider = App->collision->AddCollider({ SCREEN_WIDTH/2, SCREEN_HEIGHT, 69, 63 }, COLLIDER_PLAYER_SHOT);
+	player_collider = App->collision->AddCollider({ (SCREEN_WIDTH - 87) / 2, SCREEN_HEIGHT / 2 + 117, 80, 175 }, COLLIDER_PLAYER); // temporary resolution; 
+																														 // though I think this one should work just fine
 	
 
 	return true;
@@ -158,6 +160,7 @@ update_status ModulePlayer::Update()
 	position.y = SCREEN_HEIGHT / 2 + 117;
 	int screen_portion = portion_calculate();
 	cross_collider->SetPos(SCREEN_WIDTH / 2, SCREEN_HEIGHT);
+	player_collider->SetPos(position.x, position.y);
 
 	if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
 	{

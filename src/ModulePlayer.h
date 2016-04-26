@@ -56,6 +56,7 @@ public:
 	iPoint position;
 	iPoint cposition; //cross position 
 	Collider* cross_collider;
+	Collider* player_collider;
 };
 
 #endif

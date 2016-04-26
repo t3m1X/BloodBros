@@ -21,6 +21,8 @@ public:
 	SDL_Rect back;
 	SDL_Rect right_pipe;
 	SDL_Rect left_pipe;
+	Collider* right_pipe;
+	Collider* left_pipe;
 
 };
 
