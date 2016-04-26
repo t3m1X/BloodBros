@@ -89,6 +89,9 @@
     <ClInclude Include="ModuleEnd.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_Plane.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
