@@ -148,5 +148,8 @@
     <ClCompile Include="ModuleEnd.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy_GCowboy.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

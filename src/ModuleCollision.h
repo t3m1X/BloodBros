@@ -3,6 +3,8 @@
 
 #define MAX_COLLIDERS 50
 
+#include "Module.h"
+
 enum COLLIDER_TYPE
 {
 	COLLIDER_NONE = -1,
