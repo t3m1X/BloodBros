@@ -24,3 +24,8 @@ BIndian::BIndian(int x, int y) : Enemy(x, y)
 	i_pos.y = y;
 
 }
+
+void BIndian::Move()
+{
+
+}
