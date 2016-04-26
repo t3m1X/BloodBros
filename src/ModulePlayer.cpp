@@ -51,6 +51,15 @@ ModulePlayer::ModulePlayer()
 	cross.loop = true;
 	cross.speed = 0.2f;
 
+	fcross.PushBack({ 11, 105, 69, 63 });
+	fcross.PushBack({ 107, 105, 69, 63 });
+	fcross.PushBack({ 11, 105, 69, 63 });
+	fcross.PushBack({ 107, 105, 69, 63 });
+	fcross.PushBack({ 11, 17, 69, 63 });
+	fcross.PushBack({ 107, 17, 69, 63 });
+	fcross.loop = true;
+	fcross.speed = 0.2f;
+
 	idle[FAR_LEFT].PushBack({ 50, 21, 87, 180 });
 	idle[LEFT].PushBack({ 146, 20, 87, 180 });
 	idle[LEFT_MIDDLE].PushBack({ 248, 20, 87, 180 });
@@ -232,6 +241,10 @@ update_status ModulePlayer::Update()
 	// Draw everything --------------------------------------
 	
 	App->render->Blit(crosstexture, cposition.x, cposition.y, &(cross.GetCurrentFrame()));
+	if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
+	{
+		App->render->Blit(crosstexture, cposition.x, cposition.y, &(fcross.GetCurrentFrame()));
+	}
 	App->render->Blit(player, position.x + xcorrection, position.y + ycorrection, &(current_animation->GetCurrentFrame()));
 
 	return UPDATE_CONTINUE;
