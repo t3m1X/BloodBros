@@ -21,8 +21,9 @@ Plane::Plane(int x) : Enemy(x, 25)
 	fly.PushBack({ 822, 79, 319, 123 });
 	fly.PushBack({ 25, 211, 379, 152 });
 	fly.PushBack({ 459, 275, 448, 188 });
-
 	fly.speed = 0.1f;
+
+	animation = &fly;
 
 	collider = App->collision->AddCollider({ 0, 0, 32, 16 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
