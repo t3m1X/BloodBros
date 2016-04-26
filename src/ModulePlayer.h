@@ -46,6 +46,7 @@ public:
 	SDL_Texture* crosstexture = nullptr;
 	Mix_Chunk* shoot = nullptr;
 	Animation cross;
+	Animation fcross;
 	Animation* current_animation = nullptr;
 	Animation idle[14];
 	Animation down[14];
