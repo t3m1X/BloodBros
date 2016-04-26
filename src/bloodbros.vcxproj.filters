@@ -160,5 +160,8 @@
     <ClCompile Include="Enemy_BIndian.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy_Plane.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
