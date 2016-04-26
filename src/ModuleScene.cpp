@@ -8,6 +8,7 @@
 #include "ModuleScene.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
+#include "ModuleCollision.h"
 
 ModuleScene::ModuleScene()
 {
@@ -27,7 +28,11 @@ ModuleScene::ModuleScene()
 	right_pipe.y = 60;
 	right_pipe.w = 257;
 	right_pipe.h = 480;
-	
+
+	cactus1.x = 1933;
+	cactus1.y = 196;
+	cactus1.w = 48;
+	cactus1.h = 124;
 }
 
 ModuleScene::~ModuleScene()
@@ -40,6 +45,11 @@ bool ModuleScene::Start()
 	
 	background = App->textures->Load("sprites/stage_4_3_Background.png");
 	App->audio->PlayMusic("sound/music/stage1_bg.wav");
+
+	c_left_pipe = App->collision->AddCollider({ SCREEN_WIDTH - left_pipe.w, 60, left_pipe.w, left_pipe.h }, COLLIDER_ENEMY);
+	c_right_pipe = App->collision->AddCollider({ 0, 60, right_pipe.w-100, right_pipe.h-10 }, COLLIDER_ENEMY);
+	c_cactus1 = App->collision->AddCollider({ SCREEN_WIDTH/2-cactus1.w, SCREEN_HEIGHT/2, cactus1.w, cactus1.h}, COLLIDER_ENEMY);
+
 
 	App->player->Enable();
 	
@@ -66,6 +76,7 @@ update_status ModuleScene::Update()
 	App->render->Blit(background, 0, 0 , &back, 1.0f);
 	App->render->Blit(background, 0, 60, &left_pipe, 1.0f);
 	App->render->Blit(background, SCREEN_WIDTH-right_pipe.w, 60, &right_pipe, 1.0f);
+	App->render->Blit(background, SCREEN_WIDTH / 2 - cactus1.w, SCREEN_HEIGHT/2, &cactus1, 1.0f);
 	
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)

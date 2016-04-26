@@ -21,8 +21,14 @@ public:
 	SDL_Rect back;
 	SDL_Rect right_pipe;
 	SDL_Rect left_pipe;
-	Collider* right_pipe;
-	Collider* left_pipe;
+	SDL_Rect cactus1;
+	SDL_Rect cactus2;
+	SDL_Rect cactus3;
+	Collider* c_right_pipe;
+	Collider* c_left_pipe;
+	Collider* c_cactus1;
+	Collider* c_cactus2;
+	Collider* c_cactus;
 
 };
 
