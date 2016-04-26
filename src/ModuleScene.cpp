@@ -33,6 +33,11 @@ ModuleScene::ModuleScene()
 	cactus1.y = 196;
 	cactus1.w = 48;
 	cactus1.h = 124;
+
+	cactus2.x = 1817;
+	cactus2.y = 260;
+	cactus2.w = 28;
+	cactus2.h = 60;
 }
 
 ModuleScene::~ModuleScene()
@@ -49,6 +54,9 @@ bool ModuleScene::Start()
 	c_left_pipe = App->collision->AddCollider({ SCREEN_WIDTH - left_pipe.w, 60, left_pipe.w, left_pipe.h }, COLLIDER_ENEMY);
 	c_right_pipe = App->collision->AddCollider({ 0, 60, right_pipe.w-100, right_pipe.h-10 }, COLLIDER_ENEMY);
 	c_cactus1 = App->collision->AddCollider({ SCREEN_WIDTH/2-cactus1.w, SCREEN_HEIGHT/2, cactus1.w, cactus1.h}, COLLIDER_ENEMY);
+	c_cactus2 = App->collision->AddCollider({ SCREEN_WIDTH / 2 - SCREEN_WIDTH / 4, SCREEN_HEIGHT / 2 - cactus2.h - 10, cactus2.w, cactus2.h }, COLLIDER_ENEMY);
+	c_cactus3 = App->collision->AddCollider({ SCREEN_WIDTH - SCREEN_WIDTH / 3 - 35, SCREEN_HEIGHT / 2 - cactus2.h - 10, cactus2.w, cactus2.h }, COLLIDER_ENEMY);
+
 
 
 	App->player->Enable();
@@ -77,6 +85,8 @@ update_status ModuleScene::Update()
 	App->render->Blit(background, 0, 60, &left_pipe, 1.0f);
 	App->render->Blit(background, SCREEN_WIDTH-right_pipe.w, 60, &right_pipe, 1.0f);
 	App->render->Blit(background, SCREEN_WIDTH / 2 - cactus1.w, SCREEN_HEIGHT/2, &cactus1, 1.0f);
+	App->render->Blit(background, SCREEN_WIDTH / 2 - SCREEN_WIDTH /4, SCREEN_HEIGHT / 2 - cactus2.h - 10, &cactus2, 1.0f);   /// CACTUS 2
+	App->render->Blit(background, SCREEN_WIDTH - SCREEN_WIDTH / 3 - 35, SCREEN_HEIGHT / 2 - cactus2.h - 10, &cactus2, 1.0f); /// CACTUS 3
 	
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
