@@ -3,9 +3,10 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 12
+#define NUM_MODULES 13
 
 class ModuleUserI;
+class ModuleEnd;
 class ModuleIntro;
 class ModuleWindow;
 class ModuleInput;
@@ -36,6 +37,7 @@ public:
 	ModuleFadeToBlack* fade;
 	ModuleParticles* particles;
 	ModuleIntro* intro;
+	ModuleEnd* end;
 	ModuleUserI* useri;
 	ModuleEnemies* enemy;
 

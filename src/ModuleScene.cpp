@@ -9,6 +9,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
 #include "ModuleCollision.h"
+#include "ModuleEnd.h"
 
 ModuleScene::ModuleScene()
 {
@@ -72,6 +73,7 @@ bool ModuleScene::CleanUp()
 	App->textures->Unload(background);
 	App->player->Disable();
 	App->audio->StopMusic();
+	App->end->Disable();
 	
 	return true;
 }
@@ -91,9 +93,10 @@ update_status ModuleScene::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, App->intro, 1.0f);
+		App->fade->FadeToBlack(this, App->modules[10], 1.0f);
 
 	}
+
 	
 	return UPDATE_CONTINUE;
 }
