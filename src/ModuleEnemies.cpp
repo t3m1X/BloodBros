@@ -23,7 +23,9 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprites = App->textures->Load("rtype/enemies.png");
+	sprites001 = App->textures->Load("sprites/Plane.png");
+	sprites002 = App->textures->Load("sprites/GreenCowboySprites.png");
+	sprites003 = App->textures->Load("sprites/blue_indian.png");
 
 	return true;
 }
@@ -54,8 +56,12 @@ update_status ModuleEnemies::Update()
 		if (enemies[i] != nullptr) enemies[i]->Move();
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
-		if (enemies[i] != nullptr) enemies[i]->Draw(sprites);
-
+		if (enemies[i] != nullptr)
+		{
+		enemies[i]->Draw(sprites001);
+		enemies[i]->Draw(sprites002);
+		enemies[i]->Draw(sprites003);
+		}
 	return UPDATE_CONTINUE;
 }
 
@@ -83,7 +89,9 @@ bool ModuleEnemies::CleanUp()
 {
 	LOG("Freeing all enemies");
 
-	App->textures->Unload(sprites);
+	App->textures->Unload(sprites001);
+	App->textures->Unload(sprites002);
+	App->textures->Unload(sprites003);
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
