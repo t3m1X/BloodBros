@@ -24,7 +24,7 @@ public:
 
 	const Collider* GetCollider() const;
 
-	virtual void Update() {};
+	virtual void Move() {};
 	virtual void Draw(SDL_Texture* sprites);
 };
 
