@@ -12,6 +12,7 @@
 #include "ModuleUserI.h"
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
+#include "ModuleEnd.h"
 
 
 
@@ -28,6 +29,7 @@ Application::Application()
 	//modules[i++] = enemy = new ModuleEnemies();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = intro = new ModuleIntro();
+	modules[i++] = end = new ModuleEnd();
 	modules[i++] = useri = new ModuleUserI();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();

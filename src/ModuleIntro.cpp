@@ -7,6 +7,8 @@
 #include "ModuleIntro.h"
 #include "ModuleScene.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleEnd.h"
+#include "ModulePlayer.h"
 
 
 ModuleIntro::ModuleIntro()
@@ -34,6 +36,9 @@ bool ModuleIntro::CleanUp()
 	LOG("Unloading intro");
 
 	App->textures->Unload(IntroScreen);
+	App->end->Disable();
+	App->player->Disable();
+	App->scene->Disable();
 	App->audio->StopMusic();
 
 	return true;
