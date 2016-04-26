@@ -6,6 +6,7 @@
 #include "ModuleAudio.h"
 #include "ModuleScene.h"
 #include "ModulePlayer.h"
+#include "ModuleEnemies.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleParticles.h"
 #include "ModuleIntro.h"
@@ -26,7 +27,7 @@ Application::Application()
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = scene = new ModuleScene();
 	modules[i++] = player = new ModulePlayer();
-	//modules[i++] = enemy = new ModuleEnemies();
+	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = intro = new ModuleIntro();
 	modules[i++] = end = new ModuleEnd();
