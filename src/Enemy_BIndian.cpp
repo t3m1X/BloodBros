@@ -25,6 +25,10 @@ BIndian::BIndian(int x, int y) : Enemy(x, y)
 	i_pos.x = x;
 	i_pos.y = y;
 
+	collider = App->collision->AddCollider({ 0, 0, 70, 70 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+
+	position.x = SCREEN_WIDTH;
+
 }
 
 void BIndian::Move()
