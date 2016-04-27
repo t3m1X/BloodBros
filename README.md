@@ -26,6 +26,14 @@ This release version added the player and the aim without shooting animations. T
 26/04/2016
 -Implemented enemies spawn.
 
+27/04/2016
+-Ending the prototype polishing the code 
+-Added enemy AI
+-Added proyectiles
+-Implemented HP system
+-Bugs correction
+-Adding sexy ballerina
+
 ## Sound
 
 On the subject of sound please take your time to properly name and place the sound samples stored in candidates. The naming convention is the following:
