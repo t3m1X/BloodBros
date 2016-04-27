@@ -115,11 +115,17 @@ ModulePlayer::ModulePlayer()
 	down[MIDDLE_F].PushBack({ 1285, 312, 93, 156});
 	down[MIDDLE_F].speed = 0.25f;
     //down[RIGHT_MIDDLE_F].PushBack({ 1331, 20, 81, 135 });
-	down[RIGHT_MIDDLE_F].PushBack({ 1369, 159, 89, 146});
+	down[RIGHT_MIDDLE_F].PushBack({ 1399, 159, 87, 146});
 	down[RIGHT_MIDDLE_F].PushBack({ 1396, 324, 89, 144});
 	down[RIGHT_MIDDLE_F].speed = 0.25f;
-	down[RIGHT_F].PushBack({ 1421, 20, 90, 135 });
-	down[FAR_RIGHT_F].PushBack({ 1511, 20, 96, 135 });
+	//down[RIGHT_F].PushBack({ 1421, 20, 90, 135 });
+	down[RIGHT_F].PushBack({ 1489, 170, 110, 138 });
+	down[RIGHT_F].PushBack({ 1486, 330, 110, 138 });
+	down[RIGHT_F].speed = 0.25f;
+	//down[FAR_RIGHT_F].PushBack({ 1511, 20, 96, 135 });
+	down[FAR_RIGHT_F].PushBack({ 1606, 170, 141, 135});
+	down[FAR_RIGHT_F].PushBack({ 1603, 336, 129, 132});
+	down[FAR_RIGHT_F].speed = 0.25f;
 
 	walk_right.PushBack({ 24, 602, 102, 180 });
 	walk_right.PushBack({ 128, 602, 96, 177 });
