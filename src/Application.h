@@ -19,7 +19,6 @@ class ModuleCollision;
 class ModulePlayer;
 class ModuleEnemies;
 class ModuleFadeToBlack;
-class ModuleEnemies;
 class Module;
 
 class Application
@@ -34,14 +33,13 @@ public:
 	ModuleAudio* audio;
 	ModuleScene* scene;
 	ModuleCollision* collision;
-	ModulePlayer* player;
 	ModuleEnemies* enemies;
+	ModulePlayer* player;
 	ModuleFadeToBlack* fade;
 	ModuleParticles* particles;
 	ModuleIntro* intro;
 	ModuleEnd* end;
 	ModuleUserI* useri;
-	ModuleEnemies* enemy;
 
 public:
 
