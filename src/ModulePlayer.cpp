@@ -203,61 +203,74 @@ update_status ModulePlayer::Update()
 	cross_collider->SetPos(SCREEN_WIDTH / 2, SCREEN_HEIGHT);
 	player_collider->SetPos(position.x, position.y);
 
-	if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
+	if (!hit)
 	{
-		cross_collider->SetPos(cposition.x, cposition.y);
-		screen_portion += 7;
-		App->audio->PlaySFX(shoot);
-		firing = true;
-		if (screen_portion <= MIDDLE_F)
-			xcorrection += idle[screen_portion - 7].frames[0].w - idle[screen_portion].frames[0].w;
-		ycorrection += idle[screen_portion - 7].frames[0].h - idle[screen_portion].frames[0].h;
-	}
-
-	current_animation = &idle[screen_portion];
-	
-	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-	{
-		if (cposition.y < position.y + 15)
-			cposition.y += speed * 2;
-
-		if (App->input->keyboard[SDL_SCANCODE_W] != KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
 		{
-			current_animation = &down[screen_portion];
-			if (App->input->keyboard[SDL_SCANCODE_A] != KEY_STATE::KEY_REPEAT && 
-				App->input->keyboard[SDL_SCANCODE_D] != KEY_STATE::KEY_REPEAT)
-				ycorrection += 25;
+			cross_collider->SetPos(cposition.x, cposition.y);
+			screen_portion += 7;
+			App->audio->PlaySFX(shoot);
+			firing = true;
+			if (screen_portion <= MIDDLE_F)
+				xcorrection += idle[screen_portion - 7].frames[0].w - idle[screen_portion].frames[0].w;
+			ycorrection += idle[screen_portion - 7].frames[0].h - idle[screen_portion].frames[0].h;
 		}
 
+		current_animation = &idle[screen_portion];
+
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		{
+			if (cposition.y < position.y + 15)
+				cposition.y += speed * 2;
+
+			if (App->input->keyboard[SDL_SCANCODE_W] != KEY_STATE::KEY_REPEAT)
+			{
+				current_animation = &down[screen_portion];
+				if (App->input->keyboard[SDL_SCANCODE_A] != KEY_STATE::KEY_REPEAT &&
+					App->input->keyboard[SDL_SCANCODE_D] != KEY_STATE::KEY_REPEAT)
+					ycorrection += 25;
+			}
+
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+		{
+			if (cposition.y > -35)
+				cposition.y -= speed * 2;
+
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		{
+			if (position.x > 0 && !firing)
+				position.x -= speed;
+			if (cposition.x > -35) //middle of the cross
+				cposition.x -= speed * 2;
+
+			if (App->input->keyboard[SDL_SCANCODE_D] != KEY_STATE::KEY_REPEAT && !firing)
+				current_animation = &walk_left;
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		{
+			if (position.x < SCREEN_WIDTH - 87 && !firing)
+				position.x += speed;
+			if (cposition.x < SCREEN_WIDTH - 35) //the middle of the cross
+				cposition.x += speed * 2;
+
+			if (App->input->keyboard[SDL_SCANCODE_A] != KEY_STATE::KEY_REPEAT && !firing)
+				current_animation = &walk_right;
+		}
 	}
-
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+	else
 	{
-		if (cposition.y > -35)
-			cposition.y -= speed * 2;
-
-	}
-
-	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
-	{
-		if (position.x > 0 && !firing)
-			position.x -= speed;
-		if (cposition.x > -35) //middle of the cross
-			cposition.x -= speed * 2;
-
-		if (App->input->keyboard[SDL_SCANCODE_D] != KEY_STATE::KEY_REPEAT && !firing)
-			current_animation = &walk_left;
-	}
-
-	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-	{
-		if (position.x < SCREEN_WIDTH - 87 && !firing)
-			position.x += speed;
-		if (cposition.x < SCREEN_WIDTH - 35) //the middle of the cross
-			cposition.x += speed * 2;
-
-		if (App->input->keyboard[SDL_SCANCODE_A] != KEY_STATE::KEY_REPEAT && !firing)
-			current_animation = &walk_right;
+		current_animation = &dead;
+		if (dead.Finished())
+		{
+			hit = false;
+			dead.Reset();
+			//lower one life
+		}
 	}
 
 	// The rolling animation needs to be done inside a separate function, thus avoiding the player from moving and receiving damage
