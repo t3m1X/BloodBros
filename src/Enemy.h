@@ -16,6 +16,7 @@ protected:
 
 public:
 	iPoint position;
+	bool isDead = false;
 
 public:
 
@@ -26,6 +27,8 @@ public:
 
 	virtual void Move() {};
 	virtual void Draw(SDL_Texture* sprites);
+
+	virtual void Collision();
 
 };
 

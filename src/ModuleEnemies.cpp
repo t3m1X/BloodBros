@@ -186,17 +186,23 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (f_enemies[i] != nullptr && f_enemies[i]->GetCollider() == c1)
 		{
-			App->particles->AddParticle(App->particles->explosion, f_enemies[i]->position.x, f_enemies[i]->position.y);
-			delete f_enemies[i];
-			f_enemies[i] = nullptr;
+			f_enemies[i]->Collision();
+			if (f_enemies[i]->isDead)
+			{
+				delete f_enemies[i];
+				f_enemies[i] = nullptr;
+			}
 			break;
 		}
 
 		if (b_enemies[i] != nullptr && b_enemies[i]->GetCollider() == c1)
 		{
-			App->particles->AddParticle(App->particles->explosion, b_enemies[i]->position.x, b_enemies[i]->position.y);
-			delete b_enemies[i];
-			b_enemies[i] = nullptr;
+			b_enemies[i]->Collision();
+			if (b_enemies[i]->isDead)
+			{
+				delete b_enemies[i];
+				b_enemies[i] = nullptr;
+			}
 			break;
 		}
 	}
