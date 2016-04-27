@@ -173,6 +173,13 @@ bool ModulePlayer::CleanUp()
 	LOG("Unloading player");
 
 	App->textures->Unload(player);
+	App->textures->Unload(crosstexture);
+
+	App->audio->UnloadSFX(shoot);
+
+	App->collision->EraseCollider(cross_collider);
+	App->collision->EraseCollider(player_collider);
+
 
 	return true;
 }
