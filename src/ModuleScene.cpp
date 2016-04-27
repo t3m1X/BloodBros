@@ -21,16 +21,6 @@ ModuleScene::ModuleScene()
 	back.h = SCREEN_HEIGHT; //671
 
 	// Front
-	left_pipe.x = 768;
-	left_pipe.y = 63;
-	left_pipe.w = 210;
-	left_pipe.h = 470;
-	
-	right_pipe.x = 1334;
-	right_pipe.y = 60;
-	right_pipe.w = 257;
-	right_pipe.h = 480;
-
 	cactus1.x = 1933;
 	cactus1.y = 196;
 	cactus1.w = 48;
