@@ -91,6 +91,7 @@ update_status ModuleScene::Update()
 	{
 		second_enemy_time = -1;
 		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 360);
+		App->enemies->AddEnemy(ENEMY_TYPES::DANCER, 0, 360);
 	}
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, 0 , &back, 1.0f);

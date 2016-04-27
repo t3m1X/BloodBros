@@ -13,7 +13,8 @@ enum ENEMY_TYPES
 	G_COWBOY,
 	B_INDIAN,
 	PLANE,
-	L_WATERTOWER
+	L_WATERTOWER,
+	DANCER
 };
 
 class Enemy;
