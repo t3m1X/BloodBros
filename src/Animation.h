@@ -40,6 +40,11 @@ public:
 		return frames[(int)current_frame];
 	}
 
+	int next_frame() const
+	{
+		return (int)current_frame + speed;
+	}
+
 	bool Finished() const
 	{
 		return loops > 0;
