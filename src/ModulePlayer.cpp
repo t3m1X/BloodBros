@@ -146,6 +146,13 @@ ModulePlayer::ModulePlayer()
 	roll_right.PushBack({ 1218, 728, 144, 96 });
 	roll_right.PushBack({ 1362, 677, 96, 144 });
 	roll_right.speed = 0.2f;
+
+	dead.PushBack({ 33, 822, 84, 156 });
+	dead.PushBack({ 162, 822, 99, 156});
+	dead.PushBack({ 282, 823, 123, 156});
+	dead.PushBack({ 417, 823, 153, 156 });
+	dead.loop = true;
+	dead.speed = 0.1;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -208,7 +215,7 @@ update_status ModulePlayer::Update()
 	}
 
 	current_animation = &idle[screen_portion];
-
+	
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
 		if (cposition.y < position.y + 15)

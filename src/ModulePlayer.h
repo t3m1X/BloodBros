@@ -54,6 +54,7 @@ public:
 	Animation walk_left;
 	Animation roll_right;
 	Animation roll_left;
+	Animation dead;
 	iPoint position;
 	iPoint cposition; //cross position 
 	Collider* cross_collider;
