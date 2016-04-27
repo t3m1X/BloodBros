@@ -10,7 +10,7 @@
 #include "Enemy_Plane.h"
 #include "Enemy_Dancer.h"
 #include "Building_LWaterTower.h"
-#include "Building_LWaterTower2.h"
+#include "Building_RWaterTower.h"
 
 #define SPAWN_MARGIN 50
 
@@ -185,8 +185,8 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::L_WATERTOWER:
 			*newenemy = new LWaterTower(info.x, info.y);
 			break;
-		case ENEMY_TYPES::L_WATERTOWER2:
-			*newenemy = new LWaterTower2(info.x, info.y);
+		case ENEMY_TYPES::R_WATERTOWER:
+			*newenemy = new RWaterTower(info.x, info.y);
 		}
 	}
 }

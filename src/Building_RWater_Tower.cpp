@@ -1,5 +1,5 @@
 #include "Application.h"
-#include "Building_LWaterTower2.h"
+#include "Building_RWaterTower.h"
 #include "Path.h"
 #include "ModuleCollision.h"
 #include "p2Point.h"
@@ -9,29 +9,29 @@
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
-LWaterTower2::LWaterTower2(int x, int y) : Enemy(x, y)
+RWaterTower::RWaterTower(int x, int y) : Enemy(x, y)
 {
-	state.PushBack({ 1120, 64, 200, 448 });
-	state.PushBack({ 1120, 533, 200, 448 });
-	state.PushBack({ 1120, 1015, 200, 448 });
-	state.PushBack({ 1120, 1507, 200, 448 });
+	state.PushBack({ 1687, 61, 257, 463 });
+	state.PushBack({ 1689, 1022, 255, 464 });
+	state.PushBack({ 1690, 1506, 254, 464 });
+	
 
 	state.speed = 1.0f;
 	state.loop = false;
 
 	collider = App->collision->AddCollider({ x, y, 200, 448 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	position.x = SCREEN_WIDTH
+	position.x = SCREEN_WIDTH;
 }
 
 
-void LWaterTower2::Draw(SDL_Texture* sprites)
+void RWaterTower::Draw(SDL_Texture* sprites)
 {
 	App->render->Blit(sprites, position.x, position.y, &(state.ConsultCurrentFrame()));
 }
 
 
-void LWaterTower2::Collision()
+void RWaterTower::Collision()
 {
 	this_call = SDL_GetTicks();
 

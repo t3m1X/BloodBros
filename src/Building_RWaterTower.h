@@ -1,11 +1,11 @@
-#ifndef __BUILDING_LWATERTOWER2__
-#define __BUILDING_LWATERTOWER2__
+#ifndef __BUILDING_RWATERTOWER__
+#define __BUILDING_RWATERTOWER__
 
 #include "Enemy.h"
 #include "p2Point.h"
 #include "Path.h"
 
-class LWaterTower2 : public Enemy
+class RWaterTower : public Enemy
 {
 private:
 
@@ -15,10 +15,10 @@ private:
 
 public:
 
-	LWaterTower2(int x, int y);
+	RWaterTower(int x, int y);
 
 	void Draw(SDL_Texture* sprites);
 	void Collision();
 };
 
-#endif // __BUILDING_LWATERTOWER2__
+#endif // __BUILDING_RWATERTOWER__

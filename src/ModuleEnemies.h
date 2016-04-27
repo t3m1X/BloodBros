@@ -2,7 +2,7 @@
 #define __ModuleEnemies_H__
 
 #include "Module.h"
-#include "Enemy_GCowboy.h"
+
 
 #define MAX_ENEMIES 20
 #define MAX_BUILDINGS 8
@@ -14,7 +14,7 @@ enum ENEMY_TYPES
 	B_INDIAN,
 	PLANE,
 	L_WATERTOWER,
-	L_WATERTOWER2,
+	R_WATERTOWER,
 	DANCER
 };
 
