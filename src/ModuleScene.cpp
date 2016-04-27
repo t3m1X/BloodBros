@@ -105,16 +105,7 @@ update_status ModuleScene::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
+void ModuleScene::OnCollision(Collider* c1, Collider* c2)
 {
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-	{
-		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
-		{
-			App->particles->AddParticle(App->particles->explosion, enemies[i]->position.x, enemies[i]->position.y);
-			delete enemies[i];
-			enemies[i] = nullptr;
-			break;
-		}
-	}
+	
 }
