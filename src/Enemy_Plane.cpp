@@ -33,15 +33,15 @@ Plane::Plane(int x) : Enemy(x, 25)
 void Plane::Move()
 {
 
-	if (position.x + fly.ConsultCurrentFrame().w < SCREEN_WIDTH / 2 + fly.frames[7].w/2)
+	if (position.x + fly.frames[fly.next_frame()].w / 2 < SCREEN_WIDTH / 2)
 	{
-		position.x += 0.05;
-		position.y += 0.25;
+		position.x += 1;
+		position.y += 0.5;
 	}
-	else if (position.x - fly.ConsultCurrentFrame().w > SCREEN_WIDTH / 2 - fly.frames[7].w / 2)
+	else if (position.x + fly.frames[fly.next_frame()].w / 2 > SCREEN_WIDTH / 2)
 	{
-		position.x -= 0.05;
-		position.y += 0.25;
+		position.x -= 1;
+		position.y += 0.5;
 	}
 	else
 	{
