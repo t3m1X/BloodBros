@@ -20,7 +20,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("rtype/particles.png");
+	graphics = App->textures->Load("sprites/explosives_1.png");
 
 	// Explosion particle
 	explosion.anim.PushBack({186, 338, 192, 192});
