@@ -69,7 +69,6 @@ bool ModuleScene::CleanUp()
 	App->textures->Unload(background);
 	App->player->Disable();
 	App->audio->StopMusic();
-	App->end->Disable();
 	
 	return true;
 }
