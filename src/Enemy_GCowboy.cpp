@@ -8,18 +8,19 @@
 GCowboy::GCowboy(int x, int y) : Enemy(x, y)
 {
 
-	walk.PushBack({ 229, 662, 67, 144 });
-	walk.PushBack({ 321, 659, 99, 144 });
-	walk.PushBack({ 433, 663, 120, 140 });
-	walk.PushBack({ 566, 661, 64, 144 });
-	walk.PushBack({ 656, 662, 96, 144 });
-	walk.PushBack({ 757, 664, 120, 140 });
+	walk.PushBack({ 153, 442, 45, 96 });
+	walk.PushBack({ 215, 439, 66, 96 });
+	walk.PushBack({ 289, 443, 80, 93 });
+	walk.PushBack({ 378, 441, 43, 96 });
+	walk.PushBack({ 433, 442, 63, 96 });
+	walk.PushBack({ 505, 443, 80, 94 });
 	walk.speed = 0.1f;
 
 
-	shoot.PushBack({ 891, 661, 123, 140 });
-	shoot.PushBack({ 1025, 618, 102, 148 });
+	shoot.PushBack({ 594, 441, 82, 94 });
+	shoot.PushBack({ 684, 413, 68, 120 });
 	shoot.speed = 0.1f;
+	shoot.loop = false;
 
 	dead.PushBack({ 1132, 635, 105, 165 });
 	dead.PushBack({ 1276, 677, 104, 128 });
@@ -31,12 +32,18 @@ GCowboy::GCowboy(int x, int y) : Enemy(x, y)
 
 	collider = App->collision->AddCollider({ 0, 0, 70, 70 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
+	position.y = 120;
 
 }
 
 void GCowboy::Move()
 {
+	position.x += 1;
 
-	
-
+	/*if (position.x = SCREEN_WIDTH)
+	{
+		position.x = SCREEN_WIDTH;
+		animation = &shoot;
+		if ()
+	}*/
 }
