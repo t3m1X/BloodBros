@@ -52,7 +52,8 @@ bool ModuleScene::Start()
 
 	App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, -90, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 360);
 
 
 	App->player->Enable();
