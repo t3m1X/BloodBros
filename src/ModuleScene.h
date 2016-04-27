@@ -3,8 +3,6 @@
 
 #include "Module.h"
 
-#define ENEMY_GAUGE 10
-
 struct SDL_Texture;
 
 class ModuleScene : public Module
