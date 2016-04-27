@@ -103,16 +103,16 @@ ModulePlayer::ModulePlayer()
 	down[FAR_LEFT_F].PushBack({ 893, 336, 138, 132 });
 	down[FAR_LEFT_F].speed = 0.25f;
 	//down[LEFT_F].PushBack({ 1034, 20, 84, 135 });
-	down[LEFT_F].PushBack({ 1037, 167, 120, 135});//98
+	down[LEFT_F].PushBack({ 1035, 167, 120, 135});//98
 	down[LEFT_F].PushBack({ 1035, 330, 120, 135});
 	down[LEFT_F].speed = 0.25f;
 	//down[LEFT_MIDDLE_F].PushBack({ 1136, 20, 84, 135 });
-	down[LEFT_MIDDLE_F].PushBack({ 1166, 155, 102, 156 });
-	down[LEFT_MIDDLE_F].PushBack({ 1166, 330, 102, 156 });
+	down[LEFT_MIDDLE_F].PushBack({ 1166, 175, 102, 156 });
+	down[LEFT_MIDDLE_F].PushBack({ 1166, 350, 102, 156 });
 	down[LEFT_MIDDLE_F].speed = 0.25f;
 	//down[MIDDLE_F].PushBack({ 1229, 20, 81, 135 });
-	down[MIDDLE_F].PushBack({ 1285, 154, 93, 156});
-	down[MIDDLE_F].PushBack({ 1285, 310, 93, 156});
+	down[MIDDLE_F].PushBack({ 1285, 180, 93, 156});
+	down[MIDDLE_F].PushBack({ 1285, 357, 93, 156});
 	down[MIDDLE_F].speed = 0.25f;
     //down[RIGHT_MIDDLE_F].PushBack({ 1331, 20, 81, 135 });
 	down[RIGHT_MIDDLE_F].PushBack({ 1399, 161, 87, 146});
