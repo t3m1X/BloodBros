@@ -11,13 +11,13 @@ Dancer::Dancer(int x, int y) : Enemy(x, y)
 
 	walk.PushBack({58, 2249, 72, 135 });
 	walk.PushBack({ 151, 2252, 78, 132 });
-	walk.speed = 0.1f;
+	walk.speed = 0.2f;
 
 	dance.PushBack({ 238, 2255, 96, 129 });
 	dance.PushBack({ 337, 2255, 96, 129 });
 	dance.PushBack({ 436, 2255, 96, 129 });
 	dance.PushBack({ 535, 2261, 96, 123 });
-	dance.speed = 0.2f;
+	dance.speed = 0.5f;
 	
 
 	/*dead.PushBack({ 1132, 635, 105, 165 });
@@ -42,6 +42,6 @@ void Dancer::Move()
 
 void Dancer::Collision()
 {
-	speed = 5;
+	speed = 10;
 	animation = &dance;
 }
