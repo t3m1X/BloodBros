@@ -32,6 +32,6 @@ void Enemy::Draw(SDL_Texture* sprites)
 
 void Enemy::Collision()
 {
-	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+	App->particles->AddParticle(App->particles->explosion, position.x - 90, position.y - 70);
 	isDead = true;
 }
