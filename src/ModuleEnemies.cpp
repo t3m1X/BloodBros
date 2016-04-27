@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "Enemy.h"
 #include "Enemy_GCowboy.h"
+#include "Enemy_Plane.h"
 
 #define SPAWN_MARGIN 50
 
@@ -23,9 +24,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprites001 = App->textures->Load("sprites/Plane.png");
-	sprites002 = App->textures->Load("sprites/GreenCowboySprites.png");
-	sprites003 = App->textures->Load("sprites/blue_indian.png");
+	sprites = App->textures->Load("sprites/Plane.png");
 
 	return true;
 }
@@ -57,11 +56,8 @@ update_status ModuleEnemies::Update()
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		if (enemies[i] != nullptr)
-		{
-		enemies[i]->Draw(sprites001);
-		enemies[i]->Draw(sprites002);
-		enemies[i]->Draw(sprites003);
-		}
+			enemies[i]->Draw(sprites);
+
 	return UPDATE_CONTINUE;
 }
 
@@ -130,15 +126,15 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 	uint i = 0;
 	for (; enemies[i] != nullptr && i < MAX_ENEMIES; ++i);
 
-/*	if (i != MAX_ENEMIES)
+	if (i != MAX_ENEMIES)
 	{
 		switch (info.type)
 		{
-		case ENEMY_TYPES::REDBIRD:
-			enemies[i] = new Enemy_RedBird(info.x, info.y);
+		case ENEMY_TYPES::PLANE:
+			enemies[i] = new Plane(info.x);
 			break;
 		}
-	}*/
+	}
 }
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
