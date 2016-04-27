@@ -7,18 +7,20 @@
 
 BIndian::BIndian(int x, int y) : Enemy(x, y)
 {
-
-	/*FIRST INDIAN : 48 X 90 1147 X 1328
-	SECOND : 66 X 93 1147 X 1328
-		 THIRD : 48 X 96  1147 X 1328
-			 FOURTH : 48 X 93 1147 X 1328
-				  FIFTH : 84 X 96 1147 X 1328
-					  SIXTH : 48 X 75  1147 X 1328
-						  SEVENTH : 75 X 57 1147 X 1328
-								EIGHTH : 75 X 15  1147 X 1328
-										 */
-
+	walk.PushBack({ 270, 441, 47, 90});
+	walk.PushBack({ 333, 438, 66, 93});
 	walk.speed = 0.1f;
+
+	shoot.PushBack({ 413, 435, 48, 96});
+	shoot.PushBack({ 478, 438, 48, 93});
+	shoot.speed = 0.1f;
+
+	dead.PushBack({ 548, 435, 84, 96});
+	dead.PushBack({ 652, 456, 48, 75});
+	dead.PushBack({ 716, 474, 75, 57});
+	dead.PushBack({ 803, 516, 75, 15});
+	dead.speed = 0.1f;
+	
 
 	i_pos.x = x;
 	i_pos.y = y;
