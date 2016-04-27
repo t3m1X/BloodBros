@@ -11,6 +11,7 @@
 #include "ModuleCollision.h"
 #include "ModuleEnd.h"
 #include "ModuleEnemies.h"
+#include "ModuleUserI.h"
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
@@ -61,6 +62,7 @@ bool ModuleScene::Start()
 	
 
 	App->player->Enable();
+	App->useri->Enable();
 
 	start_time = SDL_GetTicks();
 	second_enemy_time = start_time + 10000;
@@ -76,6 +78,7 @@ bool ModuleScene::CleanUp()
 	App->textures->Unload(background);
 	App->player->Disable();
 	App->audio->StopMusic();
+	App->useri->Disable();
 
 	
 	return true;
@@ -107,6 +110,9 @@ update_status ModuleScene::Update()
 		App->fade->FadeToBlack(this, App->modules[10], 1.0f);
 
 	}
+
+	if (App->useri->hitpoints == 0)
+		App->fade->FadeToBlack(this, App->end, 1.0f);
 
 	
 	return UPDATE_CONTINUE;

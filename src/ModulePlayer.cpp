@@ -7,6 +7,7 @@
 #include "ModulePlayer.h"
 #include "ModuleAudio.h"
 #include "ModuleCollision.h"
+#include "ModuleUserI.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -265,9 +266,9 @@ update_status ModulePlayer::Update()
 		current_animation = &dead;
 		if (dead.Finished())
 		{
+			App->useri->hitpoints -= 1;
 			hit = false;
 			dead.Reset();
-			//lower one life
 		}
 	}
 

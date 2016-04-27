@@ -16,6 +16,8 @@ ModuleUserI::ModuleUserI()
 	insert_coins.loop = true;
 	insert_coins.speed = 0.1f;
 
+	life_ball.PushBack({ 60, 195, 18, 18 });
+
 	credits.x = 5;
 	credits.y = 3;
 	credits.w = 113;
@@ -44,9 +46,15 @@ bool ModuleUserI::CleanUp()
 }
 update_status ModuleUserI::Update()
 {
-
+	if (hitpoints >= 2)
+	{
+		App->render->Blit(UserInterface, 0, SCREEN_HEIGHT - 50, &(life_ball.GetCurrentFrame()));
+		if (hitpoints == 3)
+			App->render->Blit(UserInterface, 18, SCREEN_HEIGHT - 50, &(life_ball.GetCurrentFrame()));
+	}
+	/*
 	App->render->Blit(UserInterface, SCREEN_WIDTH - SCREEN_WIDTH/3, SCREEN_HEIGHT - 25, &(insert_coins.GetCurrentFrame()));
-	App->render->Blit(UserInterface, (SCREEN_WIDTH / 2) - 50, SCREEN_HEIGHT - 25, &credits, 1.0f);
+	App->render->Blit(UserInterface, (SCREEN_WIDTH / 2) - 50, SCREEN_HEIGHT - 25, &credits, 1.0f);*/
 
 	return UPDATE_CONTINUE;
 }
