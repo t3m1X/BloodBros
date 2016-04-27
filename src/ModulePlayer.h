@@ -61,6 +61,8 @@ public:
 	Collider* player_collider;
 	Collider* ground_collider;
 
+	Uint32 killcount = 0;
+
 	bool hit = false;
 };
 

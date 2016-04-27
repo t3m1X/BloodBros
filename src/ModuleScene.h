@@ -3,6 +3,8 @@
 
 #include "Module.h"
 
+#define ENEMY_GAUGE 10
+
 struct SDL_Texture;
 
 class ModuleScene : public Module
@@ -30,7 +32,7 @@ public:
 
 	Uint32 start_time;
 	Uint32 current_time;
-	Uint32 second_enemy_time;
+	Uint32 next_enemy_time;
 
 };
 
