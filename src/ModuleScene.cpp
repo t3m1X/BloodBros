@@ -10,6 +10,7 @@
 #include "ModulePlayer.h"
 #include "ModuleCollision.h"
 #include "ModuleEnd.h"
+#include "ModuleEnemies.h"
 
 ModuleScene::ModuleScene()
 {
@@ -57,6 +58,9 @@ bool ModuleScene::Start()
 	c_cactus1 = App->collision->AddCollider({ SCREEN_WIDTH/2-cactus1.w, SCREEN_HEIGHT/2, cactus1.w, cactus1.h-cactus1.h/4}, COLLIDER_ENEMY);
 	c_cactus2 = App->collision->AddCollider({ SCREEN_WIDTH / 2 - SCREEN_WIDTH / 4, SCREEN_HEIGHT / 2 - cactus2.h - 10, cactus2.w, cactus2.h }, COLLIDER_ENEMY);
 	c_cactus3 = App->collision->AddCollider({ SCREEN_WIDTH - SCREEN_WIDTH / 3 - 35, SCREEN_HEIGHT / 2 - cactus2.h - 10, cactus2.w, cactus2.h }, COLLIDER_ENEMY);
+
+
+	App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80);
 
 
 
