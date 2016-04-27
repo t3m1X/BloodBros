@@ -99,12 +99,12 @@ ModulePlayer::ModulePlayer()
 	down[RIGHT].PushBack({ 1421, 20, 90, 135 });
 	down[FAR_RIGHT].PushBack({ 1511, 20, 96, 135 });
 
-	down[FAR_LEFT_F].PushBack({ 893, 172, 138, 132 });
+	down[FAR_LEFT_F].PushBack({ 893, 173, 138, 132 });
 	down[FAR_LEFT_F].PushBack({ 893, 336, 138, 132 });
 	down[FAR_LEFT_F].speed = 0.25f;
 	//down[LEFT_F].PushBack({ 1034, 20, 84, 135 });
-	down[LEFT_F].PushBack({ 1041, 169, 119, 135});//98
-	down[LEFT_F].PushBack({ 1041, 330, 117, 132});
+	down[LEFT_F].PushBack({ 1035, 169, 119, 135});//98
+	down[LEFT_F].PushBack({ 1035, 330, 119, 135});
 	down[LEFT_F].speed = 0.25f;
 	//down[LEFT_MIDDLE_F].PushBack({ 1136, 20, 84, 135 });
 	down[LEFT_MIDDLE_F].PushBack({ 1167, 158, 102, 147 });
