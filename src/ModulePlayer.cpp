@@ -226,9 +226,7 @@ update_status ModulePlayer::Update()
 			if (App->input->keyboard[SDL_SCANCODE_W] != KEY_STATE::KEY_REPEAT)
 			{
 				current_animation = &down[screen_portion];
-				if (App->input->keyboard[SDL_SCANCODE_A] != KEY_STATE::KEY_REPEAT &&
-					App->input->keyboard[SDL_SCANCODE_D] != KEY_STATE::KEY_REPEAT)
-					ycorrection += 25;
+				ycorrection += 25;
 			}
 
 		}
