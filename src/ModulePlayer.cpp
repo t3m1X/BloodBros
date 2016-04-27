@@ -161,7 +161,7 @@ bool ModulePlayer::Start()
 	shoot = App->audio->LoadSFX("sound/soundfx/shoot.wav");
 	cross_collider = App->collision->AddCollider({ SCREEN_WIDTH/2, SCREEN_HEIGHT, 69, 63 }, COLLIDER_PLAYER_SHOT);
 	player_collider = App->collision->AddCollider({ (SCREEN_WIDTH - 87) / 2, SCREEN_HEIGHT / 2 + 117, 80, 175 }, COLLIDER_PLAYER); // temporary resolution; 
-																														 // though I think this one should work just fine
+	ground_collider = App->collision->AddCollider({ 0, SCREEN_HEIGHT - 50, SCREEN_WIDTH, 50 }, COLLIDER_PLAYER_SHOT);
 	
 
 	return true;
