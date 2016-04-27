@@ -39,6 +39,7 @@ bool ModuleParticles::Start()
 	bomb.anim.PushBack({ 493, 268, 36, 48 });
 	bomb.anim.loop = false;
 	bomb.anim.speed = 0.3f;
+	bomb.life = 5000;
 
 	shoot.anim.PushBack({ 832, 70, 20, 20 });
 	shoot.anim.PushBack({ 861, 70, 20, 20 });

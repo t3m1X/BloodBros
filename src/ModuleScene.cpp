@@ -12,6 +12,10 @@
 #include "ModuleEnd.h"
 #include "ModuleEnemies.h"
 
+#include "SDL/include/SDL.h"
+#pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
+
+
 ModuleScene::ModuleScene()
 {
 	// Back
@@ -46,16 +50,14 @@ bool ModuleScene::Start()
 	c_cactus1 = App->collision->AddCollider({ SCREEN_WIDTH/2-cactus1.w, SCREEN_HEIGHT/2, cactus1.w, cactus1.h-cactus1.h/4}, COLLIDER_ENEMY);
 	c_cactus2 = App->collision->AddCollider({ SCREEN_WIDTH / 2 - SCREEN_WIDTH / 4, SCREEN_HEIGHT / 2 - cactus2.h - 10, cactus2.w, cactus2.h }, COLLIDER_ENEMY);
 	c_cactus3 = App->collision->AddCollider({ SCREEN_WIDTH - SCREEN_WIDTH / 3 - 35, SCREEN_HEIGHT / 2 - cactus2.h - 10, cactus2.w, cactus2.h }, COLLIDER_ENEMY);
-
-
+	
 	App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80);
-
 	App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 300);
 	App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 360);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::B_INDIAN, SCREEN_WIDTH, 150);
-	App->enemies->AddEnemy(ENEMY_TYPES::B_INDIAN, SCREEN_WIDTH, 200);
-
+		
+	
 
 	App->player->Enable();
 	
@@ -70,6 +72,7 @@ bool ModuleScene::CleanUp()
 	App->textures->Unload(background);
 	App->player->Disable();
 	App->audio->StopMusic();
+
 	
 	return true;
 }
@@ -86,6 +89,17 @@ update_status ModuleScene::Update()
 	App->render->Blit(background, SCREEN_WIDTH / 2 - SCREEN_WIDTH /4, SCREEN_HEIGHT / 2 - cactus2.h - 10, &cactus2, 1.0f);   /// CACTUS 2
 	App->render->Blit(background, SCREEN_WIDTH - SCREEN_WIDTH / 3 - 35, SCREEN_HEIGHT / 2 - cactus2.h - 10, &cactus2, 1.0f); /// CACTUS 3
 	
+	/*current_time = SDL_GetTicks();
+	switch (current_time)
+	{
+	case 6000:App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80);
+
+	case 8000:App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 300);
+	case 10000:App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 360);
+
+	case 12000:App->enemies->AddEnemy(ENEMY_TYPES::B_INDIAN, SCREEN_WIDTH, 150);
+		//App->enemies->AddEnemy(ENEMY_TYPES::B_INDIAN, SCREEN_WIDTH, 200);
+	}*/
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{

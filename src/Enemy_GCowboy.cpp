@@ -61,7 +61,7 @@ void GCowboy::Move()
 		shoot_end = current_time + 1000;
 		position.y -=10;
 		animation = &shoot;
-		App->particles->AddParticle(App->particles->shoot, position.x, position.y);
+		App->particles->AddParticle(App->particles->bomb, position.x + shoot.frames[1].w/2, position.y + shoot.frames[1].h/2);
 		has_shot = true;
 	}
 	
