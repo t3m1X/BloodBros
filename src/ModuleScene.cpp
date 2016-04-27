@@ -16,6 +16,7 @@
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
+#define ENEMY_GAUGE 10
 
 ModuleScene::ModuleScene()
 {
