@@ -16,6 +16,7 @@
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
+#define ENEMY_GAUGE 10
 
 ModuleScene::ModuleScene()
 {
@@ -53,11 +54,9 @@ bool ModuleScene::Start()
 	c_cactus3 = App->collision->AddCollider({ SCREEN_WIDTH - SCREEN_WIDTH / 3 - 35, SCREEN_HEIGHT / 2 - cactus2.h - 10, cactus2.w, cactus2.h }, COLLIDER_ENEMY);
 	
 	App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 300);
-
-	App->enemies->AddEnemy(ENEMY_TYPES::B_INDIAN, SCREEN_WIDTH, 150);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::L_WATERTOWER, 0, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::DANCER, 0, 360);
 		
 	
 
@@ -65,7 +64,7 @@ bool ModuleScene::Start()
 	App->useri->Enable();
 
 	start_time = SDL_GetTicks();
-	second_enemy_time = start_time + 10000;
+	next_enemy_time = start_time + 3000;
 	
 	return true;
 }
@@ -90,11 +89,10 @@ update_status ModuleScene::Update()
 	current_time = SDL_GetTicks();
 
 	// Spawn enemies----------------------------------------
-	if (current_time >= second_enemy_time)
+	if (current_time >= next_enemy_time)
 	{
-		second_enemy_time = -1;
-		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 360);
-		App->enemies->AddEnemy(ENEMY_TYPES::DANCER, 0, 360);
+		next_enemy_time = current_time + 5000;
+		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 300, false);
 	}
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, 0 , &back, 1.0f);
@@ -111,7 +109,7 @@ update_status ModuleScene::Update()
 
 	}
 
-	if (App->useri->hitpoints == 0)
+	if (App->useri->hitpoints == 0 || App->player->killcount == ENEMY_GAUGE)
 		App->fade->FadeToBlack(this, App->end, 1.0f);
 
 	

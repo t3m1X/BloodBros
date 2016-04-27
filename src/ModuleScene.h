@@ -30,7 +30,7 @@ public:
 
 	Uint32 start_time;
 	Uint32 current_time;
-	Uint32 second_enemy_time;
+	Uint32 next_enemy_time;
 
 };
 

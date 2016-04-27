@@ -11,6 +11,8 @@
 #include "Enemy_Dancer.h"
 #include "Building_LWaterTower.h"
 #include "Building_RWaterTower.h"
+#include "ModulePlayer.h"
+
 
 #define SPAWN_MARGIN 50
 
@@ -200,6 +202,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			f_enemies[i]->Collision();
 			if (f_enemies[i]->isDead)
 			{
+				App->player->killcount += 1;
 				delete f_enemies[i];
 				f_enemies[i] = nullptr;
 			}
@@ -211,6 +214,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			b_enemies[i]->Collision();
 			if (b_enemies[i]->isDead)
 			{
+				App->player->killcount += 1;
 				delete b_enemies[i];
 				b_enemies[i] = nullptr;
 			}
