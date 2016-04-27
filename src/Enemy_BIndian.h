@@ -15,7 +15,7 @@ private:
 	Animation dead;
 	p2Point<int> i_pos;
 	Path BIndian_path;
-	Collider* c_BIndian;
+	
 
 public:
 

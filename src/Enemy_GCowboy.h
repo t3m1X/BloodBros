@@ -14,14 +14,14 @@ private:
 	Animation dead;
 	p2Point<int> i_pos;
 	Path GCowboy_path;
-	Collider* c_GCowboy;
+	
 
 
 public:
 
 	GCowboy(int x, int y);
 
-	void Update();
+	void Move();
 };
 
 #endif // __ENEMY_GCOWBOY_H__

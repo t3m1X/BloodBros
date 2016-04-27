@@ -38,7 +38,7 @@ GCowboy::GCowboy(int x, int y) : Enemy(x, y)
 
 }
 
-void GCowboy::Update()
+void GCowboy::Move()
 {
 
 	position = i_pos + GCowboy_path.GetCurrentSpeed(&animation);
