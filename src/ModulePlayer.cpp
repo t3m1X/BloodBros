@@ -255,14 +255,6 @@ update_status ModulePlayer::Update()
 
 	// The rolling animation needs to be done inside a separate function, thus avoiding the player from moving and receiving damage
 
-	if(App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN)
-	{
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y + 25);
-		App->particles->AddParticle(App->particles->explosion, position.x - 25, position.y, 500);
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y - 25, 1000);
-		App->particles->AddParticle(App->particles->explosion, position.x + 25, position.y, 1500);
-	}
-
 	// Draw everything --------------------------------------
 	
 	App->render->Blit(crosstexture, cposition.x, cposition.y, &(cross.GetCurrentFrame()));
