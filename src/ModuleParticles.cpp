@@ -52,6 +52,12 @@ ModuleParticles::ModuleParticles()
 	shoot_left.speed.y = 5;
 	shoot_left.speed.x = -5;
 	shoot_left.life = 2000;
+
+	bullet_collision.anim.PushBack({24,54,54,42});
+	bullet_collision.anim.PushBack({ 117, 48, 78, 48 });
+	bullet_collision.anim.PushBack({ 205, 21, 90, 75 });
+	bullet_collision.anim.loop = false;
+	bullet_collision.anim.speed = 0.3f;
 }
 
 ModuleParticles::~ModuleParticles()
@@ -138,7 +144,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
-			//AddParticle(explosion, active[i]->position.x, active[i]->position.y);
+			AddParticle(bullet_collision, active[i]->position.x, active[i]->position.y);
 			delete active[i];
 			active[i] = nullptr;
 			break;
