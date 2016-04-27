@@ -5,6 +5,7 @@
 #include "p2Point.h"
 #include "ModuleParticles.h"
 
+
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
@@ -21,7 +22,7 @@ GCowboy::GCowboy(int x, int y) : Enemy(x, y)
 	walk.speed = 0.2f;
 
 
-	shoot.PushBack({ 594, 441, 82, 94 });
+	shoot.PushBack({ 594, 415, 82, 120 });
 	shoot.PushBack({ 684, 413, 68, 120 });
 	shoot.speed = 0.1f;
 	shoot.loop = false;
@@ -38,6 +39,7 @@ GCowboy::GCowboy(int x, int y) : Enemy(x, y)
 
 	
 	position.x = SCREEN_WIDTH;
+	i_pos.y = position.y;
 
 }
 
@@ -49,12 +51,17 @@ void GCowboy::Move()
 	{
 		position.x -= 2;
 		if (has_shot)
+		{
+			position.y = i_pos.y;
 			animation = &walk;
+		}
 	}
 	if (position.x <= SCREEN_WIDTH / 2 - shoot.frames[1].w / 2 && !has_shot)
 	{
 		shoot_end = current_time + 1000;
+		position.y -=10;
 		animation = &shoot;
+		App->particles->AddParticle(App->particles->shoot, position.x, position.y);
 		has_shot = true;
 	}
 	

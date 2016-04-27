@@ -47,6 +47,7 @@ public:
 
 	Particle explosion;
 	Particle bomb;
+	Particle shoot;
 };
 
 #endif // __MODULEPARTICLES_H__

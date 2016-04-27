@@ -40,6 +40,10 @@ bool ModuleParticles::Start()
 	bomb.anim.loop = false;
 	bomb.anim.speed = 0.3f;
 
+	shoot.anim.PushBack({ 832, 39, 27, 27 });
+	shoot.anim.PushBack({ 870, 39, 27, 27 });
+	shoot.anim.speed = 0.3f;
+
 	return true;
 }
 
