@@ -10,12 +10,15 @@ class LWaterTower : public Enemy
 private:
 
 	Animation state;
+	Uint32 this_call;
+	Uint32 next_call = 0;
 
 public:
 
 	LWaterTower(int x, int y);
 
 	void Draw(SDL_Texture* sprites);
+	void Collision();
 };
 
 #endif // __BUILDING_LWATERTOWER__
