@@ -13,15 +13,16 @@ Plane::Plane(int x) : Enemy(x, 25)
 		position.x = SCREEN_WIDTH / 4 * 3;
 
 
-	fly.PushBack({ 53, 127, 32, 16 });
-	fly.PushBack({ 101, 119, 64, 32 });
-	fly.PushBack({ 181, 102, 128, 56 });
-	fly.PushBack({ 329, 91, 192, 80 });
-	fly.PushBack({ 550, 85, 256, 96 });
-	fly.PushBack({ 822, 79, 319, 123 });
-	fly.PushBack({ 25, 211, 379, 152 });
-	fly.PushBack({ 459, 275, 448, 188 });
-	fly.speed = 0.1f;
+	fly.PushBack({ 53, 2962, 32, 16 });
+	fly.PushBack({ 101, 2954, 64, 32 });
+	fly.PushBack({ 181, 2937, 128, 56 });
+	fly.PushBack({ 329, 2926, 192, 80 });
+	fly.PushBack({ 550, 2920, 256, 96 });
+	fly.PushBack({ 822, 2914, 319, 123 });
+	fly.PushBack({ 25, 3046, 379, 152 });
+	fly.PushBack({ 459, 3110, 448, 188 });
+	fly.speed = 0.045f;
+	fly.loop = false;
 
 	animation = &fly;
 
@@ -32,19 +33,19 @@ Plane::Plane(int x) : Enemy(x, 25)
 void Plane::Move()
 {
 
-	if (position.x < SCREEN_WIDTH / 2)
+	if (position.x + fly.ConsultCurrentFrame().w < SCREEN_WIDTH / 2 + fly.frames[7].w/2)
 	{
-		position.x++;
-		position.y--;
+		position.x += 0.05;
+		position.y += 0.25;
 	}
-	else if (position.x > SCREEN_WIDTH / 2)
+	else if (position.x - fly.ConsultCurrentFrame().w > SCREEN_WIDTH / 2 - fly.frames[7].w / 2)
 	{
-		position.x--;
-		position.y--;
+		position.x -= 0.05;
+		position.y += 0.25;
 	}
 	else
 	{
-		position.y++;
+		position.y -= 4;
 	}
 
 }
