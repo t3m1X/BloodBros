@@ -36,7 +36,7 @@ void LWaterTower::Collision()
 
 	if (this_call > next_call)
 	{
-		next_call = this_call + 2000;
+		next_call = this_call + 1000;
 		if (state.Finished())
 		{
 			App->particles->AddParticle(App->particles->explosion, position.x, position.y);

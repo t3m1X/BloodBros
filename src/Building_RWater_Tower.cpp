@@ -21,7 +21,7 @@ RWaterTower::RWaterTower(int x, int y) : Enemy(x, y)
 
 	collider = App->collision->AddCollider({ x, y, 200, 448 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	position.x = SCREEN_WIDTH;
+	position.x = SCREEN_WIDTH-250;
 }
 
 
@@ -37,7 +37,7 @@ void RWaterTower::Collision()
 
 	if (this_call > next_call)
 	{
-		next_call = this_call + 2000;
+		next_call = this_call + 1000;
 		if (state.Finished())
 		{
 			App->particles->AddParticle(App->particles->explosion, position.x, position.y);
