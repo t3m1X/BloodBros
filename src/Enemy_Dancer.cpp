@@ -51,6 +51,6 @@ void Dancer::Collision()
 {
 	speed = 5;
 	App->audio->PlaySFX(sfx);
-	speed = 10;
+	speed = 6;
 	animation = &dance;
 }
