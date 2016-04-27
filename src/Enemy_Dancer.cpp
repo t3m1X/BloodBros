@@ -4,6 +4,7 @@
 #include "ModuleCollision.h"
 #include "p2Point.h"
 #include "ModuleParticles.h"
+#include "ModuleAudio.h"
 
 
 Dancer::Dancer(int x, int y) : Enemy(x, y)
@@ -30,8 +31,14 @@ Dancer::Dancer(int x, int y) : Enemy(x, y)
 
 	collider = App->collision->AddCollider({ 0, 0, 70,  }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
+	sfx = App->audio->LoadSFX("sound/soundfx/dancer_hit.wav");
 
 	position.x = 0;
+}
+
+Dancer::~Dancer()
+{
+	App->audio->UnloadSFX(sfx);
 }
 
 void Dancer::Move()
@@ -43,5 +50,6 @@ void Dancer::Move()
 void Dancer::Collision()
 {
 	speed = 5;
+	App->audio->PlaySFX(sfx);
 	animation = &dance;
 }
