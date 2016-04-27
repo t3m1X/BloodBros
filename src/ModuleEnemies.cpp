@@ -8,6 +8,7 @@
 #include "Enemy_GCowboy.h"
 #include "Enemy_BIndian.h"
 #include "Enemy_Plane.h"
+#include "Enemy_Dancer.h"
 #include "Building_LWaterTower.h"
 
 #define SPAWN_MARGIN 50
@@ -176,6 +177,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::B_INDIAN:
 			*newenemy = new BIndian(info.x, info.y);
+			break;
+		case ENEMY_TYPES::DANCER:
+			*newenemy = new Dancer(info.x, info.y);
 			break;
 		case ENEMY_TYPES::L_WATERTOWER:
 			*newenemy = new LWaterTower(info.x, info.y);

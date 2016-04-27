@@ -15,6 +15,8 @@ private:
 	p2Point<int> i_pos;
 	Path Dancer_path;
 
+	Uint32 speed = 2;
+
 
 
 public:
@@ -22,6 +24,8 @@ public:
 	Dancer(int x, int y);
 
 	void Move();
+	void Collision();
+
 };
 
 #endif // __ENEMY_DANCER_H__

@@ -36,11 +36,12 @@ Dancer::Dancer(int x, int y) : Enemy(x, y)
 
 void Dancer::Move()
 {
-	position.x += 2;
-	if (position.x >= SCREEN_WIDTH / 3)
-	{
-		position.x +=5;
-		animation = &dance;
-	}
+	position.x += speed;
 	
+}
+
+void Dancer::Collision()
+{
+	speed = 5;
+	animation = &dance;
 }
