@@ -53,6 +53,9 @@ bool ModuleScene::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 300);
 	App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 360);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::B_INDIAN, SCREEN_WIDTH, 150);
+	App->enemies->AddEnemy(ENEMY_TYPES::B_INDIAN, SCREEN_WIDTH, 200);
+
 
 	App->player->Enable();
 	

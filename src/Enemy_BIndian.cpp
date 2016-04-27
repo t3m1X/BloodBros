@@ -29,12 +29,12 @@ BIndian::BIndian(int x, int y) : Enemy(x, y)
 
 
 	animation = &walk;
-	collider = App->collision->AddCollider({ 0, 0, 70, 70 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 50, 90 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	
 
 	position.x = SCREEN_WIDTH;
-	i_pos.y = y;
+	i_pos.y = position.y;
 
 }
 
@@ -44,7 +44,7 @@ void BIndian::Move()
 
 	if (current_time >= shoot_end)
 	{
-		position.x -= 2;
+		position.x += 2;
 		if (has_shot)
 		{
 			position.y = i_pos.y;

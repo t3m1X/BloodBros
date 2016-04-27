@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "Enemy.h"
 #include "Enemy_GCowboy.h"
+#include "Enemy_BIndian.h"
 #include "Enemy_Plane.h"
 
 #define SPAWN_MARGIN 50
@@ -133,6 +134,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::G_COWBOY:
 			enemies[i] = new GCowboy(info.x, info.y);
+			break;
+		case ENEMY_TYPES::B_INDIAN:
+			enemies[i] = new BIndian(info.x, info.y);
 			break;
 		}
 	}
