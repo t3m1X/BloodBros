@@ -25,7 +25,8 @@ GCowboy::GCowboy(int x, int y) : Enemy(x, y)
 
 	shoot.PushBack({ 594, 415, 82, 120 });
 	shoot.PushBack({ 684, 413, 68, 120 });
-	shoot.speed = 0.1f;
+	shoot.PushBack({ 594, 415, 82, 120 });
+	shoot.speed = 0.2f;
 	shoot.loop = false;
 
 	dead.PushBack({ 1132, 635, 105, 165 });
