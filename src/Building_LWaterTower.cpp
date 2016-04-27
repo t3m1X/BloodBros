@@ -15,7 +15,7 @@ LWaterTower::LWaterTower(int x, int y) : Enemy(x, y)
 	state.speed = 1.0f;
 	state.loop = false;
 
-	collider = App->collision->AddCollider({ 0, 0, 32, 16 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x, y, 32, 16 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 }
 

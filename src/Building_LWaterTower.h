@@ -15,6 +15,7 @@ public:
 
 	LWaterTower(int x, int y);
 
+	void Draw(SDL_Texture* sprites);
 };
 
 #endif // __BUILDING_LWATERTOWER__
