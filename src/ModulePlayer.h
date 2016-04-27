@@ -60,6 +60,8 @@ public:
 	Collider* cross_collider;
 	Collider* player_collider;
 	Collider* ground_collider;
+
+	bool hit = false;
 };
 
 #endif

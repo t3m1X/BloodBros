@@ -4,6 +4,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
+#include "ModulePlayer.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -144,7 +145,13 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
+<<<<<<< HEAD
 			AddParticle(bullet_collision, active[i]->position.x, active[i]->position.y);
+=======
+			//AddParticle(explosion, active[i]->position.x, active[i]->position.y);
+			if (App->player->player_collider == c2)
+				App->player->hit = true;
+>>>>>>> origin/master
 			delete active[i];
 			active[i] = nullptr;
 			break;
