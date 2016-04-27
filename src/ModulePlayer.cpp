@@ -241,10 +241,8 @@ update_status ModulePlayer::Update()
 	// Draw everything --------------------------------------
 	
 	App->render->Blit(crosstexture, cposition.x, cposition.y, &(cross.GetCurrentFrame()));
-	if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
-	{
+	if (firing)
 		App->render->Blit(crosstexture, cposition.x, cposition.y, &(fcross.GetCurrentFrame()));
-	}
 	App->render->Blit(player, position.x + xcorrection, position.y + ycorrection, &(current_animation->GetCurrentFrame()));
 
 	return UPDATE_CONTINUE;
