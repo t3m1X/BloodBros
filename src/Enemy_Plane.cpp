@@ -49,9 +49,9 @@ void Plane::Move()
 	}
 	else if (!has_shot)
 	{
-		App->particles->AddParticle(App->particles->bomb, position.x, position.y + (fly.frames[7].h - fly.frames[7].h/4));
-		App->particles->AddParticle(App->particles->bomb, position.x + fly.frames[7].w / 2, position.y + (fly.frames[7].h - fly.frames[7].h / 4));
-		App->particles->AddParticle(App->particles->bomb, position.x + fly.frames[7].w , position.y + (fly.frames[7].h - fly.frames[7].h / 4));
+		App->particles->AddParticle(App->particles->bomb, position.x, position.y + (fly.frames[7].h - fly.frames[7].h / 4), COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->bomb, position.x + fly.frames[7].w / 2, position.y + (fly.frames[7].h - fly.frames[7].h / 4), COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->bomb, position.x + fly.frames[7].w , position.y + (fly.frames[7].h - fly.frames[7].h / 4), COLLIDER_ENEMY_SHOT);
 		has_shot = true;
 	}
 

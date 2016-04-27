@@ -62,9 +62,9 @@ void GCowboy::Move()
 		position.y -=10;
 		animation = &shoot;
 		if (position.y <= 300)
-		App->particles->AddParticle(App->particles->shoot_right, position.x + shoot.frames[1].w/2, position.y + shoot.frames[1].h/2);
+			App->particles->AddParticle(App->particles->shoot_right, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
 		else
-		App->particles->AddParticle(App->particles->shoot_left, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2);
+			App->particles->AddParticle(App->particles->shoot_left, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
 		has_shot = true;
 	}
 	
