@@ -32,6 +32,10 @@ Plane::Plane(int x) : Enemy(x, 25)
 
 void Plane::Move()
 {
+	if (has_shot)
+	{
+		position.y -= 4;
+	}
 
 	if (position.x + fly.frames[fly.next_frame()].w / 2 < SCREEN_WIDTH / 2)
 	{
@@ -43,9 +47,12 @@ void Plane::Move()
 		position.x -= 1;
 		position.y += 0.5;
 	}
-	else
+	else if (!has_shot)
 	{
-		position.y -= 4;
+		App->particles->AddParticle(App->particles->bomb, position.x, position.y + (fly.frames[7].h - fly.frames[7].h/4));
+		App->particles->AddParticle(App->particles->bomb, position.x + fly.frames[7].w / 2, position.y + (fly.frames[7].h - fly.frames[7].h / 4));
+		App->particles->AddParticle(App->particles->bomb, position.x + fly.frames[7].w , position.y + (fly.frames[7].h - fly.frames[7].h / 4));
+		has_shot = true;
 	}
 
 }

@@ -38,6 +38,8 @@ bool ModuleParticles::Start()
 	bomb.anim.PushBack({ 544, 271, 30, 42 });
 	bomb.anim.PushBack({ 493, 268, 36, 48 });
 	bomb.anim.loop = false;
+	bomb.speed.y = 5;
+	bomb.speed.x = -1;
 	bomb.anim.speed = 0.3f;
 	bomb.life = 5000;
 
@@ -46,6 +48,20 @@ bool ModuleParticles::Start()
 	shoot.anim.speed = 0.3f;
 	shoot.speed.y = 5;
 	shoot.life = 2000;
+
+	shoot_right.anim.PushBack({ 832, 70, 20, 20 });
+	shoot_right.anim.PushBack({ 861, 70, 20, 20 });
+	shoot_right.anim.speed = 0.3f;
+	shoot_right.speed.y = 5;
+	shoot_right.speed.x = 5;
+	shoot_right.life = 2000;
+
+	shoot_left.anim.PushBack({ 832, 70, 20, 20 });
+	shoot_left.anim.PushBack({ 861, 70, 20, 20 });
+	shoot_left.anim.speed = 0.3f;
+	shoot_left.speed.y = 5;
+	shoot_left.speed.x = -5;
+	shoot_left.life = 2000;
 
 	return true;
 }

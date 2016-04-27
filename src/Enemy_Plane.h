@@ -14,6 +14,7 @@ private:
 public:
 
 	Plane(int x);
+	bool has_shot = false;
 
 	void Move();
 };
