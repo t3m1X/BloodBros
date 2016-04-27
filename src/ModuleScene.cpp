@@ -53,13 +53,15 @@ bool ModuleScene::Start()
 	
 	App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 300);
-	App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 360);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::B_INDIAN, SCREEN_WIDTH, 150);
 		
 	
 
 	App->player->Enable();
+
+	start_time = SDL_GetTicks();
+	second_enemy_time = start_time + 10000;
 	
 	return true;
 }
@@ -80,8 +82,15 @@ bool ModuleScene::CleanUp()
 // Update: draw background
 update_status ModuleScene::Update()
 {
-	// Draw everything --------------------------------------
+	current_time = SDL_GetTicks();
 
+	// Spawn enemies----------------------------------------
+	if (current_time >= second_enemy_time)
+	{
+		second_enemy_time = -1;
+		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 360);
+	}
+	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, 0 , &back, 1.0f);
 	App->render->Blit(background, 0, 60, &left_pipe, 1.0f);
 	App->render->Blit(background, SCREEN_WIDTH-right_pipe.w, 60, &right_pipe, 1.0f);
@@ -89,17 +98,6 @@ update_status ModuleScene::Update()
 	App->render->Blit(background, SCREEN_WIDTH / 2 - SCREEN_WIDTH /4, SCREEN_HEIGHT / 2 - cactus2.h - 10, &cactus2, 1.0f);   /// CACTUS 2
 	App->render->Blit(background, SCREEN_WIDTH - SCREEN_WIDTH / 3 - 35, SCREEN_HEIGHT / 2 - cactus2.h - 10, &cactus2, 1.0f); /// CACTUS 3
 	
-	/*current_time = SDL_GetTicks();
-	switch (current_time)
-	{
-	case 6000:App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80);
-
-	case 8000:App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 300);
-	case 10000:App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 360);
-
-	case 12000:App->enemies->AddEnemy(ENEMY_TYPES::B_INDIAN, SCREEN_WIDTH, 150);
-		//App->enemies->AddEnemy(ENEMY_TYPES::B_INDIAN, SCREEN_WIDTH, 200);
-	}*/
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{

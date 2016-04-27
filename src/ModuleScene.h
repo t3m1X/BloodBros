@@ -16,8 +16,6 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	Uint32 current_time = 0;
-
 public:
 
 	SDL_Texture* background = nullptr;
@@ -29,6 +27,10 @@ public:
 	Collider* c_cactus1;
 	Collider* c_cactus2;
 	Collider* c_cactus3;
+
+	Uint32 start_time;
+	Uint32 current_time;
+	Uint32 second_enemy_time;
 
 };
 
