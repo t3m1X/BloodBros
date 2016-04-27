@@ -53,10 +53,10 @@ ModulePlayer::ModulePlayer()
 
 	fcross.PushBack({ 11, 105, 69, 63 });
 	fcross.PushBack({ 107, 105, 69, 63 });
-	fcross.PushBack({ 11, 105, 69, 63 });
-	fcross.PushBack({ 107, 105, 69, 63 });
+	fcross.PushBack({ 11, 201, 69, 63 });
+	fcross.PushBack({ 107,201, 69, 63 });
 	fcross.PushBack({ 11, 17, 69, 63 });
-	fcross.PushBack({ 107, 17, 69, 63 });
+	fcross.PushBack({ 107, 105, 69, 63 });
 	fcross.loop = true;
 	fcross.speed = 0.2f;
 
