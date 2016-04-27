@@ -131,6 +131,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::PLANE:
 			enemies[i] = new Plane(info.x);
 			break;
+		case ENEMY_TYPES::G_COWBOY:
+			enemies[i] = new GCowboy(info.x, info.y);
+			break;
 		}
 	}
 }

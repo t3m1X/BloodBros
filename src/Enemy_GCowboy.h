@@ -14,6 +14,8 @@ private:
 	Animation dead;
 	p2Point<int> i_pos;
 	Path GCowboy_path;
+
+	bool has_shot = false;
 	
 
 

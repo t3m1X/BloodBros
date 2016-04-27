@@ -26,6 +26,7 @@ public:
 
 	virtual void Move() {};
 	virtual void Draw(SDL_Texture* sprites);
+
 };
 
 #endif // __ENEMY_H__

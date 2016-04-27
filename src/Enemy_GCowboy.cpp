@@ -27,20 +27,16 @@ GCowboy::GCowboy(int x, int y) : Enemy(x, y)
 	dead.PushBack({ 23, 910, 128, 28 });
 	dead.speed = 0.1f;
 
+	animation = &walk;
 
-	i_pos.x = x;
-	i_pos.y = y;
+	collider = App->collision->AddCollider({ 0, 0, 70, 70 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-
-	GCowboy_path.PushBack({ -1, 0 }, 50, &walk);
-	GCowboy_path.PushBack({ 0, 0 }, 50, &shoot);		//Walks, shoots and leaves; to improve
-	GCowboy_path.PushBack({ -1, 0 }, 50, &walk);
 
 }
 
 void GCowboy::Move()
 {
 
-	position = i_pos + GCowboy_path.GetCurrentSpeed(&animation);
+	
 
 }
