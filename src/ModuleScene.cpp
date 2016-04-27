@@ -43,8 +43,6 @@ bool ModuleScene::Start()
 	background = App->textures->Load("sprites/stage_4_3_Background.png");
 	App->audio->PlayMusic("sound/music/stage1_bg.wav");
 
-	c_left_pipe = App->collision->AddCollider({ SCREEN_WIDTH - left_pipe.w, 60, left_pipe.w, left_pipe.h }, COLLIDER_ENEMY);
-	c_right_pipe = App->collision->AddCollider({ 0, 60, right_pipe.w-100, right_pipe.h-10 }, COLLIDER_ENEMY);
 	c_cactus1 = App->collision->AddCollider({ SCREEN_WIDTH/2-cactus1.w, SCREEN_HEIGHT/2, cactus1.w, cactus1.h-cactus1.h/4}, COLLIDER_ENEMY);
 	c_cactus2 = App->collision->AddCollider({ SCREEN_WIDTH / 2 - SCREEN_WIDTH / 4, SCREEN_HEIGHT / 2 - cactus2.h - 10, cactus2.w, cactus2.h }, COLLIDER_ENEMY);
 	c_cactus3 = App->collision->AddCollider({ SCREEN_WIDTH - SCREEN_WIDTH / 3 - 35, SCREEN_HEIGHT / 2 - cactus2.h - 10, cactus2.w, cactus2.h }, COLLIDER_ENEMY);
