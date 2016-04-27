@@ -23,23 +23,22 @@ bool ModuleParticles::Start()
 	graphics = App->textures->Load("rtype/particles.png");
 
 	// Explosion particle
-	explosion.anim.PushBack({274, 296, 33, 30});
-	explosion.anim.PushBack({313, 296, 33, 30});
-	explosion.anim.PushBack({346, 296, 33, 30});
-	explosion.anim.PushBack({382, 296, 33, 30});
-	explosion.anim.PushBack({419, 296, 33, 30});
-	explosion.anim.PushBack({457, 296, 33, 30});
+	explosion.anim.PushBack({186, 338, 192, 192});
+	explosion.anim.PushBack({ 390, 338, 192, 192 });
+	explosion.anim.PushBack({ 593, 341, 192, 192 });
 	explosion.anim.loop = false;
 	explosion.anim.speed = 0.3f;
 
-	// TODO 2: Create the template for a new particle "laser"
-
-	laser.anim.PushBack({ 250, 105, 16, 8 });
-	laser.anim.PushBack({ 232, 106, 16, 13 });
-	laser.anim.loop = false;
-	laser.anim.speed = 0.3f;
-	laser.life = 1000;
-	
+	bomb.anim.PushBack({ 854, 283, 17, 21 });
+	bomb.anim.PushBack({ 808, 283, 15, 24 });
+	bomb.anim.PushBack({ 754, 280, 24, 30 });
+	bomb.anim.PushBack({ 700, 280, 33, 27 });
+	bomb.anim.PushBack({ 649, 280, 33, 27 });
+	bomb.anim.PushBack({ 595, 274, 36, 36 });
+	bomb.anim.PushBack({ 544, 271, 30, 42 });
+	bomb.anim.PushBack({ 493, 268, 36, 48 });
+	bomb.anim.loop = false;
+	bomb.anim.speed = 0.3f;
 
 	return true;
 }
