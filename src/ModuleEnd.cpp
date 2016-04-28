@@ -8,6 +8,7 @@
 #include "ModuleScene.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
+#include "ModuleIntro.h"
 
 
 ModuleEnd::ModuleEnd()
@@ -27,6 +28,7 @@ bool ModuleEnd::Start()
 
 	EndScreen = App->textures->Load("sprites/temporary_end_game.png");
 	//App->audio->PlayMusic("sound/music/startscreen.wav");
+	App->input->Enable();
 
 	return true;
 }
@@ -35,9 +37,8 @@ bool ModuleEnd::CleanUp()
 	LOG("Unloading endscreen");
 
 	App->textures->Unload(EndScreen);
-	App->player->Disable();
-	App->scene->Disable();
-	App->audio->StopMusic();
+	App->end->Disable();
+	App->input->Disable();
 
 
 	return true;
@@ -47,10 +48,10 @@ update_status ModuleEnd::Update()
 
 	App->render->Blit(EndScreen, 0, 0, &back, 1.0f);
 
-	/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, App->intro, 1.0f);
-	}*/
+	}
 
 	return UPDATE_CONTINUE;
 }

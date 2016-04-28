@@ -58,6 +58,8 @@ bool ModuleScene::Start()
 
 	App->player->Enable();
 	App->useri->Enable();
+	App->enemies->Enable();
+	App->input->Enable();
 
 	start_time = SDL_GetTicks();
 	next_enemy_time = start_time + 3000;
@@ -72,8 +74,11 @@ bool ModuleScene::CleanUp()
 
 	App->textures->Unload(background);
 	App->player->Disable();
+	App->input->Disable();
 	App->audio->StopMusic();
 	App->useri->Disable();
+	App->enemies->Disable();  
+	App->player->killcount = 0;
 
 	
 	return true;
@@ -105,8 +110,12 @@ update_status ModuleScene::Update()
 
 	}
 
-	if (App->useri->hitpoints == 0 || App->player->killcount == ENEMY_GAUGE)
+	if (App->player->killcount == ENEMY_GAUGE)
 		App->fade->FadeToBlack(this, App->end, 1.0f);
+	
+	if (App->useri->hitpoints == 0)
+		App->fade->FadeToBlack(this, App->intro, 1.0f);
+
 
 	
 	return UPDATE_CONTINUE;

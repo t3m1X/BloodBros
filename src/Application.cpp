@@ -52,6 +52,8 @@ bool Application::Init()
 	scene->Disable();
 	end->Disable();
 	useri->Disable();
+	enemies->Disable();
+	input->Disable();
 	// ---
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

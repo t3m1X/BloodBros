@@ -9,6 +9,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleEnd.h"
 #include "ModulePlayer.h"
+#include "ModuleUserI.h"
 
 
 ModuleIntro::ModuleIntro()
@@ -28,6 +29,8 @@ bool ModuleIntro::Start()
 
 	IntroScreen = App->textures->Load("sprites/intro_screen.png");
 	App->audio->PlayMusic("sound/music/startscreen.wav");
+	App->input->Enable();
+	App->useri->hitpoints = 3;
 	
 	return true;
 }
@@ -40,6 +43,7 @@ bool ModuleIntro::CleanUp()
 	App->player->Disable();
 	App->scene->Disable();
 	App->audio->StopMusic();
+	App->input->Disable();
 
 	return true;
 }
