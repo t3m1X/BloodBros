@@ -60,45 +60,45 @@ ModulePlayer::ModulePlayer()
 	fcross.PushBack({ 107, 105, 69, 63 });
 	fcross.loop = true;
 	fcross.speed = 0.2f;
+	
+	idle[FAR_LEFT].PushBack({ 0, 0, 144, 192 });
+	idle[LEFT].PushBack({ 144, 0, 144, 192 });
+	idle[LEFT_MIDDLE].PushBack({ 288, 0, 144, 192 });
+	idle[MIDDLE].PushBack({ 432, 0, 144, 192 });
+	idle[RIGHT_MIDDLE].PushBack({ 576, 0, 144, 192 });
+	idle[RIGHT].PushBack({ 720, 0, 144, 192 });
+	idle[FAR_RIGHT].PushBack({ 864, 0, 144, 192 });
 
-	idle[FAR_LEFT].PushBack({ 50, 21, 87, 180 });
-	idle[LEFT].PushBack({ 146, 20, 87, 180 });
-	idle[LEFT_MIDDLE].PushBack({ 248, 20, 87, 180 });
-	idle[MIDDLE].PushBack({ 359, 20, 68, 183 });
-	idle[RIGHT_MIDDLE].PushBack({ 455, 20, 87, 183 });
-	idle[RIGHT].PushBack({ 542, 20, 87, 183 });
-	idle[FAR_RIGHT].PushBack({ 629, 20, 93, 183 });
-
-	idle[FAR_LEFT_F].PushBack({ 6, 216, 129, 180 }); 
-	idle[FAR_LEFT_F].PushBack({ 6, 411, 129, 180 });
+	idle[FAR_LEFT_F].PushBack({ 0, 192, 144, 192 }); 
+	idle[FAR_LEFT_F].PushBack({ 0, 384, 144, 192 });
 	idle[FAR_LEFT_F].speed = 0.25f;
-	idle[LEFT_F].PushBack({ 138, 215, 114, 181 });
-	idle[LEFT_F].PushBack({ 138, 410, 114, 181 });
+	idle[LEFT_F].PushBack({ 144, 192, 144, 192 });
+	idle[LEFT_F].PushBack({ 144, 384, 144, 192 });
 	idle[LEFT_F].speed = 0.25f;
-	idle[LEFT_MIDDLE_F].PushBack({ 255, 206, 111, 189 });
-	idle[LEFT_MIDDLE_F].PushBack({ 255, 401, 111, 189 });
+	idle[LEFT_MIDDLE_F].PushBack({ 288, 192, 144, 192 });
+	idle[LEFT_MIDDLE_F].PushBack({ 288, 384, 144, 192 });
 	idle[LEFT_MIDDLE_F].speed = 0.25f;
-	idle[MIDDLE_F].PushBack({ 375, 203, 83, 195 });
-	idle[MIDDLE_F].PushBack({ 375, 398, 83, 195 });
+	idle[MIDDLE_F].PushBack({ 432, 192, 144, 192 });
+	idle[MIDDLE_F].PushBack({ 432, 384, 144, 192 });
 	idle[MIDDLE_F].speed = 0.25f;
-	idle[RIGHT_MIDDLE_F].PushBack({ 486, 203, 84, 195 });
-	idle[RIGHT_MIDDLE_F].PushBack({ 486, 398, 84, 195 });
+	idle[RIGHT_MIDDLE_F].PushBack({ 576, 192, 144, 192 });
+	idle[RIGHT_MIDDLE_F].PushBack({ 576, 384, 144, 192 });
 	idle[RIGHT_MIDDLE_F].speed = 0.25f;
-	idle[RIGHT_F].PushBack({ 573, 215, 102, 183 });
-	idle[RIGHT_F].PushBack({ 573, 410, 102, 183 });
+	idle[RIGHT_F].PushBack({ 720, 192, 144, 192 });
+	idle[RIGHT_F].PushBack({ 720, 384, 144, 192 });
 	idle[RIGHT_F].speed = 0.25f;
-	idle[FAR_RIGHT_F].PushBack({ 684, 215, 135, 183 });
-	idle[FAR_RIGHT_F].PushBack({ 684, 410, 135, 183 });
+	idle[FAR_RIGHT_F].PushBack({ 864, 192, 144, 192 });
+	idle[FAR_RIGHT_F].PushBack({ 864, 384, 144, 192 });
 	idle[FAR_RIGHT_F].speed = 0.25f;
 	
 
-	down[FAR_LEFT].PushBack({ 935, 20, 96, 135 });
-	down[LEFT].PushBack({ 1034, 20, 84, 135 });
-	down[LEFT_MIDDLE].PushBack({ 1136, 20, 84, 135 });
-	down[MIDDLE].PushBack({ 1229, 20, 83, 135 });
-	down[RIGHT_MIDDLE].PushBack({ 1331, 20, 83, 135 });
-	down[RIGHT].PushBack({ 1421, 20, 90, 135 });
-	down[FAR_RIGHT].PushBack({ 1511, 20, 96, 135 });
+	down[FAR_LEFT].PushBack({ 0, 576, 144, 192 });
+	down[LEFT].PushBack({ 144, 576, 144, 192 });
+	down[LEFT_MIDDLE].PushBack({ 288, 576, 144, 192 });
+	down[MIDDLE].PushBack({ 432, 576, 144, 192 });
+	down[RIGHT_MIDDLE].PushBack({ 576, 576, 144, 192 });
+	down[RIGHT].PushBack({ 720, 576, 144, 192 });
+	down[FAR_RIGHT].PushBack({ 864, 576, 144, 192 });
 
 	down[FAR_LEFT_F].PushBack({ 893, 173, 138, 132 });
 	down[FAR_LEFT_F].PushBack({ 893, 336, 138, 132 });
@@ -128,14 +128,14 @@ ModulePlayer::ModulePlayer()
 	down[FAR_RIGHT_F].PushBack({ 1603, 336, 141, 135});
 	down[FAR_RIGHT_F].speed = 0.25f;
 
-	walk_right.PushBack({ 24, 602, 102, 180 });
-	walk_right.PushBack({ 128, 602, 96, 177 });
-	walk_right.PushBack({ 233, 600, 120, 180 });
+	walk_right.PushBack({ 0, 1152, 144, 192 });
+	walk_right.PushBack({ 144, 11524, 144, 192 });
+	walk_right.PushBack({ 288, 1152, 144, 192 });
 	walk_right.speed = 0.2f;
 
-	walk_left.PushBack({ 612, 600, 102, 180 });
-	walk_left.PushBack({ 514, 602, 96, 177 });
-	walk_left.PushBack({ 385, 600, 120, 180 });
+	walk_left.PushBack({ 864, 1152, 144, 192 });
+	walk_left.PushBack({ 720, 1152, 144, 192 });
+	walk_left.PushBack({ 576, 1152, 144, 192 });
 	walk_left.speed = 0.2f;
 
 	roll_right.PushBack({ 937, 509, 96, 159 });
@@ -148,10 +148,10 @@ ModulePlayer::ModulePlayer()
 	roll_right.PushBack({ 1362, 677, 96, 144 });
 	roll_right.speed = 0.2f;
 
-	dead.PushBack({ 33, 822, 84, 156 });
-	dead.PushBack({ 162, 822, 99, 156});
-	dead.PushBack({ 282, 823, 123, 156});
-	dead.PushBack({ 417, 823, 153, 156 });
+	dead.PushBack({ 0, 2112, 192, 192 });
+	dead.PushBack({ 192, 2112, 192, 192 });
+	dead.PushBack({ 384, 2112, 192, 192 });
+	dead.PushBack({ 576, 2112, 192, 192 });
 	dead.loop = true;
 	dead.speed = 0.1;
 }
@@ -164,7 +164,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 
-	player = App->textures->Load("sprites/p1_sprites.png");
+	player = App->textures->Load("sprites/p1_sprites-rearranged.png");
 	crosstexture = App->textures->Load("sprites/aims.png"); 
 	shoot = App->audio->LoadSFX("sound/soundfx/shoot.wav");
 	cross_collider = App->collision->AddCollider({ SCREEN_WIDTH/2, SCREEN_HEIGHT, 69, 63 }, COLLIDER_PLAYER_SHOT);
