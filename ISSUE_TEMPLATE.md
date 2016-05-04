@@ -1,3 +1,5 @@
+### Bug class (A, B, C)
+
 ### Expected behaviour
 
 ### Actual behaviour
