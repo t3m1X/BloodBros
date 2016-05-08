@@ -9,6 +9,7 @@
 #include "ModuleCollision.h"
 #include "ModuleUserI.h"
 
+#define TILE 48
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 int const ModulePlayer::portion_calculate()
@@ -138,15 +139,25 @@ ModulePlayer::ModulePlayer()
 	walk_left.PushBack({ 576, 1152, 144, 192 });
 	walk_left.speed = 0.2f;
 
-	roll_right.PushBack({ 937, 509, 96, 159 });
-	roll_right.PushBack({ 1035, 482, 114, 186 });
-	roll_right.PushBack({ 1070, 572, 192, 96 });
-	roll_right.PushBack({ 1362, 512, 96, 156 });
-	roll_right.PushBack({ 939, 740, 129, 81 });
-	roll_right.PushBack({ 1072, 725, 129, 81 });
-	roll_right.PushBack({ 1218, 728, 144, 96 });
-	roll_right.PushBack({ 1362, 677, 96, 144 });
+	roll_right.PushBack({ 0, 1344, 240, 192 });
+	roll_right.PushBack({ 240, 1344, 240, 192 });
+	roll_right.PushBack({ 480, 1344, 240, 192 });
+	roll_right.PushBack({ 720, 1344, 240, 192 });
+	roll_right.PushBack({ 0, 1536, 240, 192 });
+	roll_right.PushBack({ 240, 1536, 240, 192 });
+	roll_right.PushBack({ 480, 1536, 240, 192 });
+	roll_right.PushBack({ 720, 1536, 240, 192 });
 	roll_right.speed = 0.2f;
+
+	roll_left.PushBack({ 0, 1728, 240, 192 });
+	roll_left.PushBack({ 240, 1728, 240, 192 });
+	roll_left.PushBack({ 480, 1728, 240, 192 });
+	roll_left.PushBack({ 720, 1728, 240, 192 });
+	roll_left.PushBack({ 0, 1920, 240, 192 });
+	roll_left.PushBack({ 240, 1920, 240, 192 });
+	roll_left.PushBack({ 480, 1920, 240, 192 });
+	roll_left.PushBack({ 720, 1920, 240, 192 });
+	roll_left.speed = 0.2f;
 
 	dead.PushBack({ 0, 2112, 192, 192 });
 	dead.PushBack({ 192, 2112, 192, 192 });
@@ -168,7 +179,7 @@ bool ModulePlayer::Start()
 	crosstexture = App->textures->Load("sprites/aims.png"); 
 	shoot = App->audio->LoadSFX("sound/soundfx/shoot.wav");
 	cross_collider = App->collision->AddCollider({ SCREEN_WIDTH/2, SCREEN_HEIGHT, 69, 63 }, COLLIDER_PLAYER_SHOT);
-	player_collider = App->collision->AddCollider({ (SCREEN_WIDTH - 87) / 2, SCREEN_HEIGHT / 2 + 117, 80, 175 }, COLLIDER_PLAYER); // temporary resolution; 
+	player_collider = App->collision->AddCollider({ (SCREEN_WIDTH - 87) / 2, SCREEN_HEIGHT / 2 + 117, TILE, (TILE*4)-8 }, COLLIDER_PLAYER); 
 	ground_collider = App->collision->AddCollider({ 0, SCREEN_HEIGHT - 50, SCREEN_WIDTH, 50 }, COLLIDER_PLAYER_SHOT);
 	
 
@@ -202,7 +213,7 @@ update_status ModulePlayer::Update()
 	position.y = SCREEN_HEIGHT / 2 + 117;
 	int screen_portion = portion_calculate();
 	cross_collider->SetPos(SCREEN_WIDTH / 2, SCREEN_HEIGHT);
-	player_collider->SetPos(position.x, position.y);
+	player_collider->SetPos(position.x+TILE, position.y+8);
 
 	if (!hit)
 	{

@@ -14,49 +14,49 @@ ModuleParticles::ModuleParticles()
 		active[i] = nullptr;
 
 	// Explosion particle
-	explosion.anim.PushBack({ 186, 338, 192, 192 });
-	explosion.anim.PushBack({ 390, 338, 192, 192 });
-	explosion.anim.PushBack({ 593, 341, 192, 192 });
+	explosion.anim.PushBack({ 0, 96, 144, 144 });
+	explosion.anim.PushBack({ 144, 96, 144, 144 });
+	explosion.anim.PushBack({ 288, 96, 144, 144 });
 	explosion.anim.loop = false;
 	explosion.anim.speed = 0.3f;
 
-	bomb.anim.PushBack({ 854, 283, 17, 21 });
-	bomb.anim.PushBack({ 808, 283, 15, 24 });
-	bomb.anim.PushBack({ 754, 280, 24, 30 });
-	bomb.anim.PushBack({ 700, 280, 33, 27 });
-	bomb.anim.PushBack({ 649, 280, 33, 27 });
-	bomb.anim.PushBack({ 595, 274, 36, 36 });
-	bomb.anim.PushBack({ 544, 271, 30, 42 });
-	bomb.anim.PushBack({ 493, 268, 36, 48 });
+	bomb.anim.PushBack({ 720, 240, 48, 48 });
+	bomb.anim.PushBack({ 672, 240, 48, 48 });
+	bomb.anim.PushBack({ 624, 240, 48, 48 });
+	bomb.anim.PushBack({ 576, 240, 48, 48 });
+	bomb.anim.PushBack({ 528, 240, 48, 48 });
+	bomb.anim.PushBack({ 480, 240, 48, 48 });
+	bomb.anim.PushBack({ 432, 240, 48, 48 });
+	bomb.anim.PushBack({ 384, 240, 48, 48 });
 	bomb.anim.loop = false;
 	bomb.speed.y = 5;
 	bomb.speed.x = -1;
 	bomb.anim.speed = 0.3f;
 	bomb.life = 5000;
 
-	shoot.anim.PushBack({ 832, 70, 20, 20 });
-	shoot.anim.PushBack({ 861, 70, 20, 20 });
+	shoot.anim.PushBack({ 768, 0, 48, 48 });
+	shoot.anim.PushBack({ 816, 0, 48, 48 });
 	shoot.anim.speed = 0.3f;
 	shoot.speed.y = 5;
 	shoot.life = 2000;
 
-	shoot_right.anim.PushBack({ 832, 70, 20, 20 });
-	shoot_right.anim.PushBack({ 861, 70, 20, 20 });
+	shoot_right.anim.PushBack({ 768, 0, 48, 48 });
+	shoot_right.anim.PushBack({ 816, 0, 48, 48 });
 	shoot_right.anim.speed = 0.3f;
 	shoot_right.speed.y = 5;
 	shoot_right.speed.x = 5;
 	shoot_right.life = 2000;
 
-	shoot_left.anim.PushBack({ 832, 70, 20, 20 });
-	shoot_left.anim.PushBack({ 861, 70, 20, 20 });
+	shoot_left.anim.PushBack({ 768, 0, 48, 48 });
+	shoot_left.anim.PushBack({ 816, 0, 48, 48 });
 	shoot_left.anim.speed = 0.3f;
 	shoot_left.speed.y = 5;
 	shoot_left.speed.x = -5;
 	shoot_left.life = 2000;
 
-	bullet_collision.anim.PushBack({24,54,54,42});
-	bullet_collision.anim.PushBack({ 117, 48, 78, 48 });
-	bullet_collision.anim.PushBack({ 205, 21, 90, 75 });
+	bullet_collision.anim.PushBack({ 0, 0, 96, 96 });
+	bullet_collision.anim.PushBack({ 96, 0, 96, 96 });
+	bullet_collision.anim.PushBack({ 192, 0, 96, 96 });
 	bullet_collision.anim.loop = false;
 	bullet_collision.anim.speed = 0.3f;
 }

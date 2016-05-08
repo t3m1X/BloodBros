@@ -2,6 +2,11 @@
 
 Project I's repository for the "Undead Renegades" team to re-create the arcade game "Blood Bros".
 
+### Controls
+
+The goal of the game is to anihilate enemies until you fill a FOE meter. 
+
+Move the player with WASD and shoot with CTRL. Rolling not implemented yet.
 
 ## Changelog
 
@@ -49,8 +54,7 @@ Please set the debugging folder to "../data" and include source files into /src 
 
 ## Credits
 
-All work done in this repository is by the "Undead Renegades" team and its members:
-
+All work in this repository has been done by the following members of "Undead Renegades":
 
 Iván Papiol
 

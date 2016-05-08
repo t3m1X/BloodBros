@@ -44,10 +44,10 @@ bool ModuleScene::Start()
 	background = App->textures->Load("sprites/stage_4_3_Background.png");
 	App->audio->PlayMusic("sound/music/stage1_bg.wav");
 
-	
+	/*
 	c_cactus2 = App->collision->AddCollider({ SCREEN_WIDTH / 2 - SCREEN_WIDTH / 4, SCREEN_HEIGHT / 2 - cactus2.h - 10, cactus2.w, cactus2.h }, COLLIDER_ENEMY);
 	c_cactus3 = App->collision->AddCollider({ SCREEN_WIDTH - SCREEN_WIDTH / 3 - 35, SCREEN_HEIGHT / 2 - cactus2.h - 10, cactus2.w, cactus2.h }, COLLIDER_ENEMY);
-	
+	*/
 	App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::L_WATERTOWER, 0, 0);
