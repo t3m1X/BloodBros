@@ -153,6 +153,35 @@ ModulePlayer::ModulePlayer()
 	roll_left.PushBack({ 720, 1920, 240, 192 });
 	roll_left.speed = 0.2f;
 
+	dance.PushBack({ 0, 2304, 96, 192 });
+	dance.PushBack({ 96, 2304, 96, 192 });
+	dance.PushBack({ 0, 2304, 96, 192 });
+	dance.PushBack({ 96, 2304, 96, 192 });
+	dance.PushBack({ 0, 2304, 96, 192 });
+	dance.PushBack({ 96, 2304, 96, 192 });
+	dance.PushBack({ 0, 2304, 96, 192 });
+	dance.PushBack({ 96, 2304, 96, 192 });
+	dance.PushBack({ 0, 2304, 96, 192 });
+	dance.PushBack({ 96, 2304, 96, 192 });			//first part of the dance
+	dance.PushBack({ 192, 2352, 48, 144 });
+	dance.PushBack({ 240, 2352, 48, 144 });
+	dance.PushBack({ 192, 2352, 48, 144 });
+	dance.PushBack({ 240, 2352, 48, 144 });			//second part
+	dance.PushBack({ 288, 2400, 48, 96 });
+	dance.PushBack({ 336, 2400, 48, 96 });
+	dance.PushBack({ 288, 2400, 48, 96 });
+	dance.PushBack({ 336, 2400, 48, 96 });			//third
+	dance.PushBack({ 384, 2400, 48, 48 });
+	dance.PushBack({ 432, 2400, 48, 48 });
+	dance.PushBack({ 384, 2400, 48, 48 });
+	dance.PushBack({ 432, 2400, 48, 48 });			//fourth
+	dance.PushBack({ 480, 2400, 48, 48 });
+	dance.PushBack({ 528, 2400, 48, 48 });
+	dance.PushBack({ 480, 2400, 48, 48 });
+	dance.PushBack({ 528, 2400, 48, 48 });			//end
+
+
+
 	dead.PushBack({ 0, 2112, 192, 192 });
 	dead.PushBack({ 192, 2112, 192, 192 });
 	dead.PushBack({ 384, 2112, 192, 192 });
