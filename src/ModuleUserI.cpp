@@ -48,9 +48,9 @@ update_status ModuleUserI::Update()
 {
 	if (hitpoints >= 2)
 	{
-		App->render->Blit(UserInterface, 0, SCREEN_HEIGHT - 48, &(life_ball.GetCurrentFrame()));
+		App->render->Blit(UserInterface, 0, SCREEN_HEIGHT - 72, &(life_ball.GetCurrentFrame()));
 		if (hitpoints == 3)
-			App->render->Blit(UserInterface,24, SCREEN_HEIGHT - 48, &(life_ball.GetCurrentFrame()));
+			App->render->Blit(UserInterface, 40 , SCREEN_HEIGHT - 72, &(life_ball.GetCurrentFrame()));
 	}
 	/*
 	App->render->Blit(UserInterface, SCREEN_WIDTH - SCREEN_WIDTH/3, SCREEN_HEIGHT - 25, &(insert_coins.GetCurrentFrame()));
