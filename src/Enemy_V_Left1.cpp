@@ -1,5 +1,5 @@
 #include "Application.h"
-#include "Enemy_V_Right1.h"
+#include "Enemy_V_Left1.h"
 #include "Path.h"
 #include "ModuleCollision.h"
 #include "p2Point.h"
@@ -11,7 +11,7 @@
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
 
-Enemy_V_Right1::Enemy_V_Right1(int x, int y) : Enemy(x, y)
+Enemy_V_Left1::Enemy_V_Left1(int x, int y) : Enemy(x, y)
 {
 
 	appear.PushBack({ 1218, 2256, 48, 96 });
@@ -21,12 +21,12 @@ Enemy_V_Right1::Enemy_V_Right1(int x, int y) : Enemy(x, y)
 	appear.loop = false;
 	appear.speed = 2.0f;
 
-	walk.PushBack({ 864, 2592, 96, 96 });
-	walk.PushBack({ 960, 2592, 96, 96 });
-	walk.PushBack({ 1056, 2592, 96, 96 });
-	walk.PushBack({ 1152, 2592, 96, 96 });
-	walk.PushBack({ 1248, 2592, 96, 96 });
-	walk.PushBack({ 1344, 2592, 96, 96 });
+	walk.PushBack({ 864, 2496, 96, 96 });
+	walk.PushBack({ 960, 2496, 96, 96 });
+	walk.PushBack({ 1056, 2496, 96, 96 });
+	walk.PushBack({ 1152, 2496, 96, 96 });
+	walk.PushBack({ 1248, 2496, 96, 96 });
+	walk.PushBack({ 1344, 2496, 96, 96 });
 	walk.speed = 0.2f;
 
 	dead.PushBack({ 1344, 2496, 96, 96 });
@@ -43,7 +43,7 @@ Enemy_V_Right1::Enemy_V_Right1(int x, int y) : Enemy(x, y)
 
 }
 
-void Enemy_V_Right1::Move()
+void Enemy_V_Left1::Move()
 {
 	if (appear.Finished())
 	{

@@ -11,6 +11,7 @@
 #include "Enemy_Dancer.h"
 #include "Building_LWaterTower.h"
 #include "Building_RWaterTower.h"
+#include "Enemy_V_Right1.h"
 #include "ModulePlayer.h"
 
 
@@ -189,6 +190,8 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::R_WATERTOWER:
 			*newenemy = new RWaterTower(info.x, info.y);
+		case ENEMY_TYPES::V_FORMATION_R1:
+			*newenemy = new Enemy_V_Right1(info.x, info.y);
 		}
 	}
 }
