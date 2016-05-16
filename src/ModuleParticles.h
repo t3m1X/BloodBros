@@ -52,6 +52,7 @@ public:
 
 	Particle explosion;
 	Particle bomb;
+	Particle bomb2;
 	Particle shoot;
 	Particle shoot_right;
 	Particle shoot_left;

@@ -20,19 +20,28 @@ ModuleParticles::ModuleParticles()
 	explosion.anim.loop = false;
 	explosion.anim.speed = 0.3f;
 
-	bomb.anim.PushBack({ 720, 240, 48, 48 });
-	bomb.anim.PushBack({ 672, 240, 48, 48 });
-	bomb.anim.PushBack({ 624, 240, 48, 48 });
-	bomb.anim.PushBack({ 576, 240, 48, 48 });
-	bomb.anim.PushBack({ 528, 240, 48, 48 });
-	bomb.anim.PushBack({ 480, 240, 48, 48 });
-	bomb.anim.PushBack({ 432, 240, 48, 48 });
-	bomb.anim.PushBack({ 384, 240, 48, 48 });
+	bomb.anim.PushBack({ 576, 96, 48, 48 });
+	bomb.anim.PushBack({ 624, 96, 48, 48 });
+	bomb.anim.PushBack({ 672, 96, 48, 48 });
+	bomb.anim.PushBack({ 720, 96, 48, 48 });
+	bomb.anim.PushBack({ 768, 96, 48, 48 });
 	bomb.anim.loop = false;
 	bomb.speed.y = 5;
 	bomb.speed.x = -1;
 	bomb.anim.speed = 0.3f;
 	bomb.life = 5000;
+
+	bomb2.anim.PushBack({ 720, 240, 48, 48 });
+	bomb2.anim.PushBack({ 672, 240, 48, 48 });
+	bomb2.anim.PushBack({ 624, 240, 48, 48 });
+	bomb2.anim.PushBack({ 576, 240, 48, 48 });
+	bomb2.anim.PushBack({ 528, 240, 48, 48 });
+	bomb2.anim.PushBack({ 480, 240, 48, 48 });
+	bomb2.anim.PushBack({ 432, 240, 48, 48 });
+	bomb2.anim.PushBack({ 384, 240, 48, 48 });
+	bomb2.anim.loop = false;
+	bomb2.anim.speed = 0.3f;
+	bomb2.life = 5000;
 
 	shoot.anim.PushBack({ 768, 0, 48, 48 });
 	shoot.anim.PushBack({ 816, 0, 48, 48 });
