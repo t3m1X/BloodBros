@@ -10,6 +10,7 @@ class LWaterTower : public Enemy
 private:
 
 	Animation state;
+	Animation dead_state;
 	Uint32 this_call;
 	Uint32 next_call = 0;
 

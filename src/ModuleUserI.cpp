@@ -16,7 +16,7 @@ ModuleUserI::ModuleUserI()
 	insert_coins.loop = true;
 	insert_coins.speed = 0.1f;
 
-	life_ball.PushBack({ 60, 195, 18, 18 });
+	life_ball.PushBack({ 0, 288, 48, 48 });
 
 	credits.x = 5;
 	credits.y = 3;
@@ -31,7 +31,7 @@ bool ModuleUserI::Start()
 {
 	LOG("Loading intro");
 
-	UserInterface = App->textures->Load("sprites/UI_player.png");
+	UserInterface = App->textures->Load("sprites/ui-rearranged.png");
 
 	return true;
 }
@@ -48,9 +48,9 @@ update_status ModuleUserI::Update()
 {
 	if (hitpoints >= 2)
 	{
-		App->render->Blit(UserInterface, 0, SCREEN_HEIGHT - 50, &(life_ball.GetCurrentFrame()));
+		App->render->Blit(UserInterface, 0, SCREEN_HEIGHT - 48, &(life_ball.GetCurrentFrame()));
 		if (hitpoints == 3)
-			App->render->Blit(UserInterface, 18, SCREEN_HEIGHT - 50, &(life_ball.GetCurrentFrame()));
+			App->render->Blit(UserInterface,24, SCREEN_HEIGHT - 48, &(life_ball.GetCurrentFrame()));
 	}
 	/*
 	App->render->Blit(UserInterface, SCREEN_WIDTH - SCREEN_WIDTH/3, SCREEN_HEIGHT - 25, &(insert_coins.GetCurrentFrame()));

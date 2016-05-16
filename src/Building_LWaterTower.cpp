@@ -14,10 +14,11 @@ LWaterTower::LWaterTower(int x, int y) : Enemy(x, y)
 	state.PushBack({ 1120, 64, 200, 448 });
 	state.PushBack({ 1120, 533, 200, 448 });
 	state.PushBack({ 1120, 1015, 200, 448 });
-	state.PushBack({ 1120, 1507, 200, 448 });
-
 	state.speed = 1.0f;
 	state.loop = false;
+
+	
+
 
 	collider = App->collision->AddCollider({ x, y, 200, 448 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -36,12 +37,13 @@ void LWaterTower::Collision()
 
 	if (this_call > next_call)
 	{
-		next_call = this_call + 1000;
+		next_call = this_call + 500;
 		if (state.Finished())
 		{
-			App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-			isDead = true;
+			App->particles->AddParticle(App->particles->dust, position.x-144 , position.y+448-120 );
+			isDead = true; 
 		}
+		
 		else
 			state.GetCurrentFrame();
 	}

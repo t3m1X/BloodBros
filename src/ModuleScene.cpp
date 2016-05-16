@@ -48,7 +48,6 @@ bool ModuleScene::Start()
 	c_cactus2 = App->collision->AddCollider({ SCREEN_WIDTH / 2 - SCREEN_WIDTH / 4, SCREEN_HEIGHT / 2 - cactus2.h - 10, cactus2.w, cactus2.h }, COLLIDER_ENEMY);
 	c_cactus3 = App->collision->AddCollider({ SCREEN_WIDTH - SCREEN_WIDTH / 3 - 35, SCREEN_HEIGHT / 2 - cactus2.h - 10, cactus2.w, cactus2.h }, COLLIDER_ENEMY);
 	*/
-	App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::L_WATERTOWER, 0, 0);
 	App->enemies->AddEnemy(ENEMY_TYPES::R_WATERTOWER, SCREEN_WIDTH-255, 0);
@@ -62,7 +61,10 @@ bool ModuleScene::Start()
 	App->input->Enable();
 
 	start_time = SDL_GetTicks();
-	next_enemy_time = start_time + 3000;
+	first_wave_time = start_time + 3000;
+	second_wave_time = start_time + 10000;
+	//third_wave_time = start_time + 1000;
+	//fourth_wave_time = start_time + 20000;
 	
 	return true;
 }
@@ -89,12 +91,35 @@ update_status ModuleScene::Update()
 {
 	current_time = SDL_GetTicks();
 
-	// Spawn enemies----------------------------------------
-	if (current_time >= next_enemy_time)
+	// Enemy waves----------------------------------------
+	if (current_time >= first_wave_time)
 	{
-		next_enemy_time = current_time + 5000;
+		first_wave_time = current_time + 5000;
 		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 300, false);
+
 	}
+	if (current_time >= second_wave_time)
+	{
+		second_wave_time = current_time + 20000;
+		App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80);
+
+	}
+	/*if (current_time >= third_wave_time)
+	{
+		first_wave_time = current_time + 25000;
+		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 300, false);
+		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH-300, 300, false);
+		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH-600, 300, false);
+		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH - 800, 300, false);
+		
+	}
+	/*if (current_time >= fourth_wave_time)
+	{
+		first_wave_time = current_time + 5000;
+		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 300, false);
+
+	}*/
+
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, 0 , &back, 1.0f);
 	App->render->Blit(background, 0, 60, &left_pipe, 1.0f);

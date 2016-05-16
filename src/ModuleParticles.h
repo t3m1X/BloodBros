@@ -56,6 +56,8 @@ public:
 	Particle shoot_right;
 	Particle shoot_left;
 	Particle bullet_collision;
+	Particle dust;
+	Particle end_dust;
 };
 
 #endif // __MODULEPARTICLES_H__

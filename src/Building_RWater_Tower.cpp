@@ -40,7 +40,7 @@ void RWaterTower::Collision()
 		next_call = this_call + 1000;
 		if (state.Finished())
 		{
-			App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+			App->particles->AddParticle(App->particles->dust, position.x, position.y + 448 - 120);
 			isDead = true;
 		}
 		else

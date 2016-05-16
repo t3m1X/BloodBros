@@ -59,6 +59,17 @@ ModuleParticles::ModuleParticles()
 	bullet_collision.anim.PushBack({ 192, 0, 96, 96 });
 	bullet_collision.anim.loop = false;
 	bullet_collision.anim.speed = 0.3f;
+
+	dust.anim.PushBack({ 0, 480, 336, 144 });
+	dust.anim.PushBack({ 336, 480, 336, 144 });
+	dust.life = 20000;
+	dust.anim.speed = 0.3f;
+
+	end_dust.anim.PushBack({ 0, 624, 336, 144 });
+	end_dust.anim.PushBack({ 336, 624, 336, 144 });
+	end_dust.anim.PushBack({ 672, 624, 336, 144 });
+	end_dust.anim.loop = false;
+	end_dust.anim.speed = 0.3f;
 }
 
 ModuleParticles::~ModuleParticles()
@@ -156,9 +167,6 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 }
-
-// -------------------------------------------------------------
-// -------------------------------------------------------------
 
 Particle::Particle()
 {
