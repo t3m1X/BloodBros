@@ -81,9 +81,11 @@
     <ClInclude Include="Enemy_Dancer.h" />
     <ClInclude Include="Enemy_GCowboy.h" />
     <ClInclude Include="Enemy_Plane.h" />
+    <ClInclude Include="Enemy_V_Left1.h" />
     <ClInclude Include="Enemy_V_Right1.h" />
     <ClInclude Include="Enemy_V_Right2.h" />
     <ClInclude Include="Enemy_V_Right3.h" />
+    <ClInclude Include="Enemy_Wagon.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
@@ -114,9 +116,11 @@
     <ClCompile Include="Enemy_Dancer.cpp" />
     <ClCompile Include="Enemy_GCowboy.cpp" />
     <ClCompile Include="Enemy_Plane.cpp" />
+    <ClCompile Include="Enemy_V_Left1.cpp" />
     <ClCompile Include="Enemy_V_Right1.cpp" />
     <ClCompile Include="Enemy_V_Right2.cpp" />
     <ClCompile Include="Enemy_V_Right3.cpp" />
+    <ClCompile Include="Enemy_Wagon.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />

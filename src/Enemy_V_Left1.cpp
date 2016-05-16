@@ -48,6 +48,6 @@ void Enemy_V_Left1::Move()
 	if (appear.Finished())
 	{
 		animation = &walk;
-		position.x += 3;
+		position.x -= 3;
 	}
 }
