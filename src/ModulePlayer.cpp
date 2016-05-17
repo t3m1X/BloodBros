@@ -141,6 +141,7 @@ ModulePlayer::ModulePlayer()
 	roll_right.PushBack({ 480, 1536, 240, 192 });
 	roll_right.PushBack({ 720, 1536, 240, 192 });
 	roll_right.speed = 0.2f;
+	roll_right.loop = false;
 
 	roll_left.PushBack({ 0, 1728, 240, 192 });
 	roll_left.PushBack({ 240, 1728, 240, 192 });
@@ -151,6 +152,7 @@ ModulePlayer::ModulePlayer()
 	roll_left.PushBack({ 480, 1920, 240, 192 });
 	roll_left.PushBack({ 720, 1920, 240, 192 });
 	roll_left.speed = 0.2f;
+	roll_left.loop = false;
 
 	/*dance.PushBack({ 0, 2304, 96, 192 });
 	dance.PushBack({ 96, 2304, 96, 192 });
@@ -190,7 +192,7 @@ ModulePlayer::ModulePlayer()
 	dead.PushBack({ 576, 2112, 192, 192 });
 	dead.PushBack({ 576, 2112, 192, 192 });
 	dead.PushBack({ 576, 2112, 192, 192 });
-	dead.loop = true;
+	dead.loop = false;
 	dead.speed = 0.1;
 }
 
@@ -242,6 +244,8 @@ update_status ModulePlayer::Update()
 	int screen_portion = portion_calculate();
 	cross_collider->SetPos(SCREEN_WIDTH / 2, SCREEN_HEIGHT);
 	player_collider->SetPos(position.x+TILE, position.y+8);
+	if (godmode)
+		hit = false;
 
 
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
@@ -250,6 +254,9 @@ update_status ModulePlayer::Update()
 			cposition.y -= speed * 2;
 
 	}
+	
+	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
+		godmode = !godmode;
 
 	switch (state)
 	{
@@ -514,8 +521,6 @@ update_status ModulePlayer::Update()
 			dead.Reset();
 		}
 	}*/
-
-	// The rolling animation needs to be done inside a separate function, thus avoiding the player from moving and receiving damage
 
 	// Draw everything --------------------------------------
 	

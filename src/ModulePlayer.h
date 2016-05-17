@@ -76,6 +76,7 @@ public:
 	Collider* player_collider;
 	Collider* ground_collider;
 	player_states state;
+	bool godmode = false;
 
 	Uint32 killcount = 0;
 
