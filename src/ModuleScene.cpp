@@ -16,8 +16,6 @@
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
-#define ENEMY_GAUGE 10
-
 ModuleScene::ModuleScene()
 {
 	// Back
@@ -133,16 +131,16 @@ if (current_time >= third_wave_time)
 
 	}
 
-	if (App->player->killcount == ENEMY_GAUGE)
+	if (App->useri->killcount == ENEMY_GAUGE)
 		App->fade->FadeToBlack(this, App->end, 1.0f);
 	
 	if (App->useri->hitpoints == 0)
 	{
-		if (App->useri->credits == 0)
+		if (App->useri->credit == 0)
 			App->fade->FadeToBlack(this, App->intro, 1.0f);
 		else
 		{
-			App->useri->credits--;
+			App->useri->credit--;
 			App->useri->hitpoints = 3;
 		}
 	}

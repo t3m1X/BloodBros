@@ -4,6 +4,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
+#include "ModuleUserI.h"
 #include "Enemy.h"
 #include "Enemy_GCowboy.h"
 #include "Enemy_BIndian.h"
@@ -231,7 +232,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			b_enemies[i]->Collision();
 			if (b_enemies[i]->isDead)
 			{
-				App->player->killcount += 1;
+				App->useri->killcount += 1;
 				delete b_enemies[i];
 				b_enemies[i] = nullptr;
 			}
