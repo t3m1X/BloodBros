@@ -28,8 +28,8 @@ Application::Application()
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = scene = new ModuleScene();
 	modules[i++] = enemies = new ModuleEnemies();
-	modules[i++] = player = new ModulePlayer();
 	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = player = new ModulePlayer();
 	modules[i++] = intro = new ModuleIntro();
 	modules[i++] = end = new ModuleEnd();
 	modules[i++] = useri = new ModuleUserI();
