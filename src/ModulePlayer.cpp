@@ -9,6 +9,9 @@
 #include "ModuleCollision.h"
 #include "ModuleUserI.h"
 
+#include "SDL/include/SDL.h"
+#pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
+
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 int const ModulePlayer::portion_calculate()
@@ -244,8 +247,14 @@ update_status ModulePlayer::Update()
 	int screen_portion = portion_calculate();
 	cross_collider->SetPos(SCREEN_WIDTH / 2, SCREEN_HEIGHT);
 	player_collider->SetPos(position.x+TILE, position.y+8);
+	current_time = SDL_GetTicks();
 	if (godmode)
 		hit = false;
+	if (current_time >= blink_time)
+	{
+		blink = !blink;
+		blink_time = current_time + 100;
+	}
 
 
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
@@ -421,6 +430,7 @@ update_status ModulePlayer::Update()
 			hit = false;
 			App->useri->hitpoints -= 1;
 			dead.Reset();
+			damage_cool = current_time + 3000;
 			state = ST_IDLE;
 		}
 		break;
@@ -521,11 +531,16 @@ update_status ModulePlayer::Update()
 	}*/
 
 	// Draw everything --------------------------------------
+	if (current_time < damage_cool)
+		player_collider->SetPos(SCREEN_WIDTH, SCREEN_HEIGHT);
 	
 	App->render->Blit(crosstexture, cposition.x, cposition.y, &(cross.GetCurrentFrame()));
 	if (firing)
 		App->render->Blit(crosstexture, cposition.x, cposition.y, &(fcross.GetCurrentFrame()));
-	App->render->Blit(player, position.x + xcorrection, position.y + ycorrection, &(current_animation->GetCurrentFrame()));
+	if (current_time >= damage_cool || blink)
+		App->render->Blit(player, position.x + xcorrection, position.y + ycorrection, &(current_animation->GetCurrentFrame()));
+	else
+		current_animation->GetCurrentFrame();
 
 	return UPDATE_CONTINUE;
 }

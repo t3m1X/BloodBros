@@ -76,11 +76,15 @@ public:
 	Collider* player_collider;
 	Collider* ground_collider;
 	player_states state;
+	Uint32 current_time;
+	Uint32 damage_cool = 0;
+	Uint32 blink_time;
 	bool godmode = false;
 
 	Uint32 killcount = 0;
 
 	bool hit = false;
+	bool blink = true;
 };
 
 #endif
