@@ -33,6 +33,7 @@ bool ModuleUserI::Start()
 	LOG("Loading intro");
 
 	UserInterface = App->textures->Load("sprites/ui-rearranged.png");
+	test = App->text->AddNumber(0, 0, 22, 5);
 
 	return true;
 }
@@ -51,9 +52,12 @@ update_status ModuleUserI::Update()
 	{
 		App->render->Blit(UserInterface, 0, SCREEN_HEIGHT - 72, &(life_ball.GetCurrentFrame()));
 		if (hitpoints == 3)
-			App->render->Blit(UserInterface, 40 , SCREEN_HEIGHT - 72, &(life_ball.GetCurrentFrame()));
+			App->render->Blit(UserInterface, 40, SCREEN_HEIGHT - 72, &(life_ball.GetCurrentFrame()));
+			
 	}
-	Text* test = App->text->AddNumber(0, 0, 22, 5);
+
+	if (hitpoints == 2)
+		test->SetNumber(2, 5);
 	/*
 	App->render->Blit(UserInterface, SCREEN_WIDTH - SCREEN_WIDTH/3, SCREEN_HEIGHT - 25, &(insert_coins.GetCurrentFrame()));
 	App->render->Blit(UserInterface, (SCREEN_WIDTH / 2) - 50, SCREEN_HEIGHT - 25, &credits, 1.0f);*/

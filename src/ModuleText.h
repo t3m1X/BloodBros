@@ -31,13 +31,40 @@ struct Text
 
 	~Text()
 	{
-		delete _text;
+		delete[] _text;
 		_text = nullptr;
 	}
 
-	void ChangeText(char* newtext)
+	void SetText(char* newtext)
 	{
-		_text = newtext;
+		delete[] _text;
+		_text = nullptr;
+
+		int length = strlen(newtext);
+
+		_text = new char[length + 1];
+
+		for (int i = 0; i < length; ++i)
+			_text[i] = newtext[i];
+
+		_text[length] = '\0';
+	}
+
+	void SetNumber(int number, unsigned int size, char default_char = '0')
+	{
+		delete[] _text;
+		_text = nullptr;
+
+		_text = new char[size + 1];
+		_text[size] = '\0';
+		while (number > 0)
+		{
+			_text[size-- - 1] = '0' + number % 10;
+			number /= 10;
+		}
+
+		for (int i = 0; i < size; ++i)
+			_text[i] = default_char;
 	}
 
 	void Draw();

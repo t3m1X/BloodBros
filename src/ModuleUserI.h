@@ -5,6 +5,8 @@
 #include "Animation.h"
 #include "p2Point.h"
 
+struct Text;
+
 class ModuleUserI : public Module
 {
 public:
@@ -23,6 +25,7 @@ public:
 	Animation life_ball;
 	SDL_Rect credits;
 	Uint32 hitpoints = 3;
+	Text* test;
 
 };
 
