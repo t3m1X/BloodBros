@@ -13,14 +13,14 @@ Plane::Plane(int x) : Enemy(x, 25)
 		position.x = SCREEN_WIDTH / 4 * 3;
 
 
-	fly.PushBack({ 34, 1974, 22, 10 });
-	fly.PushBack({ 66, 1968, 43, 22 });
-	fly.PushBack({ 120, 1957, 85, 37 });
-	fly.PushBack({ 219, 1951, 128, 53 });
-	fly.PushBack({ 367, 1947, 170, 64 });
-	fly.PushBack({ 548, 1943, 212, 82 });
-	fly.PushBack({ 14, 2031, 253, 101 });
-	fly.PushBack({ 306, 2073, 298, 126 });
+	fly.PushBack({ 157, 67, 22, 10 });
+	fly.PushBack({ 483, 62, 43, 22 });
+	fly.PushBack({ 797, 65, 85, 37 });
+	fly.PushBack({ 104, 192, 128, 53 });
+	fly.PushBack({ 419, 188, 170, 64 });
+	fly.PushBack({ 734, 179, 212, 82 });
+	fly.PushBack({ 41, 3016, 253, 101 });
+	fly.PushBack({ 355, 299, 298, 126 });
 	fly.speed = 0.045f;
 	fly.loop = false;
 

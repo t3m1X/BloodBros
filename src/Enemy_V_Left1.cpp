@@ -14,10 +14,13 @@
 Enemy_V_Left1::Enemy_V_Left1(int x, int y) : Enemy(x, y)
 {
 
-	appear.PushBack({ 1218, 2256, 48, 96 });
-	appear.PushBack({ 1266, 2256, 48, 96 });
-	appear.PushBack({ 1314, 2256, 48, 96 });
-	appear.PushBack({ 1362, 2256, 48, 96 });
+	appear.PushBack({ 1248, 2256, 48, 96 });
+	appear.PushBack({ 1296, 2256, 48, 96 });
+	appear.PushBack({ 1344, 2256, 48, 96 });
+	appear.PushBack({ 1392, 2256, 48, 96 });
+	appear.PushBack({ 1392, 2256, 48, 96 });
+	appear.PushBack({ 1392, 2256, 48, 96 });
+	appear.PushBack({ 1392, 2256, 48, 96 });
 	appear.loop = false;
 	appear.speed = 2.0f;
 
@@ -39,7 +42,7 @@ Enemy_V_Left1::Enemy_V_Left1(int x, int y) : Enemy(x, y)
 
 	animation = &appear;
 
-	collider = App->collision->AddCollider({ 0, 0, 96, 96 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 48, 48, 48}, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 }
 
@@ -48,6 +51,6 @@ void Enemy_V_Left1::Move()
 	if (appear.Finished())
 	{
 		animation = &walk;
-		position.x -= 3;
+		position.x  = position.x - 3;
 	}
 }

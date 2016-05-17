@@ -94,8 +94,8 @@ update_status ModuleScene::Update()
 	// Enemy waves----------------------------------------
 	if (current_time >= first_wave_time)
 	{
-		first_wave_time = current_time + 5000;
-		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 300, false);
+		first_wave_time = current_time + 6000;
+		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 250, false);
 
 	}
 	if (current_time >= second_wave_time)
