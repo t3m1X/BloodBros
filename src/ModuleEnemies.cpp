@@ -16,6 +16,7 @@
 #include "Enemy_V_Left1.h"
 #include "Enemy_V_Right2.h"
 #include "Enemy_V_Right3.h"
+#include "Cactus.h"
 #include "ModulePlayer.h"
 
 
@@ -206,7 +207,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::V_FORMATION_R3:
 			*newenemy = new Enemy_V_Right1(info.x, info.y);
-			//break;
+			break;
+		case ENEMY_TYPES::CACTUS:
+			*newenemy = new Cactus(info.x, info.y);
+			break;
 		}
 	}
 }

@@ -18,6 +18,9 @@
     <Filter Include="Modules\Enemies\V_FORMATION">
       <UniqueIdentifier>{cee92b9e-06c5-44bf-ba8b-bc8e30aa1df8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Enemies\Buildings">
+      <UniqueIdentifier>{5452d6ca-74a3-4a67-982d-15abdc03c894}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -98,13 +101,7 @@
     <ClInclude Include="Enemy_BIndian.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Building_LWaterTower.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy_Dancer.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Building_RWaterTower.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_V_Right1.h">
@@ -124,6 +121,15 @@
     </ClInclude>
     <ClInclude Include="ModuleText.h">
       <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Building_LWaterTower.h">
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Building_RWaterTower.h">
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Cactus.h">
+      <Filter>Modules\Enemies\Buildings</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -193,13 +199,7 @@
     <ClCompile Include="Enemy_Plane.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Building_LWaterTower.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy_Dancer.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Building_RWater_Tower.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_V_Right1.cpp">
@@ -219,6 +219,15 @@
     </ClCompile>
     <ClCompile Include="ModuleText.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Building_LWaterTower.cpp">
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Building_RWater_Tower.cpp">
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Cactus.cpp">
+      <Filter>Modules\Enemies\Buildings</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

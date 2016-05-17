@@ -50,6 +50,7 @@ bool ModuleScene::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::L_WATERTOWER, 0, 0);
 	App->enemies->AddEnemy(ENEMY_TYPES::R_WATERTOWER, SCREEN_WIDTH-255, 0);
 	App->enemies->AddEnemy(ENEMY_TYPES::DANCER, 0, 360);
+	App->enemies->AddEnemy(ENEMY_TYPES::CACTUS, SCREEN_WIDTH / 2 - 50 , SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 4 + 130);
 		
 	
 

@@ -79,6 +79,10 @@ ModuleParticles::ModuleParticles()
 	end_dust.anim.PushBack({ 672, 624, 336, 144 });
 	end_dust.anim.loop = false;
 	end_dust.anim.speed = 0.3f;
+
+	cactusboom.anim.PushBack({ 672, 480 , 144,144});
+	cactusboom.anim.loop = false;
+	cactusboom.anim.speed = 0.1f;
 }
 
 ModuleParticles::~ModuleParticles()

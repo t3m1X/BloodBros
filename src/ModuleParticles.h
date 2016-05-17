@@ -59,6 +59,7 @@ public:
 	Particle bullet_collision;
 	Particle dust;
 	Particle end_dust;
+	Particle cactusboom;
 };
 
 #endif // __MODULEPARTICLES_H__
