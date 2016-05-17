@@ -87,7 +87,7 @@ bool ModuleRender::CleanUp()
 }
 
 // Blit to screen
-bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed)
+bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float size_multiplier, float speed)
 {
 	bool ret = true;
 	SDL_Rect rect;
@@ -96,8 +96,8 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, f
 
 	if (section != NULL)
 	{
-		rect.w = section->w;
-		rect.h = section->h;
+		rect.w = section->w * size_multiplier;
+		rect.h = section->h * size_multiplier;
 	}
 	else
 	{

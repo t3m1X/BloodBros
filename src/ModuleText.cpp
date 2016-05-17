@@ -19,7 +19,7 @@ void Text::Draw()
 			position.x = ((*text - ' ') % 16) * TILE;
 		}
 
-		App->render->Blit(_font, _x + letter * TILE, _y, &position);
+		App->render->Blit(_font, _x + letter * (TILE/2), _y, &position, 0.5);
 		letter++;
 		text++;
 	}
