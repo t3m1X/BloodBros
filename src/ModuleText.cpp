@@ -26,8 +26,10 @@ void Text::Draw()
 }
 
 ModuleText::ModuleText()
-{
-}
+{}
+
+ModuleText::~ModuleText()
+{}
 
 bool ModuleText::Start()
 {
@@ -60,6 +62,8 @@ bool ModuleText::CleanUp()
 		}
 	}
 
+	App->textures->Unload(uitexture);
+
 	return true;
 }
 
@@ -79,7 +83,7 @@ Text* ModuleText::AddText(int x, int y, char* text)
 	return ret;
 }
 
-Text* ModuleText::AddNumber(int x, int y, int number, int size, char default_char = '0')
+Text* ModuleText::AddNumber(int x, int y, int number, unsigned int size, char default_char = '0')
 {
 	Text* ret = nullptr;
 	char* text = new char[size];

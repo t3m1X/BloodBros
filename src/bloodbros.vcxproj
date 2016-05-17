@@ -100,6 +100,7 @@
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleScene.h" />
     <ClInclude Include="ModuleStage.h" />
+    <ClInclude Include="ModuleText.h" />
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleUserI.h" />
     <ClInclude Include="ModuleWindow.h" />
@@ -134,6 +135,7 @@
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleScene.cpp" />
     <ClCompile Include="ModuleStage.cpp" />
+    <ClCompile Include="ModuleText.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleUserI.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />

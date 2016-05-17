@@ -14,6 +14,7 @@
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
 #include "ModuleEnd.h"
+#include "ModuleText.h"
 
 
 
@@ -34,6 +35,7 @@ Application::Application()
 	modules[i++] = useri = new ModuleUserI();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
+	modules[i++] = text = new ModuleText();
 
 }	
 

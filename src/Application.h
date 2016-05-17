@@ -3,8 +3,9 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 14
+#define NUM_MODULES 15
 
+class ModuleText;
 class ModuleUserI;
 class ModuleEnd;
 class ModuleIntro;
@@ -40,6 +41,7 @@ public:
 	ModuleIntro* intro;
 	ModuleEnd* end;
 	ModuleUserI* useri;
+	ModuleText* text;
 
 public:
 
