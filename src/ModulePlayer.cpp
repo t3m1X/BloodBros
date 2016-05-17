@@ -208,6 +208,7 @@ bool ModulePlayer::Start()
 	cross_collider = App->collision->AddCollider({ SCREEN_WIDTH/2, SCREEN_HEIGHT, 69, 63 }, COLLIDER_PLAYER_SHOT);
 	player_collider = App->collision->AddCollider({ (SCREEN_WIDTH - 87) / 2, SCREEN_HEIGHT / 2 + 117, TILE, (TILE*4)-8 }, COLLIDER_PLAYER); 
 	ground_collider = App->collision->AddCollider({ 0, SCREEN_HEIGHT - 50, SCREEN_WIDTH, 50 }, COLLIDER_PLAYER_SHOT);
+	state = ST_IDLE;
 	
 
 	return true;
@@ -242,9 +243,214 @@ update_status ModulePlayer::Update()
 	cross_collider->SetPos(SCREEN_WIDTH / 2, SCREEN_HEIGHT);
 	player_collider->SetPos(position.x+TILE, position.y+8);
 
-	if (!hit)
+
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
+		if (cposition.y > -35)
+			cposition.y -= speed * 2;
+
+	}
+
+	switch (state)
+	{
+	case ST_IDLE:
+		current_animation = &idle[screen_portion]; 
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+			state = ST_WALK_LEFT;
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+			state = ST_WALK_RIGHT;
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+			state = ST_IDLE;
 		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
+			state = ST_FIRE_STANDING;
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+			state = ST_CROUCH;
+		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_DOWN)
+		{
+			if (cposition.x > position.x)
+				state = ST_ROLLING_RIGHT;
+			else
+				state = ST_ROLLING_LEFT;
+		}
+		if (hit)
+			state = ST_DEATH;
+
+		break;
+
+	case ST_CROUCH:
+		current_animation = &down[screen_portion];
+		ycorrection += 25;
+		if (cposition.y < position.y + 15)
+			cposition.y += speed * 2;
+
+		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
+			state = ST_FIRE_CROUCH;
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP)
+			state = ST_IDLE;
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+			state = ST_WALK_LEFT;
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+			state = ST_WALK_RIGHT;
+		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_DOWN)
+		{
+			if (cposition.x > position.x)
+				state = ST_ROLLING_RIGHT;
+			else
+				state = ST_ROLLING_LEFT;
+		}
+		if (hit)
+			state = ST_DEATH;
+		break;
+
+	case ST_WALK_LEFT:
+		if (position.x > 0)
+			position.x -= speed;
+		if (cposition.x > -35)
+			cposition.x -= speed * 2;
+		current_animation = &walk_left;
+
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+			state = ST_IDLE;
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP)
+			state = ST_IDLE;
+		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
+			state = ST_FIRE_STANDING;
+		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_DOWN)
+			state = ST_ROLLING_LEFT;
+		if (hit)
+			state = ST_DEATH;
+		break;
+
+	case ST_WALK_RIGHT:
+		if (position.x < SCREEN_WIDTH - 87)
+			position.x += speed;
+		if (cposition.x < SCREEN_WIDTH - 35)
+			cposition.x += speed * 2;
+		current_animation = &walk_right;
+
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+			state = ST_IDLE;
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP)
+			state = ST_IDLE;
+		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
+			state = ST_FIRE_STANDING;
+		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_DOWN)
+			state = ST_ROLLING_RIGHT;
+		if (hit)
+			state = ST_DEATH;
+		break;
+
+	case ST_FIRE_STANDING:
+		cross_collider->SetPos(cposition.x, cposition.y);
+		screen_portion += 7;
+		App->audio->PlaySFX(shoot);
+		firing = true;
+		if (screen_portion <= MIDDLE_F)
+			xcorrection += idle[screen_portion - 7].frames[0].w - idle[screen_portion].frames[0].w;
+		ycorrection += idle[screen_portion - 7].frames[0].h - idle[screen_portion].frames[0].h;
+
+		current_animation = &idle[screen_portion];
+
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+			if (cposition.x > -35)
+				cposition.x -= speed * 2;
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+			if (cposition.x < SCREEN_WIDTH - 35)
+				cposition.x += speed * 2;
+		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_UP)
+			state = ST_IDLE;
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+			state = ST_FIRE_CROUCH;
+		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_DOWN)
+		{
+			if (cposition.x > position.x)
+				state = ST_ROLLING_RIGHT;
+			else
+				state = ST_ROLLING_LEFT;
+		}
+		if (hit)
+			state = ST_DEATH;
+		break;
+
+	case ST_FIRE_CROUCH:
+		cross_collider->SetPos(cposition.x, cposition.y);
+		screen_portion += 7;
+		App->audio->PlaySFX(shoot);
+		firing = true;
+		if (screen_portion <= MIDDLE_F)
+			xcorrection += idle[screen_portion - 7].frames[0].w - idle[screen_portion].frames[0].w;
+		ycorrection += idle[screen_portion - 7].frames[0].h - idle[screen_portion].frames[0].h;
+			
+		current_animation = &down[screen_portion];
+			
+		if (cposition.y < position.y + 15)
+			cposition.y += speed * 2;
+
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+			if (cposition.x > -35)
+				cposition.x -= speed * 2;
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+			if (cposition.x < SCREEN_WIDTH - 35)
+				cposition.x += speed * 2;
+		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_UP)
+			state = ST_CROUCH;
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP)
+			state = ST_FIRE_STANDING;
+		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_DOWN)
+		{
+			if (cposition.x > position.x)
+				state = ST_ROLLING_RIGHT;
+			else
+				state = ST_ROLLING_LEFT;
+		}
+		if (hit)
+			state = ST_DEATH;
+		break;
+
+	case ST_DEATH:
+		current_animation = &dead;
+		if (dead.Finished())
+		{
+			hit = false;
+			App->useri->hitpoints -= 1;
+			dead.Reset();
+			state = ST_IDLE;
+		}
+		break;
+
+	case ST_ROLLING_LEFT:
+		current_animation = &roll_left;
+		player_collider->SetPos(SCREEN_WIDTH, SCREEN_HEIGHT);
+		if (position.x > 0)
+			position.x -= speed * 2;
+		
+		if (roll_left.Finished())
+		{
+			if (position.x > 0)
+				position.x -= TILE * 2;
+			roll_left.Reset();
+			state = ST_IDLE;
+		}
+		break;
+
+	case ST_ROLLING_RIGHT:
+		current_animation = &roll_right;
+		player_collider->SetPos(SCREEN_WIDTH, SCREEN_HEIGHT);
+		if (position.x < SCREEN_WIDTH - 87)
+			position.x += speed;
+
+		if (roll_right.Finished())
+		{
+			if (position.x < SCREEN_WIDTH - 87)
+				position.x += TILE*2;
+			roll_right.Reset();
+			state = ST_IDLE;
+		}
+		break;
+
+	}
+
+		/*if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
 		{
 			cross_collider->SetPos(cposition.x, cposition.y);
 			screen_portion += 7;
@@ -297,9 +503,8 @@ update_status ModulePlayer::Update()
 
 			if (App->input->keyboard[SDL_SCANCODE_A] != KEY_STATE::KEY_REPEAT && !firing)
 				current_animation = &walk_right;
-		}
-	}
-	else
+		}*/
+	/*else
 	{
 		current_animation = &dead;
 		if (dead.Finished())
@@ -308,7 +513,7 @@ update_status ModulePlayer::Update()
 			hit = false;
 			dead.Reset();
 		}
-	}
+	}*/
 
 	// The rolling animation needs to be done inside a separate function, thus avoiding the player from moving and receiving damage
 

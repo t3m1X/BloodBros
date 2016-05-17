@@ -8,6 +8,21 @@
 struct SDL_Texture;
 struct Mix_Chunk;
 
+enum player_states
+{
+	ST_UNKNOWN,
+
+	ST_IDLE,
+	ST_WALK_RIGHT,
+	ST_WALK_LEFT,
+	ST_CROUCH,
+	ST_ROLLING_LEFT,
+	ST_ROLLING_RIGHT,
+	ST_FIRE_STANDING,
+	ST_FIRE_CROUCH,
+	ST_DEATH
+};
+
 class ModulePlayer : public Module
 {
 private:
@@ -60,6 +75,7 @@ public:
 	Collider* cross_collider;
 	Collider* player_collider;
 	Collider* ground_collider;
+	player_states state;
 
 	Uint32 killcount = 0;
 
