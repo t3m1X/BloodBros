@@ -9,7 +9,6 @@
 #include "ModuleCollision.h"
 #include "ModuleUserI.h"
 
-#define TILE 48
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 int const ModulePlayer::portion_calculate()
@@ -153,7 +152,7 @@ ModulePlayer::ModulePlayer()
 	roll_left.PushBack({ 720, 1920, 240, 192 });
 	roll_left.speed = 0.2f;
 
-	dance.PushBack({ 0, 2304, 96, 192 });
+	/*dance.PushBack({ 0, 2304, 96, 192 });
 	dance.PushBack({ 96, 2304, 96, 192 });
 	dance.PushBack({ 0, 2304, 96, 192 });
 	dance.PushBack({ 96, 2304, 96, 192 });
@@ -178,7 +177,7 @@ ModulePlayer::ModulePlayer()
 	dance.PushBack({ 480, 2400, 48, 48 });
 	dance.PushBack({ 528, 2400, 48, 48 });
 	dance.PushBack({ 480, 2400, 48, 48 });
-	dance.PushBack({ 528, 2400, 48, 48 });			//end
+	dance.PushBack({ 528, 2400, 48, 48 });		*/	//end
 
 
 
