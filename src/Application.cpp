@@ -33,9 +33,9 @@ Application::Application()
 	modules[i++] = intro = new ModuleIntro();
 	modules[i++] = end = new ModuleEnd();
 	modules[i++] = useri = new ModuleUserI();
+	modules[i++] = text = new ModuleText();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
-	modules[i++] = text = new ModuleText();
 
 }	
 

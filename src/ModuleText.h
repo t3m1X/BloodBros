@@ -2,13 +2,13 @@
 #define __MODULETEXT_H__
 
 #include "Module.h"
+#include <string.h>
 #define MAX_TEXT 16
 
 struct SDL_Texture;
 
 struct Text
 {
-	bool to_delete = false;
 	int _x;
 	int _y;
 	char* _text;
@@ -19,7 +19,7 @@ struct Text
 		_y(y),
 		_font(font)
 	{
-		int length = SDL_strlen(text);
+		int length = strlen(text);
 
 		_text = new char[length + 1];
 
