@@ -81,8 +81,6 @@ public:
 	Uint32 blink_time;
 	bool godmode = false;
 
-	Uint32 killcount = 0;
-
 	bool hit = false;
 	bool blink = true;
 };

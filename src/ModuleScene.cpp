@@ -79,7 +79,7 @@ bool ModuleScene::CleanUp()
 	App->audio->StopMusic();
 	App->useri->Disable();
 	App->enemies->Disable();  
-	App->player->killcount = 0;
+	App->useri->killcount = 0;
 
 	
 	return true;
