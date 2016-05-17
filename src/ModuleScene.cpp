@@ -47,10 +47,10 @@ bool ModuleScene::Start()
 	c_cactus3 = App->collision->AddCollider({ SCREEN_WIDTH - SCREEN_WIDTH / 3 - 35, SCREEN_HEIGHT / 2 - cactus2.h - 10, cactus2.w, cactus2.h }, COLLIDER_ENEMY);
 	*/
 
-	App->enemies->AddEnemy(ENEMY_TYPES::L_WATERTOWER, 0, 0);
-	App->enemies->AddEnemy(ENEMY_TYPES::R_WATERTOWER, SCREEN_WIDTH-255, 0);
-	App->enemies->AddEnemy(ENEMY_TYPES::DANCER, 0, 360);
-	App->enemies->AddEnemy(ENEMY_TYPES::CACTUS, SCREEN_WIDTH / 2 - 50 , SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 4 + 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::L_WATERTOWER, 0, 0, true, true);
+	App->enemies->AddEnemy(ENEMY_TYPES::R_WATERTOWER, SCREEN_WIDTH-255, 0, true, true);
+	App->enemies->AddEnemy(ENEMY_TYPES::DANCER, 0, 360, true);
+	App->enemies->AddEnemy(ENEMY_TYPES::CACTUS, SCREEN_WIDTH / 2 - 50 , SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 4 + 130, true);
 		
 	
 
@@ -100,7 +100,7 @@ update_status ModuleScene::Update()
 	if (current_time >= second_wave_time)
 	{
 		second_wave_time = current_time + 20000;
-		App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80);
+		App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80, true);
 
 	}
 if (current_time >= third_wave_time)

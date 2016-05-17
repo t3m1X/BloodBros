@@ -24,10 +24,9 @@
 
 ModuleEnemies::ModuleEnemies()
 {
-	for (uint i = 0; i < MAX_ENEMIES / 2; ++i)
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		f_enemies[i] = nullptr;
-		b_enemies[i] = nullptr;
+		enemies[i] = nullptr;
 	}
 }
 
@@ -66,19 +65,15 @@ update_status ModuleEnemies::PreUpdate()
 // Called before render is available
 update_status ModuleEnemies::Update()
 {
-	for (uint i = 0; i < MAX_ENEMIES / 2; ++i)
+
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (f_enemies[i] != nullptr) f_enemies[i]->Move();
-		if (b_enemies[i] != nullptr) b_enemies[i]->Move();
+		if (enemies[i] != nullptr) enemies[i]->Move();
 	}
 
-	for (uint i = 0; i < MAX_ENEMIES / 2; ++i)
+	for (uint i = MAX_ENEMIES - 1; i > 0; --i)
 	{
-		if (b_enemies[i] != nullptr)
-			b_enemies[i]->Draw(sprites);
-
-		if (f_enemies[i] != nullptr)
-			f_enemies[i]->Draw(sprites);
+		if (enemies[i] != nullptr) enemies[i]->Draw(sprites);
 	}
 
 	return UPDATE_CONTINUE;
@@ -87,25 +82,15 @@ update_status ModuleEnemies::Update()
 update_status ModuleEnemies::PostUpdate()
 {
 	// check camera position to decide what to spawn
-	for (uint i = 0; i < MAX_ENEMIES / 2; ++i)
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (f_enemies[i] != nullptr)
+		if (enemies[i] != nullptr)
 		{
-			if (f_enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
+			if (enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
 			{
-				LOG("DeSpawning enemy at %d", f_enemies[i]->position.x * SCREEN_SIZE);
-				delete f_enemies[i];
-				f_enemies[i] = nullptr;
-			}
-		}
-
-		if (b_enemies[i] != nullptr)
-		{
-			if (b_enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
-			{
-				LOG("DeSpawning enemy at %d", b_enemies[i]->position.x * SCREEN_SIZE);
-				delete b_enemies[i];
-				b_enemies[i] = nullptr;
+				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
+				delete enemies[i];
+				enemies[i] = nullptr;
 			}
 		}
 	}
@@ -120,25 +105,19 @@ bool ModuleEnemies::CleanUp()
 
 	App->textures->Unload(sprites);
 
-	for (uint i = 0; i < MAX_ENEMIES/2; ++i)
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (f_enemies[i] != nullptr)
+		if (enemies[i] != nullptr)
 		{
-			delete f_enemies[i];
-			f_enemies[i] = nullptr;
-		}
-
-		if (b_enemies[i] != nullptr)
-		{
-			delete b_enemies[i];
-			b_enemies[i] = nullptr;
+			delete enemies[i];
+			enemies[i] = nullptr;
 		}
 	}
 
 	return true;
 }
 
-bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y, bool front)
+bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y, bool front, bool building)
 {
 	bool ret = false;
 
@@ -150,6 +129,7 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y, bool front)
 			queue[i].x = x;
 			queue[i].y = y;
 			queue[i].front = front;
+			queue[i].building = building;
 			ret = true;
 			break;
 		}
@@ -162,54 +142,57 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 {
 	// find room for the new enemy
 	uint i = 0;
-	Enemy** newenemy;
-	if (info.front)
+	if (info.building)
 	{
-		for (; f_enemies[i] != nullptr && i < MAX_ENEMIES / 2; ++i);
-		newenemy = &f_enemies[i];
+		if (info.front)
+			for (i = MAX_ENEMIES / 2 - 2; enemies[i] != nullptr && i < MAX_ENEMIES / 2; ++i);
+		else
+			for (i = MAX_ENEMIES - 2; enemies[i] != nullptr && i < MAX_ENEMIES; ++i);
 	}
 	else
 	{
-		for (; b_enemies[i] != nullptr && i < MAX_ENEMIES / 2; ++i);
-		newenemy = &b_enemies[i];
+		if (info.front)
+			for (; enemies[i] != nullptr && i < MAX_ENEMIES / 2 - 2; ++i);
+		else
+			for (i = MAX_ENEMIES / 2; enemies[i] != nullptr && i < MAX_ENEMIES - 2; ++i);
 	}
 
-	if (i != MAX_ENEMIES / 2)
+	if (i != MAX_ENEMIES)
 	{
 		switch (info.type)
 		{
 		case ENEMY_TYPES::PLANE:
-			*newenemy = new Plane(info.x);
+			enemies[i] = new Plane(info.x);
 			break;
 		case ENEMY_TYPES::G_COWBOY:
-			*newenemy = new GCowboy(info.x, info.y);
+			enemies[i] = new GCowboy(info.x, info.y);
 			break;
 		case ENEMY_TYPES::B_INDIAN:
-			*newenemy = new BIndian(info.x, info.y);
+			enemies[i] = new BIndian(info.x, info.y);
 			break;
 		case ENEMY_TYPES::DANCER:
-			*newenemy = new Dancer(info.x, info.y);
+			enemies[i] = new Dancer(info.x, info.y);
 			break;
 		case ENEMY_TYPES::L_WATERTOWER:
-			*newenemy = new LWaterTower(info.x, info.y);
+			enemies[i] = new LWaterTower(info.x, info.y);
 			break;
 		case ENEMY_TYPES::R_WATERTOWER:
-			*newenemy = new RWaterTower(info.x, info.y);
+			enemies[i] = new RWaterTower(info.x, info.y);
 			break;
 		case ENEMY_TYPES::V_FORMATION_R1:
-			*newenemy = new Enemy_V_Right1(info.x, info.y);
+			enemies[i] = new Enemy_V_Right1(info.x, info.y);
 			break;
 		case ENEMY_TYPES::V_FORMATION_L1:
-			*newenemy = new Enemy_V_Left1(info.x, info.y);
+			enemies[i] = new Enemy_V_Left1(info.x, info.y);
 			break;
 		case ENEMY_TYPES::V_FORMATION_R2:
-			*newenemy = new Enemy_V_Right1(info.x, info.y);
+			enemies[i] = new Enemy_V_Right1(info.x, info.y);
 			break;
 		case ENEMY_TYPES::V_FORMATION_R3:
-			*newenemy = new Enemy_V_Right1(info.x, info.y);
+			enemies[i] = new Enemy_V_Right1(info.x, info.y);
 			break;
 		case ENEMY_TYPES::CACTUS:
-			*newenemy = new Cactus(info.x, info.y);
+			enemies[i] = new Cactus(info.x, info.y);
 			break;
 		}
 	}
@@ -217,28 +200,16 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
-	for (uint i = 0; i < MAX_ENEMIES / 2; ++i)
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (f_enemies[i] != nullptr && f_enemies[i]->GetCollider() == c1)
+		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			f_enemies[i]->Collision();
-			if (f_enemies[i]->isDead)
-			{
-				App->player->killcount += 1;
-				delete f_enemies[i];
-				f_enemies[i] = nullptr;
-			}
-			break;
-		}
-
-		if (b_enemies[i] != nullptr && b_enemies[i]->GetCollider() == c1)
-		{
-			b_enemies[i]->Collision();
-			if (b_enemies[i]->isDead)
+			enemies[i]->Collision();
+			if (enemies[i]->isDead)
 			{
 				App->useri->killcount += 1;
-				delete b_enemies[i];
-				b_enemies[i] = nullptr;
+				delete enemies[i];
+				enemies[i] = nullptr;
 			}
 			break;
 		}
