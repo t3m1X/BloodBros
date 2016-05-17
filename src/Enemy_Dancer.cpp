@@ -10,12 +10,12 @@
 Dancer::Dancer(int x, int y) : Enemy(x, y)
 {
 
-	walk.PushBack({58, 2249, 72, 135 });
-	walk.PushBack({ 151, 2252, 78, 132 });
+	walk.PushBack({0, 2832, 48, 144 });
+	walk.PushBack({ 48, 2832, 48, 144 });
 	walk.speed = 0.2f;
 
-	dance.PushBack({ 238, 2255, 96, 129 });
-	dance.PushBack({ 337, 2255, 96, 129 });
+	dance.PushBack({ 96, 2832, 48, 144 });
+	dance.PushBack({ 144, 2832, 48, 144 });
 	/*dance.PushBack({ 436, 2255, 96, 129 });
 	dance.PushBack({ 535, 2261, 96, 123 });*/
 	dance.speed = 0.25f;

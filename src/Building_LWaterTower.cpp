@@ -11,9 +11,9 @@
 
 LWaterTower::LWaterTower(int x, int y) : Enemy(x, y)
 {
-	state.PushBack({ 1120, 64, 200, 448 });
-	state.PushBack({ 1120, 533, 200, 448 });
-	state.PushBack({ 1120, 1015, 200, 448 });
+	state.PushBack({ 1152, 0, 240, 480 });
+	state.PushBack({ 1152, 960, 240, 480 });
+	state.PushBack({ 1152, 1440, 240, 480 });
 	state.speed = 1.0f;
 	state.loop = false;
 

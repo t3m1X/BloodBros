@@ -7,6 +7,7 @@ Project I's repository for the "Undead Renegades" team to re-create the arcade g
 The goal of the game is to anihilate enemies until you fill a FOE meter. 
 
 Move the player with WASD and shoot with CTRL. Rolling not implemented yet.
+Press F2 for GODMODE.
 
 ## Changelog
 
