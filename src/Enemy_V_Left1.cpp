@@ -22,7 +22,7 @@ Enemy_V_Left1::Enemy_V_Left1(int x, int y) : Enemy(x, y)
 	appear.PushBack({ 1392, 2256, 48, 96 });
 	appear.PushBack({ 1392, 2256, 48, 96 });
 	appear.loop = false;
-	appear.speed = 2.0f;
+	appear.speed = 0.2f;
 
 	walk.PushBack({ 864, 2496, 96, 96 });
 	walk.PushBack({ 960, 2496, 96, 96 });
@@ -51,6 +51,6 @@ void Enemy_V_Left1::Move()
 	if (appear.Finished())
 	{
 		animation = &walk;
-		position.x  = position.x - 3;
+		position.x -= 3;
 	}
 }

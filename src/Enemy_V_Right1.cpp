@@ -22,7 +22,7 @@ Enemy_V_Right1::Enemy_V_Right1(int x, int y) : Enemy(x, y)
 	appear.PushBack({ 1392, 2256, 48, 96 });
 	appear.PushBack({ 1392, 2256, 48, 96 });
 	appear.loop = false;
-	appear.speed = 0.1f;
+	appear.speed = 0.2f;
 
 	walk.PushBack({ 864, 2592, 96, 96 });
 	walk.PushBack({ 960, 2592, 96, 96 });

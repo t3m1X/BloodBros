@@ -62,7 +62,7 @@ bool ModuleScene::Start()
 	start_time = SDL_GetTicks();
 	first_wave_time = start_time + 3000;
 	second_wave_time = start_time + 10000;
-	third_wave_time = start_time;
+	third_wave_time = start_time+ 25252;
 	//fourth_wave_time = start_time + 20000;
 	
 	return true;
@@ -105,9 +105,17 @@ update_status ModuleScene::Update()
 	}
 if (current_time >= third_wave_time)
 	{
-		third_wave_time = current_time + 25000;
-		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, SCREEN_WIDTH/2, 300, false);
-		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R2, SCREEN_WIDTH/2, 300, false);
+		third_wave_time = current_time + 25252;
+
+		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, SCREEN_WIDTH / 2 - 20, 200, false);
+		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L1, SCREEN_WIDTH / 2 - 80, 200, false);
+		
+		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, SCREEN_WIDTH / 2 + 10, 250, false);
+		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L1, SCREEN_WIDTH / 2 - 110, 250, false);
+		
+		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, SCREEN_WIDTH/2+60, 300, false);
+		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L1, SCREEN_WIDTH/2-160, 300, false);
+		
 		
 	}
 	/*if (current_time >= fourth_wave_time)
