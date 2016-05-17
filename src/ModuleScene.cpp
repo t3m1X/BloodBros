@@ -12,6 +12,7 @@
 #include "ModuleEnd.h"
 #include "ModuleEnemies.h"
 #include "ModuleUserI.h"
+#include "ModuleText.h"
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
@@ -139,7 +140,16 @@ update_status ModuleScene::Update()
 		App->fade->FadeToBlack(this, App->end, 1.0f);
 	
 	if (App->useri->hitpoints == 0)
-		App->fade->FadeToBlack(this, App->intro, 1.0f);
+	{
+		if (App->useri->credits == 0)
+			App->fade->FadeToBlack(this, App->intro, 1.0f);
+		else
+		{
+			App->useri->credits--;
+			App->useri->credit_counter->SetNumber(App->useri->credits, 2);
+			App->useri->hitpoints = 3;
+		}
+	}
 
 
 	

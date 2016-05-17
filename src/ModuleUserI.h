@@ -23,9 +23,10 @@ public:
 	SDL_Texture* UserInterface = nullptr;
 	Animation insert_coins;
 	Animation life_ball;
-	SDL_Rect credits;
 	Uint32 hitpoints = 3;
-	Text* test;
+	Uint32 credits = 0;
+	Text* credit;
+	Text* credit_counter;
 
 };
 
