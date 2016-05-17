@@ -429,12 +429,10 @@ update_status ModulePlayer::Update()
 		current_animation = &roll_left;
 		player_collider->SetPos(SCREEN_WIDTH, SCREEN_HEIGHT);
 		if (position.x > 0)
-			position.x -= speed * 2;
+			position.x -= speed;
 		
 		if (roll_left.Finished())
 		{
-			if (position.x > 0)
-				position.x -= TILE * 2;
 			roll_left.Reset();
 			state = ST_IDLE;
 		}
