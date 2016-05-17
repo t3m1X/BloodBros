@@ -12,7 +12,6 @@
 #include "ModuleEnd.h"
 #include "ModuleEnemies.h"
 #include "ModuleUserI.h"
-#include "ModuleText.h"
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
@@ -146,7 +145,6 @@ update_status ModuleScene::Update()
 		else
 		{
 			App->useri->credits--;
-			App->useri->credit_counter->SetNumber(App->useri->credits, 2);
 			App->useri->hitpoints = 3;
 		}
 	}
