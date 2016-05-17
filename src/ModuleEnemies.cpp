@@ -12,6 +12,9 @@
 #include "Building_LWaterTower.h"
 #include "Building_RWaterTower.h"
 #include "Enemy_V_Right1.h"
+#include "Enemy_V_Left1.h"
+#include "Enemy_V_Right2.h"
+#include "Enemy_V_Right3.h"
 #include "ModulePlayer.h"
 
 
@@ -34,7 +37,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprites = App->textures->Load("sprites/EnemySprites.png");
+	sprites = App->textures->Load("sprites/EnemySprites-rearranged.png");
 
 	return true;
 }
@@ -190,6 +193,19 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::R_WATERTOWER:
 			*newenemy = new RWaterTower(info.x, info.y);
+			break;
+		case ENEMY_TYPES::V_FORMATION_R1:
+			*newenemy = new Enemy_V_Right1(info.x, info.y);
+			break;
+		case ENEMY_TYPES::V_FORMATION_L1:
+			*newenemy = new Enemy_V_Left1(info.x, info.y);
+			break;
+		case ENEMY_TYPES::V_FORMATION_R2:
+			*newenemy = new Enemy_V_Right1(info.x, info.y);
+			break;
+		case ENEMY_TYPES::V_FORMATION_R3:
+			*newenemy = new Enemy_V_Right1(info.x, info.y);
+			//break;
 		}
 	}
 }

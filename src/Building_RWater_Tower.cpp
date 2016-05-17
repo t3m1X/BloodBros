@@ -11,9 +11,9 @@
 
 RWaterTower::RWaterTower(int x, int y) : Enemy(x, y)
 {
-	state.PushBack({ 1687, 61, 257, 463 });
-	state.PushBack({ 1689, 1022, 255, 464 });
-	state.PushBack({ 1690, 1506, 254, 464 });
+	state.PushBack({ 1392, 0, 288, 480 });
+	state.PushBack({ 1392, 960, 288, 480 });
+	state.PushBack({ 1392, 1440, 288, 480 });
 	
 
 	state.speed = 1.0f;

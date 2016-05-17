@@ -64,7 +64,7 @@ bool ModuleScene::Start()
 	start_time = SDL_GetTicks();
 	first_wave_time = start_time + 3000;
 	second_wave_time = start_time + 10000;
-	//third_wave_time = start_time + 1000;
+	third_wave_time = start_time;
 	//fourth_wave_time = start_time + 20000;
 	
 	return true;
@@ -105,13 +105,11 @@ update_status ModuleScene::Update()
 		App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80);
 
 	}
-	/*if (current_time >= third_wave_time)
+if (current_time >= third_wave_time)
 	{
-		first_wave_time = current_time + 25000;
-		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 300, false);
-		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH-300, 300, false);
-		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH-600, 300, false);
-		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH - 800, 300, false);
+		third_wave_time = current_time + 25000;
+		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, SCREEN_WIDTH/2, 300, false);
+		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R2, SCREEN_WIDTH/2, 300, false);
 		
 	}
 	/*if (current_time >= fourth_wave_time)
