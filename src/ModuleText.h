@@ -67,6 +67,19 @@ struct Text
 			_text[i] = default_char;
 	}
 
+	void ChangeNumber(int number, char default_char = '0')
+	{
+		unsigned int size = strlen(_text);
+		while (number > 0)
+		{
+			_text[size-- - 1] = '0' + number % 10;
+			number /= 10;
+		}
+
+		for (int i = 0; i < size; ++i)
+			_text[i] = default_char;
+	}
+
 	void Draw();
 
 };
