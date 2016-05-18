@@ -1,5 +1,5 @@
 #include "Application.h"
-#include "Enemy_V_Right3.h"
+#include "Enemy_V_Left3.h"
 #include "Path.h"
 #include "ModuleCollision.h"
 #include "p2Point.h"
@@ -11,7 +11,7 @@
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
 
-Enemy_V_Right3::Enemy_V_Right3(int x, int y) : Enemy(x, y)
+Enemy_V_Left3::Enemy_V_Left3(int x, int y) : Enemy(x, y)
 {
 
 
@@ -27,10 +27,10 @@ Enemy_V_Right3::Enemy_V_Right3(int x, int y) : Enemy(x, y)
 	appear.speed = 0.2f;
 
 
-	
-	walk.PushBack({ 1296, 2352, 48, 48 });
-	walk.PushBack({ 1344, 2352, 48, 48 });
-	walk.PushBack({ 1392, 2352, 48, 48 });
+
+	appear.PushBack({ 864, 2304, 48, 48 });
+	appear.PushBack({ 912, 2304, 48, 48 });
+	appear.PushBack({ 960, 2304, 48, 48 });
 	walk.speed = 0.2f;
 
 	dead.PushBack({ 1026, 2352, 48, 48 });
@@ -45,11 +45,11 @@ Enemy_V_Right3::Enemy_V_Right3(int x, int y) : Enemy(x, y)
 
 }
 
-void Enemy_V_Right3::Move()
+void Enemy_V_Left3::Move()
 {
 	if (appear.Finished())
 	{
 		animation = &walk;
-		position.x += 3;
+		position.x -= 3;
 	}
 }

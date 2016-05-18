@@ -140,6 +140,12 @@
     <ClInclude Include="Building_RPipe.h">
       <Filter>Modules\Enemies\Buildings</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_V_Left2.h">
+      <Filter>Modules\Enemies\V_FORMATION</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_V_Left3.h">
+      <Filter>Modules\Enemies\V_FORMATION</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -246,6 +252,12 @@
     </ClCompile>
     <ClCompile Include="Building_RPipe.cpp">
       <Filter>Modules\Enemies\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_V_Left2.cpp">
+      <Filter>Modules\Enemies\V_FORMATION</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_V_Left3.cpp">
+      <Filter>Modules\Enemies\V_FORMATION</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
