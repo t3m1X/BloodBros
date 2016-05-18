@@ -212,7 +212,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::V_FORMATION_R3:
 			enemies[i] = new Enemy_V_Right3(info.x, info.y);
 			break;
-			case ENEMY_TYPES::V_FORMATION_L3:
+		case ENEMY_TYPES::V_FORMATION_L3:
 			enemies[i] = new Enemy_V_Left3(info.x, info.y);
 			break;
 		case ENEMY_TYPES::CACTUS:

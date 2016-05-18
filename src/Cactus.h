@@ -12,7 +12,7 @@ private:
 	Animation state;
 	Animation dead_state;
 	Uint32 this_call;
-	Uint32 next_call = 0;
+	Uint32 next_call;
 
 public:
 
