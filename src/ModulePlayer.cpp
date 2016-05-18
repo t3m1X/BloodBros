@@ -275,6 +275,8 @@ update_status ModulePlayer::Update()
 	switch (state)
 	{
 	case ST_IDLE:
+		if (current_animation == &roll_right)
+			position.x += 240 - 144;
 		current_animation = &idle[screen_portion];
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 			state = ST_WALK_LEFT;
@@ -343,7 +345,7 @@ update_status ModulePlayer::Update()
 		break;
 
 	case ST_WALK_RIGHT:
-		if (position.x < SCREEN_WIDTH - 87)
+		if (position.x < SCREEN_WIDTH - 144)
 			position.x += speed;
 		if (cposition.x < SCREEN_WIDTH - 35)
 			cposition.x += speed * 2;
@@ -460,15 +462,18 @@ update_status ModulePlayer::Update()
 		break;
 
 	case ST_ROLLING_RIGHT:
+		if (current_animation != &roll_right)
+			position.x -= 240 - 144;
 		current_animation = &roll_right;
 		player_collider->SetPos(SCREEN_WIDTH, SCREEN_HEIGHT);
-		if (position.x < SCREEN_WIDTH - 87)
+		if (position.x + 240 < SCREEN_WIDTH)
 			position.x += speed;
 
 		if (roll_right.Finished())
 		{
-			if (position.x < SCREEN_WIDTH - 87)
-				position.x += TILE*2;
+			/*position.x += TILE * 2;
+			if (position.x > SCREEN_WIDTH - 144)
+				position.x = SCREEN_WIDTH - 144;*/
 			roll_right.Reset();
 			state = ST_IDLE;
 		}
