@@ -72,7 +72,7 @@ bool ModuleScene::Start()
 	//testing wagon & horse
 	App->enemies->AddEnemy(ENEMY_TYPES::WAGON, SCREEN_WIDTH / 2 + 60, 300, false);
 
-	//App->enemies->AddEnemy(ENEMY_TYPES::HORSE, SCREEN_WIDTH / 2 + 60, 300, false);*/
+	App->enemies->AddEnemy(ENEMY_TYPES::HORSE, SCREEN_WIDTH / 2 - 60, 300, false);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80, true);
 
