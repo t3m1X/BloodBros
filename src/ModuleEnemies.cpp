@@ -61,6 +61,16 @@ update_status ModuleEnemies::PreUpdate()
 		}
 	}
 
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i]->isDead)
+		{
+			App->useri->killcount += 1;
+			delete enemies[i];
+			enemies[i] = nullptr;
+		}
+	}
+
 	return UPDATE_CONTINUE;
 }
 
