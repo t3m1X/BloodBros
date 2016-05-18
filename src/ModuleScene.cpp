@@ -13,6 +13,9 @@
 #include "ModuleEnemies.h"
 #include "ModuleUserI.h"
 
+#include <stdlib.h> 
+#include <time.h>  
+
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
@@ -82,8 +85,8 @@ bool ModuleScene::Start()
 	start_time = SDL_GetTicks();
 	first_wave_time = start_time + 3000;
 	second_wave_time = start_time + 10000;
-	third_wave_time = start_time+ 25252;
-	//fourth_wave_time = start_time + 20000;
+	third_wave_time = start_time+ 14252;
+	fourth_wave_time = start_time + 10000;
 	
 	return true;
 }
@@ -121,11 +124,17 @@ update_status ModuleScene::Update()
 	{
 		second_wave_time = current_time + 20000;
 		App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80, true);
+		switch (rand() % 5)
+		{
+		case 3:
+			App->enemies->AddEnemy(ENEMY_TYPES::DANCER, 0, 400, true);
+			break;
+		}
 
 	}
 if (current_time >= third_wave_time)
 	{
-		third_wave_time = current_time + 25252;
+		third_wave_time = current_time + 14252;
 
 		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R3, SCREEN_WIDTH / 2 - 20, 248, false);
 		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH / 2 - 80, 248, false);
@@ -140,9 +149,8 @@ if (current_time >= third_wave_time)
 	}
 	/*if (current_time >= fourth_wave_time)
 	{
-		first_wave_time = current_time + 5000;
-		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 300, false);
-
+		first_wave_time = current_time + 8000;
+		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
 	}*/
 
 	// Draw everything --------------------------------------
