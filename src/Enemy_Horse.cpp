@@ -13,21 +13,50 @@
 
 Horse::Horse(int x, int y) : Enemy(x, y)
 {
-	//horse shooting here
+	//horse walking here
+
+	walk.PushBack({ 0, 2976, 144, 144});
+	walk.PushBack({ 144, 2976, 144, 144 });
+	walk.PushBack({ 288, 2976, 144, 144 });
+	walk.PushBack({ 432, 2976, 144, 144 });
+	walk.PushBack({ 576, 2976, 144, 144 }); 
+	walk.PushBack({ 720, 2976, 144, 144 });
+	walk.PushBack({ 864, 2976, 144, 144 });
+	walk.PushBack({ 1008, 2976, 144, 144 });
+	walk.speed = 0.2f;
 
 	//--------------------
 
 
 	//indian shooting here
+	shoot.PushBack({ 1152, 2928, 48, 96});
+	shoot.PushBack({ 1200, 2928, 48, 96});
+	shoot.PushBack({ 1244, 2928, 48, 96});
+	shoot.speed = 0.2f;
+	shoot.loop = false;
 	
 	//--------------------------
 
 	//horse dying here
+	dead.PushBack({ 0, 2976, 144, 144 });
+	dead.PushBack({ 144, 2976, 144, 144 });
+	dead.PushBack({ 288, 2976, 144, 144 });
+	dead.PushBack({ 432, 2976, 144, 144 });
+	dead.PushBack({ 576, 2976, 144, 144 });
+	dead.PushBack({ 720, 2976, 144, 144 });
+	dead.PushBack({ 864, 2976, 144, 144 });
+	dead.PushBack({ 1008, 2976, 144, 144 });
+	dead.speed = 0.4f;
+	dead.loop = false;
+
 
 	//---------------------------
 
 	//dead of indian here
 
+	dead.PushBack({ 576, 1248, 48, 96});
+	dead.speed = 0.1f;
+	dead.loop = false;
 	//------------------------------
 	
 	animation = &walk;
