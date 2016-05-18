@@ -18,6 +18,12 @@ Dancer::Dancer(int x, int y) : Enemy(x, y)
 	dance.PushBack({ 288, 2688, 96, 144 });
 	dance.speed = 0.25f;
 	
+	dead.PushBack({ 0, 2688, 96, 144 });
+	dead.PushBack({ 0, 2688, 96, 144 });
+	dead.PushBack({ 0, 2688, 96, 144 });
+	dead.PushBack({ 0, 2688, 96, 144 });
+	dead.loop = 0.2f;
+
 	animation = &walk;
 
 	collider = App->collision->AddCollider({ x, y, 48, 48}, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
