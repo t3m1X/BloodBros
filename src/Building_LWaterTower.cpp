@@ -5,6 +5,7 @@
 #include "p2Point.h"
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
+#include "ModuleUserI.h"
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
@@ -62,7 +63,11 @@ void LWaterTower::Collision()
 		if (building.Finished())
 		{
 			App->particles->AddParticle(App->particles->dust, position.x+240-336 , position.y+448-60 );
+			App->collision->EraseCollider(collider);
+			collider = nullptr;
 			state = ST_DYING;
+			App->useri->score += 500;
+			App->useri->killcount += 1;
 			next_call = 0;
 		}
 		

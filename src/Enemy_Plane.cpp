@@ -4,6 +4,7 @@
 #include "ModuleCollision.h"
 #include "p2Point.h"
 #include "ModuleParticles.h"
+#include "ModuleUserI.h"
 
 Plane::Plane(int x) : Enemy(x, 25)
 {
@@ -25,6 +26,7 @@ Plane::Plane(int x) : Enemy(x, 25)
 	fly.loop = false;
 
 	animation = &fly;
+	hitpoints = 3;
 
 	collider = App->collision->AddCollider({ 0, 0, 32, 16 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -59,6 +61,14 @@ void Plane::Move()
 
 void Plane::Collision()
 {
-	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-	isDead = true;
+	if (hitpoints > 0)
+		--hitpoints;
+	else
+	{
+		App->collision->EraseCollider(collider);
+		collider = nullptr;
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+		App->useri->score += 200;
+		isDead = true;
+	}
 }

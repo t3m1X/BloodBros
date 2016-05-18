@@ -3,6 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
+#include "ModuleUserI.h"
 
 Enemy::Enemy(int x, int y) : position(x, y), collider(nullptr)
 {
@@ -34,5 +35,12 @@ void Enemy::Draw(SDL_Texture* sprites)
 
 void Enemy::Collision()
 {
+	if (collider != nullptr)
+	{
+		App->collision->EraseCollider(collider);
+		collider = nullptr;
+	}
+	App->useri->score += 100;
+	App->useri->killcount += 1;
 	state = ST_DYING;
 }
