@@ -22,7 +22,8 @@ enum ENEMY_TYPES
 	V_FORMATION_L2,
 	V_FORMATION_L3,
 	CACTUS,
-	WAGON
+	WAGON,
+	HORSE
 };
 
 class Enemy;

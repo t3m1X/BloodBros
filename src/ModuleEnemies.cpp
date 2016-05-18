@@ -20,6 +20,7 @@
 #include "Enemy_V_Left3.h"
 #include "Cactus.h"
 #include "Enemy_Wagon.h"
+#include "Enemy_Horse.h"
 #include "ModulePlayer.h"
 
 
@@ -218,6 +219,8 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::WAGON:
 			enemies[i] = new Wagon(info.x, info.y);
 			break;
+		case ENEMY_TYPES::HORSE:
+			enemies[i] = new Horse(info.x, info.y);
 		}
 	}
 }
