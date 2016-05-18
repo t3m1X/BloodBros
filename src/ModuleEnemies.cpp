@@ -21,8 +21,9 @@
 #include "Cactus.h"
 #include "Enemy_Wagon.h"
 #include "Enemy_Horse.h"
+#include "Building_LPipe.h"
+#include "Building_RPipe.h"
 #include "ModulePlayer.h"
-
 
 #define SPAWN_MARGIN 50
 
@@ -221,6 +222,12 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::HORSE:
 			enemies[i] = new Horse(info.x, info.y);
+			break;
+		case ENEMY_TYPES::LPIPE:
+			enemies[i] = new LPipe(info.x, info.y);
+			break;
+		case ENEMY_TYPES::RPIPE:
+			enemies[i] = new RPipe(info.x, info.y);
 		}
 	}
 }

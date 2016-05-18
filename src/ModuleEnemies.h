@@ -23,7 +23,10 @@ enum ENEMY_TYPES
 	V_FORMATION_L3,
 	CACTUS,
 	WAGON,
-	HORSE
+	HORSE,
+	LPIPE,
+	RPIPE,
+	TOP_PIPES
 };
 
 class Enemy;

@@ -16,8 +16,6 @@ Dancer::Dancer(int x, int y) : Enemy(x, y)
 
 	dance.PushBack({ 192, 2688, 96, 144 });
 	dance.PushBack({ 288, 2688, 96, 144 });
-	/*dance.PushBack({ 436, 2255, 96, 129 });
-	dance.PushBack({ 535, 2261, 96, 123 });*/
 	dance.speed = 0.25f;
 	
 
@@ -33,7 +31,7 @@ Dancer::Dancer(int x, int y) : Enemy(x, y)
 
 	animation = &walk;
 
-	collider = App->collision->AddCollider({ 48, 48, 48, 48}, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x, y, 48, 48}, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	sfx = App->audio->LoadSFX("sound/soundfx/dancer_hit.wav");
 
