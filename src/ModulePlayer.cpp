@@ -336,6 +336,11 @@ update_status ModulePlayer::Update()
 			state = ST_IDLE;
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP)
 			state = ST_IDLE;
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		{
+			if (cposition.y < position.y + 15)
+				cposition.y += speed * 2;
+		}
 		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
 			state = ST_FIRE_STANDING;
 		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_DOWN)
@@ -355,6 +360,11 @@ update_status ModulePlayer::Update()
 			state = ST_IDLE;
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP)
 			state = ST_IDLE;
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		{
+			if (cposition.y < position.y + 15)
+				cposition.y += speed * 2;
+		}
 		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
 			state = ST_FIRE_STANDING;
 		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_DOWN)
