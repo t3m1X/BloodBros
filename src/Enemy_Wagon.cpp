@@ -13,33 +13,29 @@
 
 Wagon::Wagon(int x, int y) : Enemy(x, y)
 {
-	
-	walk.PushBack({ 153, 442, 45, 96 });
-	walk.PushBack({ 215, 439, 66, 96 });
-	walk.PushBack({ 289, 443, 80, 93 });
-	walk.PushBack({ 378, 441, 43, 96 });
-	walk.PushBack({ 433, 442, 63, 96 });
-	walk.PushBack({ 505, 443, 80, 94 });
+	//wagon passing 
+	walk.PushBack({ 0, 432, 144, 48 });
+	walk.PushBack({ 144, 432, 144, 48 });
+	walk.PushBack({ 288, 432, 144, 48 });
+	walk.PushBack({ 432, 432, 144, 48 });
 	walk.speed = 0.2f;
+
 	
-	//cowboy shooting
-	shoot.PushBack({ 594, 415, 82, 120 });
-	shoot.PushBack({ 684, 413, 68, 120 });
-	shoot.PushBack({ 594, 415, 82, 120 });
+	//cowboy up the wagon
+	shoot.PushBack({ 1440, 2064,96, 96 });
+	shoot.PushBack({ 1536, 2016, 96, 144 });
+	shoot.PushBack({ 1440, 2064, 96, 96} );
 	shoot.speed = 0.2f;
 	shoot.loop = false;
+	//----
 
-	dead.PushBack({ 1132, 635, 105, 165 });
-	dead.PushBack({ 1276, 677, 104, 128 });
-	dead.PushBack({ 1411, 689, 128, 100 });
-	dead.PushBack({ 23, 910, 128, 28 });
-	dead.speed = 0.1f;
-	//dead of cowboy
-	dead.PushBack({ 1728, 1968, 96, 144 });
-	dead.PushBack({ 1824, 1968, 96, 144 });
+	//dead cowboy wagon animation
 	dead.PushBack({ 1920, 1968, 96, 144 });
 	dead.speed = 0.1f;
 
+	
+	
+	
 	animation = &walk;
 
 	collider = App->collision->AddCollider({ 0, 0, 70, 70 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
