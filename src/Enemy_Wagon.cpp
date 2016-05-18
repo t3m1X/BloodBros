@@ -21,15 +21,8 @@ Wagon::Wagon(int x, int y) : Enemy(x, y)
 	walk.PushBack({ 433, 442, 63, 96 });
 	walk.PushBack({ 505, 443, 80, 94 });
 	walk.speed = 0.2f;
-	//cowboy walk
-	/*/walk.PushBack({ 864, 1968, 96, 144 });
-	walk.PushBack({ 960, 1968, 96, 144 });
-	walk.PushBack({ 1056, 1968, 96, 144 });
-	walk.PushBack({ 1152, 1968, 96, 144 });
-	walk.PushBack({ 1248, 1968, 96, 144 });
-	walk.PushBack({ 1344, 1968, 96, 144 });
-	walk.speed = 0.2f;/*/
-
+	
+	//cowboy shooting
 	shoot.PushBack({ 594, 415, 82, 120 });
 	shoot.PushBack({ 684, 413, 68, 120 });
 	shoot.PushBack({ 594, 415, 82, 120 });
@@ -42,10 +35,10 @@ Wagon::Wagon(int x, int y) : Enemy(x, y)
 	dead.PushBack({ 23, 910, 128, 28 });
 	dead.speed = 0.1f;
 	//dead of cowboy
-	/*/dead.PushBack({ 1728, 1968, 96, 144 });
+	dead.PushBack({ 1728, 1968, 96, 144 });
 	dead.PushBack({ 1824, 1968, 96, 144 });
 	dead.PushBack({ 1920, 1968, 96, 144 });
-	dead.speed = 0.1f;/*/
+	dead.speed = 0.1f;
 
 	animation = &walk;
 
