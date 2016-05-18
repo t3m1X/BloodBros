@@ -5,6 +5,7 @@
 #include "p2Point.h"
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
+#include "ModuleUserI.h"
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
@@ -48,7 +49,7 @@ void RWaterTower::Draw(SDL_Texture* sprites)
 		position.y += 1;
 		last_anim.h -= 1;
 		App->render->Blit(sprites, position.x + xcorrection, position.y, &last_anim);
-		if (last_anim.h <= 10)
+		if (last_anim.h <= 48)
 			isDead = true;
 		break;
 	}
@@ -65,7 +66,11 @@ void RWaterTower::Collision()
 		if (building.Finished())
 		{
 			App->particles->AddParticle(App->particles->dust, position.x-20, position.y + 448 - 60);
+			App->collision->EraseCollider(collider);
+			collider = nullptr;
 			state = ST_DYING;
+			App->useri->score += 500;
+			App->useri->killcount += 1;
 			next_call = 0;
 		}
 

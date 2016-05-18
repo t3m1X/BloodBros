@@ -77,7 +77,8 @@ public:
 	Collider* ground_collider;
 	player_states state;
 	Uint32 current_time;
-	Uint32 damage_cool = 0;
+	Uint32 damage_cooldown;
+	Uint32 shooting_cooldown;
 	Uint32 blink_time;
 	bool godmode = false;
 

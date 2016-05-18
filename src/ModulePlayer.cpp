@@ -209,6 +209,8 @@ bool ModulePlayer::Start()
 	player_collider = App->collision->AddCollider({ (SCREEN_WIDTH - 87) / 2, SCREEN_HEIGHT / 2 + 117, TILE, (TILE*4)-8 }, COLLIDER_PLAYER); 
 	ground_collider = App->collision->AddCollider({ 0, SCREEN_HEIGHT - 50, SCREEN_WIDTH, 50 }, COLLIDER_PLAYER_SHOT);
 	state = ST_IDLE;
+	shooting_cooldown = 0;
+	damage_cooldown = 0;
 
 	position.x = (SCREEN_WIDTH - 87) / 2;    //Initial x position of the player and crossbow, 87 is sprite width
 	position.y = SCREEN_HEIGHT / 2 + 117;
@@ -231,6 +233,7 @@ bool ModulePlayer::CleanUp()
 
 	App->collision->EraseCollider(cross_collider);
 	App->collision->EraseCollider(player_collider);
+	App->collision->EraseCollider(ground_collider);
 
 
 	return true;
@@ -270,7 +273,7 @@ update_status ModulePlayer::Update()
 	switch (state)
 	{
 	case ST_IDLE:
-		current_animation = &idle[screen_portion]; 
+		current_animation = &idle[screen_portion];
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 			state = ST_WALK_LEFT;
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
@@ -357,10 +360,13 @@ update_status ModulePlayer::Update()
 		break;
 
 	case ST_FIRE_STANDING:
-		cross_collider->SetPos(cposition.x, cposition.y);
+		if (current_time > shooting_cooldown)
+		{
+			shooting_cooldown = current_time + 200;
+			cross_collider->SetPos(cposition.x, cposition.y);
+			App->audio->PlaySFX(shoot);
+		}
 		screen_portion += 7;
-		App->audio->PlaySFX(shoot);
-		firing = true;
 		if (screen_portion <= MIDDLE_F)
 			xcorrection += idle[screen_portion - 7].frames[0].w - idle[screen_portion].frames[0].w;
 		ycorrection += idle[screen_portion - 7].frames[0].h - idle[screen_portion].frames[0].h;
@@ -389,10 +395,13 @@ update_status ModulePlayer::Update()
 		break;
 
 	case ST_FIRE_CROUCH:
-		cross_collider->SetPos(cposition.x, cposition.y);
+		if (current_time > shooting_cooldown)
+		{
+			shooting_cooldown = current_time + 200;
+			cross_collider->SetPos(cposition.x, cposition.y);
+			App->audio->PlaySFX(shoot);
+		}
 		screen_portion += 7;
-		App->audio->PlaySFX(shoot);
-		firing = true;
 		if (screen_portion <= MIDDLE_F)
 			xcorrection += idle[screen_portion - 7].frames[0].w - idle[screen_portion].frames[0].w;
 		ycorrection += idle[screen_portion - 7].frames[0].h - idle[screen_portion].frames[0].h;
@@ -430,7 +439,7 @@ update_status ModulePlayer::Update()
 			hit = false;
 			App->useri->hitpoints -= 1;
 			dead.Reset();
-			damage_cool = current_time + 3000;
+			damage_cooldown = current_time + 3000;
 			state = ST_IDLE;
 		}
 		break;
@@ -531,13 +540,13 @@ update_status ModulePlayer::Update()
 	}*/
 
 	// Draw everything --------------------------------------
-	if (current_time < damage_cool)
+	if (current_time < damage_cooldown)
 		player_collider->SetPos(SCREEN_WIDTH, SCREEN_HEIGHT);
 	
 	App->render->Blit(crosstexture, cposition.x, cposition.y, &(cross.GetCurrentFrame()));
-	if (firing)
+	if (state == ST_FIRE_STANDING || state == ST_FIRE_CROUCH)
 		App->render->Blit(crosstexture, cposition.x, cposition.y, &(fcross.GetCurrentFrame()));
-	if (current_time >= damage_cool || blink)
+	if (current_time >= damage_cooldown || blink)
 		App->render->Blit(player, position.x + xcorrection, position.y + ycorrection, &(current_animation->GetCurrentFrame()));
 	else
 		current_animation->GetCurrentFrame();

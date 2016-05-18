@@ -10,6 +10,7 @@ class Plane : public Enemy
 private:
 
 	Animation fly;
+	Uint32 hitpoints;
 
 public:
 
