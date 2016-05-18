@@ -43,7 +43,7 @@ void RWaterTower::Draw(SDL_Texture* sprites)
 		this_call = SDL_GetTicks();
 		if (this_call >= next_call)
 		{
-			xcorrection += 5;
+			xcorrection += 15;
 			next_call = this_call + 50;
 		}
 		position.y += 1;
