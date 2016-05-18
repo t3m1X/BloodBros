@@ -146,6 +146,9 @@
     <ClInclude Include="Enemy_V_Left3.h">
       <Filter>Modules\Enemies\V_FORMATION</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_Horse.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -258,6 +261,9 @@
     </ClCompile>
     <ClCompile Include="Enemy_V_Left3.cpp">
       <Filter>Modules\Enemies\V_FORMATION</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Horse.cpp">
+      <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
