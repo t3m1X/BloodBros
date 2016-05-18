@@ -172,7 +172,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			AddParticle(bullet_collision, active[i]->position.x, active[i]->position.y);
 			//AddParticle(explosion, active[i]->position.x, active[i]->position.y);
 			if (App->player->player_collider == c2)
-				App->player->hit = true;
+				App->player->Collision();
 
 			delete active[i];
 			active[i] = nullptr;

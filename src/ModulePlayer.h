@@ -54,12 +54,14 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
+	void Collision();
 
 public:
 
 	SDL_Texture* player = nullptr;
 	SDL_Texture* crosstexture = nullptr;
 	Mix_Chunk* shoot = nullptr;
+	Mix_Chunk* hit_sound = nullptr;
 	Animation cross;
 	Animation fcross;
 	Animation* current_animation = nullptr;
@@ -85,5 +87,4 @@ public:
 	bool hit = false;
 	bool blink = true;
 };
-
 #endif

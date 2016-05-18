@@ -205,6 +205,7 @@ bool ModulePlayer::Start()
 	player = App->textures->Load("sprites/p1_sprites-rearranged.png");
 	crosstexture = App->textures->Load("sprites/aims.png"); 
 	shoot = App->audio->LoadSFX("sound/soundfx/shoot.wav");
+	hit_sound = App->audio->LoadSFX("sound/soundfx/player_hit.wav");
 	cross_collider = App->collision->AddCollider({ SCREEN_WIDTH/2, SCREEN_HEIGHT, 69, 63 }, COLLIDER_PLAYER_SHOT);
 	player_collider = App->collision->AddCollider({ (SCREEN_WIDTH - 87) / 2, SCREEN_HEIGHT / 2 + 117, TILE, (TILE*4)-8 }, COLLIDER_PLAYER); 
 	ground_collider = App->collision->AddCollider({ 0, SCREEN_HEIGHT - 50, SCREEN_WIDTH, 50 }, COLLIDER_PLAYER_SHOT);
@@ -230,6 +231,7 @@ bool ModulePlayer::CleanUp()
 	App->textures->Unload(crosstexture);
 
 	App->audio->UnloadSFX(shoot);
+	App->audio->UnloadSFX(hit_sound);
 
 	App->collision->EraseCollider(cross_collider);
 	App->collision->EraseCollider(player_collider);
@@ -552,4 +554,13 @@ update_status ModulePlayer::Update()
 		current_animation->GetCurrentFrame();
 
 	return UPDATE_CONTINUE;
+}
+
+void ModulePlayer::Collision()
+{
+	if (!hit && !godmode)
+	{
+		hit = true;
+		App->audio->PlaySFX(hit_sound);
+	}
 }
