@@ -226,9 +226,8 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::LPIPE:
 			enemies[i] = new LPipe(info.x, info.y);
 			break;
-		/*case ENEMY_TYPES::RPIPE:
+		case ENEMY_TYPES::RPIPE:
 			enemies[i] = new RPipe(info.x, info.y);
-			break;*/
 		}
 	}
 }

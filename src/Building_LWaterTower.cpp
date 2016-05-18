@@ -23,7 +23,7 @@ LWaterTower::LWaterTower(int x, int y) : Enemy(x, y)
 	last_anim.h = 480;
 
 
-	collider = App->collision->AddCollider({ x, y, 150, 448 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x, y, 150, 420 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 }
 
