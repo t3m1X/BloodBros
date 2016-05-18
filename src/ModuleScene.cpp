@@ -46,11 +46,10 @@ bool ModuleScene::Start()
 	c_cactus2 = App->collision->AddCollider({ SCREEN_WIDTH / 2 - SCREEN_WIDTH / 4, SCREEN_HEIGHT / 2 - cactus2.h - 10, cactus2.w, cactus2.h }, COLLIDER_ENEMY);
 	c_cactus3 = App->collision->AddCollider({ SCREEN_WIDTH - SCREEN_WIDTH / 3 - 35, SCREEN_HEIGHT / 2 - cactus2.h - 10, cactus2.w, cactus2.h }, COLLIDER_ENEMY);
 	*/
-	App->enemies->AddEnemy(ENEMY_TYPES::TOP_PIPES, 100, 12, true, true);
+	//App->enemies->AddEnemy(ENEMY_TYPES::TOP_PIPES, 100, 12, true, true);
 	App->enemies->AddEnemy(ENEMY_TYPES::LPIPE, 0, SCREEN_HEIGHT - 275, true, true);
 	App->enemies->AddEnemy(ENEMY_TYPES::RPIPE, SCREEN_WIDTH-336, SCREEN_HEIGHT - 275, true, true);
 	App->enemies->AddEnemy(ENEMY_TYPES::L_WATERTOWER, 0, 0, true, true);
-	App->enemies->AddEnemy(ENEMY_TYPES::R_WATERTOWER, SCREEN_WIDTH-255, 0, true, true);
 	App->enemies->AddEnemy(ENEMY_TYPES::R_WATERTOWER, SCREEN_WIDTH - 200, 0, true, true);
 	
 	App->enemies->AddEnemy(ENEMY_TYPES::DANCER, 0, 400, true);
@@ -75,8 +74,6 @@ bool ModuleScene::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80, true);
 
 		
-	
-
 	App->player->Enable();
 	App->useri->Enable();
 	App->enemies->Enable();
