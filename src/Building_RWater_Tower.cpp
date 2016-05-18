@@ -11,13 +11,18 @@
 
 RWaterTower::RWaterTower(int x, int y) : Enemy(x, y)
 {
-	state.PushBack({ 1392, 0, 288, 480 });
-	state.PushBack({ 1392, 960, 288, 480 });
-	state.PushBack({ 1392, 1440, 288, 480 });
+	building.PushBack({ 1392, 0, 288, 480 });
+	building.PushBack({ 1392, 960, 288, 480 });
+	building.PushBack({ 1392, 1440, 288, 480 });
 	
 
-	state.speed = 1.0f;
-	state.loop = false;
+	building.speed = 1.0f;
+	building.loop = false;
+
+	last_anim.x = 1392;
+	last_anim.y = 1440;
+	last_anim.w = 288;
+	last_anim.h = 480;
 
 	collider = App->collision->AddCollider({ x, y, 200, 448 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -27,7 +32,26 @@ RWaterTower::RWaterTower(int x, int y) : Enemy(x, y)
 
 void RWaterTower::Draw(SDL_Texture* sprites)
 {
-	App->render->Blit(sprites, position.x, position.y, &(state.ConsultCurrentFrame()));
+	switch (state)
+	{
+	case ST_REGULAR:
+		App->render->Blit(sprites, position.x, position.y, &(building.ConsultCurrentFrame()));
+		break;
+	case ST_DYING:
+		int xcorrection = 0;
+		this_call = SDL_GetTicks();
+		if (this_call >= next_call)
+		{
+			xcorrection += 5;
+			next_call = this_call + 50;
+		}
+		position.y += 1;
+		last_anim.h -= 1;
+		App->render->Blit(sprites, position.x + xcorrection, position.y, &last_anim);
+		if (last_anim.h <= 10)
+			isDead = true;
+		break;
+	}
 }
 
 
@@ -37,13 +61,15 @@ void RWaterTower::Collision()
 
 	if (this_call > next_call)
 	{
-		next_call = this_call + 1000;
-		if (state.Finished())
+		next_call = this_call + 500;
+		if (building.Finished())
 		{
-			App->particles->AddParticle(App->particles->dust, position.x, position.y + 448 - 120);
-			isDead = true;
+			App->particles->AddParticle(App->particles->dust, position.x-20, position.y + 448 - 60);
+			state = ST_DYING;
+			next_call = 0;
 		}
+
 		else
-			state.GetCurrentFrame();
+			building.GetCurrentFrame();
 	}
 }

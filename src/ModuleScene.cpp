@@ -155,6 +155,8 @@ if (current_time >= third_wave_time)
 	
 	if (App->useri->hitpoints == 0)
 	{
+		App->useri->score = 0;
+
 		if (App->useri->credit == 0)
 			App->fade->FadeToBlack(this, App->intro, 1.0f);
 		else

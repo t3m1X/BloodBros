@@ -5,7 +5,9 @@
 #include "ModuleParticles.h"
 
 Enemy::Enemy(int x, int y) : position(x, y), collider(nullptr)
-{}
+{
+	state = ST_REGULAR;
+}
 
 Enemy::~Enemy()
 {
@@ -32,6 +34,5 @@ void Enemy::Draw(SDL_Texture* sprites)
 
 void Enemy::Collision()
 {
-	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-	isDead = true;
+	state = ST_DYING;
 }

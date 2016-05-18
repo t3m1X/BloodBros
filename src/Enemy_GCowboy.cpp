@@ -32,12 +32,12 @@ GCowboy::GCowboy(int x, int y) : Enemy(x, y)
 	dead.PushBack({ 1824, 1968, 96, 144 });
 	dead.PushBack({ 1920, 1968, 96, 144 });
 	dead.speed = 0.1f;
+	dead.loop = false;
 
 	animation = &walk;
 
 	collider = App->collision->AddCollider({ 0, 0, 70, 70 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	
 	position.x = SCREEN_WIDTH;
 	i_pos.y = position.y;
 
@@ -47,35 +47,47 @@ GCowboy::GCowboy(int x, int y) : Enemy(x, y)
 
 void GCowboy::Move()
 {
-	current_time = SDL_GetTicks();
+	switch (state)
+	{
+	case ST_REGULAR:
+		current_time = SDL_GetTicks();
 
-	if (current_time >= shoot_end)
-	{
-		position.x -= 2;
-		if (has_shot)
+		if (current_time >= shoot_end)
 		{
-			position.y = i_pos.y;
-			animation = &walk;
+			position.x -= 2;
+			if (has_shot)
+			{
+				position.y = i_pos.y;
+				animation = &walk;
+			}
 		}
-	}
-	if (position.x <= SCREEN_WIDTH / 2 - shoot.frames[1].w / 2 && !has_shot)
-	{
-		shoot_end = current_time + 1000;
-		position.y -=10;
-		animation = &shoot;
-		switch (rand() % 3)
+		if (position.x <= SCREEN_WIDTH / 2 - shoot.frames[1].w / 2 && !has_shot)
 		{
-		case 0:
-			App->particles->AddParticle(App->particles->shoot_left, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
-			break;
-		case 1:
-			App->particles->AddParticle(App->particles->shoot, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
-			break;
-		case 2:
-			App->particles->AddParticle(App->particles->shoot_right, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
-			break;
+			shoot_end = current_time + 1000;
+			position.y -= 10;
+			animation = &shoot;
+			switch (rand() % 3)
+			{
+			case 0:
+				App->particles->AddParticle(App->particles->shoot_left, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
+				break;
+			case 1:
+				App->particles->AddParticle(App->particles->shoot, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
+				break;
+			case 2:
+				App->particles->AddParticle(App->particles->shoot_right, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
+				break;
+			}
+			has_shot = true;
 		}
-		has_shot = true;
+		break;
+
+	case ST_DYING:
+		animation = &dead;
+		if (dead.Finished())
+			isDead = true;
+		break;
 	}
+
 	
 }

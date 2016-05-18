@@ -17,6 +17,7 @@ public:
 	bool has_shot = false;
 
 	void Move();
+	void Collision();
 };
 
 #endif // __ENEMY_PLANE_H__

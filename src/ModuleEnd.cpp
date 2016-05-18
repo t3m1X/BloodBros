@@ -9,6 +9,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
 #include "ModuleIntro.h"
+#include "ModuleUserI.h"
 
 
 ModuleEnd::ModuleEnd()
@@ -29,6 +30,7 @@ bool ModuleEnd::Start()
 	EndScreen = App->textures->Load("sprites/temporary_end_game.png");
 	//App->audio->PlayMusic("sound/music/startscreen.wav");
 	App->input->Enable();
+	App->useri->Disable();
 
 	return true;
 }

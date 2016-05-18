@@ -28,8 +28,8 @@ ModuleUserI::ModuleUserI()
 
 	hitpoints = 3;
 	credit = 0;
-	score = 0;
 	dynamite = 10;
+	highscore = 0;
 
 
 	
@@ -46,6 +46,8 @@ bool ModuleUserI::Start()
 	credit_counter = App->text->AddNumber(SCREEN_WIDTH / 2 + TILE/2 + 10, SCREEN_HEIGHT - TILE / 2, credit, 2);
 	score_counter = App->text->AddNumber(0, 0, score, 8);
 	dynamite_counter = App->text->AddNumber(0, SCREEN_HEIGHT - (TILE + TILE / 2) + 5, dynamite, 2);
+	highscore_counter = App->text->AddNumber(TILE * 5, 0, highscore, 8);
+	score = 0;
 
 	return true;
 }
@@ -57,14 +59,19 @@ bool ModuleUserI::CleanUp()
 	App->text->EraseText(credit_text);
 	App->text->EraseText(credit_counter);
 	App->text->EraseText(score_counter);
+	App->text->EraseText(highscore_counter);
 	App->text->EraseText(dynamite_counter);
 
 	return true;
 }
 update_status ModuleUserI::Update()
 {
+	if (score > highscore)
+		highscore = score;
+
 	credit_counter->ChangeNumber(credit);
 	score_counter->ChangeNumber(score);
+	highscore_counter->ChangeNumber(highscore);
 
 	int enemygauge = ((ENEMY_GAUGE - killcount) * 12) / ENEMY_GAUGE;
 	
@@ -75,7 +82,7 @@ update_status ModuleUserI::Update()
 
 	Uint32 position = TILE * 2 + 80;
 	Uint32 count = 0;
-	while (enemygauge - 2 > -1)
+	while (enemygauge - 2 >= 0)
 	{
 		App->render->Blit(UserInterface, position, SCREEN_HEIGHT - (TILE), &(foe_bar.frames[2]), 0.5);
 		enemygauge -= 2;

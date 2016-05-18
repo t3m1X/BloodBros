@@ -44,11 +44,6 @@ ModulePlayer::ModulePlayer()
 {
 	player = NULL;
 	current_animation = NULL;
-	
-	position.x = (SCREEN_WIDTH - 87) / 2 ;    //Initial x position of the player and crossbow, 87 is sprite width
-	position.y = SCREEN_HEIGHT/2 + 117;	 
-	cposition.x = (SCREEN_WIDTH - 60) / 2;
-	cposition.y = position.y - 150;
 
 	cross.PushBack({ 11, 17, 69, 63 });
 	cross.PushBack({ 107, 17, 69, 63 });
@@ -214,6 +209,11 @@ bool ModulePlayer::Start()
 	player_collider = App->collision->AddCollider({ (SCREEN_WIDTH - 87) / 2, SCREEN_HEIGHT / 2 + 117, TILE, (TILE*4)-8 }, COLLIDER_PLAYER); 
 	ground_collider = App->collision->AddCollider({ 0, SCREEN_HEIGHT - 50, SCREEN_WIDTH, 50 }, COLLIDER_PLAYER_SHOT);
 	state = ST_IDLE;
+
+	position.x = (SCREEN_WIDTH - 87) / 2;    //Initial x position of the player and crossbow, 87 is sprite width
+	position.y = SCREEN_HEIGHT / 2 + 117;
+	cposition.x = (SCREEN_WIDTH - 60) / 2;
+	cposition.y = position.y - 150;
 	
 
 	return true;

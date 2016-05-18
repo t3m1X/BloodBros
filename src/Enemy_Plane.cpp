@@ -56,3 +56,9 @@ void Plane::Move()
 	}
 
 }
+
+void Plane::Collision()
+{
+	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+	isDead = true;
+}

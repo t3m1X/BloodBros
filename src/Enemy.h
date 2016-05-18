@@ -7,10 +7,16 @@
 struct SDL_Texture;
 struct Collider;
 
+enum Enemy_State
+{
+	ST_REGULAR,
+	ST_DYING
+};
+
 class Enemy
 {
 protected:
-
+	Enemy_State state;
 	Animation* animation;
 	Collider* collider;
 

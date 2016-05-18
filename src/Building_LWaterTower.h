@@ -9,10 +9,11 @@ class LWaterTower : public Enemy
 {
 private:
 
-	Animation state;
+	Animation building;
 	Animation dead_state;
 	Uint32 this_call;
 	Uint32 next_call = 0;
+	SDL_Rect last_anim;
 
 public:
 

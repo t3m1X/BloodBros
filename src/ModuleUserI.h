@@ -34,9 +34,11 @@ public:
 	Uint32 score;
 	Uint32 dynamite;
 	Uint32 killcount;
+	Uint32 highscore;
 	Text* credit_text;
 	Text* credit_counter;
 	Text* score_counter;
+	Text* highscore_counter;
 	Text* dynamite_counter;
 
 };
