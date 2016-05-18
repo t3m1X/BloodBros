@@ -13,7 +13,7 @@
 
 Wagon::Wagon(int x, int y) : Enemy(x, y)
 {
-	/*
+	
 	walk.PushBack({ 153, 442, 45, 96 });
 	walk.PushBack({ 215, 439, 66, 96 });
 	walk.PushBack({ 289, 443, 80, 93 });
@@ -21,7 +21,14 @@ Wagon::Wagon(int x, int y) : Enemy(x, y)
 	walk.PushBack({ 433, 442, 63, 96 });
 	walk.PushBack({ 505, 443, 80, 94 });
 	walk.speed = 0.2f;
-
+	//cowboy walk
+	/*/walk.PushBack({ 864, 1968, 96, 144 });
+	walk.PushBack({ 960, 1968, 96, 144 });
+	walk.PushBack({ 1056, 1968, 96, 144 });
+	walk.PushBack({ 1152, 1968, 96, 144 });
+	walk.PushBack({ 1248, 1968, 96, 144 });
+	walk.PushBack({ 1344, 1968, 96, 144 });
+	walk.speed = 0.2f;/*/
 
 	shoot.PushBack({ 594, 415, 82, 120 });
 	shoot.PushBack({ 684, 413, 68, 120 });
@@ -34,6 +41,11 @@ Wagon::Wagon(int x, int y) : Enemy(x, y)
 	dead.PushBack({ 1411, 689, 128, 100 });
 	dead.PushBack({ 23, 910, 128, 28 });
 	dead.speed = 0.1f;
+	//dead of cowboy
+	/*/dead.PushBack({ 1728, 1968, 96, 144 });
+	dead.PushBack({ 1824, 1968, 96, 144 });
+	dead.PushBack({ 1920, 1968, 96, 144 });
+	dead.speed = 0.1f;/*/
 
 	animation = &walk;
 
@@ -44,12 +56,12 @@ Wagon::Wagon(int x, int y) : Enemy(x, y)
 	i_pos.y = position.y;
 
 	srand(time(NULL));
-	*/
+	
 }
 
 void Wagon::Move()
 {
-	/*current_time = SDL_GetTicks();
+	current_time = SDL_GetTicks();
 
 	if (current_time >= shoot_end)
 	{
@@ -78,6 +90,6 @@ void Wagon::Move()
 			break;
 		}
 		has_shot = true;
-	}*/
+	}
 
 }
