@@ -68,6 +68,8 @@ void Plane::Collision()
 		App->collision->EraseCollider(collider);
 		collider = nullptr;
 		App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+		App->particles->AddParticle(App->particles->explosion, position.x + 96, position.y+20);
+		App->particles->AddParticle(App->particles->explosion, position.x + 96 + 96, position.y );
 		App->useri->score += 200;
 		isDead = true;
 	}

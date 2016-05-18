@@ -25,7 +25,7 @@ RWaterTower::RWaterTower(int x, int y) : Enemy(x, y)
 	last_anim.w = 288;
 	last_anim.h = 480;
 
-	collider = App->collision->AddCollider({ x, y, 200, 448 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ SCREEN_WIDTH-200, y, 200, 448 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	position.x = SCREEN_WIDTH-250;
 }

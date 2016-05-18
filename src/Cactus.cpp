@@ -19,7 +19,7 @@ Cactus::Cactus(int x, int y) : Enemy(x, y)
 
 
 
-	collider = App->collision->AddCollider({ x, y, 96, 192 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x, y, 48, 144 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 }
 
@@ -43,6 +43,7 @@ void Cactus::Collision()
 		}
 		if (state.Finished())
 		{
+			App->particles->AddParticle(App->particles->cactusboom, position.x - 24, position.y + 40);
 			isDead = true;
 		}
 
