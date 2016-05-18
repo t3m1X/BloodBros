@@ -39,6 +39,7 @@ Enemy_V_Right2::Enemy_V_Right2(int x, int y) : Enemy(x, y)
 	dead.PushBack({ 1248, 2396, 48, 96 });
 	dead.PushBack({ 1200, 2396, 48, 96 });
 	dead.speed = 0.1f;
+	dead.loop = false;
 
 	animation = &appear;
 
