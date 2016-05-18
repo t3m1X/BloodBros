@@ -63,11 +63,15 @@ update_status ModuleEnemies::PreUpdate()
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (enemies[i]->isDead)
+		if (enemies[i] != nullptr)
 		{
-			App->useri->killcount += 1;
-			delete enemies[i];
-			enemies[i] = nullptr;
+			if (enemies[i]->isDead)
+			{
+				App->useri->killcount += 1;
+				App->useri->score += 100;
+				delete enemies[i];
+				enemies[i] = nullptr;
+			}
 		}
 	}
 
@@ -226,6 +230,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			if (enemies[i]->isDead)
 			{
 				App->useri->killcount += 1;
+				App->useri->score += 100;
 				delete enemies[i];
 				enemies[i] = nullptr;
 			}
