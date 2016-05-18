@@ -74,8 +74,11 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Building_LPipe.h" />
     <ClInclude Include="Building_LWaterTower.h" />
+    <ClInclude Include="Building_RPipe.h" />
     <ClInclude Include="Building_RWaterTower.h" />
+    <ClInclude Include="Building_Top_Pipes.h" />
     <ClInclude Include="Cactus.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_BIndian.h" />
@@ -111,8 +114,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Building_LPipe.cpp" />
     <ClCompile Include="Building_LWaterTower.cpp" />
+    <ClCompile Include="Building_RPipe.cpp" />
     <ClCompile Include="Building_RWater_Tower.cpp" />
+    <ClCompile Include="Building_Top_Pipes.cpp" />
     <ClCompile Include="Cactus.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_BIndian.cpp" />

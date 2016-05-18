@@ -13,7 +13,12 @@
 
 Enemy_V_Right1::Enemy_V_Right1(int x, int y) : Enemy(x, y)
 {
+	appear.PushBack({ 1680, 3000, 48, 96 });			//Empty, so that they appear later
+	appear.PushBack({ 1680, 3000, 48, 96 });
+	appear.PushBack({ 1680, 3000, 48, 96 });
+	appear.PushBack({ 1680, 3000, 48, 96 });
 
+	appear.PushBack({ 1680, 2448, 48, 96 });
 	appear.PushBack({ 1248, 2256, 48, 96 });
 	appear.PushBack({ 1296, 2256, 48, 96 });
 	appear.PushBack({ 1344, 2256, 48, 96 });
@@ -42,7 +47,7 @@ Enemy_V_Right1::Enemy_V_Right1(int x, int y) : Enemy(x, y)
 
 	animation = &appear;
 
-	collider = App->collision->AddCollider({ 0, 48, 48, 48 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 48, 20, 20 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 }
 

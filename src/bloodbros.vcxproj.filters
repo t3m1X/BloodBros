@@ -131,6 +131,15 @@
     <ClInclude Include="Cactus.h">
       <Filter>Modules\Enemies\Buildings</Filter>
     </ClInclude>
+    <ClInclude Include="Building_Top_Pipes.h">
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Building_LPipe.h">
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Building_RPipe.h">
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -227,6 +236,15 @@
       <Filter>Modules\Enemies\Buildings</Filter>
     </ClCompile>
     <ClCompile Include="Cactus.cpp">
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Building_Top_Pipes.cpp">
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Building_LPipe.cpp">
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Building_RPipe.cpp">
       <Filter>Modules\Enemies\Buildings</Filter>
     </ClCompile>
   </ItemGroup>
