@@ -45,7 +45,7 @@ void LWaterTower::Draw(SDL_Texture* sprites)
 		position.y += 1;
 		last_anim.h -= 1;
 		App->render->Blit(sprites, position.x + xcorrection, position.y, &last_anim);
-		if (last_anim.h <= 10)
+		if (last_anim.h <= 48)
 			isDead = true;
 		break;
 	}

@@ -53,9 +53,20 @@ Enemy_V_Left1::Enemy_V_Left1(int x, int y) : Enemy(x, y)
 
 void Enemy_V_Left1::Move()
 {
-	if (appear.Finished())
+	switch (state)
 	{
-		animation = &walk;
-		position.x -= 3;
+	case ST_REGULAR:
+		if (appear.Finished())
+		{
+			animation = &walk;
+			position.x -= 3;
+		}
+		break;
+
+	case ST_DYING:
+		animation = &dead;
+		if (dead.Finished())
+			isDead = true;
+		break;
 	}
 }

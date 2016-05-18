@@ -231,6 +231,7 @@ bool ModulePlayer::CleanUp()
 
 	App->collision->EraseCollider(cross_collider);
 	App->collision->EraseCollider(player_collider);
+	App->collision->EraseCollider(ground_collider);
 
 
 	return true;

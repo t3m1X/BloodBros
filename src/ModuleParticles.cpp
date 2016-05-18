@@ -71,7 +71,7 @@ ModuleParticles::ModuleParticles()
 
 	dust.anim.PushBack({ 0, 480, 336, 144 });
 	dust.anim.PushBack({ 336, 480, 336, 144 });
-	dust.life = 8000;
+	dust.life = 7500;
 	dust.anim.speed = 0.3f;
 
 	end_dust.anim.PushBack({ 0, 624, 336, 144 });
