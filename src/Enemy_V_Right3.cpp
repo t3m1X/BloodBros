@@ -14,7 +14,6 @@
 Enemy_V_Right3::Enemy_V_Right3(int x, int y) : Enemy(x, y)
 {
 
-
 	appear.PushBack({ 1200, 2352, 48, 48 });
 	appear.PushBack({ 864, 2304, 48, 48 });
 	appear.PushBack({ 912, 2304, 48, 48 });

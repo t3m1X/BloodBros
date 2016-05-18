@@ -59,7 +59,7 @@ bool ModuleScene::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::CACTUS, SCREEN_WIDTH / 2 - 50 , SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 4 + 130, true);
 
 	//test wave
-	/*
+	
 	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R3, SCREEN_WIDTH / 2 - 20, 248, false);
 	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH / 2 - 80, 248, false);
 
@@ -68,7 +68,7 @@ bool ModuleScene::Start()
 
 	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, SCREEN_WIDTH / 2 + 60, 300, false);
 	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L1, SCREEN_WIDTH / 2 - 160, 300, false);
-	*/
+	
 	//testing wagon & horse
 	App->enemies->AddEnemy(ENEMY_TYPES::WAGON, SCREEN_WIDTH / 2 + 60, 300, false);
 

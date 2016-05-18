@@ -21,6 +21,8 @@ ModuleUserI::ModuleUserI()
 
 	dynamite_image.PushBack({ 61, 298, 75, 75 });
 
+	oneup.PushBack({ 576, 288, 96, 48 });
+
 	foe.PushBack({ 165, 292, 150, 40 });
 	foe_bar.PushBack({ 436, 292, 40, 40 });
 	foe_bar.PushBack({ 390, 292, 40, 40 });
@@ -116,7 +118,8 @@ update_status ModuleUserI::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
 		++credit;
-	
+
+	App->render->Blit(UserInterface, 190, 0, &(oneup.GetCurrentFrame()), 0.6);
 
 
 	/*
