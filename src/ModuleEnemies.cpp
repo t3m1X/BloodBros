@@ -23,6 +23,7 @@
 #include "Enemy_Horse.h"
 #include "Building_LPipe.h"
 #include "Building_RPipe.h"
+#include "Building_Top_Pipes.h"
 #include "ModulePlayer.h"
 
 #define SPAWN_MARGIN 50
@@ -228,6 +229,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::RPIPE:
 			enemies[i] = new RPipe(info.x, info.y);
+			break;
+		case ENEMY_TYPES::TOP_PIPES:
+			enemies[i] = new Top_Pipes(info.x, info.y);
 		}
 	}
 }

@@ -16,7 +16,7 @@ Plane::Plane(int x) : Enemy(x, 25)
 
 	fly.PushBack({ 157, 67, 22, 10 });
 	fly.PushBack({ 483, 62, 43, 22 });
-	fly.PushBack({ 797, 65, 85, 37 });
+	fly.PushBack({ 797, 54, 85, 37 });
 	fly.PushBack({ 104, 192, 128, 53 });
 	fly.PushBack({ 419, 188, 170, 64 });
 	fly.PushBack({ 734, 179, 212, 82 });

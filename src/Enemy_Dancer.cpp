@@ -18,24 +18,18 @@ Dancer::Dancer(int x, int y) : Enemy(x, y)
 	dance.PushBack({ 288, 2688, 96, 144 });
 	dance.speed = 0.25f;
 	
-<<<<<<< HEAD
-	dead.PushBack({ 0, 2688, 96, 144 });
-	dead.PushBack({ 0, 2688, 96, 144 });
-	dead.PushBack({ 0, 2688, 96, 144 });
-	dead.PushBack({ 0, 2688, 96, 144 });
-	dead.loop = 0.2f;
-=======
 
-	dead.PushBack({ 588, 2688, 96, 144 });
-	dead.PushBack({ 1276, 2688, 96, 144 });
-	dead.PushBack({ 1411, 2688, 96, 144 });
-	dead.PushBack({ 23, 2688, 96, 144 });
-	dead.speed = 0.1f;
+	dead.PushBack({ 0, 2688, 96, 144 });
+	dead.PushBack({ 96, 2688, 96, 144 });
+	dead.PushBack({ 192, 2688, 96, 144 });
+	dead.PushBack({ 288, 2688, 96, 144 });
+	dead.loop = 0.1f;
 	dead.loop = false;
 
+
+	
 	speed = 2;
 	hitpoints = 6;
->>>>>>> origin/master
 
 	animation = &walk;
 

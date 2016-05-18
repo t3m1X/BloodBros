@@ -19,7 +19,7 @@ RPipe::RPipe(int x, int y) : Enemy(x, y)
 	state.loop = false;
 
 
-	collider = App->collision->AddCollider({ x, y, 336, 144 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x+48, y+48, 336, 48 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 }
 
