@@ -119,9 +119,9 @@ Mix_Chunk* const ModuleAudio::LoadSFX(const char* path)
 bool ModuleAudio::PlaySFX(Mix_Chunk* sfx)
 {
 	bool ret = false;
-	this_call = SDL_GetTicks();
+	/*this_call = SDL_GetTicks();
 	if (this_call >= next_call)
-	{
+	{*/
 		next_call = this_call + 200;
 		if (Mix_PlayChannel(-1, sfx, 0) == -1)
 		{
@@ -129,7 +129,7 @@ bool ModuleAudio::PlaySFX(Mix_Chunk* sfx)
 		}
 		else
 			ret = true;
-	}
+	//}
 	return ret;
 }
 
