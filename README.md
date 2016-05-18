@@ -4,10 +4,11 @@ Project I's repository for the "Undead Renegades" team to re-create the arcade g
 
 ### Controls
 
-The goal of the game is to anihilate enemies until you fill a FOE meter. 
+The goal of the game is to anihilate waves of enemies until you fill the FOE meter. 
 
-Move the player with WASD and shoot with CTRL. Rolling not implemented yet.
+Move the player with WASD and shoot with CTRL. You can roll pressing ALT, which makes you inmune to bullets while you're rolling.
 Press F2 for GODMODE.
+Press 1 to input credits! (although it's useless right now)
 
 ## Changelog
 

@@ -26,7 +26,7 @@ Plane::Plane(int x) : Enemy(x, 25)
 	fly.loop = false;
 
 	animation = &fly;
-	hitpoints = 3;
+	hitpoints = 2;
 
 	collider = App->collision->AddCollider({ 50, 0, 32, 32 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
