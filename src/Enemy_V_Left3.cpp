@@ -28,9 +28,9 @@ Enemy_V_Left3::Enemy_V_Left3(int x, int y) : Enemy(x, y)
 
 
 
-	appear.PushBack({ 864, 2304, 48, 48 });
-	appear.PushBack({ 912, 2304, 48, 48 });
-	appear.PushBack({ 960, 2304, 48, 48 });
+	walk.PushBack({ 864, 2352 , 48, 48 });
+	walk.PushBack({ 912, 2352, 48, 48 });
+	walk.PushBack({ 960, 2352, 48, 48 });
 	walk.speed = 0.2f;
 
 	dead.PushBack({ 1026, 2352, 48, 48 });

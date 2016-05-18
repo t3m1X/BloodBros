@@ -13,7 +13,6 @@ Cactus::Cactus(int x, int y) : Enemy(x, y)
 {
 	state.PushBack({ 1776, 96, 48, 144 });
 	state.PushBack({ 1728, 96, 48, 144 });
-	state.PushBack({ 1680, 96, 48, 144 });
 	state.speed = 1.0f;
 	state.loop = false;
 
@@ -37,8 +36,11 @@ void Cactus::Collision()
 
 	if (this_call > next_call)
 	{
-		App->particles->AddParticle(App->particles->cactusboom, position.x-48, position.y+48);
-		next_call = this_call + 200;
+		if (state.Finished() != 1)
+		{
+			App->particles->AddParticle(App->particles->cactusboom, position.x - 24, position.y + 40);
+			next_call = this_call + 200;
+		}
 		if (state.Finished())
 		{
 			isDead = true;

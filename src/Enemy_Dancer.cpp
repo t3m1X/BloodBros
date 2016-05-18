@@ -29,7 +29,7 @@ Dancer::Dancer(int x, int y) : Enemy(x, y)
 
 	animation = &walk;
 
-	collider = App->collision->AddCollider({ 0, 0, 70, 132}, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 48, 48, 48, 48}, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	sfx = App->audio->LoadSFX("sound/soundfx/dancer_hit.wav");
 

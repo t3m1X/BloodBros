@@ -51,6 +51,7 @@ bool ModuleScene::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::R_WATERTOWER, SCREEN_WIDTH-255, 0, true, true);
 	App->enemies->AddEnemy(ENEMY_TYPES::DANCER, 0, 360, true);
 	App->enemies->AddEnemy(ENEMY_TYPES::CACTUS, SCREEN_WIDTH / 2 - 50 , SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 4 + 130, true);
+
 	//test wave
 
 	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R3, SCREEN_WIDTH / 2 - 20, 248, false);
@@ -109,8 +110,9 @@ update_status ModuleScene::Update()
 	// Enemy waves----------------------------------------
 	if (current_time >= first_wave_time)
 	{
-		first_wave_time = current_time + 6000;
+		first_wave_time = current_time + 6500;
 		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 250, false);
+		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 400, true);
 
 	}
 	if (current_time >= second_wave_time)
