@@ -21,11 +21,15 @@ Dancer::Dancer(int x, int y) : Enemy(x, y)
 	dance.speed = 0.25f;
 	
 
-	/*dead.PushBack({ 1132, 635, 105, 165 });
-	dead.PushBack({ 1276, 677, 104, 128 });
-	dead.PushBack({ 1411, 689, 128, 100 });
-	dead.PushBack({ 23, 910, 128, 28 });
-	dead.speed = 0.1f;*/
+	dead.PushBack({ 588, 2688, 96, 144 });
+	dead.PushBack({ 1276, 2688, 96, 144 });
+	dead.PushBack({ 1411, 2688, 96, 144 });
+	dead.PushBack({ 23, 2688, 96, 144 });
+	dead.speed = 0.1f;
+	dead.loop = false;
+
+	speed = 2;
+	hitpoints = 6;
 
 	animation = &walk;
 
@@ -33,7 +37,8 @@ Dancer::Dancer(int x, int y) : Enemy(x, y)
 
 	sfx = App->audio->LoadSFX("sound/soundfx/dancer_hit.wav");
 
-	position.x = 0;
+	position.x = x;
+	position.y = y;
 }
 
 Dancer::~Dancer()
@@ -43,13 +48,31 @@ Dancer::~Dancer()
 
 void Dancer::Move()
 {
-	position.x += speed;
+	switch (state)
+	{
+	case ST_REGULAR:
+		position.x += speed;
+		break;
+	case ST_DYING:
+		animation = &dead;
+		isDead = dead.Finished();
+	}
 	
 }
 
 void Dancer::Collision()
 {
-	App->audio->PlaySFX(sfx);
-	speed = 7;
-	animation = &dance;
+	if (hitpoints != 0)
+	{
+		App->audio->PlaySFX(sfx);
+		speed = 7;
+		animation = &dance;
+		--hitpoints;
+	}
+	else
+	{
+		App->collision->EraseCollider(collider);
+		collider = nullptr;
+		state = ST_DYING;
+	}
 }

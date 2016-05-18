@@ -17,7 +17,8 @@ private:
 	p2Point<int> i_pos;
 	Path Dancer_path;
 	Mix_Chunk* sfx;
-	Uint32 speed = 2;
+	Uint32 speed;
+	Uint32 hitpoints;
 
 
 

@@ -82,12 +82,12 @@ update_status ModuleEnemies::PreUpdate()
 update_status ModuleEnemies::Update()
 {
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for (uint i = 0; i < MAX_ENEMIES; i++)
 	{
 		if (enemies[i] != nullptr) enemies[i]->Move();
 	}
 
-	for (uint i = MAX_ENEMIES - 1; i > 0; --i)
+	for (int i = (MAX_ENEMIES - 1); i >= 0; i--)
 	{
 		if (enemies[i] != nullptr) enemies[i]->Draw(sprites);
 	}
