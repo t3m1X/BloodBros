@@ -22,7 +22,7 @@ Application::Application()
 {
 	int i = 0;
 	modules[i++] = window = new ModuleWindow();
-	modules[i++] = render = new ModuleRender();
+	/*modules[i++] = render = new ModuleRender();*/
 	modules[i++] = input = new ModuleInput();
 	modules[i++] = textures = new ModuleTextures();
 	modules[i++] = audio = new ModuleAudio();
@@ -36,6 +36,7 @@ Application::Application()
 	modules[i++] = text = new ModuleText();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
+	modules[i++] = render = new ModuleRender();
 
 }	
 

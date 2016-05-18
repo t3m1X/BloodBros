@@ -94,12 +94,14 @@ update_status ModuleEnemies::Update()
 		if (enemies[i] != nullptr) enemies[i]->Draw(sprites);
 	}
 
+
 	return UPDATE_CONTINUE;
 }
 
 update_status ModuleEnemies::PostUpdate()
 {
 	// check camera position to decide what to spawn
+
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (enemies[i] != nullptr)
@@ -163,16 +165,16 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 	if (info.building)
 	{
 		if (info.front)
-			for (i = MAX_ENEMIES / 2 - 2; enemies[i] != nullptr && i < MAX_ENEMIES / 2; ++i);
+			for (i = MAX_ENEMIES / 2 - MAX_BUILDINGS / 2; enemies[i] != nullptr && i < MAX_ENEMIES / 2; ++i);
 		else
-			for (i = MAX_ENEMIES - 2; enemies[i] != nullptr && i < MAX_ENEMIES; ++i);
+			for (i = MAX_ENEMIES / 2; enemies[i] != nullptr && i < MAX_ENEMIES / 2 + MAX_BUILDINGS / 2; ++i);
 	}
 	else
 	{
 		if (info.front)
-			for (; enemies[i] != nullptr && i < MAX_ENEMIES / 2 - 2; ++i);
+			for (; enemies[i] != nullptr && i < MAX_ENEMIES / 2 - MAX_BUILDINGS / 2; ++i);
 		else
-			for (i = MAX_ENEMIES / 2; enemies[i] != nullptr && i < MAX_ENEMIES - 2; ++i);
+			for (i = MAX_ENEMIES / 2 + MAX_BUILDINGS / 2; enemies[i] != nullptr && i < MAX_ENEMIES; ++i);
 	}
 
 	if (i != MAX_ENEMIES)
