@@ -78,8 +78,11 @@ update_status ModuleUserI::Update()
 
 	int enemygauge = (ENEMY_GAUGE - killcount) / 2;
 	
-	if (enemygauge == 0 && killcount != ENEMY_GAUGE)
+	if (enemygauge == 0 && killcount > ENEMY_GAUGE)
 		enemygauge = 1;
+
+	if (enemygauge < 0)
+		enemygauge = 0;
 
 	App->render->Blit(UserInterface, TILE * 2, SCREEN_HEIGHT - (TILE), &(foe.GetCurrentFrame()), 0.5);
 

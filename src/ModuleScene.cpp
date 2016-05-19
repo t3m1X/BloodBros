@@ -196,7 +196,7 @@ if (current_time >= third_wave_time)
 
 	}
 
-	if (App->useri->killcount == ENEMY_GAUGE)
+	if (App->useri->killcount >= ENEMY_GAUGE)
 	{
 		App->useri->killcount = 0;
 		App->fade->FadeToBlack(this, App->end, 1.0f);
