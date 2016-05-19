@@ -54,8 +54,9 @@ bool ModuleScene::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::RPIPE, SCREEN_WIDTH-336, SCREEN_HEIGHT - 275, true, true);
 	App->enemies->AddEnemy(ENEMY_TYPES::L_WATERTOWER, 0, 0, false, true);
 	App->enemies->AddEnemy(ENEMY_TYPES::R_WATERTOWER, SCREEN_WIDTH - 200, 0, false, true);
-	App->enemies->AddEnemy(ENEMY_TYPES::CACTUS, SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 4 + 130, true);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::DANCER, 0, 400, true);
+	App->enemies->AddEnemy(ENEMY_TYPES::CACTUS, SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 4 + 130, true);
 	
 	toppipe = true;
 	
@@ -126,6 +127,10 @@ update_status ModuleScene::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::HORSE, 0, 400, true);
 			break;
 		case 1: App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
+		case 2:
+				App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH+48, 250, false);
+				App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 300, false);
+				
 		}
 
 	}
@@ -160,7 +165,7 @@ if (current_time >= third_wave_time)
 	}
 	if (current_time >= fourth_wave_time)
 	{
-		fourth_wave_time = current_time + 8000;
+		fourth_wave_time = current_time + 6000;
 		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
 
 	}
