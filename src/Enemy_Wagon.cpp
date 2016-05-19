@@ -14,24 +14,31 @@
 Wagon::Wagon(int x, int y) : Enemy(x, y)
 {
 	//wagon passing 
-	walk.PushBack({ 0, 432, 144, 48 });
-	walk.PushBack({ 144, 432, 144, 48 });
-	walk.PushBack({ 288, 432, 144, 48 });
-	walk.PushBack({ 432, 432, 144, 48 });
+	walk.PushBack({ 0, 3456, 144, 144 });
+	walk.PushBack({ 144, 3456, 144, 144 });
+	walk.PushBack({ 288, 3456, 144, 144 });
+	walk.PushBack({ 432, 3456, 144, 144 });
 	walk.speed = 0.2f;
 
 	
 	//cowboy up the wagon
-	shoot.PushBack({ 1440, 2064,96, 96 });
-	shoot.PushBack({ 1536, 2016, 96, 144 });
-	shoot.PushBack({ 1440, 2064, 96, 96} );
+	shoot.PushBack({ 567, 3456, 144, 144 });
 	shoot.speed = 0.2f;
 	shoot.loop = false;
 	//----
 
-	//dead cowboy wagon animation
-	dead.PushBack({ 1920, 1968, 96, 144 });
-	dead.speed = 0.1f;
+	//dying cowboy wagon animation
+	death.PushBack({ 711, 3456, 144, 144 });
+	death.PushBack({ 855, 3456, 144, 144 });
+	death.PushBack({ 999, 3456, 144, 144 });
+	death.speed = 0.2f;
+	death.loop = false;
+
+	dead.PushBack({ 0, 3600, 144, 144 });
+	dead.PushBack({ 144, 3600, 144, 144 });
+	dead.PushBack({ 288, 3600, 144, 144 });
+	dead.PushBack({ 432, 3600, 144, 144 });
+	dead.speed = 0.2f;
 
 	
 	
@@ -51,34 +58,57 @@ Wagon::Wagon(int x, int y) : Enemy(x, y)
 void Wagon::Move()
 {
 	current_time = SDL_GetTicks();
-
-	if (current_time >= shoot_end)
+	if (position.x > SCREEN_WIDTH / 2 - TILE * 3 / 2 && !middle)
 	{
 		position.x -= 2;
-		if (has_shot)
+		move_time = current_time + 1000;
+		if (position.x <= SCREEN_WIDTH / 2 - TILE * 3 / 2)
 		{
-			position.y = i_pos.y;
-			animation = &walk;
+			middle = true;
+			death.speed = 0.0f;
+			dead.speed = 0.0f;
+			walk.speed = 0.0f;
 		}
 	}
-	if (position.x <= SCREEN_WIDTH / 2 - shoot.frames[1].w / 2 && !has_shot)
+	else if (current_time > move_time)
 	{
-		shoot_end = current_time + 1000;
-		position.y -= 10;
-		animation = &shoot;
-		switch (rand() % 3)
-		{
-		case 0:
-			App->particles->AddParticle(App->particles->shoot_left, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
-			break;
-		case 1:
-			App->particles->AddParticle(App->particles->shoot, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
-			break;
-		case 2:
-			App->particles->AddParticle(App->particles->shoot_right, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
-			break;
-		}
-		has_shot = true;
+		death.speed = 0.2f;
+		dead.speed = 0.2f;
+		walk.speed = 0.2f;
+		position.x += 2;
 	}
 
+	switch (state)
+	{
+	case ST_REGULAR:
+		
+		if (middle)
+			animation = &walk;
+
+		if (position.x <= SCREEN_WIDTH / 2 - TILE * 3 / 2 + 5 && !has_shot)
+		{
+			
+			animation = &shoot;
+			switch (rand() % 3)
+			{
+			case 0:
+				App->particles->AddParticle(App->particles->shoot_left, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
+				break;
+			case 1:
+				App->particles->AddParticle(App->particles->shoot, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
+				break;
+			case 2:
+				App->particles->AddParticle(App->particles->shoot_right, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
+				break;
+			}
+			has_shot = true;
+		}
+		break;
+	case ST_DYING:
+		if (!death.Finished())
+			animation = &death;
+		else
+			animation = &dead;
+		break;
+	}
 }

@@ -12,13 +12,16 @@ private:
 	Animation walk;
 	Animation shoot;
 	Animation dead;
+	Animation death;
 	p2Point<int> i_pos;
 	Path Wagon_path;
 
 	Uint32 current_time = 0;
 	Uint32 shoot_end = 0;
+	Uint32 move_time;
 
 	bool has_shot = false;
+	bool middle = false;
 
 
 

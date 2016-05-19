@@ -71,6 +71,7 @@ void Plane::Collision()
 		App->particles->AddParticle(App->particles->explosion, position.x + 96, position.y+20);
 		App->particles->AddParticle(App->particles->explosion, position.x + 96 + 96, position.y );
 		App->useri->score += 200;
+		App->useri->killcount += 1;
 		isDead = true;
 	}
 }

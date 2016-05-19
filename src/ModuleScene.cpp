@@ -72,9 +72,9 @@ bool ModuleScene::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L1, SCREEN_WIDTH / 2 - 160, 300, false);
 	
 	//testing wagon & horse
-	/*App->enemies->AddEnemy(ENEMY_TYPES::WAGON, SCREEN_WIDTH / 2 + 60, 300, false);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAGON, SCREEN_WIDTH / 2 + 80, 230, false);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::HORSE, SCREEN_WIDTH / 2 - 60, 300, false);*/
+	//App->enemies->AddEnemy(ENEMY_TYPES::HORSE, SCREEN_WIDTH / 2 - 60, 300, false);
 
 
 		

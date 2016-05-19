@@ -4,6 +4,7 @@
 #include "ModuleCollision.h"
 #include "p2Point.h"
 #include "ModuleParticles.h"
+#include "ModuleUserI.h"
 
 #include <stdlib.h> 
 #include <time.h>  
@@ -67,7 +68,11 @@ void Enemy_V_Right1::Move()
 	case ST_DYING:
 		animation = &dead;
 		if (dead.Finished())
+		{
 			isDead = true;
+			App->useri->killcount += 1;
+			App->useri->score += 100;
+		}
 		break;
 	}
 }
