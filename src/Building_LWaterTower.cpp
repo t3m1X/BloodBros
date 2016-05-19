@@ -60,12 +60,12 @@ void LWaterTower::Draw(SDL_Texture* sprites)
 			position.y += 1;
 			last_anim.h -= 1;
 			App->render->Blit(sprites, position.x + xcorrection, position.y, &last_anim);
-			App->render->Blit(sprites, position.x + 240 + 20 - 336, initialy + 480 - 144 / 2 - 22, &(smoke.GetCurrentFrame()));
+			App->render->Blit(sprites, position.x + 240 + 20 - 336, initialy + 480 - 95, &(smoke.GetCurrentFrame()));
 		}
 		if (last_anim.h <= 48)
 		{
 			last_anim.h = 0;
-			App->render->Blit(sprites, position.x + 240 + 20 - 336, initialy + 480 - 144 / 2 - 22, &(smoke_end.GetCurrentFrame()));
+			App->render->Blit(sprites, position.x + 240 + 20 - 336, initialy + 480 - 95, &(smoke_end.GetCurrentFrame()));
 			if (smoke_end.Finished())
 				isDead = true;
 		}

@@ -57,10 +57,13 @@ void RWaterTower::Draw(SDL_Texture* sprites)
 			xcorrection += 15;
 			next_call = this_call + 50;
 		}
-		position.y += 1;
-		last_anim.h -= 1;
-		App->render->Blit(sprites, position.x + xcorrection, position.y, &last_anim);
-		App->render->Blit(sprites, position.x - 20, initialy + 448 - 70, &(smoke.GetCurrentFrame()));
+		if (last_anim.h > 0)
+		{
+			position.y += 1;
+			last_anim.h -= 1;
+			App->render->Blit(sprites, position.x + xcorrection, position.y, &last_anim);
+			App->render->Blit(sprites, position.x - 20, initialy + 448 - 70, &(smoke.GetCurrentFrame()));
+		}
 		if (last_anim.h <= 48)
 		{
 			last_anim.h = 0;
