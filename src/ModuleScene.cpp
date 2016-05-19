@@ -73,8 +73,7 @@ bool ModuleScene::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L1, SCREEN_WIDTH / 2 - 160, 300, false);
 	*/
 	//testing wagon & horse
-	App->enemies->AddEnemy(ENEMY_TYPES::WAGON, SCREEN_WIDTH / 2 + 80, 230, false);
-
+	
 	//App->enemies->AddEnemy(ENEMY_TYPES::HORSE, SCREEN_WIDTH / 2 - 60, 300, false);
 
 
@@ -164,7 +163,10 @@ if (current_time >= third_wave_time)
 	{
 		fourth_wave_time = current_time + 4000;
 		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
-
+		switch (rand() % 5)
+		{
+		case 1: App->enemies->AddEnemy(ENEMY_TYPES::WAGON, SCREEN_WIDTH / 2 + 80, 230, false);
+		}
 	}
 	if (current_time >= fifth_wave_time)
 	{
