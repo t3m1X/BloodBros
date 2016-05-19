@@ -64,7 +64,7 @@ Horse::Horse(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 70, 70 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 
-	position.x = SCREEN_WIDTH;
+	position.x = 0;
 	i_pos.y = position.y;
 
 	srand(time(NULL));
@@ -77,11 +77,12 @@ void Horse::Move()
 
 	if (current_time >= shoot_end)
 	{
-		position.x -= 2;
+		position.x += 2;
 		if (has_shot)
 		{
 			position.y = i_pos.y;
 			animation = &walk;
+			App->particles->AddParticle(App->particles->firearrow, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
 		}
 	}
 	if (position.x <= SCREEN_WIDTH / 2 - shoot.frames[1].w / 2 && !has_shot)
@@ -89,18 +90,7 @@ void Horse::Move()
 		shoot_end = current_time + 1000;
 		position.y -= 10;
 		animation = &shoot;
-		switch (rand() % 3)
-		{
-		case 0:
-			App->particles->AddParticle(App->particles->shoot_left, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
-			break;
-		case 1:
-			App->particles->AddParticle(App->particles->shoot, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
-			break;
-		case 2:
-			App->particles->AddParticle(App->particles->shoot_right, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
-			break;
-		}
+		App->particles->AddParticle(App->particles->firearrow, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
 		has_shot = true;
 	}
 

@@ -26,6 +26,7 @@ public:
 	Animation insert_coins;
 	Animation life_ball;
 	Animation oneup;
+	Animation topbutt;
 	Animation dynamite_image;
 	Animation foe;
 	Animation foe_bar;

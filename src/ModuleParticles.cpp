@@ -85,6 +85,17 @@ ModuleParticles::ModuleParticles()
 	cactusboom.anim.PushBack({ 864, 528, 96, 96 });
 	cactusboom.anim.loop = false;
 	cactusboom.anim.speed = 0.1f;
+
+	firearrow.anim.PushBack({ 768, 240, 48, 48 });
+	firearrow.anim.PushBack({ 816, 240, 48, 48 });
+	firearrow.anim.PushBack({ 864, 240, 48, 48 });
+	firearrow.anim.PushBack({ 912, 240, 48, 96 });
+	firearrow.anim.loop = false;
+	firearrow.anim.speed = 0.1f;
+	firearrow.life = 2000;
+	firearrow.speed.y = 4;
+
+
 }
 
 ModuleParticles::~ModuleParticles()
