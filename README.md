@@ -9,6 +9,7 @@ The goal of the game is to anihilate waves of enemies until you fill the FOE met
 Move the player with WASD and shoot with CTRL. You can roll pressing ALT, which makes you inmune to bullets while you're rolling.
 Press F2 for GODMODE.
 Press 1 to input credits! (although it's useless right now)
+Press SPACE when you have won to play again.
 
 ## Changelog
 
