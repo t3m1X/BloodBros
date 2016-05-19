@@ -5,6 +5,7 @@
 #include "p2Point.h"
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
+#include "ModuleScene.h"
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
@@ -42,10 +43,12 @@ void Top_Pipes::Collision()
 		   
 		if (state.Finished())
 		{
+			App->scene->toppipe = false;
 			App->particles->AddParticle(App->particles->explosion, position.x, position.y-30);
 			App->particles->AddParticle(App->particles->explosion, position.x + 120 + 120 + 120, position.y-30);
 			App->particles->AddParticle(App->particles->explosion, position.x + 120 + 120, position.y-30);
 			App->particles->AddParticle(App->particles->explosion, position.x + 120, position.y-30);
+			isDead = true;
 		}
 		else
 			state.GetCurrentFrame();

@@ -6,6 +6,7 @@
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
 #include "ModuleUserI.h"
+#include "ModuleScene.h"
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
@@ -78,23 +79,26 @@ void RWaterTower::Draw(SDL_Texture* sprites)
 
 void RWaterTower::Collision()
 {
-	this_call = SDL_GetTicks();
-
-	if (this_call > next_call)
+	if (!App->scene->toppipe)
 	{
-		next_call = this_call + 500;
-		if (building.Finished())
+		this_call = SDL_GetTicks();
+
+		if (this_call > next_call)
 		{
+			next_call = this_call + 500;
+			if (building.Finished())
+			{
 
-			App->collision->EraseCollider(collider);
-			collider = nullptr;
-			state = ST_DYING;
-			App->useri->score += 500;
-			App->useri->killcount += 1;
-			next_call = 0;
+				App->collision->EraseCollider(collider);
+				collider = nullptr;
+				state = ST_DYING;
+				App->useri->score += 500;
+				App->useri->killcount += 1;
+				next_call = 0;
+			}
+
+			else
+				building.GetCurrentFrame();
 		}
-
-		else
-			building.GetCurrentFrame();
 	}
 }
