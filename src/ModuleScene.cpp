@@ -188,11 +188,11 @@ if (current_time >= third_wave_time)
 	App->render->Blit(background, SCREEN_WIDTH - SCREEN_WIDTH / 3 - 35, SCREEN_HEIGHT / 2 - cactus2.h - 10, &cactus2, 1.0f); /// CACTUS 3
 	
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
+	/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, App->modules[10], 1.0f);
 
-	}
+	}*/
 
 	if (App->useri->killcount == ENEMY_GAUGE)
 		App->fade->FadeToBlack(this, App->end, 1.0f);
