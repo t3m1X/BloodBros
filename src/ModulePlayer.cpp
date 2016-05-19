@@ -206,7 +206,7 @@ bool ModulePlayer::Start()
 	crosstexture = App->textures->Load("sprites/aims.png"); 
 	shoot = App->audio->LoadSFX("sound/soundfx/shoot.wav");
 	hit_sound = App->audio->LoadSFX("sound/soundfx/player_hit.wav");
-	cross_collider = App->collision->AddCollider({ SCREEN_WIDTH/2, SCREEN_HEIGHT, 69, 63 }, COLLIDER_PLAYER_SHOT);
+	cross_collider = App->collision->AddCollider({ SCREEN_WIDTH/2, SCREEN_HEIGHT, 23, 21 }, COLLIDER_PLAYER_SHOT);
 	player_collider = App->collision->AddCollider({ (SCREEN_WIDTH - 87) / 2, SCREEN_HEIGHT / 2 + 117, TILE, (TILE*4)-8 }, COLLIDER_PLAYER); 
 	ground_collider = App->collision->AddCollider({ 0, SCREEN_HEIGHT - 50, SCREEN_WIDTH, 50 }, COLLIDER_PLAYER_SHOT);
 	state = ST_IDLE;
@@ -250,7 +250,7 @@ update_status ModulePlayer::Update()
 	bool firing = false;
 	position.y = SCREEN_HEIGHT / 2 + 117;
 	int screen_portion = portion_calculate();
-	cross_collider->SetPos(SCREEN_WIDTH / 2, SCREEN_HEIGHT);
+	cross_collider->SetPos(SCREEN_WIDTH / 2 , SCREEN_HEIGHT);
 	player_collider->SetPos(position.x+TILE, position.y+8);
 	current_time = SDL_GetTicks();
 	if (godmode)
@@ -377,7 +377,7 @@ update_status ModulePlayer::Update()
 		if (current_time > shooting_cooldown)
 		{
 			shooting_cooldown = current_time + 200;
-			cross_collider->SetPos(cposition.x, cposition.y);
+			cross_collider->SetPos(cposition.x+ 23, cposition.y+23);
 			App->audio->PlaySFX(shoot);
 		}
 		screen_portion += 7;
