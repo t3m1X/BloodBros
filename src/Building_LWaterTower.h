@@ -11,6 +11,9 @@ private:
 
 	Animation building;
 	Animation dead_state;
+	Animation smoke;
+	Animation smoke_end;
+	int initialy;
 	Uint32 this_call;
 	Uint32 next_call = 0;
 	SDL_Rect last_anim;

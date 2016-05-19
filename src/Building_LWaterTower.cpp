@@ -22,6 +22,17 @@ LWaterTower::LWaterTower(int x, int y) : Enemy(x, y)
 	last_anim.w = 240;
 	last_anim.h = 480;
 
+	smoke.PushBack({ 1680, 1540, 336, 144 });
+	smoke.PushBack({ 2016, 1540, 336, 144 });
+	smoke.speed = 0.3f;
+
+	smoke_end.PushBack({ 1680, 1680, 336, 144 });
+	smoke_end.PushBack({ 2016, 1680, 336, 144 });
+	smoke_end.PushBack({ 1680, 1825, 336, 144 });
+	smoke_end.speed = 0.3f;
+
+	initialy = y;
+
 
 	collider = App->collision->AddCollider({ x, y, 150, 420 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -40,14 +51,24 @@ void LWaterTower::Draw(SDL_Texture* sprites)
 		this_call = SDL_GetTicks();
 		if (this_call >= next_call)
 		{
-			xcorrection -= 5;
+			xcorrection -= 15;
 			next_call = this_call + 50;
 		}
-		position.y += 1;
-		last_anim.h -= 1;
-		App->render->Blit(sprites, position.x + xcorrection, position.y, &last_anim);
+		
+		if (last_anim.h > 0)
+		{
+			position.y += 1;
+			last_anim.h -= 1;
+			App->render->Blit(sprites, position.x + xcorrection, position.y, &last_anim);
+			App->render->Blit(sprites, position.x + 240 + 20 - 336, initialy + 480 - 144 / 2 - 22, &(smoke.GetCurrentFrame()));
+		}
 		if (last_anim.h <= 48)
-			isDead = true;
+		{
+			last_anim.h = 0;
+			App->render->Blit(sprites, position.x + 240 + 20 - 336, initialy + 480 - 144 / 2 - 22, &(smoke_end.GetCurrentFrame()));
+			if (smoke_end.Finished())
+				isDead = true;
+		}
 		break;
 	}
 }
@@ -62,7 +83,7 @@ void LWaterTower::Collision()
 		next_call = this_call + 500;
 		if (building.Finished())
 		{
-			App->particles->AddParticle(App->particles->dust, position.x+240-336 , position.y+448-60 );
+			
 			App->collision->EraseCollider(collider);
 			collider = nullptr;
 			state = ST_DYING;
