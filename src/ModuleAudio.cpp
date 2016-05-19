@@ -9,6 +9,8 @@ ModuleAudio::ModuleAudio() : Module()
 {
 	for (uint i = 0; i < MAX_SFX; ++i)
 		soundfx[i] = nullptr;
+	this_call = 0;
+	next_call = 0;
 }
 
 // Destructor
@@ -86,7 +88,7 @@ bool ModuleAudio::StopMusic()
 	bool ret = false;
 	
 	next_call = SDL_GetTicks() + FADE;
-	while (!Mix_FadeOutMusic(FADE) && Mix_PlayingMusic() || this_call < next_call)
+	while (!Mix_FadeOutMusic(FADE) && Mix_PlayingMusic() || this_call > next_call)
 	{
 		this_call = SDL_GetTicks();
 		//waiting for the fade-out to complete

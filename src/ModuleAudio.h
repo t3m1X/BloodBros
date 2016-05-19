@@ -30,8 +30,8 @@ public:
 	Mix_Chunk* soundfx[MAX_SFX];
 	Mix_Music* music = nullptr;
 	uint last_sfx = 0;
-	Uint32 this_call = 0;
-	Uint32 next_call = 0;
+	Uint32 this_call;
+	Uint32 next_call;
 };
 
 #endif // __ModuleAudio_H__
