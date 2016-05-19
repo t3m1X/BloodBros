@@ -10,9 +10,12 @@ class RWaterTower : public Enemy
 private:
 
 	Animation building;
+	Animation smoke;
+	Animation smoke_end;
 	Uint32 this_call;
 	Uint32 next_call = 0;
 	SDL_Rect last_anim;
+	int initialy;
 
 public:
 
