@@ -84,8 +84,11 @@ bool ModuleAudio::PlayMusic(const char* path)
 bool ModuleAudio::StopMusic()
 {
 	bool ret = false;
-	while (!Mix_FadeOutMusic(FADE) && Mix_PlayingMusic())
+	
+	next_call = SDL_GetTicks() + FADE;
+	while (!Mix_FadeOutMusic(FADE) && Mix_PlayingMusic() || this_call < next_call)
 	{
+		this_call = SDL_GetTicks();
 		//waiting for the fade-out to complete
 		//SDL_Delay(100);
 	}
@@ -122,7 +125,6 @@ bool ModuleAudio::PlaySFX(Mix_Chunk* sfx)
 	/*this_call = SDL_GetTicks();
 	if (this_call >= next_call)
 	{*/
-		next_call = this_call + 200;
 		if (Mix_PlayChannel(-1, sfx, 0) == -1)
 		{
 			LOG("Mix_PlayChannel: %s\n", Mix_GetError());
