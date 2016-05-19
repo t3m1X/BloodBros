@@ -54,14 +54,15 @@ bool ModuleScene::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::RPIPE, SCREEN_WIDTH-336, SCREEN_HEIGHT - 275, true, true);
 	App->enemies->AddEnemy(ENEMY_TYPES::L_WATERTOWER, 0, 0, false, true);
 	App->enemies->AddEnemy(ENEMY_TYPES::R_WATERTOWER, SCREEN_WIDTH - 200, 0, false, true);
-	App->enemies->AddEnemy(ENEMY_TYPES::CACTUS, SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 4 + 130, true);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::DANCER, 0, 400, true);
+	App->enemies->AddEnemy(ENEMY_TYPES::CACTUS, SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 4 + 130, true);
 	
 	toppipe = true;
 	
 
 	//test wave
-	
+	/*
 	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R3, SCREEN_WIDTH / 2 - 20, 248, false);
 	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH / 2 - 80, 248, false);
 
@@ -70,7 +71,7 @@ bool ModuleScene::Start()
 
 	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, SCREEN_WIDTH / 2 + 60, 300, false);
 	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L1, SCREEN_WIDTH / 2 - 160, 300, false);
-	
+	*/
 	//testing wagon & horse
 	App->enemies->AddEnemy(ENEMY_TYPES::WAGON, SCREEN_WIDTH / 2 + 80, 230, false);
 
@@ -126,6 +127,7 @@ update_status ModuleScene::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::HORSE, 0, 400, true);
 			break;
 		case 1: App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
+				
 		}
 
 	}
@@ -145,7 +147,7 @@ update_status ModuleScene::Update()
 	}
 if (current_time >= third_wave_time)
 	{
-		third_wave_time = current_time + 14252;
+		third_wave_time = current_time + 9252;
 
 		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R3, SCREEN_WIDTH / 2 - 20, 248, false);
 		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH / 2 - 80, 248, false);
@@ -160,7 +162,7 @@ if (current_time >= third_wave_time)
 	}
 	if (current_time >= fourth_wave_time)
 	{
-		fourth_wave_time = current_time + 8000;
+		fourth_wave_time = current_time + 4000;
 		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
 
 	}
@@ -186,11 +188,11 @@ if (current_time >= third_wave_time)
 	App->render->Blit(background, SCREEN_WIDTH - SCREEN_WIDTH / 3 - 35, SCREEN_HEIGHT / 2 - cactus2.h - 10, &cactus2, 1.0f); /// CACTUS 3
 	
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
+	/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, App->modules[10], 1.0f);
 
-	}
+	}*/
 
 	if (App->useri->killcount == ENEMY_GAUGE)
 		App->fade->FadeToBlack(this, App->end, 1.0f);
