@@ -76,7 +76,7 @@ update_status ModuleUserI::Update()
 	score_counter->ChangeNumber(score);
 	highscore_counter->ChangeNumber(highscore);
 
-	int enemygauge = ((ENEMY_GAUGE - killcount) * 12) / ENEMY_GAUGE;
+	int enemygauge = (ENEMY_GAUGE - killcount) / 2;
 	
 	if (enemygauge == 0 && killcount != ENEMY_GAUGE)
 		enemygauge = 1;
@@ -101,7 +101,7 @@ update_status ModuleUserI::Update()
 		++count;
 	}
 
-	while (count < 6)
+	while (count < ENEMY_GAUGE / 4)
 	{
 		App->render->Blit(UserInterface, position, SCREEN_HEIGHT - (TILE), &(foe_bar.frames[0]), 0.5);
 		position += 20;

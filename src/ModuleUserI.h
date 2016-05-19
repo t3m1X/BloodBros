@@ -5,7 +5,7 @@
 #include "Animation.h"
 #include "p2Point.h"
 
-#define ENEMY_GAUGE 20
+#define ENEMY_GAUGE 32
 
 struct Text;
 
