@@ -4,6 +4,7 @@
 #include "ModuleCollision.h"
 #include "p2Point.h"
 #include "ModuleParticles.h"
+#include "ModuleAudio.h"
 
 #include <stdlib.h> 
 #include <time.h>  
@@ -61,8 +62,8 @@ Horse::Horse(int x, int y) : Enemy(x, y)
 	
 	animation = &walk;
 
-	collider = App->collision->AddCollider({ 0, 0, 70, 70 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
-
+	collider = App->collision->AddCollider({48, 0, 48, 48 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	//sfx = App->audio->LoadSFX("sound/soundfx/horse.wav");
 
 	position.x = 0;
 	i_pos.y = position.y;
@@ -75,21 +76,21 @@ void Horse::Move()
 {
 	current_time = SDL_GetTicks();
 
+
+	position.x += 4;
+
 	if (current_time >= shoot_end)
 	{
-		position.x += 2;
 		if (has_shot)
 		{
 			position.y = i_pos.y;
 			animation = &walk;
-			App->particles->AddParticle(App->particles->firearrow, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
 		}
 	}
-	if (position.x <= SCREEN_WIDTH / 2 - shoot.frames[1].w / 2 && !has_shot)
+	if (position.x >= SCREEN_WIDTH / 3 - shoot.frames[1].w / 2 && !has_shot)
 	{
 		shoot_end = current_time + 1000;
-		position.y -= 10;
-		animation = &shoot;
+		animation = &walk;
 		App->particles->AddParticle(App->particles->firearrow, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
 		has_shot = true;
 	}
