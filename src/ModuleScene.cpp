@@ -150,7 +150,7 @@ update_status ModuleScene::Update()
 	}
 if (current_time >= third_wave_time)
 	{
-		third_wave_time = current_time + 14252;
+		third_wave_time = current_time + 9252;
 
 		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R3, SCREEN_WIDTH / 2 - 20, 248, false);
 		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH / 2 - 80, 248, false);
@@ -165,7 +165,7 @@ if (current_time >= third_wave_time)
 	}
 	if (current_time >= fourth_wave_time)
 	{
-		fourth_wave_time = current_time + 6000;
+		fourth_wave_time = current_time + 4000;
 		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
 
 	}
