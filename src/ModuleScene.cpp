@@ -70,9 +70,9 @@ bool ModuleScene::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L1, SCREEN_WIDTH / 2 - 160, 300, false);
 	
 	//testing wagon & horse
-	App->enemies->AddEnemy(ENEMY_TYPES::WAGON, SCREEN_WIDTH / 2 + 60, 300, false);
+	/*App->enemies->AddEnemy(ENEMY_TYPES::WAGON, SCREEN_WIDTH / 2 + 60, 300, false);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::HORSE, SCREEN_WIDTH / 2 - 60, 300, false);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORSE, SCREEN_WIDTH / 2 - 60, 300, false);*/
 
 	App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80, true);
 
@@ -87,6 +87,7 @@ bool ModuleScene::Start()
 	second_wave_time = start_time + 10000;
 	third_wave_time = start_time+ 14252;
 	fourth_wave_time = start_time + 10000;
+	fifth_wave_time = start_time + 20000;
 	
 	return true;
 }
@@ -123,6 +124,7 @@ update_status ModuleScene::Update()
 		case 3:
 			App->enemies->AddEnemy(ENEMY_TYPES::HORSE, 0, 400, true);
 			break;
+		case 1: App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
 		}
 
 	}
@@ -135,6 +137,7 @@ update_status ModuleScene::Update()
 		case 3:
 			App->enemies->AddEnemy(ENEMY_TYPES::DANCER, 0, 400, true);
 			break;
+		case 7: App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
 		}
 
 	}
@@ -153,11 +156,24 @@ if (current_time >= third_wave_time)
 		
 		
 	}
-	/*if (current_time >= fourth_wave_time)
+	if (current_time >= fourth_wave_time)
 	{
-		first_wave_time = current_time + 8000;
+		fourth_wave_time = current_time + 8000;
 		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
-	}*/
+
+	}
+	if (current_time >= fifth_wave_time)
+	{
+		fifth_wave_time = current_time + 9065;
+		App->enemies->AddEnemy(ENEMY_TYPES::HORSE, -48, 300, false);
+		switch (rand() % 5)
+		{
+		case 3:
+			App->enemies->AddEnemy(ENEMY_TYPES::HORSE, -48, 350, true);
+			break;
+		case 7: App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
+		}
+	}
 
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, 0 , &back, 1.0f);

@@ -34,6 +34,7 @@ public:
 	Uint32 second_wave_time;
 	Uint32 third_wave_time;
 	Uint32 fourth_wave_time;
+	Uint32 fifth_wave_time;
 
 };
 
