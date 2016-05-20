@@ -5,6 +5,7 @@
 #include "p2Point.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
+#include "ModuleRender.h"
 
 #include <stdlib.h> 
 #include <time.h>  
@@ -75,24 +76,61 @@ Horse::Horse(int x, int y) : Enemy(x, y)
 void Horse::Move()
 {
 	current_time = SDL_GetTicks();
-
-
 	position.x += 4;
+	switch (state)
+	{
+	case ST_REGULAR:
 
-	if (current_time >= shoot_end)
-	{
-		if (has_shot)
+		if (current_time >= shoot_end)
 		{
-			position.y = i_pos.y;
-			animation = &walk;
+			if (has_shot)
+			{
+				position.y = i_pos.y;
+				animation = &walk;
+			}
 		}
+		if (position.x >= SCREEN_WIDTH / 3 - shoot.frames[1].w / 2 && !has_shot)
+		{
+			shoot_end = current_time + 1000;
+			animation = &walk;
+			App->particles->AddParticle(App->particles->firearrow, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
+			has_shot = true;
+		}
+		break;
+	case ST_DYING:
+		position.x += 4;
+		if (!dead.Finished())
+			animation = &dead;
+		else
+			animation = &walk;
+		break;
 	}
-	if (position.x >= SCREEN_WIDTH / 3 - shoot.frames[1].w / 2 && !has_shot)
+
+}
+
+void Horse::Draw(SDL_Texture* sprites)
+{
+	switch (state)
 	{
-		shoot_end = current_time + 1000;
-		animation = &walk;
-		App->particles->AddParticle(App->particles->firearrow, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
-		has_shot = true;
+	case ST_REGULAR:
+		animation->GetCurrentFrame();
+		if (collider != nullptr)
+		{
+			collider->SetPos(position.x, position.y);
+			collider->SetSize(animation->ConsultCurrentFrame().w, animation->ConsultCurrentFrame().h);
+		}
+
+		App->render->Blit(sprites, position.x, position.y, &(animation->ConsultCurrentFrame()));
+		break;
+	case ST_DYING:
+		animation->GetCurrentFrame();
+		if (collider != nullptr)
+		{
+			collider->SetPos(position.x, position.y);
+			collider->SetSize(animation->ConsultCurrentFrame().w, animation->ConsultCurrentFrame().h);
+		}
+
+		App->render->Blit(sprites, position.x, position.y, &(animation->ConsultCurrentFrame()));
 	}
 
 }

@@ -26,6 +26,7 @@ public:
 
 	Horse(int x, int y);
 	void Move();
+	void Draw(SDL_Texture* sprites);
 };
 
 #endif // __ENEMY_HORSE_H__
