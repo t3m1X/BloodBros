@@ -122,6 +122,8 @@ update_status ModuleUserI::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
 		++credit;
+	if (credit > 99)
+		credit = 99;
 
 	App->render->Blit(UserInterface, 190, 0, &(topbutt.GetCurrentFrame()), 0.6);
 
