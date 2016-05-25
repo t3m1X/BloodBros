@@ -12,6 +12,10 @@ private:
 	Animation walk;
 	Animation shoot;
 	Animation dead;
+	Animation neigh;
+	Animation regular;
+	Animation dead_indian;
+	Animation* animation_indian;
 	p2Point<int> i_pos;
 	Path Horse_path;
 

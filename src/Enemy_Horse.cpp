@@ -39,6 +39,11 @@ Horse::Horse(int x, int y) : Enemy(x, y)
 	
 	//--------------------------
 
+	//indian regular here
+	regular.PushBack({ 1488, 2976, 96, 144 });
+
+	//------------------
+
 	//horse dying here
 	dead.PushBack({ 0, 3312, 144, 144 });
 	dead.PushBack({ 144, 3312, 144, 144 });
@@ -53,17 +58,19 @@ Horse::Horse(int x, int y) : Enemy(x, y)
 	neigh.PushBack({ 816, 3168, 144, 192 });
 	neigh.PushBack({ 960, 3168, 144, 192 });
 	neigh.speed = 0.2f;
+	neigh.loop = false;
 
 	//---------------------------
 
 	//dead of indian here
 
-	dead.PushBack({ 384, 624, 96, 144});
-	dead.speed = 0.1f;
-	dead.loop = false;
+	dead_indian.PushBack({ 384, 624, 96, 144});
+	dead_indian.speed = 0.1f;
+	dead_indian.loop = false;
 	//------------------------------
 	
 	animation = &walk;
+	animation_indian = &regular;
 
 	collider = App->collision->AddCollider({48, 0, 48, 48 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	//sfx = App->audio->LoadSFX("sound/soundfx/horse.wav");
@@ -78,7 +85,7 @@ Horse::Horse(int x, int y) : Enemy(x, y)
 void Horse::Move()
 {
 	current_time = SDL_GetTicks();
-	position.x += 4;
+	
 	switch (state)
 	{
 	case ST_REGULAR:
@@ -89,22 +96,28 @@ void Horse::Move()
 			{
 				position.y = i_pos.y;
 				animation = &walk;
+				animation_indian = &regular;
 			}
 		}
 		if (position.x >= SCREEN_WIDTH / 3 - shoot.frames[1].w / 2 && !has_shot)
 		{
 			shoot_end = current_time + 1000;
 			animation = &walk;
+			animation_indian = &shoot;
 			App->particles->AddParticle(App->particles->firearrow, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
 			has_shot = true;
 		}
+		position.x += 4;
 		break;
 	case ST_DYING:
-		position.x += 4;
-		if (!dead.Finished())
-			animation = &dead;
+		
+		if (!neigh.Finished())
+			animation = &neigh;
 		else
-			animation = &walk;
+		{
+			animation = &dead;
+			position.x += 8;
+		}
 		break;
 	}
 
@@ -123,6 +136,7 @@ void Horse::Draw(SDL_Texture* sprites)
 		}
 
 		App->render->Blit(sprites, position.x, position.y, &(animation->ConsultCurrentFrame()));
+		App->render->Blit(sprites, position.x + TILE, position.y-10, &(animation_indian->GetCurrentFrame()));
 		break;
 	case ST_DYING:
 		animation->GetCurrentFrame();
@@ -133,6 +147,8 @@ void Horse::Draw(SDL_Texture* sprites)
 		}
 
 		App->render->Blit(sprites, position.x, position.y, &(animation->ConsultCurrentFrame()));
+		if (!dead_indian.Finished())
+			App->render->Blit(sprites, position.x + TILE, position.y-TILE, &(dead_indian.GetCurrentFrame()));
 	}
 
 }
