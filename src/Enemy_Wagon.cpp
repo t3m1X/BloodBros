@@ -18,27 +18,27 @@ Wagon::Wagon(int x, int y) : Enemy(x, y)
 	walk.PushBack({ 144, 3456, 144, 144 });
 	walk.PushBack({ 288, 3456, 144, 144 });
 	walk.PushBack({ 432, 3456, 144, 144 });
-	walk.speed = 0.2f;
+	walk.speed = 0.3f;
 
 	
 	//cowboy up the wagon
-	shoot.PushBack({ 567, 3456, 144, 144 });
-	shoot.speed = 0.2f;
+	shoot.PushBack({ 576, 3456, 144, 144 });
+	shoot.speed = 0.3f;
 	shoot.loop = false;
 	//----
 
 	//dying cowboy wagon animation
 	death.PushBack({ 711, 3456, 144, 144 });
 	death.PushBack({ 855, 3456, 144, 144 });
-	death.PushBack({ 999, 3456, 144, 144 });
-	death.speed = 0.2f;
+	death.PushBack({ 988, 3456, 144, 144 });
+	death.speed = 0.3f;
 	death.loop = false;
 
 	dead.PushBack({ 0, 3600, 144, 144 });
 	dead.PushBack({ 144, 3600, 144, 144 });
 	dead.PushBack({ 288, 3600, 144, 144 });
 	dead.PushBack({ 432, 3600, 144, 144 });
-	dead.speed = 0.2f;
+	dead.speed = 0.3f;
 
 	
 	
@@ -60,7 +60,7 @@ void Wagon::Move()
 	current_time = SDL_GetTicks();
 	if (position.x > SCREEN_WIDTH / 2 - TILE * 3 / 2 && !middle)
 	{
-		position.x -= 2;
+		position.x -= 3;
 		move_time = current_time + 1000;
 		if (position.x <= SCREEN_WIDTH / 2 - TILE * 3 / 2)
 		{
@@ -72,10 +72,10 @@ void Wagon::Move()
 	}
 	else if (current_time > move_time)
 	{
-		death.speed = 0.2f;
-		dead.speed = 0.2f;
-		walk.speed = 0.2f;
-		position.x += 2;
+		death.speed = 0.3f;
+		dead.speed = 0.3f;
+		walk.speed = 0.3f;
+		position.x += 3;
 	}
 
 	switch (state)
