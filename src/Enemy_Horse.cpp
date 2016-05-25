@@ -31,9 +31,9 @@ Horse::Horse(int x, int y) : Enemy(x, y)
 
 
 	//indian shooting here
-	shoot.PushBack({ 1152, 2928, 48, 96});
-	shoot.PushBack({ 1200, 2928, 48, 96});
-	shoot.PushBack({ 1244, 2928, 48, 96});
+	shoot.PushBack({ 1296, 2976, 96, 144});
+	shoot.PushBack({ 1392, 2976, 96, 144});
+	shoot.PushBack({ 1488, 2976, 96, 144});
 	shoot.speed = 0.2f;
 	shoot.loop = false;
 	
@@ -56,7 +56,7 @@ Horse::Horse(int x, int y) : Enemy(x, y)
 
 	//dead of indian here
 
-	dead.PushBack({ 576, 1248, 48, 96});
+	dead.PushBack({ 384, 624, 96, 144});
 	dead.speed = 0.1f;
 	dead.loop = false;
 	//------------------------------
