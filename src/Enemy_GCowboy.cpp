@@ -66,16 +66,19 @@ void GCowboy::Move()
 			shoot_end = current_time + 1000;
 			position.y -= 10;
 			animation = &shoot;
-			switch (rand() % 3)
+			switch (rand() % 4)
 			{
 			case 0:
-				App->particles->AddParticle(App->particles->shoot_left, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->shoot_player, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
 				break;
 			case 1:
-				App->particles->AddParticle(App->particles->shoot, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->shoot_player, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
 				break;
 			case 2:
-				App->particles->AddParticle(App->particles->shoot_right, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->shoot_player, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
+				break;
+			case 3:
+				App->particles->AddParticle(App->particles->shoot_player, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
 				break;
 			}
 			has_shot = true;

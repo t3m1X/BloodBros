@@ -56,6 +56,7 @@ public:
 	Particle shoot;
 	Particle shoot_right;
 	Particle shoot_left;
+	Particle shoot_player;
 	Particle bullet_collision;
 	Particle dust;
 	Particle end_dust;

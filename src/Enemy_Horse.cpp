@@ -138,7 +138,7 @@ void Horse::Draw(SDL_Texture* sprites)
 		}
 
 		App->render->Blit(sprites, position.x, position.y, &(animation->ConsultCurrentFrame()));
-		App->render->Blit(sprites, position.x + TILE, position.y-10, &(animation_indian->GetCurrentFrame()));
+		App->render->Blit(sprites, position.x + TILE, position.y-10, &(animation_indian->GetCurrentFrame()),0.75);
 		break;
 	case ST_DYING:
 		animation->GetCurrentFrame();
@@ -150,7 +150,7 @@ void Horse::Draw(SDL_Texture* sprites)
 
 		App->render->Blit(sprites, position.x, position.y, &(animation->ConsultCurrentFrame()));
 		if (!dead_indian.Finished())
-			App->render->Blit(sprites, position.x + TILE, position.y-TILE, &(dead_indian.GetCurrentFrame()));
+			App->render->Blit(sprites, position.x + TILE, position.y-TILE, &(dead_indian.GetCurrentFrame()), 0.75);
 	}
 
 }

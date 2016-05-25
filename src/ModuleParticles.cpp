@@ -63,6 +63,13 @@ ModuleParticles::ModuleParticles()
 	shoot_left.speed.x = -5;
 	shoot_left.life = 2000;
 
+
+	shoot_player.anim.PushBack({ 768, 0, 48, 48 });
+	shoot_player.anim.PushBack({ 816, 0, 48, 48 });
+	shoot_player.anim.speed = 0.3f;
+	shoot_player.speed.y = 5;
+	shoot_player.life = 2000;
+
 	bullet_collision.anim.PushBack({ 0, 0, 96, 96 });
 	bullet_collision.anim.PushBack({ 96, 0, 96, 96 });
 	bullet_collision.anim.PushBack({ 192, 0, 96, 96 });
@@ -131,6 +138,8 @@ bool ModuleParticles::CleanUp()
 // Update: draw background
 update_status ModuleParticles::Update()
 {
+	shoot_player.speed.x = (App->player->position.x - SCREEN_WIDTH / 2) / 20;
+
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		Particle* p = active[i];
