@@ -41,6 +41,8 @@ Horse::Horse(int x, int y) : Enemy(x, y)
 
 	//indian regular here
 	regular.PushBack({ 1488, 2976, 96, 144 });
+	regular.PushBack({ 1488, 2986, 96, 144 });
+	regular.speed = 0.05f;
 
 	//------------------
 
