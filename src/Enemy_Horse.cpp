@@ -40,17 +40,19 @@ Horse::Horse(int x, int y) : Enemy(x, y)
 	//--------------------------
 
 	//horse dying here
-	dead.PushBack({ 0, 2976, 144, 144 });
-	dead.PushBack({ 144, 2976, 144, 144 });
-	dead.PushBack({ 288, 2976, 144, 144 });
-	dead.PushBack({ 432, 2976, 144, 144 });
-	dead.PushBack({ 576, 2976, 144, 144 });
-	dead.PushBack({ 720, 2976, 144, 144 });
-	dead.PushBack({ 864, 2976, 144, 144 });
-	dead.PushBack({ 1008, 2976, 144, 144 });
-	dead.speed = 0.4f;
-	dead.loop = false;
+	dead.PushBack({ 0, 3312, 144, 144 });
+	dead.PushBack({ 144, 3312, 144, 144 });
+	dead.PushBack({ 288, 3312, 144, 144 });
+	dead.PushBack({ 432, 3312, 144, 144 });
+	dead.PushBack({ 576, 3312, 144, 144 });
+	dead.speed = 0.2f;
 
+	//Horse neigh
+
+	neigh.PushBack({ 672, 3168, 144, 192 });
+	neigh.PushBack({ 816, 3168, 144, 192 });
+	neigh.PushBack({ 960, 3168, 144, 192 });
+	neigh.speed = 0.2f;
 
 	//---------------------------
 
