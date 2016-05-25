@@ -138,7 +138,7 @@ bool ModuleParticles::CleanUp()
 // Update: draw background
 update_status ModuleParticles::Update()
 {
-	shoot_player.speed.x = (App->player->position.x - SCREEN_WIDTH / 2) / 20;
+	shoot_player.speed.x = ((App->player->position.x + TILE/2) / ((SCREEN_WIDTH - TILE )/ 14)) - 7;
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
