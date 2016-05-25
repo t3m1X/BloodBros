@@ -25,6 +25,7 @@
 #include "Building_RPipe.h"
 #include "Building_Top_Pipes.h"
 #include "Building_Top_Pipes_2.h"
+#include "Can.h"
 #include "ModulePlayer.h"
 
 #define SPAWN_MARGIN 50
@@ -238,6 +239,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::TOP_PIPES2:
 			enemies[i] = new Top_Pipes2(info.x, info.y);
+			break;
+		case ENEMY_TYPES::CAN:
+			enemies[i] = new Can(info.x, info.y);
 		}
 	}
 }

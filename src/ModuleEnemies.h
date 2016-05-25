@@ -28,7 +28,8 @@ enum ENEMY_TYPES
 	LPIPE,
 	RPIPE,
 	TOP_PIPES,
-	TOP_PIPES2
+	TOP_PIPES2,
+	CAN
 };
 
 class Enemy;
