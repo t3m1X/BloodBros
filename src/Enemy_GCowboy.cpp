@@ -25,6 +25,7 @@ GCowboy::GCowboy(int x, int y) : Enemy(x, y)
 
 	shoot.PushBack({ 1440, 1968, 96, 144 });
 	shoot.PushBack({ 1536, 1968, 96, 144 });
+	shoot.PushBack({ 1440, 1968, 96, 144 });
 	shoot.speed = 0.2f;
 	shoot.loop = false;
 
@@ -72,13 +73,12 @@ void GCowboy::Move()
 				App->particles->AddParticle(App->particles->shoot_player, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
 				break;
 			case 1:
-				App->particles->AddParticle(App->particles->shoot_player, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->shoot, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
 				break;
 			case 2:
 				App->particles->AddParticle(App->particles->shoot_player, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
 				break;
 			case 3:
-				App->particles->AddParticle(App->particles->shoot_player, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
 				break;
 			}
 			has_shot = true;
