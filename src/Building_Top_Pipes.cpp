@@ -18,7 +18,8 @@ Top_Pipes::Top_Pipes(int x, int y) : Enemy(x, y)
 	state.speed = 1.0f;
 	state.loop = false;
 
-
+	dead_state.PushBack({ 1680, 1344, 528, 96 });
+	dead_state.speed = 1.0f;
 
 
 	collider = App->collision->AddCollider({ x+24, y, 528, 48 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
@@ -48,6 +49,7 @@ void Top_Pipes::Collision()
 			App->particles->AddParticle(App->particles->explosion, position.x + 120 + 120 + 120, position.y-30);
 			App->particles->AddParticle(App->particles->explosion, position.x + 120 + 120, position.y-30);
 			App->particles->AddParticle(App->particles->explosion, position.x + 120, position.y-30);
+		
 			isDead = true;
 		}
 		else

@@ -79,6 +79,7 @@
     <ClInclude Include="Building_RPipe.h" />
     <ClInclude Include="Building_RWaterTower.h" />
     <ClInclude Include="Building_Top_Pipes.h" />
+    <ClInclude Include="Building_Top_Pipes_2.h" />
     <ClInclude Include="Cactus.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_BIndian.h" />
@@ -122,6 +123,7 @@
     <ClCompile Include="Building_RPipe.cpp" />
     <ClCompile Include="Building_RWater_Tower.cpp" />
     <ClCompile Include="Building_Top_Pipes.cpp" />
+    <ClCompile Include="Building_Top_Pipes_2.cpp" />
     <ClCompile Include="Cactus.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_BIndian.cpp" />

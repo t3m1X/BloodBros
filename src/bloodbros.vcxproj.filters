@@ -149,6 +149,9 @@
     <ClInclude Include="Enemy_Horse.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Building_Top_Pipes_2.h">
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -264,6 +267,9 @@
     </ClCompile>
     <ClCompile Include="Enemy_Horse.cpp">
       <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Building_Top_Pipes_2.cpp">
+      <Filter>Modules\Enemies\Buildings</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

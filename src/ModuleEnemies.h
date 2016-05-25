@@ -27,7 +27,8 @@ enum ENEMY_TYPES
 	HORSE,
 	LPIPE,
 	RPIPE,
-	TOP_PIPES
+	TOP_PIPES,
+	TOP_PIPES2
 };
 
 class Enemy;
