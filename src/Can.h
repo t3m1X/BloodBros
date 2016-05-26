@@ -11,6 +11,9 @@ private:
 
 	Animation still;
 	Animation flying;
+
+	bool fly = false;
+	bool mid_fly = false;
 	
 
 public:
@@ -18,6 +21,7 @@ public:
 	Can(int x, int y);
 
 	void Collision();
+	void Move();
 };
 
 #endif // __BUILDING_CAN__

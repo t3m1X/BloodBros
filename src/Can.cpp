@@ -22,7 +22,7 @@ Can::Can(int x, int y) : Enemy(x, y)
 	flying.PushBack({ 1968, 0, 48, 48 });
 	flying.PushBack({ 2016, 0, 48, 48 });
 	still.PushBack({ 1680, 0, 48, 48 });
-	still.speed = 0.2f;
+	still.speed = 0.1f; 
 
 
 	animation = &still;
@@ -31,8 +31,20 @@ Can::Can(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ x, y, 48, 48 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 }
-
 void Can::Collision()
 {
-	
+	animation = &flying;
+	fly = true;
+}
+
+void Can::Move()
+{ 
+	if (fly == true)
+	{
+		--position.y;
+		++position.x;
+	}
+
+
+
 }
