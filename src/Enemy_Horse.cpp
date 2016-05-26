@@ -59,6 +59,9 @@ Horse::Horse(int x, int y) : Enemy(x, y)
 	neigh.PushBack({ 672, 3168, 144, 192 });
 	neigh.PushBack({ 816, 3168, 144, 192 });
 	neigh.PushBack({ 960, 3168, 144, 192 });
+	neigh.PushBack({ 816, 3168, 144, 192 });
+	neigh.PushBack({ 960, 3168, 144, 192 });
+	neigh.PushBack({ 672, 3168, 144, 192 });
 	neigh.speed = 0.2f;
 	neigh.loop = false;
 
