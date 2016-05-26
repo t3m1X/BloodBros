@@ -55,13 +55,12 @@ Horse::Horse(int x, int y) : Enemy(x, y)
 	dead.speed = 0.2f;
 
 	//Horse neigh
-
-	neigh.PushBack({ 672, 3168, 144, 192 });
-	neigh.PushBack({ 816, 3168, 144, 192 });
-	neigh.PushBack({ 960, 3168, 144, 192 });
-	neigh.PushBack({ 816, 3168, 144, 192 });
-	neigh.PushBack({ 960, 3168, 144, 192 });
-	neigh.PushBack({ 672, 3168, 144, 192 });
+	neigh.PushBack({ 960, 3148, 144, 192 });
+	neigh.PushBack({ 816, 3148, 144, 192 });
+	neigh.PushBack({ 672, 3148, 144, 192 });
+	neigh.PushBack({ 960, 3148, 144, 192 });
+	neigh.PushBack({ 816, 3148, 144, 192 });
+	neigh.PushBack({ 672, 3148, 144, 192 });
 	neigh.speed = 0.2f;
 	neigh.loop = false;
 
