@@ -5,7 +5,7 @@
 
 
 #define MAX_ENEMIES 40
-#define MAX_BUILDINGS 10
+#define MAX_BUILDINGS 12    
 
 enum ENEMY_TYPES
 {

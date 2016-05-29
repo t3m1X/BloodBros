@@ -21,6 +21,7 @@ public:
 
 	void Draw(SDL_Texture* sprites);
 	void Collision();
+	void Move();
 };
 
 #endif // __BUILDING_Top_Pipes2__

@@ -49,10 +49,19 @@ void Top_Pipes2::Collision()
 			App->particles->AddParticle(App->particles->explosion, position.x + 120 + 120 + 120, position.y - 30);
 			App->particles->AddParticle(App->particles->explosion, position.x + 120 + 120, position.y - 30);
 			App->particles->AddParticle(App->particles->explosion, position.x + 120, position.y - 30);
-
-			isDead = true;
 		}
 		else
 			state.GetCurrentFrame();
 	}
+}
+
+void Top_Pipes2::Move()
+{
+	if (state.Finished())
+	{
+		position.y += 7;
+	}
+	if (position.y >= SCREEN_HEIGHT / 2)
+		isDead = true;
+
 }

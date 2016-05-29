@@ -22,10 +22,12 @@ Can::Can(int x, int y) : Enemy(x, y)
 	flying.PushBack({ 1968, 0, 48, 48 });
 	flying.PushBack({ 2016, 0, 48, 48 });
 	still.PushBack({ 1680, 0, 48, 48 });
-	still.speed = 0.1f; 
+	still.speed = 0.01f; 
 
 
 	animation = &still;
+
+	y_pos = position.y; //SCREEN_HEIGHT - 275 + 96
 
 
 	collider = App->collision->AddCollider({ x, y, 48, 48 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
@@ -42,9 +44,13 @@ void Can::Move()
 	if (fly == true)
 	{
 		--position.y;
+		++y_pos;
 		++position.x;
 	}
-
-
-
+	if (y_pos <= SCREEN_HEIGHT)
+	{
+		++position.y;
+		++y_pos;
+		++position.x;
+	}
 }

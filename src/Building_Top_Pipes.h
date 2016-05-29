@@ -20,6 +20,7 @@ public:
 	Top_Pipes(int x, int y);
 
 	void Draw(SDL_Texture* sprites);
+	void Move();
 	void Collision();
 };
 

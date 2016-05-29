@@ -12,6 +12,8 @@ private:
 	Animation still;
 	Animation flying;
 
+	uint y_pos;
+
 	bool fly = false;
 	bool mid_fly = false;
 	

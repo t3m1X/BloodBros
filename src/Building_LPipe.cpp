@@ -42,7 +42,8 @@ void LPipe::Collision()
 		}
 		if (state.Finished())
 		{
-			isDead = true;
+			App->collision->EraseCollider(collider);
+			collider = nullptr;
 		}
 
 		else

@@ -31,7 +31,7 @@ Wagon::Wagon(int x, int y) : Enemy(x, y)
 	death.PushBack({ 711, 3456, 144, 144 });
 	death.PushBack({ 855, 3456, 144, 144 });
 	death.PushBack({ 988, 3456, 144, 144 });
-	death.speed = 0.2 f;
+	death.speed = 0.3f;
 	death.loop = false;
 
 	dead.PushBack({ 0, 3600, 144, 144 });
