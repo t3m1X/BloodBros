@@ -262,7 +262,7 @@ update_status ModulePlayer::Update()
 	}
 
 
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 	{
 		if (cposition.y > -35)
 			cposition.y -= speed * 2;
@@ -278,15 +278,15 @@ update_status ModulePlayer::Update()
 		if (current_animation == &roll_right)
 			position.x += 240 - 144;
 		current_animation = &idle[screen_portion];
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 			state = ST_WALK_LEFT;
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 			state = ST_WALK_RIGHT;
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 			state = ST_IDLE;
 		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
 			state = ST_FIRE_STANDING;
-		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 			state = ST_CROUCH;
 		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_DOWN)
 		{
@@ -308,11 +308,11 @@ update_status ModulePlayer::Update()
 
 		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
 			state = ST_FIRE_CROUCH;
-		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP)
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_UP)
 			state = ST_IDLE;
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 			state = ST_WALK_LEFT;
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 			state = ST_WALK_RIGHT;
 		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_DOWN)
 		{
@@ -332,11 +332,11 @@ update_status ModulePlayer::Update()
 			cposition.x -= speed * 2;
 		current_animation = &walk_left;
 
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 			state = ST_IDLE;
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP)
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_UP)
 			state = ST_IDLE;
-		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
 			if (cposition.y < position.y + 15)
 				cposition.y += speed * 2;
@@ -356,11 +356,11 @@ update_status ModulePlayer::Update()
 			cposition.x += speed * 2;
 		current_animation = &walk_right;
 
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 			state = ST_IDLE;
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP)
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_UP)
 			state = ST_IDLE;
-		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
 			if (cposition.y < position.y + 15)
 				cposition.y += speed * 2;
@@ -387,15 +387,15 @@ update_status ModulePlayer::Update()
 
 		current_animation = &idle[screen_portion];
 
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 			if (cposition.x > -35)
 				cposition.x -= speed * 2;
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 			if (cposition.x < SCREEN_WIDTH - 35)
 				cposition.x += speed * 2;
 		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_UP)
 			state = ST_IDLE;
-		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 			state = ST_FIRE_CROUCH;
 		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_DOWN)
 		{
@@ -425,15 +425,15 @@ update_status ModulePlayer::Update()
 		if (cposition.y < position.y + 15)
 			cposition.y += speed * 2;
 
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 			if (cposition.x > -35)
 				cposition.x -= speed * 2;
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 			if (cposition.x < SCREEN_WIDTH - 35)
 				cposition.x += speed * 2;
 		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_UP)
 			state = ST_CROUCH;
-		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP)
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_UP)
 			state = ST_FIRE_STANDING;
 		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_DOWN)
 		{
