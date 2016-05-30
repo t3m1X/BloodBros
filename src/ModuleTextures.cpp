@@ -33,6 +33,8 @@ bool ModuleTextures::Init()
 		ret = false;
 	}
 
+	last_texture = 0;
+
 	return ret;
 }
 

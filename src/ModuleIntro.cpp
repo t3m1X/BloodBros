@@ -27,6 +27,7 @@ bool ModuleIntro::Start()
 {
 	LOG("Loading intro");
 
+	App->textures->Enable();
 	IntroScreen = App->textures->Load("sprites/intro_screen.png");
 	App->audio->PlayMusic("sound/music/startscreen.wav");
 	App->input->Enable();

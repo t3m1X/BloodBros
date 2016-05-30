@@ -41,6 +41,7 @@ bool ModuleEnd::CleanUp()
 	App->textures->Unload(EndScreen);
 	App->end->Disable();
 	App->input->Disable();
+	App->textures->Disable();
 
 
 	return true;
