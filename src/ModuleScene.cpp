@@ -136,7 +136,7 @@ update_status ModuleScene::Update()
 	if (current_time >= second_wave_time)
 	{
 		second_wave_time = current_time + 20000;
-		if (!toppipe)
+		if (!toppipe && !toppipe2)
 			App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80, false);
 		switch (rand() % 5)
 		{
