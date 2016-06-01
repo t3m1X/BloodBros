@@ -29,15 +29,15 @@ Enemy_V_Left3::Enemy_V_Left3(int x, int y) : Enemy(x, y)
 
 
 
-	walk.PushBack({ 864, 2352 , 48, 48 });
-	walk.PushBack({ 912, 2352, 48, 48 });
-	walk.PushBack({ 960, 2352, 48, 48 });
-	walk.speed = 0.0002f;
+	walk.PushBack({ 864 + 768, 2352 , 48, 48 });
+	walk.PushBack({ 912 + 768, 2352, 48, 48 });
+	walk.PushBack({ 960 + 768, 2352, 48, 48 });
+	walk.speed = 0.2f;
 
-	dead.PushBack({ 1026, 2352, 48, 48 });
-	dead.PushBack({ 1074, 2352, 48, 48 });
-	dead.PushBack({ 1122, 2352, 48, 48 });
-	dead.PushBack({ 1170, 2352, 48, 48 });;
+	dead.PushBack({ 1776, 2352, 48, 48 });
+	dead.PushBack({ 1824, 2352, 48, 48 });
+	dead.PushBack({ 1872, 2352, 48, 48 });
+	dead.PushBack({ 1920, 2352, 48, 48 });
 	dead.speed = 0.1f;
 	dead.loop = false;
 

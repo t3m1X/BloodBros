@@ -16,6 +16,8 @@ Enemy_V_Left2::Enemy_V_Left2(int x, int y) : Enemy(x, y)
 {
 	appear.PushBack({ 1680, 3000, 48, 96 });
 	appear.PushBack({ 1680, 3000, 48, 96 });		//Empty
+	appear.PushBack({ 1680, 3000, 48, 96 });
+	appear.PushBack({ 1680, 3000, 48, 96 });
 
 	appear.PushBack({ 1344, 2400, 48, 96 });
 	appear.PushBack({ 1104, 2256, 48, 96 });
@@ -35,10 +37,10 @@ Enemy_V_Left2::Enemy_V_Left2(int x, int y) : Enemy(x, y)
 	walk.PushBack({ 1056, 2396, 48, 96 });
 	walk.speed = 0.2f;
 
-	dead.PushBack({ 1344, 2396, 48, 96 });
-	dead.PushBack({ 1296, 2396, 48, 96 });
-	dead.PushBack({ 1248, 2396, 48, 96 });
 	dead.PushBack({ 1200, 2396, 48, 96 });
+	dead.PushBack({ 1248, 2396, 48, 96 });
+	dead.PushBack({ 1296, 2396, 48, 96 });
+	dead.PushBack({ 1344, 2396, 48, 96 });
 	dead.speed = 0.1f;
 	dead.loop = false;
 

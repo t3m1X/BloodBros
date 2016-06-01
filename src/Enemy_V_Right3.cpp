@@ -27,16 +27,15 @@ Enemy_V_Right3::Enemy_V_Right3(int x, int y) : Enemy(x, y)
 	appear.speed = 0.2f;
 
 
-	
-	walk.PushBack({ 1296, 2352, 48, 48 });
-	walk.PushBack({ 1344, 2352, 48, 48 });
-	walk.PushBack({ 1392, 2352, 48, 48 });
+	walk.PushBack({ 2112, 2352, 48, 48 });
+	walk.PushBack({ 2064, 2352, 48, 48 });
+	walk.PushBack({ 2016, 2352, 48, 48 });
 	walk.speed = 0.2f;
 
-	dead.PushBack({ 1026, 2352, 48, 48 });
-	dead.PushBack({ 1074, 2352, 48, 48 });
-	dead.PushBack({ 1122, 2352, 48, 48 });
-	dead.PushBack({ 1170, 2352, 48, 48 });;
+	dead.PushBack({ 1776, 2352, 48, 48 });
+	dead.PushBack({ 1824, 2352, 48, 48 });
+	dead.PushBack({ 1872, 2352, 48, 48 });
+	dead.PushBack({ 1920, 2352, 48, 48 });
 	dead.speed = 0.1f;
 	dead.loop = false;
 
