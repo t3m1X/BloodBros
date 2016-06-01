@@ -62,6 +62,7 @@ public:
 	Particle end_dust;
 	Particle cactusboom;
 	Particle firearrow;
+	Particle fire;
 };
 
 #endif // __MODULEPARTICLES_H__

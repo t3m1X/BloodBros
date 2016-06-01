@@ -102,6 +102,13 @@ ModuleParticles::ModuleParticles()
 	firearrow.life = 2000;
 	firearrow.speed.y = 4;
 
+	fire.anim.PushBack({ 0, 768, 48, 96 });
+	fire.anim.PushBack({ 48, 768, 48, 96 });
+	fire.anim.PushBack({ 96, 768, 48, 96 });
+	fire.anim.PushBack({ 144, 768, 48, 96 });
+	fire.anim.PushBack({ 192, 768, 48, 96 });
+	fire.life = 1000;
+	fire.anim.speed = 0.2f;
 
 }
 
