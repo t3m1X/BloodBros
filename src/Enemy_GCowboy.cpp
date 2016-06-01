@@ -90,7 +90,11 @@ void GCowboy::Move()
 		animation = &dead;
 		if (dead.Finished())
 		{
-			App->items->SpawnBonus(position.x, position.y, SCORE_1000);
+			switch (rand() % 5)
+			{
+			case 1: App->items->SpawnBonus(position.x, position.y, SCORE_5000);
+				break;
+			}
 			isDead = true;
 		}
 		break;

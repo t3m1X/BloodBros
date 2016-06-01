@@ -6,6 +6,7 @@
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
 #include "ModuleUserI.h"
+#include "ModuleItems.h"
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
@@ -45,6 +46,7 @@ void Cactus::Collision()
 		if (state.Finished())
 		{
 			App->particles->AddParticle(App->particles->cactusboom, position.x - 24, position.y + 40);
+			App->items->SpawnBonus(position.x, position.y, SCORE_7000);
 			isDead = true;
 			App->useri->score += 300;
 		}

@@ -5,6 +5,9 @@
 #include "p2Point.h"
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
+#include "ModuleItems.h"
+#include <stdlib.h> 
+#include <time.h>  
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
@@ -22,7 +25,7 @@ Can::Can(int x, int y) : Enemy(x, y)
 	flying.PushBack({ 1968, 0, 48, 48 });
 	flying.PushBack({ 2016, 0, 48, 48 });
 	flying.PushBack({ 1680, 0, 48, 48 });
-	flying.speed = 0.2f; 
+	flying.speed = 0.3f; 
 
 
 	animation = &still;
@@ -35,8 +38,18 @@ Can::Can(int x, int y) : Enemy(x, y)
 }
 void Can::Collision()
 {
+	if (animation == &still)
+	{
+		switch (rand() % 3)
+		{
+		case 0:
+			App->items->SpawnBonus(position.x, position.y, SCORE_1000);
+			break;
+		}
+	}
 		animation = &flying;
 		fly = true;
+		
 }
 
 void Can::Move()

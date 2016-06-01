@@ -4,6 +4,7 @@
 #include "ModuleCollision.h"
 #include "p2Point.h"
 #include "ModuleParticles.h"
+#include "ModuleItems.h"
 
 #include <stdlib.h> 
 #include <time.h>  
@@ -106,9 +107,18 @@ void Wagon::Move()
 		break;
 	case ST_DYING:
 		if (!death.Finished())
+		{
 			animation = &death;
+			switch (rand() % 4)
+			{
+			case 1: App->items->SpawnBonus(position.x, position.y, SCORE_7000);
+				break;
+			}
+		}
 		else
+		{
 			animation = &dead;
+		}
 		break;
 	}
 }

@@ -5,6 +5,7 @@
 #include "p2Point.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
+#include "ModuleItems.h"
 
 
 Dancer::Dancer(int x, int y) : Enemy(x, y)
@@ -65,7 +66,8 @@ void Dancer::Collision()
 	if (hitpoints != 0)
 	{
 		App->audio->PlaySFX(sfx);
-		speed = 7;
+		App->items->SpawnBonus(position.x, position.y, SCORE_1000);
+		speed += 4;
 		animation = &dance;
 		--hitpoints;
 	}

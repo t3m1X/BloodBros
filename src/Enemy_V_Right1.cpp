@@ -5,6 +5,7 @@
 #include "p2Point.h"
 #include "ModuleParticles.h"
 #include "ModuleUserI.h"
+#include "ModuleItems.h"
 
 #include <stdlib.h> 
 #include <time.h>  
@@ -70,9 +71,15 @@ void Enemy_V_Right1::Move()
 		break;
 
 	case ST_DYING:
+
 		animation = &dead;
 		if (dead.Finished())
 		{
+			switch (rand() % 5)
+			{
+			case 1: App->items->SpawnBonus(position.x, position.y, SCORE_5000);
+				break;
+			}
 			isDead = true;
 			App->useri->killcount += 1;
 			App->useri->score += 100;
