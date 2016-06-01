@@ -50,10 +50,7 @@ void Top_Pipes2::Collision()
 		{
 			App->collision->EraseCollider(collider);
 
-			if (App->scene->toppipe)
-				App->scene->toppipe = false;
-			else
-				App->scene->toppipe2 = false;
+			App->scene->toppipe2 = false;
 
 			App->useri->score += 400;
 		}
