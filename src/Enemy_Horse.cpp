@@ -6,6 +6,7 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
+#include "ModuleItems.h"
 
 #include <stdlib.h> 
 #include <time.h>  
@@ -89,7 +90,14 @@ Horse::~Horse()
 {
 	App->audio->UnloadSFX(sfx);
 }
-
+void Horse::Collision()
+{
+	switch (rand() % 2)
+	{
+	case 1: App->items->SpawnBonus(position.x, position.y, SCORE_1000);
+		break;
+	}
+}
 void Horse::Move()
 {
 	current_time = SDL_GetTicks();

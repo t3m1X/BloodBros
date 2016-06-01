@@ -61,23 +61,7 @@ bool ModuleScene::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::CACTUS, SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 4 + 130, true, true);
 	toppipe = true;
 	toppipe2 = true;
-	App->enemies->AddEnemy(ENEMY_TYPES::HORSE, 0, 400, true);
 	
-
-	//test wave
-	/*
-	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R3, SCREEN_WIDTH / 2 - 20, 248, false);
-	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH / 2 - 80, 248, false);
-
-	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R2, SCREEN_WIDTH / 2 + 10, 250, false);
-	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L2, SCREEN_WIDTH / 2 - 110, 250, false);
-
-	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, SCREEN_WIDTH / 2 + 60, 300, false);
-	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L1, SCREEN_WIDTH / 2 - 160, 300, false);
-	*/
-	//testing wagon & horse
-	
-	//App->enemies->AddEnemy(ENEMY_TYPES::HORSE, SCREEN_WIDTH / 2 - 60, 300, false);
 
 
 		
@@ -87,11 +71,11 @@ bool ModuleScene::Start()
 	App->input->Enable();
 
 	start_time = SDL_GetTicks();
-	first_wave_time = start_time + 3000;
+	first_wave_time = start_time + 8000;
 	second_wave_time = start_time + 10000;
-	third_wave_time = start_time+ 14252;
+	third_wave_time = start_time+ 6000;
 	fourth_wave_time = start_time + 10000;
-	fifth_wave_time = start_time + 20000;
+	fifth_wave_time = start_time + 2000;
 	
 	return true;
 }
@@ -138,12 +122,17 @@ update_status ModuleScene::Update()
 		second_wave_time = current_time + 20000;
 		if (!toppipe && !toppipe2)
 			App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80, false);
-		switch (rand() % 5)
+		switch (rand() % 8)
 		{
 		case 3:
 			App->enemies->AddEnemy(ENEMY_TYPES::DANCER, 0, 400, true);
 			break;
 		case 7: App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
+			break;
+		case 6:App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L2, SCREEN_WIDTH, 250, false);
+			App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L2, SCREEN_WIDTH+58, 250, false);
+			App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L2, SCREEN_WIDTH -58, 250, false);
+			break;
 		}
 
 	}
@@ -175,12 +164,16 @@ if (current_time >= third_wave_time)
 	{
 		fifth_wave_time = current_time + 9065;
 		App->enemies->AddEnemy(ENEMY_TYPES::HORSE, -48, 300, false);
-		switch (rand() % 5)
+		switch (rand() % 7)
 		{
-		case 3:
-			App->enemies->AddEnemy(ENEMY_TYPES::HORSE, -48, 350, true);
+		case 5: App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
 			break;
-		case 7: App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
+		case 6:
+			App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH, 248, false);
+			App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH + 48, 248, false);
+			App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH - 48, 248, false);
+
+			break;
 		}
 	}
 

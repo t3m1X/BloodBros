@@ -35,6 +35,7 @@ public:
 	Horse(int x, int y);
 	~Horse();
 	void Move();
+	void Collision();
 	void Draw(SDL_Texture* sprites);
 };
 

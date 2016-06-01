@@ -138,7 +138,7 @@ ModulePlayer::ModulePlayer()
 	roll_right.PushBack({ 240, 1536, 240, 192 });
 	roll_right.PushBack({ 480, 1536, 240, 192 });
 	roll_right.PushBack({ 720, 1536, 240, 192 });
-	roll_right.speed = 0.2f;
+	roll_right.speed = 0.15f;
 	roll_right.loop = false;
 
 	roll_left.PushBack({ 0, 1728, 240, 192 });
@@ -149,7 +149,7 @@ ModulePlayer::ModulePlayer()
 	roll_left.PushBack({ 240, 1920, 240, 192 });
 	roll_left.PushBack({ 480, 1920, 240, 192 });
 	roll_left.PushBack({ 720, 1920, 240, 192 });
-	roll_left.speed = 0.2f;
+	roll_left.speed = 0.15f;
 	roll_left.loop = false;
 
 	/*dance.PushBack({ 0, 2304, 96, 192 });
