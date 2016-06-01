@@ -128,6 +128,8 @@ void ModuleItems::SpawnBonus(int x, int y, BONUS_TYPE type)
 				break;
 
 			}
+			delete bonus[i];
+			bonus[i] = nullptr;
 			break;
 		}
 	}
