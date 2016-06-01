@@ -47,7 +47,6 @@ void Cactus::Collision()
 			App->particles->AddParticle(App->particles->cactusboom, position.x - 24, position.y + 40);
 			isDead = true;
 			App->useri->score += 300;
-			next_call = 0;
 		}
 
 		else

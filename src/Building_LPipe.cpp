@@ -46,7 +46,6 @@ void LPipe::Collision()
 			App->collision->EraseCollider(collider);
 			collider = nullptr;
 			App->useri->score += 400;
-			next_call = 0;
 		}
 
 		else
