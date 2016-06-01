@@ -42,9 +42,12 @@ update_status ModuleItems::Update()
 	{
 		if (bonus[i] != nullptr)
 		{
-			bonus[i]->y += bonus[i]->v;
-			if (bonus[i]->y == bonus[i]->yo + 10)
-				bonus[i]->v = -1;
+			if (bonus[i]->y > SCREEN_HEIGHT / 2 + 117)
+			{
+				bonus[i]->y += bonus[i]->v;
+				if (bonus[i]->y == bonus[i]->yo + 10)
+					bonus[i]->v = -1;
+			}
 		}
 	}
 
