@@ -28,7 +28,8 @@ bool ModuleIntro::Start()
 	LOG("Loading intro");
 
 	IntroScreen = App->textures->Load("sprites/intro_screen.png");
-	App->audio->PlayMusic("sound/music/startscreen.wav");
+	bg_music = App->audio->LoadMusic("sound/music/startscreen.wav");
+	App->audio->PlayMusic(bg_music);
 	App->input->Enable();
 	App->useri->hitpoints = 3;
 	
@@ -43,6 +44,7 @@ bool ModuleIntro::CleanUp()
 	App->player->Disable();
 	App->scene->Disable();
 	App->audio->StopMusic();
+	App->audio->UnloadMusic(bg_music);
 	App->input->Disable();
 
 	return true;

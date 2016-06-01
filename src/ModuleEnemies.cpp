@@ -136,6 +136,11 @@ bool ModuleEnemies::CleanUp()
 		}
 	}
 
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		queue[i].type = NO_TYPE;
+	}
+
 	return true;
 }
 
@@ -180,8 +185,8 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 	}
 
 	if (i != MAX_ENEMIES)
-	{
 		switch (info.type)
+	{
 		{
 		case ENEMY_TYPES::PLANE:
 			enemies[i] = new Plane(info.x);
@@ -242,6 +247,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::CAN:
 			enemies[i] = new Can(info.x, info.y);
+			break;
 		}
 	}
 }
@@ -260,5 +266,39 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			break;
 		}
+	}
+}
+
+void ModuleEnemies::killEverything()
+{
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		queue[i].type = NO_TYPE;
+	}
+
+	for (uint i = 0; i < MAX_ENEMIES / 2 - MAX_BUILDINGS / 2; ++i)
+	{
+		if (enemies[i] != nullptr)
+		{
+			App->particles->AddParticle(App->particles->explosion, enemies[i]->position.x, enemies[i]->position.y);
+			delete enemies[i];
+			enemies[i] = nullptr;
+		}
+	}
+
+	for (uint i = MAX_ENEMIES / 2 + MAX_BUILDINGS / 2; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr)
+		{
+			App->particles->AddParticle(App->particles->explosion, enemies[i]->position.x, enemies[i]->position.y);
+			delete enemies[i];
+			enemies[i] = nullptr;
+		}
+	}
+	
+	for (uint i = MAX_ENEMIES / 2 - MAX_BUILDINGS / 2; i < MAX_ENEMIES / 2 + MAX_BUILDINGS / 2; ++i)
+	{
+		if (enemies[i] != nullptr)
+			enemies[i]->state = Enemy_State::ST_DYING;
 	}
 }

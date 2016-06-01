@@ -3,12 +3,17 @@
 #include "ModuleAudio.h"
 
 #include "SDL/include/SDL.h"
+#include "SDL_mixer/include/SDL_mixer.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
+
 
 ModuleAudio::ModuleAudio() : Module()
 {
 	for (uint i = 0; i < MAX_SFX; ++i)
 		soundfx[i] = nullptr;
+	for (uint i = 0; i < MAX_MUSIC; ++i)
+		musics[i] = nullptr;
+
 	this_call = 0;
 	next_call = 0;
 }
@@ -53,7 +58,9 @@ bool ModuleAudio::CleanUp()
 		if (soundfx[i] != nullptr)
 			Mix_FreeChunk(soundfx[i]);
 
-	Mix_FreeMusic(music);
+	for (uint i = 0; i < MAX_MUSIC; ++i)
+		if (musics[i] != nullptr)
+			Mix_FreeMusic(musics[i]);
 
 	Mix_CloseAudio();
 	Mix_Quit();
@@ -61,20 +68,34 @@ bool ModuleAudio::CleanUp()
 	return true;
 }
 
-bool ModuleAudio::PlayMusic(const char* path)
+Mix_Music* ModuleAudio::LoadMusic(const char* path)
+{
+	Mix_Music* ret = NULL;
+	ret = Mix_LoadMUS(path);
+	for (uint i = 0; i < MAX_MUSIC; ++i)
+	{
+		if (musics[i] == nullptr)
+		{
+			musics[i] = ret;
+			break;
+		}
+	}
+
+	return ret;
+}
+
+bool ModuleAudio::PlayMusic(Mix_Music* music, int loops)
 {
 	bool ret = false;
-	music = Mix_LoadMUS(path);
-
 	if (music == nullptr)
 	{
-		LOG("Could not load music with path: %s. Mix_LoadMUS: %s", path, Mix_GetError());
+		LOG("Could not load music. Mix_LoadMUS: %s", Mix_GetError());
 	}
 	else
 	{
-		if (Mix_FadeInMusic(music, -1, FADE) == -1)
+		if (Mix_FadeInMusic(music, loops, FADE) == -1)
 		{
-			LOG("Could not play music with path: %s. Mix_FadeInMusic: %s", path, Mix_GetError());
+			LOG("Could not play music . Mix_FadeInMusic: %s", Mix_GetError());
 		}
 		else
 			ret = true;
@@ -85,21 +106,21 @@ bool ModuleAudio::PlayMusic(const char* path)
 
 bool ModuleAudio::StopMusic()
 {
-	bool ret = false;
-	
-	next_call = SDL_GetTicks() + FADE;
-	while (!Mix_FadeOutMusic(FADE) && Mix_PlayingMusic() || this_call > next_call)
+	Mix_FadeOutMusic(FADE);
+	return true;
+}
+
+void ModuleAudio::UnloadMusic(Mix_Music* music)
+{
+	for (uint i = 0; i < MAX_MUSIC; ++i)
 	{
-		this_call = SDL_GetTicks();
-		//waiting for the fade-out to complete
-		//SDL_Delay(100);
+		if (musics[i] == music)
+		{
+			Mix_FreeMusic(musics[i]);
+			musics[i] = nullptr;
+			break;
+		}
 	}
-
-	Mix_FreeMusic(music);
-	if (music = NULL)
-		ret = true;
-
-	return ret;
 }
 
 // Load new sound effect from file path

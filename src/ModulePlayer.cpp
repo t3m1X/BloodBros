@@ -8,6 +8,9 @@
 #include "ModuleAudio.h"
 #include "ModuleCollision.h"
 #include "ModuleUserI.h"
+#include "ModuleFadeToBlack.h"
+#include "ModuleScene.h"
+#include "ModuleEnd.h"
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
@@ -152,32 +155,46 @@ ModulePlayer::ModulePlayer()
 	roll_left.speed = 0.15f;
 	roll_left.loop = false;
 
-	/*dance.PushBack({ 0, 2304, 96, 192 });
-	dance.PushBack({ 96, 2304, 96, 192 });
-	dance.PushBack({ 0, 2304, 96, 192 });
-	dance.PushBack({ 96, 2304, 96, 192 });
-	dance.PushBack({ 0, 2304, 96, 192 });
-	dance.PushBack({ 96, 2304, 96, 192 });
-	dance.PushBack({ 0, 2304, 96, 192 });
-	dance.PushBack({ 96, 2304, 96, 192 });
-	dance.PushBack({ 0, 2304, 96, 192 });
-	dance.PushBack({ 96, 2304, 96, 192 });			//first part of the dance
-	dance.PushBack({ 192, 2352, 48, 144 });
-	dance.PushBack({ 240, 2352, 48, 144 });
-	dance.PushBack({ 192, 2352, 48, 144 });
-	dance.PushBack({ 240, 2352, 48, 144 });			//second part
-	dance.PushBack({ 288, 2400, 48, 96 });
-	dance.PushBack({ 336, 2400, 48, 96 });
-	dance.PushBack({ 288, 2400, 48, 96 });
-	dance.PushBack({ 336, 2400, 48, 96 });			//third
-	dance.PushBack({ 384, 2400, 48, 48 });
-	dance.PushBack({ 432, 2400, 48, 48 });
-	dance.PushBack({ 384, 2400, 48, 48 });
-	dance.PushBack({ 432, 2400, 48, 48 });			//fourth
-	dance.PushBack({ 480, 2400, 48, 48 });
-	dance.PushBack({ 528, 2400, 48, 48 });
-	dance.PushBack({ 480, 2400, 48, 48 });
-	dance.PushBack({ 528, 2400, 48, 48 });		*/	//end
+	dance1.PushBack({ 0, 2304, 96, 192 });
+	dance1.PushBack({ 96, 2304, 96, 192 });
+	dance1.PushBack({ 0, 2304, 96, 192 });
+	dance1.PushBack({ 96, 2304, 96, 192 });
+	dance1.PushBack({ 0, 2304, 96, 192 });
+	dance1.PushBack({ 96, 2304, 96, 192 });
+	dance1.PushBack({ 0, 2304, 96, 192 });
+	dance1.PushBack({ 96, 2304, 96, 192 });
+	dance1.PushBack({ 0, 2304, 96, 192 });
+	dance1.speed = 0.2f;
+
+	dance1.PushBack({ 96, 2304, 96, 192 });			//first part of the dance
+	dance2.PushBack({ 192, 2352, 48, 144 });
+	dance2.PushBack({ 240, 2352, 48, 144 });
+	dance2.PushBack({ 192, 2352, 48, 144 });
+	dance2.PushBack({ 240, 2352, 48, 144 });			//second part
+	dance2.loop = false;
+	dance2.speed = 0.2f;
+
+
+	dance3.PushBack({ 288, 2400, 48, 96 });
+	dance3.PushBack({ 336, 2400, 48, 96 });
+	dance3.PushBack({ 288, 2400, 48, 96 });
+	dance3.PushBack({ 336, 2400, 48, 96 });			//third
+	dance3.loop = false;
+	dance3.speed = 0.2f;
+
+	dance4.PushBack({ 384, 2400, 48, 48 });
+	dance4.PushBack({ 432, 2400, 48, 48 });
+	dance4.PushBack({ 384, 2400, 48, 48 });
+	dance4.PushBack({ 432, 2400, 48, 48 });			//fourth
+	dance4.loop = false;
+	dance4.speed = 0.2f;
+
+	dance5.PushBack({ 480, 2400, 48, 48 });
+	dance5.PushBack({ 528, 2400, 48, 48 });
+	dance5.PushBack({ 480, 2400, 48, 48 });
+	dance5.PushBack({ 528, 2400, 48, 48 });			//end
+	dance5.loop = false;
+	dance5.speed = 0.2f;
 
 
 
@@ -404,7 +421,7 @@ update_status ModulePlayer::Update()
 		if (current_time > shooting_cooldown)
 		{
 			shooting_cooldown = current_time + 200;
-			cross_collider->SetPos(cposition.x+ 23, cposition.y+23);
+			cross_collider->SetPos(cposition.x + 23, cposition.y + 23);
 			App->audio->PlaySFX(shoot);
 		}
 		screen_portion += 7;
@@ -452,9 +469,9 @@ update_status ModulePlayer::Update()
 		if (screen_portion <= MIDDLE_F)
 			xcorrection += idle[screen_portion - 7].frames[0].w - idle[screen_portion].frames[0].w;
 		ycorrection += idle[screen_portion - 7].frames[0].h - idle[screen_portion].frames[0].h;
-			
+
 		current_animation = &down[screen_portion];
-			
+
 		if (cposition.y < position.y + 15)
 			cposition.y += speed * 2;
 
@@ -505,7 +522,7 @@ update_status ModulePlayer::Update()
 		current_animation = &roll_left;
 		if (position.x > 0)
 			position.x -= speed;
-		
+
 		if (roll_left.Finished())
 		{
 			roll_left.Reset();
@@ -526,12 +543,51 @@ update_status ModulePlayer::Update()
 		{
 			/*position.x += TILE * 2;
 			if (position.x > SCREEN_WIDTH - 144)
-				position.x = SCREEN_WIDTH - 144;*/
+			position.x = SCREEN_WIDTH - 144;*/
 			roll_right.Reset();
 			state = ST_IDLE;
 			hit = false;
 		}
 		break;
+
+	case ST_DANCE:
+		if (current_time < dance_start + 3000)
+		{
+			current_animation = &dance1;
+			if (position.x < (SCREEN_WIDTH - 87) / 2)
+				position.x += speed;
+			else
+				position.x -= speed;
+		}
+		else if (current_time < dance_start + 5000)
+		{
+			position.x = SCREEN_WIDTH / 2 - TILE;
+			position.y = SCREEN_HEIGHT / 2 + 100;
+			current_animation = &dance2;
+		}
+		else if (current_time < dance_start + 7000)
+		{
+			position.x = SCREEN_WIDTH / 2 + TILE;
+			position.y = SCREEN_HEIGHT / 2 + 80;
+			current_animation = &dance3;
+		}
+		else if (current_time < dance_start + 8000)
+		{
+			position.x = SCREEN_WIDTH / 2;
+			position.y = SCREEN_HEIGHT / 2 + 40;
+			current_animation = &dance4;
+		}
+
+		else if (current_time < dance_start + 8500)
+		{
+			position.x = SCREEN_WIDTH / 2;
+			position.y = SCREEN_HEIGHT / 2;
+			current_animation = &dance5;
+		}
+		else
+		{
+			App->fade->FadeToBlack(App->scene, App->end);
+		}
 
 	}
 

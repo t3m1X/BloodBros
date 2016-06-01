@@ -51,6 +51,7 @@ bool ModuleUserI::Start()
 	dynamite_counter = App->text->AddNumber(0, SCREEN_HEIGHT - (TILE + TILE / 2) + 5, dynamite, 2);
 	highscore_counter = App->text->AddNumber(TILE * 5, 0, highscore, 8);
 	score = 0;
+	killcount = 0;
 
 	return true;
 }

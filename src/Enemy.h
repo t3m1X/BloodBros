@@ -16,11 +16,11 @@ enum Enemy_State
 class Enemy
 {
 protected:
-	Enemy_State state;
 	Animation* animation;
 	Collider* collider;
 
 public:
+	Enemy_State state;
 	iPoint position;
 	bool isDead = false;
 

@@ -4,9 +4,13 @@
 #include "Module.h"
 
 struct SDL_Texture;
+#include "SDL_mixer/include/SDL_mixer.h"
 
 class ModuleScene : public Module
 {
+private:
+	bool beaten;
+
 public:
 	ModuleScene();
 	~ModuleScene();
@@ -17,6 +21,8 @@ public:
 	void OnCollision(Collider* c1, Collider* c2);
 	bool toppipe;
 	bool toppipe2;
+
+	void beatStage();
 
 public:
 
@@ -37,6 +43,9 @@ public:
 	Uint32 third_wave_time;
 	Uint32 fourth_wave_time;
 	Uint32 fifth_wave_time;
+
+	Mix_Music* victory_dance;
+	Mix_Music* regular_music;
 
 };
 

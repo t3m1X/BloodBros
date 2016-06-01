@@ -5,6 +5,8 @@
 #include "Animation.h"
 #include "p2Point.h"
 
+#include "SDL_mixer/include/SDL_mixer.h"
+
 class ModuleIntro : public Module
 {
 public:
@@ -20,6 +22,7 @@ public:
 
 	SDL_Texture* IntroScreen = nullptr;
 	SDL_Rect back;
+	Mix_Music* bg_music;
 };
 
 

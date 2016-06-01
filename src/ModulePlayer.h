@@ -20,7 +20,8 @@ enum player_states
 	ST_ROLLING_RIGHT,
 	ST_FIRE_STANDING,
 	ST_FIRE_CROUCH,
-	ST_DEATH
+	ST_DEATH,
+	ST_DANCE
 };
 
 class ModulePlayer : public Module
@@ -73,6 +74,13 @@ public:
 	Animation roll_left;
 	Animation dead;
 	Animation godbutt;
+
+	Animation dance1;
+	Animation dance2;
+	Animation dance3;
+	Animation dance4;
+	Animation dance5;
+
 	iPoint position;
 	iPoint cposition; //cross position 
 	Collider* cross_collider;
@@ -83,6 +91,7 @@ public:
 	Uint32 damage_cooldown;
 	Uint32 shooting_cooldown;
 	Uint32 blink_time;
+	Uint32 dance_start;
 	bool godmode = false;
 
 	bool hit = false;

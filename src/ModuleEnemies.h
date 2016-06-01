@@ -56,6 +56,8 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
+	void killEverything();
+
 	bool AddEnemy(ENEMY_TYPES type, int x, int y, bool front, bool building = false);
 
 private:

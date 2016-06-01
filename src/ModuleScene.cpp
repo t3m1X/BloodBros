@@ -43,7 +43,9 @@ bool ModuleScene::Start()
 	LOG("Loading background");
 	
 	background = App->textures->Load("sprites/stage_4_3_Background.png");
-	App->audio->PlayMusic("sound/music/stage1_bg.wav");
+	regular_music = App->audio->LoadMusic("sound/music/stage1_bg.wav");
+	victory_dance = App->audio->LoadMusic("sound/music/victorydance.wav");
+	App->audio->PlayMusic(regular_music);
 
 	/*
 	c_cactus2 = App->collision->AddCollider({ SCREEN_WIDTH / 2 - SCREEN_WIDTH / 4, SCREEN_HEIGHT / 2 - cactus2.h - 10, cactus2.w, cactus2.h }, COLLIDER_ENEMY);
@@ -61,6 +63,7 @@ bool ModuleScene::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::CACTUS, SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 4 + 130, true, true);
 	toppipe = true;
 	toppipe2 = true;
+	beaten = false;
 	
 
 
@@ -92,6 +95,8 @@ bool ModuleScene::CleanUp()
 	App->useri->Disable();
 	App->enemies->Disable();  
 	App->useri->killcount = 0;
+	App->audio->UnloadMusic(victory_dance);
+	App->audio->UnloadMusic(regular_music);
 
 	
 	return true;
@@ -103,77 +108,96 @@ update_status ModuleScene::Update()
 	current_time = SDL_GetTicks();
 
 	// Enemy waves----------------------------------------
-	if (current_time >= first_wave_time)
+	if (!beaten)
 	{
-		first_wave_time = current_time + 6500;
-		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 275, false);
-		switch (rand() % 8)
+		if (current_time >= first_wave_time)
 		{
-		case 3:
-			App->enemies->AddEnemy(ENEMY_TYPES::HORSE, 0, 400, true);
-			break;
-		case 1: App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
-				
+			first_wave_time = current_time + 6500;
+			App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 275, false);
+			switch (rand() % 8)
+			{
+			case 3:
+				App->enemies->AddEnemy(ENEMY_TYPES::HORSE, 0, 400, true);
+				break;
+			case 1: App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
+
+			}
+
+		}
+		if (current_time >= second_wave_time)
+		{
+			second_wave_time = current_time + 20000;
+			if (!toppipe && !toppipe2)
+				App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80, false);
+			switch (rand() % 8)
+			{
+			case 3:
+				App->enemies->AddEnemy(ENEMY_TYPES::DANCER, 0, 400, true);
+				break;
+			case 7: App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
+				break;
+			case 6:App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L2, SCREEN_WIDTH, 250, false);
+				App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L2, SCREEN_WIDTH + 58, 250, false);
+				App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L2, SCREEN_WIDTH - 58, 250, false);
+				break;
+			}
+
+		}
+		if (current_time >= third_wave_time)
+		{
+			third_wave_time = current_time + 9252;
+
+			App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R3, SCREEN_WIDTH / 2 - 20, 248, false);
+			App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH / 2 - 80, 248, false);
+
+			App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R2, SCREEN_WIDTH / 2 + 10, 250, false);
+			App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L2, SCREEN_WIDTH / 2 - 110, 250, false);
+
+			App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, SCREEN_WIDTH / 2 + 60, 300, false);
+			App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L1, SCREEN_WIDTH / 2 - 160, 300, false);
+
+
+		}
+		if (current_time >= fourth_wave_time)
+		{
+			fourth_wave_time = current_time + 4000;
+			App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
+			switch (rand() % 5)
+			{
+			case 1: App->enemies->AddEnemy(ENEMY_TYPES::WAGON, SCREEN_WIDTH / 2 + 80, 230, false);
+			}
+		}
+		if (current_time >= fifth_wave_time)
+		{
+			fifth_wave_time = current_time + 9065;
+			App->enemies->AddEnemy(ENEMY_TYPES::HORSE, -48, 300, false);
+			switch (rand() % 7)
+			{
+			case 5: App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
+				break;
+			case 6:
+				App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH, 248, false);
+				App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH + 48, 248, false);
+				App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH - 48, 248, false);
+
+				break;
+			}
 		}
 
-	}
-	if (current_time >= second_wave_time)
-	{
-		second_wave_time = current_time + 20000;
-		if (!toppipe && !toppipe2)
-			App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80, false);
-		switch (rand() % 8)
-		{
-		case 3:
-			App->enemies->AddEnemy(ENEMY_TYPES::DANCER, 0, 400, true);
-			break;
-		case 7: App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
-			break;
-		case 6:App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L2, SCREEN_WIDTH, 250, false);
-			App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L2, SCREEN_WIDTH+58, 250, false);
-			App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L2, SCREEN_WIDTH -58, 250, false);
-			break;
-		}
+		if (App->useri->killcount >= ENEMY_GAUGE)
+			beatStage();
 
-	}
-if (current_time >= third_wave_time)
-	{
-		third_wave_time = current_time + 9252;
-
-		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R3, SCREEN_WIDTH / 2 - 20, 248, false);
-		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH / 2 - 80, 248, false);
-		
-		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R2, SCREEN_WIDTH / 2 + 10, 250, false);
-		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L2, SCREEN_WIDTH / 2 - 110, 250, false);
-		
-		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, SCREEN_WIDTH/2+60, 300, false);
-		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L1, SCREEN_WIDTH/2-160, 300, false);
-		
-		
-	}
-	if (current_time >= fourth_wave_time)
-	{
-		fourth_wave_time = current_time + 4000;
-		App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
-		switch (rand() % 5)
+		if (App->useri->hitpoints == 0)
 		{
-		case 1: App->enemies->AddEnemy(ENEMY_TYPES::WAGON, SCREEN_WIDTH / 2 + 80, 230, false);
-		}
-	}
-	if (current_time >= fifth_wave_time)
-	{
-		fifth_wave_time = current_time + 9065;
-		App->enemies->AddEnemy(ENEMY_TYPES::HORSE, -48, 300, false);
-		switch (rand() % 7)
-		{
-		case 5: App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, -48, 280, false);
-			break;
-		case 6:
-			App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH, 248, false);
-			App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH + 48, 248, false);
-			App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH - 48, 248, false);
+			App->useri->score = 0;
 
-			break;
+			if (App->useri->credit == 0)
+				App->fade->FadeToBlack(this, App->intro, 1.0f);
+			else
+			{
+				App->useri->credit--;
+				App->useri->hitpoints = 3;
+			}
 		}
 	}
 
@@ -192,24 +216,7 @@ if (current_time >= third_wave_time)
 
 	}*/
 
-	if (App->useri->killcount >= ENEMY_GAUGE)
-	{
-		App->useri->killcount = 0;
-		App->fade->FadeToBlack(this, App->end, 1.0f);
-	}
 	
-	if (App->useri->hitpoints == 0)
-	{
-		App->useri->score = 0;
-
-		if (App->useri->credit == 0)
-			App->fade->FadeToBlack(this, App->intro, 1.0f);
-		else
-		{
-			App->useri->credit--;
-			App->useri->hitpoints = 3;
-		}
-	}
 
 
 	
@@ -219,4 +226,17 @@ if (current_time >= third_wave_time)
 void ModuleScene::OnCollision(Collider* c1, Collider* c2)
 {
 	
+}
+
+void ModuleScene::beatStage()
+{
+	if (!beaten)
+	{
+		App->enemies->killEverything();
+		App->player->state = ST_DANCE;
+		App->player->dance_start = SDL_GetTicks();
+		beaten = true;
+		Mix_HaltMusic();
+		App->audio->PlayMusic(victory_dance, 1);
+	}
 }
