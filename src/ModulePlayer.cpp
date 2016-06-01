@@ -157,43 +157,24 @@ ModulePlayer::ModulePlayer()
 
 	dance1.PushBack({ 0, 2304, 96, 192 });
 	dance1.PushBack({ 96, 2304, 96, 192 });
-	dance1.PushBack({ 0, 2304, 96, 192 });
-	dance1.PushBack({ 96, 2304, 96, 192 });
-	dance1.PushBack({ 0, 2304, 96, 192 });
-	dance1.PushBack({ 96, 2304, 96, 192 });
-	dance1.PushBack({ 0, 2304, 96, 192 });
-	dance1.PushBack({ 96, 2304, 96, 192 });
-	dance1.PushBack({ 0, 2304, 96, 192 });
-	dance1.speed = 0.2f;
-
-	dance1.PushBack({ 96, 2304, 96, 192 });			//first part of the dance
+	dance1.speed = 0.1f;
+														//first part of the dance
 	dance2.PushBack({ 192, 2352, 48, 144 });
 	dance2.PushBack({ 240, 2352, 48, 144 });
-	dance2.PushBack({ 192, 2352, 48, 144 });
-	dance2.PushBack({ 240, 2352, 48, 144 });			//second part
-	dance2.loop = false;
-	dance2.speed = 0.2f;
+		//second part
+	dance2.speed = 0.1f;
 
 
 	dance3.PushBack({ 288, 2400, 48, 96 });
 	dance3.PushBack({ 336, 2400, 48, 96 });
-	dance3.PushBack({ 288, 2400, 48, 96 });
-	dance3.PushBack({ 336, 2400, 48, 96 });			//third
-	dance3.loop = false;
-	dance3.speed = 0.2f;
+	dance3.speed = 0.1f;
 
-	dance4.PushBack({ 384, 2400, 48, 48 });
-	dance4.PushBack({ 432, 2400, 48, 48 });
-	dance4.PushBack({ 384, 2400, 48, 48 });
-	dance4.PushBack({ 432, 2400, 48, 48 });			//fourth
-	dance4.loop = false;
+	dance4.PushBack({ 384, 2448, 48, 48 });
+	dance4.PushBack({ 432, 2448, 48, 48 });
 	dance4.speed = 0.2f;
 
-	dance5.PushBack({ 480, 2400, 48, 48 });
-	dance5.PushBack({ 528, 2400, 48, 48 });
-	dance5.PushBack({ 480, 2400, 48, 48 });
-	dance5.PushBack({ 528, 2400, 48, 48 });			//end
-	dance5.loop = false;
+	dance5.PushBack({ 480, 2448, 48, 48 });
+	dance5.PushBack({ 528, 2448, 48, 48 });
 	dance5.speed = 0.2f;
 
 
@@ -559,29 +540,29 @@ update_status ModulePlayer::Update()
 			else
 				position.x -= speed;
 		}
-		else if (current_time < dance_start + 5000)
+		else if (current_time < dance_start + 4000)
 		{
-			position.x = SCREEN_WIDTH / 2 - TILE;
-			position.y = SCREEN_HEIGHT / 2 + 100;
+			position.x = SCREEN_WIDTH / 2 - TILE*4;
+			position.y = SCREEN_HEIGHT / 2;
 			current_animation = &dance2;
 		}
-		else if (current_time < dance_start + 7000)
+		else if (current_time < dance_start + 5000)
 		{
-			position.x = SCREEN_WIDTH / 2 + TILE;
-			position.y = SCREEN_HEIGHT / 2 + 80;
+			position.x = SCREEN_WIDTH / 2 + TILE*2;
+			position.y = SCREEN_HEIGHT / 2 - 100;
 			current_animation = &dance3;
 		}
-		else if (current_time < dance_start + 8000)
+		else if (current_time < dance_start + 6000)
 		{
-			position.x = SCREEN_WIDTH / 2;
-			position.y = SCREEN_HEIGHT / 2 + 40;
+			position.x = SCREEN_WIDTH / 2 + TILE;
+			position.y = SCREEN_HEIGHT / 2-80;
 			current_animation = &dance4;
 		}
 
-		else if (current_time < dance_start + 8500)
+		else if (current_time < dance_start + 6500)
 		{
-			position.x = SCREEN_WIDTH / 2;
-			position.y = SCREEN_HEIGHT / 2;
+			position.x = SCREEN_WIDTH / 2- 55;
+			position.y = SCREEN_HEIGHT / 2 - 100;
 			current_animation = &dance5;
 		}
 		else

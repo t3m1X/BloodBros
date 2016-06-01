@@ -30,11 +30,11 @@ ModuleItems::ModuleItems()
 	an_score_1000.speed = 0.2f;
 
 	an_score_5000.PushBack({ 96, 384, 96, 48 });
-	an_score_5000.PushBack({ 96, 384, 96, 48 });
+	an_score_5000.PushBack({ 96, 432, 96, 48 });
 	an_score_5000.speed = 0.2f;
 
 	an_score_7000.PushBack({ 192, 384, 96, 48 });
-	an_score_7000.PushBack({ 192, 384, 96, 48 });
+	an_score_7000.PushBack({ 192, 432, 96, 48 });
 	an_score_7000.speed = 0.2f;
 }
 
