@@ -65,7 +65,7 @@ bool ModuleScene::Start()
 	
 
 	//test wave
-	
+	/*
 	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R3, SCREEN_WIDTH / 2 - 20, 248, false);
 	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L3, SCREEN_WIDTH / 2 - 80, 248, false);
 
@@ -74,7 +74,7 @@ bool ModuleScene::Start()
 
 	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_R1, SCREEN_WIDTH / 2 + 60, 300, false);
 	App->enemies->AddEnemy(ENEMY_TYPES::V_FORMATION_L1, SCREEN_WIDTH / 2 - 160, 300, false);
-	
+	*/
 	//testing wagon & horse
 	
 	//App->enemies->AddEnemy(ENEMY_TYPES::HORSE, SCREEN_WIDTH / 2 - 60, 300, false);
@@ -136,7 +136,7 @@ update_status ModuleScene::Update()
 	if (current_time >= second_wave_time)
 	{
 		second_wave_time = current_time + 20000;
-		if (!toppipe && !toppipe2)
+		if (!toppipe)
 			App->enemies->AddEnemy(ENEMY_TYPES::PLANE, 30, 80, false);
 		switch (rand() % 5)
 		{
