@@ -39,7 +39,11 @@ void Top_Pipes2::Collision()
 
 	if (this_call > next_call)
 	{
-
+		App->scene->toppipe = false;
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y - 30);
+		App->particles->AddParticle(App->particles->explosion, position.x + 120 + 120 + 120, position.y - 30);
+		App->particles->AddParticle(App->particles->explosion, position.x + 120 + 120, position.y - 30);
+		App->particles->AddParticle(App->particles->explosion, position.x + 120, position.y - 30);
 		next_call = this_call + 200;
 
 		if (state.Finished())
