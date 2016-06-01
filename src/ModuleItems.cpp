@@ -140,8 +140,6 @@ void ModuleItems::SpawnBonus(int x, int y, BONUS_TYPE type)
 				break;
 
 			}
-			delete bonus[i];
-			bonus[i] = nullptr;
 			break;
 		}
 	}
@@ -180,6 +178,8 @@ void ModuleItems::OnCollision(Collider* c1, Collider* c2)
 				App->useri->score += 1000;
 				break;
 			}
+			delete bonus[i];
+			bonus[i] = nullptr;
 			break;
 		}
 	}
