@@ -12,6 +12,7 @@
 #include "ModuleIntro.h"
 #include "ModuleUserI.h"
 #include "ModuleCollision.h"
+#include "ModuleItems.h"
 #include "ModuleEnemies.h"
 #include "ModuleEnd.h"
 #include "ModuleText.h"
@@ -29,6 +30,7 @@ Application::Application()
 	modules[i++] = scene = new ModuleScene();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = items = new ModuleItems();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = intro = new ModuleIntro();
 	modules[i++] = end = new ModuleEnd();

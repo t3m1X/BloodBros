@@ -155,6 +155,9 @@
     <ClInclude Include="Can.h">
       <Filter>Modules\Enemies\V_FORMATION</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleItems.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -276,6 +279,9 @@
     </ClCompile>
     <ClCompile Include="Can.cpp">
       <Filter>Modules\Enemies\V_FORMATION</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleItems.cpp">
+      <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
