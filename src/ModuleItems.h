@@ -33,7 +33,7 @@ struct Bonus
 		x(_x),
 		y(_y),
 		yo(_y),
-		v(1),
+		v(-5),
 		animation(_animation),
 		collider(_collider),
 		lifespan(_lifespan)

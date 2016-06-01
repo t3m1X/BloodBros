@@ -43,7 +43,7 @@ ModuleItems::~ModuleItems()
 
 bool ModuleItems::Start()
 {
-	sprites = App->textures->Load("sprites/PowerUp1.png");
+	sprites = App->textures->Load("sprites/ui-rearranged.png");
 
 	return true;
 }
@@ -52,13 +52,14 @@ update_status ModuleItems::Update()
 {
 	for (uint i = 0; i < MAX_BONUS; ++i)
 	{
-		if (bonus[i] != nullptr)
+  		if (bonus[i] != nullptr)
 		{
-			if (bonus[i]->y > SCREEN_HEIGHT / 2 + 117)
+			if (bonus[i]->y < SCREEN_HEIGHT - TILE * 2)
 			{
 				bonus[i]->y += bonus[i]->v;
-				if (bonus[i]->y == bonus[i]->yo + 10)
-					bonus[i]->v = -1;
+
+				if (bonus[i]->y <= bonus[i]->yo - 50)
+					bonus[i]->v = 5;
 			}
 		}
 	}
@@ -66,7 +67,10 @@ update_status ModuleItems::Update()
 	for (uint i = 0; i < MAX_BONUS; ++i)
 	{
 		if (bonus[i] != nullptr)
+		{
 			App->render->Blit(sprites, bonus[i]->x, bonus[i]->y, &bonus[i]->animation->GetCurrentFrame());
+			bonus[i]->collider->SetPos(bonus[i]->x, bonus[i]->y);
+		}
 	}
 
 	return UPDATE_CONTINUE;
