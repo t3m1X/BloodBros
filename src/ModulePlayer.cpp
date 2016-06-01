@@ -448,10 +448,14 @@ update_status ModulePlayer::Update()
 
 	case ST_DEATH:
 		current_animation = &dead;
+		if (hit)
+		{
+			App->useri->hitpoints -= 1;
+			hit = false;
+		}
+
 		if (dead.Finished())
 		{
-			hit = false;
-			App->useri->hitpoints -= 1;
 			dead.Reset();
 			damage_cooldown = current_time + 3000;
 			state = ST_IDLE;
