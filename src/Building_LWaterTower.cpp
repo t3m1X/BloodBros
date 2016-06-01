@@ -77,7 +77,7 @@ void LWaterTower::Draw(SDL_Texture* sprites)
 
 void LWaterTower::Collision()
 {
-	if (!App->scene->toppipe)
+	if (!App->scene->toppipe && !App->scene->toppipe2)
 	{
 		this_call = SDL_GetTicks();
 
