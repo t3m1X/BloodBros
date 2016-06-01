@@ -5,6 +5,9 @@
 #include "p2Point.h"
 #include "Path.h"
 
+
+struct Mix_Chunk;
+
 class Horse : public Enemy
 {
 private:
@@ -16,6 +19,7 @@ private:
 	Animation regular;
 	Animation dead_indian;
 	Animation* animation_indian;
+	Mix_Chunk* sfx;
 	p2Point<int> i_pos;
 	Path Horse_path;
 
@@ -29,6 +33,7 @@ private:
 public:
 
 	Horse(int x, int y);
+	~Horse();
 	void Move();
 	void Draw(SDL_Texture* sprites);
 };

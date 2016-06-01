@@ -4,7 +4,12 @@
 #include "ModuleCollision.h"
 #include "p2Point.h"
 #include "ModuleParticles.h"
+#include "ModuleAudio.h"
 #include "ModuleUserI.h"
+
+#include "SDL/include/SDL.h"
+#pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
+
 
 Plane::Plane(int x) : Enemy(x, 25)
 {
@@ -30,7 +35,15 @@ Plane::Plane(int x) : Enemy(x, 25)
 
 	collider = App->collision->AddCollider({ 50, 0, 32, 32 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
+	sfx = App->audio->LoadSFX("sound/soundfx/Plane.wav");
+
 }
+
+Plane::~Plane()
+{
+	App->audio->UnloadSFX(sfx);
+}
+
 
 void Plane::Move()
 {
@@ -51,6 +64,7 @@ void Plane::Move()
 	}
 	else if (!has_shot)
 	{
+		App->audio->PlaySFX(sfx);
 		App->particles->AddParticle(App->particles->bomb, position.x, position.y + (fly.frames[7].h - fly.frames[7].h / 4), COLLIDER_ENEMY_SHOT);
 		App->particles->AddParticle(App->particles->bomb, position.x + fly.frames[7].w / 2, position.y + (fly.frames[7].h - fly.frames[7].h / 4), COLLIDER_ENEMY_SHOT);
 		App->particles->AddParticle(App->particles->bomb, position.x + fly.frames[7].w , position.y + (fly.frames[7].h - fly.frames[7].h / 4), COLLIDER_ENEMY_SHOT);

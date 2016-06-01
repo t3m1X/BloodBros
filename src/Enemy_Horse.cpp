@@ -80,8 +80,14 @@ Horse::Horse(int x, int y) : Enemy(x, y)
 	position.x = 0;
 	i_pos.y = position.y;
 
+	sfx = App->audio->LoadSFX("sound/soundfx/Horse.wav");
+
 	srand(time(NULL));
 
+}
+Horse::~Horse()
+{
+	App->audio->UnloadSFX(sfx);
 }
 
 void Horse::Move()
@@ -106,13 +112,13 @@ void Horse::Move()
 			shoot_end = current_time + 1000;
 			animation = &walk;
 			animation_indian = &shoot;
+			App->audio->PlaySFX(sfx);
 			App->particles->AddParticle(App->particles->firearrow, position.x + shoot.frames[1].w / 2, position.y + shoot.frames[1].h / 2, COLLIDER_ENEMY_SHOT);
 			has_shot = true;
 		}
 		position.x += 4;
 		break;
 	case ST_DYING:
-		
 		if (!neigh.Finished())
 		{
 			animation = &neigh;

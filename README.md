@@ -37,6 +37,8 @@ This release version added the player and the aim without shooting animations. T
 27/04/2016
 -Ending the prototype polishing the code ,added enemy AI, added proyectiles, implemented HP system, bugs correction, adding sexy ballerina.
 
+1/06/2016
+-Final version of the level, we added more enemies such the horse or the wagon, added the level pipes and improved the water towers.. We rearranged the spritesheets and the way of adding the sprites to the game to make our work more easy, added a GodMode to analize our mistakes better. Also we fixed a lot of bugs and errors to make the level as close as the real BloodBros.
 ## Sound
 
 On the subject of sound please take your time to properly name and place the sound samples stored in candidates. The naming convention is the following:
