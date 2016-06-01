@@ -55,22 +55,20 @@ Horse::Horse(int x, int y) : Enemy(x, y)
 	dead.speed = 0.2f;
 
 	//Horse neigh
-	neigh.PushBack({ 960, 3148, 144, 192 });
-	neigh.PushBack({ 816, 3148, 144, 192 });
-	neigh.PushBack({ 672, 3148, 144, 192 });
-	neigh.PushBack({ 960, 3148, 144, 192 });
-	neigh.PushBack({ 816, 3148, 144, 192 });
-	neigh.PushBack({ 672, 3148, 144, 192 });
-	neigh.speed = 0.2f;
+	neigh.PushBack({ 672+144, 3148, 144, 240+48 });
+	neigh.PushBack({ 816+144, 3148, 144, 240 +48});
+	neigh.PushBack({ 960+144, 3148, 144, 240 +48});
+	neigh.PushBack({ 1104 + 144, 3148, 144, 240 +48});
+	neigh.PushBack({ 1248+ 144, 3148, 144, 240 + 48 });
+	neigh.PushBack({ 1392 + 144, 3148, 144, 240 + 48 });
+	neigh.PushBack({ 1248 + 144, 3148, 144, 240 + 48 });
+	
+
+	neigh.speed = 0.17f;
 	neigh.loop = false;
 
 	//---------------------------
 
-	//dead of indian here
-
-	dead_indian.PushBack({ 384, 624, 96, 144});
-	dead_indian.speed = 0.1f;
-	dead_indian.loop = false;
 	//------------------------------
 	
 	animation = &walk;
@@ -116,11 +114,15 @@ void Horse::Move()
 	case ST_DYING:
 		
 		if (!neigh.Finished())
+		{
 			animation = &neigh;
+			position.y = i_pos.y - 48;
+		}
 		else
 		{
-			animation = &dead;
+			animation = &walk;
 			position.x += 8;
+			position.y = i_pos.y;
 		}
 		break;
 	}
