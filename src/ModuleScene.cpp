@@ -122,7 +122,7 @@ update_status ModuleScene::Update()
 	if (current_time >= first_wave_time)
 	{
 		first_wave_time = current_time + 6500;
-		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 250, false);
+		App->enemies->AddEnemy(ENEMY_TYPES::G_COWBOY, SCREEN_WIDTH, 275, false);
 		switch (rand() % 8)
 		{
 		case 3:
