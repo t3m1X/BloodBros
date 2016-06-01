@@ -13,14 +13,14 @@
 
 Top_Pipes::Top_Pipes(int x, int y) : Enemy(x, y)
 {
-	state.PushBack({ 1680, 960, 528, 96 });
-	state.PushBack({ 1680, 1152, 528, 96 });
-	state.PushBack({ 1680, 1344, 528, 96 });
-	state.speed = 1.0f;
-	state.loop = false;
+	building.PushBack({ 1680, 960, 528, 96 });
+	building.PushBack({ 1680, 1152, 528, 96 });
+	building.PushBack({ 1680, 1344, 528, 96 });
+	building.speed = 1.0f;
+	building.loop = false;
 
-	dead_state.PushBack({ 1680, 1344, 528, 96 });
-	dead_state.speed = 1.0f;
+	dead_building.PushBack({ 1680, 1344, 528, 96 });
+	dead_building.speed = 1.0f;
 
 
 	collider = App->collision->AddCollider({ x+24, y, 475, 48 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
@@ -30,7 +30,7 @@ Top_Pipes::Top_Pipes(int x, int y) : Enemy(x, y)
 
 void Top_Pipes::Draw(SDL_Texture* sprites)
 {
-	App->render->Blit(sprites, position.x, position.y, &(state.ConsultCurrentFrame()));
+	App->render->Blit(sprites, position.x, position.y, &(building.ConsultCurrentFrame()));
 }
 
 
@@ -46,8 +46,9 @@ void Top_Pipes::Collision()
 		App->particles->AddParticle(App->particles->explosion, position.x + 120, position.y - 30);
 		next_call = this_call + 200;
 		   
-		if (state.Finished())
+		if (building.Finished())
 		{
+			state = ST_DYING;
 			App->collision->EraseCollider(collider);
 
 			App->scene->toppipe = false;
@@ -55,13 +56,13 @@ void Top_Pipes::Collision()
 			App->useri->score += 400;
 		}
 		else
-			state.GetCurrentFrame();
+			building.GetCurrentFrame();
 	}
 }
 
 void Top_Pipes::Move()
 {
-	if (state.Finished())
+	if (state == ST_DYING)
 	{
 		position.y += 7;
 	}

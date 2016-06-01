@@ -9,8 +9,8 @@ class Top_Pipes : public Enemy
 {
 private:
 
-	Animation state;
-	Animation dead_state;
+	Animation building;
+	Animation dead_building;
 	Uint32 this_call;
 	Uint32 next_call;
 	SDL_Rect last_anim;
