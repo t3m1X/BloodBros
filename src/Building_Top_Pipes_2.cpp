@@ -23,7 +23,7 @@ Top_Pipes2::Top_Pipes2(int x, int y) : Enemy(x, y)
 	dead_state.speed = 1.0f;
 
 
-	collider = App->collision->AddCollider({ x + 24, y, 528, 48 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x + 24, y, 375, 48 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 }
 
