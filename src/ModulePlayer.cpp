@@ -191,7 +191,11 @@ ModulePlayer::ModulePlayer()
 	dead.PushBack({ 576, 2112, 192, 192 });
 	dead.PushBack({ 576, 2112, 192, 192 });
 	dead.loop = false;
-	dead.speed = 0.1;
+	dead.speed = 0.1f;
+
+    godbutt.PushBack({ 576, 2400, 336, 48 });
+	godbutt.PushBack({ 576, 2448, 336, 48 });
+	godbutt.speed = 0.1f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -254,7 +258,10 @@ update_status ModulePlayer::Update()
 	player_collider->SetPos(position.x+TILE, position.y+8);
 	current_time = SDL_GetTicks();
 	if (godmode)
+	{
 		hit = false;
+		App->render->Blit(player, position.x - 96, position.y - 48, &(godbutt.GetCurrentFrame()));
+	}
 	if (current_time >= blink_time)
 	{
 		blink = !blink;

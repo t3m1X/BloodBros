@@ -72,6 +72,7 @@ public:
 	Animation roll_right;
 	Animation roll_left;
 	Animation dead;
+	Animation godbutt;
 	iPoint position;
 	iPoint cposition; //cross position 
 	Collider* cross_collider;
