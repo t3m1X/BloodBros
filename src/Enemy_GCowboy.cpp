@@ -4,6 +4,7 @@
 #include "ModuleCollision.h"
 #include "p2Point.h"
 #include "ModuleParticles.h"
+#include "ModuleItems.h"
 
 #include <stdlib.h> 
 #include <time.h>  
@@ -88,7 +89,10 @@ void GCowboy::Move()
 	case ST_DYING:
 		animation = &dead;
 		if (dead.Finished())
+		{
+			App->items->SpawnBonus(position.x, position.y, SCORE_1000);
 			isDead = true;
+		}
 		break;
 	}
 
