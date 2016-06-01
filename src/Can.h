@@ -16,6 +16,7 @@ private:
 
 	bool fly = false;
 	bool mid_fly = false;
+	bool right_move = false;
 	
 
 public:

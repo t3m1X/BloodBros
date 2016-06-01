@@ -43,26 +43,54 @@ void Can::Move()
 { 
 	if (fly)
 	{
+		if (right_move)
+		{
 			if (mid_fly != true)
 			{
-				--position.y;
-				position.x -= 0.01f;
+				position.y -= 3;
+				--position.x;
 			}
-				if (position.y < y_pos - 144)
-				{
-					mid_fly = true;
-				}
+			if (position.y < y_pos - 144)
+			{
+				mid_fly = true;
+			}
 			if (mid_fly)
 			{
-				++position.y;
-				position.x -= 0.01f;
+				position.y += 3;
+				--position.x;
 			}
 			if (position.y == y_pos)
 			{
 				fly = false;
 				mid_fly = false;
+				right_move = false;
 			}
 		}
+		else
+		{
+			if (mid_fly != true)
+			{
+				position.y -= 3;
+				++position.x;
+			}
+			if (position.y < y_pos - 144)
+			{
+				mid_fly = true;
+			}
+			if (mid_fly)
+			{
+				position.y += 3;
+				++position.x;
+			}
+			if (position.y == y_pos)
+			{
+				fly = false;
+				mid_fly = false;
+				right_move = true;
+			}
+		}
+	}
+	
 	
 	else
 	{
