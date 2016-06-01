@@ -5,6 +5,7 @@
 #include "p2Point.h"
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
+#include "ModuleUserI.h"
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
@@ -40,12 +41,14 @@ void RPipe::Collision()
 		{
 			App->particles->AddParticle(App->particles->explosion, position.x, position.y + 40);
 			App->particles->AddParticle(App->particles->explosion, position.x + 48, position.y);
-			next_call = this_call + 200;
+			next_call = this_call + 800;
 		}
 		if (state.Finished())
 		{
 			App->collision->EraseCollider(collider);
 			collider = nullptr;
+			App->useri->score += 400;
+			next_call = 0;
 		}
 
 		else

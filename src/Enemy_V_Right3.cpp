@@ -29,7 +29,7 @@ Enemy_V_Right3::Enemy_V_Right3(int x, int y) : Enemy(x, y)
 
 	walk.PushBack({ 2112, 2352, 48, 48 });
 	walk.PushBack({ 2064, 2352, 48, 48 });
-	walk.PushBack({ 2016, 2352, 48, 48 });
+	walk.PushBack({ 2016, 2352, 48, 48 });   
 	walk.speed = 0.2f;
 
 	dead.PushBack({ 1776, 2352, 48, 48 });
@@ -53,7 +53,7 @@ void Enemy_V_Right3::Move()
 		if (appear.Finished())
 		{
 			animation = &walk;
-			position.x += 3;
+			position.x += 4;
 		}
 		break;
 

@@ -5,6 +5,7 @@
 #include "p2Point.h"
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
+#include "ModuleUserI.h"
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
@@ -39,12 +40,14 @@ void Cactus::Collision()
 		if (state.Finished() != 1)
 		{
 			App->particles->AddParticle(App->particles->cactusboom, position.x - 24, position.y + 40);
-			next_call = this_call + 200;
+			next_call = this_call + 800 ;
 		}
 		if (state.Finished())
 		{
 			App->particles->AddParticle(App->particles->cactusboom, position.x - 24, position.y + 40);
 			isDead = true;
+			App->useri->score += 300;
+			next_call = 0;
 		}
 
 		else

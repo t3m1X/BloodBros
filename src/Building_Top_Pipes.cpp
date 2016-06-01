@@ -6,6 +6,7 @@
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
 #include "ModuleScene.h"
+#include "ModuleUserI.h"
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
@@ -48,10 +49,13 @@ void Top_Pipes::Collision()
 		if (state.Finished())
 		{
 			App->collision->EraseCollider(collider);
+
 			if (App->scene->toppipe)
 				App->scene->toppipe = false;
 			else
 				App->scene->toppipe2 = false;
+
+			App->useri->score += 400;
 		}
 		else
 			state.GetCurrentFrame();
