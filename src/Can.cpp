@@ -21,8 +21,8 @@ Can::Can(int x, int y) : Enemy(x, y)
 	flying.PushBack({ 1920, 0, 48, 48 });
 	flying.PushBack({ 1968, 0, 48, 48 });
 	flying.PushBack({ 2016, 0, 48, 48 });
-	still.PushBack({ 1680, 0, 48, 48 });
-	still.speed = 0.01f; 
+	flying.PushBack({ 1680, 0, 48, 48 });
+	flying.speed = 0.2f; 
 
 
 	animation = &still;
@@ -35,22 +35,38 @@ Can::Can(int x, int y) : Enemy(x, y)
 }
 void Can::Collision()
 {
-	animation = &flying;
-	fly = true;
+		animation = &flying;
+		fly = true;
 }
 
 void Can::Move()
 { 
-	if (fly == true)
+	if (fly)
 	{
-		--position.y;
-		++y_pos;
-		++position.x;
-	}
-	if (y_pos <= SCREEN_HEIGHT)
+			if (mid_fly != true)
+			{
+				--position.y;
+				position.x -= 0.01f;
+			}
+				if (position.y < y_pos - 144)
+				{
+					mid_fly = true;
+				}
+			if (mid_fly)
+			{
+				++position.y;
+				position.x -= 0.01f;
+			}
+			if (position.y == y_pos)
+			{
+				fly = false;
+				mid_fly = false;
+			}
+		}
+	
+	else
 	{
-		++position.y;
-		++y_pos;
-		++position.x;
+		animation = &still;
 	}
+
 }
