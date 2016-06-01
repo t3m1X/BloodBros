@@ -268,13 +268,9 @@ update_status ModulePlayer::Update()
 		blink_time = current_time + 100;
 	}
 
+	if (current_time < damage_cooldown)
+		hit = false;
 
-	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
-	{
-		if (cposition.y > -35)
-			cposition.y -= speed * 2;
-
-	}
 	
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 		godmode = !godmode;
@@ -291,6 +287,12 @@ update_status ModulePlayer::Update()
 			state = ST_WALK_RIGHT;
 		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 			state = ST_IDLE;
+		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+		{
+			if (cposition.y > -35)
+				cposition.y -= speed * 2;
+
+		}
 		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
 			state = ST_FIRE_STANDING;
 		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
@@ -321,6 +323,12 @@ update_status ModulePlayer::Update()
 			state = ST_WALK_LEFT;
 		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 			state = ST_WALK_RIGHT;
+		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+		{
+			if (cposition.y > -35)
+				cposition.y -= speed * 2;
+
+		}
 		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_DOWN)
 		{
 			if (cposition.x > position.x)
@@ -348,6 +356,12 @@ update_status ModulePlayer::Update()
 			if (cposition.y < position.y + 15)
 				cposition.y += speed * 2;
 		}
+		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+		{
+			if (cposition.y > -35)
+				cposition.y -= speed * 2;
+
+		}
 		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
 			state = ST_FIRE_STANDING;
 		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_DOWN)
@@ -371,6 +385,12 @@ update_status ModulePlayer::Update()
 		{
 			if (cposition.y < position.y + 15)
 				cposition.y += speed * 2;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+		{
+			if (cposition.y > -35)
+				cposition.y -= speed * 2;
+
 		}
 		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT)
 			state = ST_FIRE_STANDING;
@@ -404,6 +424,12 @@ update_status ModulePlayer::Update()
 			state = ST_IDLE;
 		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 			state = ST_FIRE_CROUCH;
+		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+		{
+			if (cposition.y > -35)
+				cposition.y -= speed * 2;
+
+		}
 		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_DOWN)
 		{
 			if (cposition.x > position.x)
@@ -442,6 +468,12 @@ update_status ModulePlayer::Update()
 			state = ST_CROUCH;
 		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_UP)
 			state = ST_FIRE_STANDING;
+		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+		{
+			if (cposition.y > -35)
+				cposition.y -= speed * 2;
+
+		}
 		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_DOWN)
 		{
 			if (cposition.x > position.x)
@@ -471,7 +503,6 @@ update_status ModulePlayer::Update()
 
 	case ST_ROLLING_LEFT:
 		current_animation = &roll_left;
-		player_collider->SetPos(SCREEN_WIDTH, SCREEN_HEIGHT);
 		if (position.x > 0)
 			position.x -= speed;
 		
@@ -479,14 +510,15 @@ update_status ModulePlayer::Update()
 		{
 			roll_left.Reset();
 			state = ST_IDLE;
+			hit = false;
 		}
 		break;
 
 	case ST_ROLLING_RIGHT:
 		if (current_animation != &roll_right)
 			position.x -= 240 - 144;
+		player_collider->SetPos(position.x + TILE + (240 - 144), position.y);
 		current_animation = &roll_right;
-		player_collider->SetPos(SCREEN_WIDTH, SCREEN_HEIGHT);
 		if (position.x + 240 < SCREEN_WIDTH)
 			position.x += speed;
 
@@ -497,6 +529,7 @@ update_status ModulePlayer::Update()
 				position.x = SCREEN_WIDTH - 144;*/
 			roll_right.Reset();
 			state = ST_IDLE;
+			hit = false;
 		}
 		break;
 
@@ -568,8 +601,6 @@ update_status ModulePlayer::Update()
 	}*/
 
 	// Draw everything --------------------------------------
-	if (current_time < damage_cooldown)
-		player_collider->SetPos(SCREEN_WIDTH, SCREEN_HEIGHT);
 	
 	App->render->Blit(crosstexture, cposition.x, cposition.y, &(cross.GetCurrentFrame()));
 	if (state == ST_FIRE_STANDING || state == ST_FIRE_CROUCH)
