@@ -58,7 +58,7 @@ void Enemy_V_Left2::Move()
 		if (appear.Finished())
 		{
 			animation = &walk;
-			position.x -= 3;
+			position.x -= 4;
 		}
 		break;
 
