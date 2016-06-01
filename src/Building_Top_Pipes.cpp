@@ -39,7 +39,6 @@ void Top_Pipes::Collision()
 
 	if (this_call > next_call)
 	{
-		App->scene->toppipe = false;
 		App->particles->AddParticle(App->particles->explosion, position.x, position.y - 30);
 		App->particles->AddParticle(App->particles->explosion, position.x + 120 + 120 + 120, position.y - 30);
 		App->particles->AddParticle(App->particles->explosion, position.x + 120 + 120, position.y - 30);
@@ -49,6 +48,10 @@ void Top_Pipes::Collision()
 		if (state.Finished())
 		{
 			App->collision->EraseCollider(collider);
+			if (App->scene->toppipe)
+				App->scene->toppipe = false;
+			else
+				App->scene->toppipe2 = false;
 		}
 		else
 			state.GetCurrentFrame();

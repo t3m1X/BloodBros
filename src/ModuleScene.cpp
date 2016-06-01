@@ -60,6 +60,7 @@ bool ModuleScene::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::DANCER, 0, 400, true);
 	App->enemies->AddEnemy(ENEMY_TYPES::CACTUS, SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 4 + 130, true, true);
 	toppipe = true;
+	toppipe2 = true;
 	App->enemies->AddEnemy(ENEMY_TYPES::HORSE, 0, 400, true);
 	
 

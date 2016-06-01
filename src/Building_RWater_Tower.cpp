@@ -79,7 +79,7 @@ void RWaterTower::Draw(SDL_Texture* sprites)
 
 void RWaterTower::Collision()
 {
-	if (!App->scene->toppipe)
+	if (!App->scene->toppipe && !App->scene->toppipe2)
 	{
 		this_call = SDL_GetTicks();
 
