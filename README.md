@@ -1,6 +1,7 @@
 ﻿# Blood Bros
 
 Project I's repository for the "Undead Renegades" team to re-create the arcade game "Blood Bros".
+[Check the project website](http://sergiparrar.github.io/BloodBros/) 
 
 ### Controls
 
