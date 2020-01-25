@@ -25,7 +25,7 @@ ModuleEnd::~ModuleEnd()
 }
 bool ModuleEnd::Start()
 {
-	LOG("Loading intro");
+	//LOG("Loading intro");
 
 	EndScreen = App->textures->Load("sprites/temporary_end_game.png");
 	//App->audio->PlayMusic("sound/music/startscreen.wav");
@@ -36,7 +36,7 @@ bool ModuleEnd::Start()
 }
 bool ModuleEnd::CleanUp()
 {
-	LOG("Unloading endscreen");
+	//LOG("Unloading endscreen");
 
 	App->textures->Unload(EndScreen);
 	App->end->Disable();

@@ -53,7 +53,7 @@ update_status ModuleText::Update()
 
 bool ModuleText::CleanUp()
 {
-	LOG("Freeing all texts");
+	//LOG("Freeing all texts");
 
 	for (uint i = 0; i < MAX_TEXT; ++i)
 	{
@@ -69,7 +69,7 @@ bool ModuleText::CleanUp()
 	return true;
 }
 
-Text* ModuleText::AddText(int x, int y, char* text)
+Text* ModuleText::AddText(int x, int y, const char* text)
 {
 	Text* ret = nullptr;
 

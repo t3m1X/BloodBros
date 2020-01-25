@@ -40,7 +40,7 @@ ModuleScene::~ModuleScene()
 // Load assets
 bool ModuleScene::Start()
 {
-	LOG("Loading background");
+	//LOG("Loading background");
 	
 	background = App->textures->Load("sprites/stage_4_3_Background.png");
 	regular_music = App->audio->LoadMusic("sound/music/stage1_bg.wav");
@@ -86,7 +86,7 @@ bool ModuleScene::Start()
 // UnLoad assets
 bool ModuleScene::CleanUp()
 {
-	LOG("Unloading space scene");
+	//LOG("Unloading space scene");
 
 	App->textures->Unload(background);
 	App->player->Disable();

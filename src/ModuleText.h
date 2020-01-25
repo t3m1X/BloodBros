@@ -14,7 +14,7 @@ struct Text
 	char* _text;
 	SDL_Texture* _font;
 
-	Text(int x, int y, char* text, SDL_Texture* font) :
+	Text(int x, int y, const char* text, SDL_Texture* font) :
 		_x(x),
 		_y(y),
 		_font(font)
@@ -95,7 +95,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 
-	Text* AddText(int x, int y, char* text);
+	Text* AddText(int x, int y, const char* text);
 	Text* AddNumber(int x, int y, int number, unsigned int size, char default_char = '0');
 	bool EraseText(Text* text);
 

@@ -19,7 +19,7 @@ ModuleStage::~ModuleStage()
 }
 bool ModuleStage::Start()
 {
-	LOG("Loading intro");
+	//LOG("Loading intro");
 
 	StageScreen = App->textures->Load("sprites/stage_1(notdefinitive).png");
 
@@ -27,7 +27,7 @@ bool ModuleStage::Start()
 }
 bool ModuleStage::CleanUp()
 {
-	LOG("Unloading intro");
+	//LOG("Unloading intro");
 
 	App->textures->Unload(StageScreen);
 

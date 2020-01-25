@@ -118,7 +118,7 @@ ModuleParticles::~ModuleParticles()
 // Load assets
 bool ModuleParticles::Start()
 {
-	LOG("Loading particles");
+	//LOG("Loading particles");
 	graphics = App->textures->Load("sprites/explosives_1.png");
 
 	return true;
@@ -127,7 +127,7 @@ bool ModuleParticles::Start()
 // Unload assets
 bool ModuleParticles::CleanUp()
 {
-	LOG("Unloading particles");
+	//LOG("Unloading particles");
 	App->textures->Unload(graphics);
 
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)

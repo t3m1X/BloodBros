@@ -25,7 +25,7 @@ ModuleIntro::~ModuleIntro()
 }
 bool ModuleIntro::Start()
 {
-	LOG("Loading intro");
+	//LOG("Loading intro");
 
 	IntroScreen = App->textures->Load("sprites/intro_screen.png");
 	bg_music = App->audio->LoadMusic("sound/music/startscreen.wav");
@@ -37,7 +37,7 @@ bool ModuleIntro::Start()
 }
 bool ModuleIntro::CleanUp()
 {
-	LOG("Unloading intro");
+	//LOG("Unloading intro");
 
 	App->textures->Unload(IntroScreen);
 	App->end->Disable();

@@ -524,7 +524,7 @@ extern "C" {
 #define GL_COMPILE_STATUS                 0x8B81
 #define GL_LINK_STATUS                    0x8B82
 #define GL_VALIDATE_STATUS                0x8B83
-#define GL_INFO_LOG_LENGTH                0x8B84
+#define GL_INFO_//LOG_LENGTH                0x8B84
 #define GL_ATTACHED_SHADERS               0x8B85
 #define GL_ACTIVE_UNIFORMS                0x8B86
 #define GL_ACTIVE_UNIFORM_MAX_LENGTH      0x8B87
@@ -1512,7 +1512,7 @@ extern "C" {
 #define GL_OBJECT_COMPILE_STATUS_ARB      0x8B81
 #define GL_OBJECT_LINK_STATUS_ARB         0x8B82
 #define GL_OBJECT_VALIDATE_STATUS_ARB     0x8B83
-#define GL_OBJECT_INFO_LOG_LENGTH_ARB     0x8B84
+#define GL_OBJECT_INFO_//LOG_LENGTH_ARB     0x8B84
 #define GL_OBJECT_ATTACHED_OBJECTS_ARB    0x8B85
 #define GL_OBJECT_ACTIVE_UNIFORMS_ARB     0x8B86
 #define GL_OBJECT_ACTIVE_UNIFORM_MAX_LENGTH_ARB 0x8B87
@@ -2180,7 +2180,7 @@ extern "C" {
 
 #ifndef GL_ARB_debug_output
 #define GL_DEBUG_OUTPUT_SYNCHRONOUS_ARB   0x8242
-#define GL_DEBUG_NEXT_LOGGED_MESSAGE_LENGTH_ARB 0x8243
+#define GL_DEBUG_NEXT_//LOGGED_MESSAGE_LENGTH_ARB 0x8243
 #define GL_DEBUG_CALLBACK_FUNCTION_ARB    0x8244
 #define GL_DEBUG_CALLBACK_USER_PARAM_ARB  0x8245
 #define GL_DEBUG_SOURCE_API_ARB           0x8246
@@ -2196,8 +2196,8 @@ extern "C" {
 #define GL_DEBUG_TYPE_PERFORMANCE_ARB     0x8250
 #define GL_DEBUG_TYPE_OTHER_ARB           0x8251
 #define GL_MAX_DEBUG_MESSAGE_LENGTH_ARB   0x9143
-#define GL_MAX_DEBUG_LOGGED_MESSAGES_ARB  0x9144
-#define GL_DEBUG_LOGGED_MESSAGES_ARB      0x9145
+#define GL_MAX_DEBUG_//LOGGED_MESSAGES_ARB  0x9144
+#define GL_DEBUG_//LOGGED_MESSAGES_ARB      0x9145
 #define GL_DEBUG_SEVERITY_HIGH_ARB        0x9146
 #define GL_DEBUG_SEVERITY_MEDIUM_ARB      0x9147
 #define GL_DEBUG_SEVERITY_LOW_ARB         0x9148
@@ -3855,7 +3855,7 @@ extern "C" {
 #define GL_OP_FLOOR_EXT                   0x878F
 #define GL_OP_ROUND_EXT                   0x8790
 #define GL_OP_EXP_BASE_2_EXT              0x8791
-#define GL_OP_LOG_BASE_2_EXT              0x8792
+#define GL_OP_//LOG_BASE_2_EXT              0x8792
 #define GL_OP_POWER_EXT                   0x8793
 #define GL_OP_RECIP_EXT                   0x8794
 #define GL_OP_RECIP_SQRT_EXT              0x8795
@@ -5071,8 +5071,8 @@ extern "C" {
 #endif
 
 #ifndef GL_AMD_debug_output
-#define GL_MAX_DEBUG_LOGGED_MESSAGES_AMD  0x9144
-#define GL_DEBUG_LOGGED_MESSAGES_AMD      0x9145
+#define GL_MAX_DEBUG_//LOGGED_MESSAGES_AMD  0x9144
+#define GL_DEBUG_//LOGGED_MESSAGES_AMD      0x9145
 #define GL_DEBUG_SEVERITY_HIGH_AMD        0x9146
 #define GL_DEBUG_SEVERITY_MEDIUM_AMD      0x9147
 #define GL_DEBUG_SEVERITY_LOW_AMD         0x9148
@@ -5668,9 +5668,9 @@ typedef void (APIENTRYP PFNGLGETACTIVEUNIFORMPROC) (GLuint program, GLuint index
 typedef void (APIENTRYP PFNGLGETATTACHEDSHADERSPROC) (GLuint program, GLsizei maxCount, GLsizei *count, GLuint *obj);
 typedef GLint (APIENTRYP PFNGLGETATTRIBLOCATIONPROC) (GLuint program, const GLchar *name);
 typedef void (APIENTRYP PFNGLGETPROGRAMIVPROC) (GLuint program, GLenum pname, GLint *params);
-typedef void (APIENTRYP PFNGLGETPROGRAMINFOLOGPROC) (GLuint program, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
+typedef void (APIENTRYP PFNGLGETPROGRAMINFO//LOGPROC) (GLuint program, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
 typedef void (APIENTRYP PFNGLGETSHADERIVPROC) (GLuint shader, GLenum pname, GLint *params);
-typedef void (APIENTRYP PFNGLGETSHADERINFOLOGPROC) (GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
+typedef void (APIENTRYP PFNGLGETSHADERINFO//LOGPROC) (GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
 typedef void (APIENTRYP PFNGLGETSHADERSOURCEPROC) (GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *source);
 typedef GLint (APIENTRYP PFNGLGETUNIFORMLOCATIONPROC) (GLuint program, const GLchar *name);
 typedef void (APIENTRYP PFNGLGETUNIFORMFVPROC) (GLuint program, GLint location, GLfloat *params);
@@ -6484,7 +6484,7 @@ typedef void (APIENTRYP PFNGLUNIFORMMATRIX3FVARBPROC) (GLint location, GLsizei c
 typedef void (APIENTRYP PFNGLUNIFORMMATRIX4FVARBPROC) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
 typedef void (APIENTRYP PFNGLGETOBJECTPARAMETERFVARBPROC) (GLhandleARB obj, GLenum pname, GLfloat *params);
 typedef void (APIENTRYP PFNGLGETOBJECTPARAMETERIVARBPROC) (GLhandleARB obj, GLenum pname, GLint *params);
-typedef void (APIENTRYP PFNGLGETINFOLOGARBPROC) (GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog);
+typedef void (APIENTRYP PFNGLGETINFO//LOGARBPROC) (GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog);
 typedef void (APIENTRYP PFNGLGETATTACHEDOBJECTSARBPROC) (GLhandleARB containerObj, GLsizei maxCount, GLsizei *count, GLhandleARB *obj);
 typedef GLint (APIENTRYP PFNGLGETUNIFORMLOCATIONARBPROC) (GLhandleARB programObj, const GLcharARB *name);
 typedef void (APIENTRYP PFNGLGETACTIVEUNIFORMARBPROC) (GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name);
@@ -7282,7 +7282,7 @@ typedef void (APIENTRYP PFNGLPROGRAMUNIFORMMATRIX4X2DVPROC) (GLuint program, GLi
 typedef void (APIENTRYP PFNGLPROGRAMUNIFORMMATRIX3X4DVPROC) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
 typedef void (APIENTRYP PFNGLPROGRAMUNIFORMMATRIX4X3DVPROC) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
 typedef void (APIENTRYP PFNGLVALIDATEPROGRAMPIPELINEPROC) (GLuint pipeline);
-typedef void (APIENTRYP PFNGLGETPROGRAMPIPELINEINFOLOGPROC) (GLuint pipeline, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
+typedef void (APIENTRYP PFNGLGETPROGRAMPIPELINEINFO//LOGPROC) (GLuint pipeline, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
 #endif
 
 #ifndef GL_ARB_vertex_attrib_64bit
@@ -7356,7 +7356,7 @@ GLAPI GLuint APIENTRY glGetDebugMessageLogARB (GLuint count, GLsizei bufsize, GL
 typedef void (APIENTRYP PFNGLDEBUGMESSAGECONTROLARBPROC) (GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
 typedef void (APIENTRYP PFNGLDEBUGMESSAGEINSERTARBPROC) (GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf);
 typedef void (APIENTRYP PFNGLDEBUGMESSAGECALLBACKARBPROC) (GLDEBUGPROCARB callback, const GLvoid *userParam);
-typedef GLuint (APIENTRYP PFNGLGETDEBUGMESSAGELOGARBPROC) (GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog);
+typedef GLuint (APIENTRYP PFNGLGETDEBUGMESSAGE//LOGARBPROC) (GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog);
 #endif
 
 #ifndef GL_ARB_robustness
@@ -11078,7 +11078,7 @@ GLAPI GLuint APIENTRY glGetDebugMessageLogAMD (GLuint count, GLsizei bufsize, GL
 typedef void (APIENTRYP PFNGLDEBUGMESSAGEENABLEAMDPROC) (GLenum category, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
 typedef void (APIENTRYP PFNGLDEBUGMESSAGEINSERTAMDPROC) (GLenum category, GLenum severity, GLuint id, GLsizei length, const GLchar *buf);
 typedef void (APIENTRYP PFNGLDEBUGMESSAGECALLBACKAMDPROC) (GLDEBUGPROCAMD callback, GLvoid *userParam);
-typedef GLuint (APIENTRYP PFNGLGETDEBUGMESSAGELOGAMDPROC) (GLuint count, GLsizei bufsize, GLenum *categories, GLuint *severities, GLuint *ids, GLsizei *lengths, GLchar *message);
+typedef GLuint (APIENTRYP PFNGLGETDEBUGMESSAGE//LOGAMDPROC) (GLuint count, GLsizei bufsize, GLenum *categories, GLuint *severities, GLuint *ids, GLsizei *lengths, GLchar *message);
 #endif
 
 #ifndef GL_NV_vdpau_interop

@@ -42,7 +42,7 @@ ModuleUserI::~ModuleUserI()
 }
 bool ModuleUserI::Start()
 {
-	LOG("Loading intro");
+	//LOG("Loading intro");
 
 	UserInterface = App->textures->Load("sprites/ui-rearranged.png");
 	credit_text = App->text->AddText(SCREEN_WIDTH/2 - 2*TILE,SCREEN_HEIGHT-TILE/2,"CREDIT");
@@ -57,7 +57,7 @@ bool ModuleUserI::Start()
 }
 bool ModuleUserI::CleanUp()
 {
-	LOG("Unloading intro");
+	//LOG("Unloading intro");
 
 	App->textures->Unload(UserInterface);
 	App->text->EraseText(credit_text);

@@ -202,7 +202,7 @@ ModulePlayer::~ModulePlayer()
 // Load assets
 bool ModulePlayer::Start()
 {
-	LOG("Loading player");
+	//LOG("Loading player");
 
 	player = App->textures->Load("sprites/p1_sprites-rearranged.png");
 	crosstexture = App->textures->Load("sprites/aims.png"); 
@@ -227,7 +227,7 @@ bool ModulePlayer::Start()
 // Unload assets
 bool ModulePlayer::CleanUp()
 {
-	LOG("Unloading player");
+	//LOG("Unloading player");
 
 	App->textures->Unload(player);
 	App->textures->Unload(crosstexture);

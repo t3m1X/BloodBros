@@ -25,7 +25,7 @@ ModuleAudio::~ModuleAudio()
 
 bool ModuleAudio::Init()
 {
-	LOG("Init Audio library");
+	//LOG("Init Audio library");
 	bool ret = true;
 
 	//Loading Audio Library and support for MP3 and OGG
@@ -34,13 +34,13 @@ bool ModuleAudio::Init()
 
 	if ((init & flags) != flags)
 	{
-		LOG("Could not initialize Audio lib. Mix_Init: %s", Mix_GetError());
+		//LOG("Could not initialize Audio lib. Mix_Init: %s", Mix_GetError());
 		ret = false;
 	}
 
 	if (Mix_OpenAudio(48000, MIX_DEFAULT_FORMAT, 2, 1024) == -1)
 	{
-		LOG("Could not open audio channels. Mix_OpenAudio: %s", Mix_GetError());
+		//LOG("Could not open audio channels. Mix_OpenAudio: %s", Mix_GetError());
 		ret = false;
 	}
 
@@ -52,7 +52,7 @@ bool ModuleAudio::Init()
 // Called before quitting
 bool ModuleAudio::CleanUp()
 {
-	LOG("Freeing Mix_Chunks and Sound library");
+	//LOG("Freeing Mix_Chunks and Sound library");
 
 	for (uint i = 0; i < MAX_SFX; ++i)
 		if (soundfx[i] != nullptr)
@@ -89,13 +89,13 @@ bool ModuleAudio::PlayMusic(Mix_Music* music, int loops)
 	bool ret = false;
 	if (music == nullptr)
 	{
-		LOG("Could not load music. Mix_LoadMUS: %s", Mix_GetError());
+		//LOG("Could not load music. Mix_LoadMUS: %s", Mix_GetError());
 	}
 	else
 	{
 		if (Mix_FadeInMusic(music, loops, FADE) == -1)
 		{
-			LOG("Could not play music . Mix_FadeInMusic: %s", Mix_GetError());
+			//LOG("Could not play music . Mix_FadeInMusic: %s", Mix_GetError());
 		}
 		else
 			ret = true;
@@ -132,7 +132,7 @@ Mix_Chunk* const ModuleAudio::LoadSFX(const char* path)
 
 	if (sfx == NULL)
 	{
-		LOG("Could not load sound effect with path: %s. Mix_LoadWAV: %s", path, Mix_GetError());
+		//LOG("Could not load sound effect with path: %s. Mix_LoadWAV: %s", path, Mix_GetError());
 	}
 	else
 	{
@@ -150,7 +150,7 @@ bool ModuleAudio::PlaySFX(Mix_Chunk* sfx)
 	{*/
 		if (Mix_PlayChannel(-1, sfx, 0) == -1)
 		{
-			LOG("Mix_PlayChannel: %s\n", Mix_GetError());
+			//LOG("Mix_PlayChannel: %s\n", Mix_GetError());
 		}
 		else
 			ret = true;

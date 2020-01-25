@@ -761,7 +761,7 @@ typedef khronos_ssize_t  GLsizeiptr;
 
 /* Shader Source */
 #define GL_COMPILE_STATUS                 0x8B81
-#define GL_INFO_LOG_LENGTH                0x8B84
+#define GL_INFO_//LOG_LENGTH                0x8B84
 #define GL_SHADER_SOURCE_LENGTH           0x8B88
 #define GL_SHADER_COMPILER                0x8DFA
 
@@ -1161,7 +1161,7 @@ typedef void* GLeglImageOES;
 #ifndef GL_KHR_debug
 typedef void (GL_APIENTRYP GLDEBUGPROC)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,GLvoid *userParam);
 #define GL_DEBUG_OUTPUT_SYNCHRONOUS                             0x8242
-#define GL_DEBUG_NEXT_LOGGED_MESSAGE_LENGTH                     0x8243
+#define GL_DEBUG_NEXT_//LOGGED_MESSAGE_LENGTH                     0x8243
 #define GL_DEBUG_CALLBACK_FUNCTION                              0x8244
 #define GL_DEBUG_CALLBACK_USER_PARAM                            0x8245
 #define GL_DEBUG_SOURCE_API                                     0x8246
@@ -1191,8 +1191,8 @@ typedef void (GL_APIENTRYP GLDEBUGPROC)(GLenum source,GLenum type,GLuint id,GLen
 /* DISPLAY_LIST only in GL */                                   
 #define GL_MAX_LABEL_LENGTH                                     0x82E8
 #define GL_MAX_DEBUG_MESSAGE_LENGTH                             0x9143
-#define GL_MAX_DEBUG_LOGGED_MESSAGES                            0x9144
-#define GL_DEBUG_LOGGED_MESSAGES                                0x9145
+#define GL_MAX_DEBUG_//LOGGED_MESSAGES                            0x9144
+#define GL_DEBUG_//LOGGED_MESSAGES                                0x9145
 #define GL_DEBUG_SEVERITY_HIGH                                  0x9146
 #define GL_DEBUG_SEVERITY_MEDIUM                                0x9147
 #define GL_DEBUG_SEVERITY_LOW                                   0x9148
@@ -2057,7 +2057,7 @@ GL_APICALL void GL_APIENTRY glGetPointerv (GLenum pname, void **params);
 typedef void (GL_APIENTRYP PFNGLDEBUGMESSAGECONTROLPROC) (GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
 typedef void (GL_APIENTRYP PFNGLDEBUGMESSAGEINSERTPROC) (GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf);
 typedef void (GL_APIENTRYP PFNGLDEBUGMESSAGECALLBACKPROC) (GLDEBUGPROC callback, const void *userParam);
-typedef GLuint (GL_APIENTRYP PFNGLGETDEBUGMESSAGELOGPROC) (GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog);
+typedef GLuint (GL_APIENTRYP PFNGLGETDEBUGMESSAGE//LOGPROC) (GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog);
 typedef void (GL_APIENTRYP PFNGLPUSHDEBUGGROUPPROC) (GLenum source, GLuint id, GLsizei length, const GLchar *message);
 typedef void (GL_APIENTRYP PFNGLPOPDEBUGGROUPPROC) (void);
 typedef void (GL_APIENTRYP PFNGLOBJECTLABELPROC) (GLenum identifier, GLuint name, GLsizei length, const GLchar *label);
@@ -2457,7 +2457,7 @@ typedef void (GL_APIENTRYP PFNGLPROGRAMUNIFORMMATRIX2FVEXTPROC) (GLuint program,
 typedef void (GL_APIENTRYP PFNGLPROGRAMUNIFORMMATRIX3FVEXTPROC) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
 typedef void (GL_APIENTRYP PFNGLPROGRAMUNIFORMMATRIX4FVEXTPROC) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
 typedef void (GL_APIENTRYP PFNGLVALIDATEPROGRAMPIPELINEEXTPROC) (GLuint pipeline);
-typedef void (GL_APIENTRYP PFNGLGETPROGRAMPIPELINEINFOLOGEXTPROC) (GLuint pipeline, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
+typedef void (GL_APIENTRYP PFNGLGETPROGRAMPIPELINEINFO//LOGEXTPROC) (GLuint pipeline, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
 #endif
 
 /* GL_EXT_shader_framebuffer_fetch */

@@ -2,7 +2,7 @@
 #define __ModuleRenderer_H__
 
 #include "Module.h"
-#include "SDL\include\SDL_rect.h"
+#include "SDL/include/SDL_rect.h"
 
 struct SDL_Renderer;
 struct SDL_Texture;

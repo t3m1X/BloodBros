@@ -5,7 +5,7 @@
         "type": "shell",
         "label": "g++ build project",
         "command": "/usr/bin/g++",
-        "args": ["-g", "-std=c++11", "*.cpp", "-o", "BloodBros.out"],
+        "args": ["-g", "-std=c++11", "*.cpp","-I${workspaceFolder}/src/", "-o", "BloodBros.out"],
         "options": {
           "cwd": "${workspaceFolder}/src"
         },

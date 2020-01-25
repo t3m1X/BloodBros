@@ -62,7 +62,7 @@ update_status ModuleEnemies::PreUpdate()
 			{
 				SpawnEnemy(queue[i]);
 				queue[i].type = ENEMY_TYPES::NO_TYPE;
-				LOG("Spawning enemy at %d", queue[i].x * SCREEN_SIZE);
+				//LOG("Spawning enemy at %d", queue[i].x * SCREEN_SIZE);
 			}
 		}
 	}
@@ -110,7 +110,7 @@ update_status ModuleEnemies::PostUpdate()
 		{
 			if (enemies[i]->position.x < -SPAWN_MARGIN || enemies[i]->position.x > SCREEN_WIDTH + SPAWN_MARGIN || enemies[i]->position.y > SCREEN_HEIGHT + SPAWN_MARGIN)
 			{
-				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
+				//LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
 				delete enemies[i];
 				enemies[i] = nullptr;
 			}
@@ -123,7 +123,7 @@ update_status ModuleEnemies::PostUpdate()
 // Called before quitting
 bool ModuleEnemies::CleanUp()
 {
-	LOG("Freeing all enemies");
+	//LOG("Freeing all enemies");
 
 	App->textures->Unload(sprites);
 
