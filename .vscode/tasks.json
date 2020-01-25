@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "type": "shell",
+        "label": "g++ build project",
+        "command": "/usr/bin/g++",
+        "args": ["-g", "-std=c++11", "*.cpp", "-o", "BloodBros.out"],
+        "options": {
+          "cwd": "${workspaceFolder}/src"
+        },
+        "problemMatcher": ["$gcc"],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      }
+    ]
+  }
